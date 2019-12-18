@@ -1,1 +1,1 @@
-# deepsixdesign
+docker-compose up --build
