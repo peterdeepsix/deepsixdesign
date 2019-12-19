@@ -7,6 +7,7 @@
   "dependencies": {
     "@tensorflow-models/coco-ssd": "^2.0.1",
     "@tensorflow/tfjs": "^1.4.0",
+    "@tensorflow/tfjs-automl": "^1.0.0",
     "@tensorflow/tfjs-converter": "^1.5.0",
     "@tensorflow/tfjs-core": "^1.5.0",
     "gatsby": "^2.18.12",
