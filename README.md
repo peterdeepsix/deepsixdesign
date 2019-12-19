@@ -1,4 +1,9 @@
+# docker
 docker-compose up --build
 
-  git config --global user.email "peter@deepsixdesign.com"
-  git config --global user.name "Peter Arnold"
+# git user
+git config --global user.email "peter@deepsixdesign.com"
+git config --global user.name "Peter Arnold"
+
+# node latest from scratch
+curl https://www.npmjs.com/install.sh | sudo sh
