@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Predict from "../components/predict"
 
 const ASD = () => (
   <Layout>
@@ -10,6 +11,7 @@ const ASD = () => (
     <h4>~ asd ~</h4>
     <p>Charge hard my wayward son.</p>
     <Link to="/">send it to the index</Link>
+    <Predict />
   </Layout>
 )
 
