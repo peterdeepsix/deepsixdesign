@@ -6,6 +6,8 @@
   "author": "Peter Arnold <peter@deepsixdesign.com>",
   "dependencies": {
     "@tensorflow-models/coco-ssd": "^2.0.1",
+    "@tensorflow/tfjs": "^1.4.0",
+    "@tensorflow/tfjs-core": "^1.5.0",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
