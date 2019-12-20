@@ -1,19 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
+
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import MuiLink from '@material-ui/core/Link';
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import Link from '../components/Link';
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Deep Six Design" />
-    <h4>Holy Frigsmas</h4>
-    <p>Yip Yip, Yehaw!</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/predict/">Take me there.</Link>
+    <Container maxWidth="sm">
+    <Box my={4}>
+      <Typography variant="h4" component="h4" gutterBottom>Holy Frigsmas</Typography>
+      <Typography variant="body2" color="textSecondary">Yip Yip, Yehaw!</Typography>
+      </Box>
+      <Box my={4}>
+        <Image />
+      </Box>
+      <Box my={4}>
+       <Link to="/predict">Take me there.</Link>
+      </Box>
+    </Container>
   </Layout>
 )
 

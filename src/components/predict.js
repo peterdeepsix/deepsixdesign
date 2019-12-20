@@ -2,6 +2,7 @@ import React from "react";
 
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
+import * as automl from '@tensorflow/tfjs-automl';
 import "./styles.css";
 
 export default class Predict extends React.Component {
@@ -27,7 +28,10 @@ export default class Predict extends React.Component {
           });
         });
       const modelPromise = cocoSsd.load();
-      Promise.all([modelPromise, webCamPromise])
+      const modelUrl = 'public/model.json'; 
+      const model = automl.loadImageClassification(modelUrl);
+
+      Promise.all([model, webCamPromise])
         .then(values => {
           this.detectFrame(this.videoRef.current, values[0]);
         })
