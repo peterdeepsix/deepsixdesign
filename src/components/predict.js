@@ -2,7 +2,6 @@ import React from "react";
 
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
-import * as automl from '@tensorflow/tfjs-automl';
 import "./styles.css";
 
 import Container from '@material-ui/core/Container';
@@ -18,7 +17,7 @@ export default class Predict extends React.Component {
         .getUserMedia({
           audio: false,
           video: {
-            facingMode: "user"
+            facingMode: "environment"
           }
         })
         .then(stream => {
@@ -31,8 +30,6 @@ export default class Predict extends React.Component {
           });
         });
       const modelPromise = cocoSsd.load();
-      const modelUrl = 'public/model.json'; 
-      const model = automl.loadImageClassification(modelUrl);
 
       Promise.all([modelPromise, webCamPromise])
         .then(values => {
@@ -57,7 +54,7 @@ export default class Predict extends React.Component {
     const ctx = this.canvasRef.current.getContext("2d");
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     // Font options.
-    const font = "16px sans-serif";
+    const font = "16px";
     ctx.font = font;
     ctx.textBaseline = "top";
     predictions.forEach(prediction => {
@@ -66,11 +63,11 @@ export default class Predict extends React.Component {
       const width = prediction.bbox[2];
       const height = prediction.bbox[3];
       // Draw the bounding box.
-      ctx.strokeStyle = "#00FFFF";
+      ctx.strokeStyle = "#FF1654";
       ctx.lineWidth = 4;
       ctx.strokeRect(x, y, width, height);
       // Draw the label background.
-      ctx.fillStyle = "#00FFFF";
+      ctx.fillStyle = "#FF1654";
       const textWidth = ctx.measureText(prediction.class).width;
       const textHeight = parseInt(font, 10); // base 10
       ctx.fillRect(x, y, textWidth + 4, textHeight + 4);
@@ -80,7 +77,7 @@ export default class Predict extends React.Component {
       const x = prediction.bbox[0];
       const y = prediction.bbox[1];
       // Draw the text last to ensure it's on top.
-      ctx.fillStyle = "#000000";
+      ctx.fillStyle = "#fff";
       ctx.fillText(prediction.class, x, y);
     });
   };
@@ -88,25 +85,24 @@ export default class Predict extends React.Component {
   render() {
     return (
       <Container maxWidth="sm">
-      <Box my={4}>
-            
-        <video
-          className="size"
-          autoPlay
-          playsInline
-          muted
-          ref={this.videoRef}
-          width="600"
-          height="500"
-        />
-        <canvas
-          className="size"
-          ref={this.canvasRef}
-          width="600"
-          height="500"
-        />
-    
-      </Box></Container>
+        <Box my={4}>
+          <video
+            className="size"
+            autoPlay
+            playsInline
+            muted
+            ref={this.videoRef}
+            width="600"
+            height="500"
+          />
+          <canvas
+            className="size"
+            ref={this.canvasRef}
+            width="600"
+            height="500"
+          />
+        </Box>
+      </Container>
     );
   }
 }
