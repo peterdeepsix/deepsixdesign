@@ -31,7 +31,7 @@ export default class Predict extends React.Component {
       const modelUrl = 'public/model.json'; 
       const model = automl.loadImageClassification(modelUrl);
 
-      Promise.all([model, webCamPromise])
+      Promise.all([modelPromise, webCamPromise])
         .then(values => {
           this.detectFrame(this.videoRef.current, values[0]);
         })

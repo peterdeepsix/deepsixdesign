@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Predict from "../components/predict"
+import Predict from "../components/Predict"
 
 const ASD = () => (
   <Layout>

@@ -3,12 +3,10 @@ import React from "react"
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import MuiLink from '@material-ui/core/Link';
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import Link from '../components/Link';
 
 const IndexPage = () => (
   <Layout>
