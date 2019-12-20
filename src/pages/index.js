@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
 import Layout from "../components/Layout"
-import Image from "../components/image"
+import Image from "../components/Image"
 import SEO from "../components/SEO"
 
 const IndexPage = () => (
