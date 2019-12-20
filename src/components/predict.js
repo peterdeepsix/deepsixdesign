@@ -87,20 +87,26 @@ export default class Predict extends React.Component {
 
   render() {
     return (
-            <Container maxWidth="sm">
-    <Box my={4}> <video
+      <Container maxWidth="sm">
+      <Box my={4}>
+            
+        <video
           className="size"
           autoPlay
           playsInline
           muted
           ref={this.videoRef}
+          width="600"
+          height="500"
         />
         <canvas
           className="size"
           ref={this.canvasRef}
+          width="600"
+          height="500"
         />
-        </Box>
-        </Container>
+    
+      </Box></Container>
     );
   }
 }
