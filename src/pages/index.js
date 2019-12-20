@@ -15,14 +15,11 @@ const IndexPage = () => (
     <SEO title="Deep Six Design" />
     <Container maxWidth="sm">
     <Box my={4}>
-      <Typography variant="h4" component="h4" gutterBottom>Holy Frigsmas</Typography>
-      <Typography variant="body2" color="textSecondary">Yip Yip, Yehaw!</Typography>
+      <Typography variant="h4" component="h4" gutterBottom align="center">Holy Frigsmas</Typography>
+      <Typography variant="body2" color="textSecondary" align="center">Yip Yip, Yehaw!</Typography>
       </Box>
       <Box my={4}>
         <Image />
-      </Box>
-      <Box my={4}>
-       <Link to="/predict">Take me there.</Link>
       </Box>
     </Container>
   </Layout>
