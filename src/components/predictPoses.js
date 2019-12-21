@@ -9,7 +9,7 @@ import useCamera from "use-camera";
 
 import { useObjects } from "use-tensorflow";
 
-const Predict = () => {
+const PredictPoses = () => {
   
   const videoRef = useCamera({ audio: false });
   const size = useWindowSize();
@@ -32,4 +32,4 @@ const Predict = () => {
     </Container>
   )
 }
-export default Predict
+export default PredictPoses

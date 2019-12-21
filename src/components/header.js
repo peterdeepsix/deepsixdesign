@@ -8,12 +8,14 @@ import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import IconButton from "@material-ui/core/IconButton"
 import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory"
+import AspectRatioOutlinedIcon from '@material-ui/icons/AspectRatioOutlined';
+import AccessibilityNewOutlinedIcon from '@material-ui/icons/AccessibilityNewOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
+  leftButton: {
     marginRight: theme.spacing(2),
   },
   title: {
@@ -29,7 +31,7 @@ const Header = ({ siteTitle }) => {
       <Toolbar>
         <IconButton
           edge="start"
-          className={classes.menuButton}
+          className={classes.leftButton}
           component={Link}
           to="/"
           color="inherit"
@@ -40,14 +42,23 @@ const Header = ({ siteTitle }) => {
         <Typography variant="h6" className={classes.title}>
           {siteTitle}
         </Typography>
-        <Button
+        <IconButton
           component={Link}
-          to="/predict"
+          to="/objects"
           color="inherit"
-          variant="outlined"
+          aria-label="objects"
         >
-          Take Me There
-        </Button>
+          <AspectRatioOutlinedIcon />
+        </IconButton>
+        <IconButton
+          edge="end"
+          component={Link}
+          to="/poses"
+          color="inherit"
+          aria-label="poses"
+        >
+          <AccessibilityNewOutlinedIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   )
