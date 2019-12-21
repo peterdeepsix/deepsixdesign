@@ -6,27 +6,27 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "../../src/configs/theme"
 
 export default function TopLayout(props) {
-  return (
-    <React.Fragment>
-      <Helmet>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        {props.children}
-      </ThemeProvider>
-    </React.Fragment>
-  )
+    return (
+        <React.Fragment>
+            <Helmet>
+                <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+                    rel="stylesheet"
+                />
+            </Helmet>
+            <ThemeProvider theme={theme}>
+                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                <CssBaseline />
+                {props.children}
+            </ThemeProvider>
+        </React.Fragment>
+    )
 }
 
 TopLayout.propTypes = {
-  children: PropTypes.node,
+    children: PropTypes.node,
 }

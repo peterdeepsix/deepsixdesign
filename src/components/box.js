@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Box = styled.div.attrs(props => ({
     style: {
-      left: `${props.left}px`,
-      top: `${props.top}px`,
-      width: `${props.width}px`,
-      height: `${props.height}px`
-    }
-  }))`
+        left: `${props.left}px`,
+        top: `${props.top}px`,
+        width: `${props.width}px`,
+        height: `${props.height}px`,
+    },
+}))`
     border: 2px solid ${({ color }) => color || "red"};
     position: absolute;
     border-radius: 4px;
@@ -35,4 +35,4 @@ export const Box = styled.div.attrs(props => ({
       right: 0;
       border-radius: 0 0 0 4px;
     }
-  `;
+  `
