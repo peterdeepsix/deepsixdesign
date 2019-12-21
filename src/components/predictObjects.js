@@ -5,7 +5,7 @@ import { Box } from "./box"
 
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import useCamera from "use-camera";
+import useCamera from "../hooks/useCamera";
 
 import { useObjects } from "use-tensorflow";
 

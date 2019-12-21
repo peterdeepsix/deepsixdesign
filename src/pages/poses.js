@@ -2,12 +2,14 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PredictPoses from "../components/predictPoses"
+
+import Loadable from "@loadable/component"
+const LoadablePredictPoses = Loadable(() => import("../components/predictPoses"))
 
 const Poses = () => (
   <Layout>
     <SEO title="Poses" />
-    <PredictPoses />
+    <LoadablePredictPoses />
   </Layout>
 )
 
