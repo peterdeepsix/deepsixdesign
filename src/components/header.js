@@ -9,7 +9,6 @@ import Button from "@material-ui/core/Button"
 import IconButton from "@material-ui/core/IconButton"
 import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory"
 import AspectRatioOutlinedIcon from "@material-ui/icons/AspectRatioOutlined"
-import AccessibilityNewOutlinedIcon from "@material-ui/icons/AccessibilityNewOutlined"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -43,21 +42,13 @@ const Header = ({ siteTitle }) => {
                     {siteTitle}
                 </Typography>
                 <IconButton
+                    edge="end"
                     component={Link}
                     to="/objects"
                     color="inherit"
                     aria-label="objects"
                 >
                     <AspectRatioOutlinedIcon />
-                </IconButton>
-                <IconButton
-                    edge="end"
-                    component={Link}
-                    to="/poses"
-                    color="inherit"
-                    aria-label="poses"
-                >
-                    <AccessibilityNewOutlinedIcon />
                 </IconButton>
             </Toolbar>
         </AppBar>
