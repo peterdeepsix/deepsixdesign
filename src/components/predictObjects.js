@@ -17,8 +17,9 @@ const PredictObjects = () => {
     return (
         <Container>
             {objects ? (
-                objects.map(({ left, top, width, height, label, score }) => (
+                objects.map(({ left, top, width, height, label, score }, index) => (
                     <Box
+                        key={index}
                         left={left}
                         top={top}
                         width={width}
