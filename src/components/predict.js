@@ -1,29 +1,34 @@
-import React, { useRef } from "react";
+import React from "react";
+import useWindowSize from '../hooks/useWindowSize';
+import { Container } from "./container"
+import { Box } from "./box"
 
-import Container from "@material-ui/core/Container"
-import Box from "@material-ui/core/Box"
-import Typography from "@material-ui/core/Typography"
+import LinearProgress from '@material-ui/core/LinearProgress';
+
+import useCamera from "use-camera";
 
 import { useObjects } from "use-tensorflow";
 
-import pic from "../images/room.jpg"
-
 const Predict = () => {
-
-  const ref = useRef(null);
-  const objects = useObjects(ref);
+  
+  const videoRef = useCamera({ audio: false });
+  const size = useWindowSize();
+  const objects = useObjects(videoRef);
 
   return(
-    <Container maxWidth="sm">
-      <Box my={4}>
-      <img ref={ref} src={pic} />
+    <Container>
       {objects ? objects.map(({ left, top, width, height, label, score }) => (
-        <Typography variant="h4" component="h4" gutterBottom align="center">
-        {left}-{top}-{width}-{height}-{label}-{score}
-      </Typography>
-      )) : 'Loading...'}
-        
-      </Box>
+          <Box
+          left={left}
+          top={top}
+          width={width}
+          height={height}
+          label={label}
+          color={score > 0.6 ? "#FF1654" : "#70C1B3"}
+          score={score}
+        />
+      )) :  <LinearProgress />}
+      <video ref={videoRef} autoPlay width={size.width} height={(size.height - 64)} />
     </Container>
   )
 }
