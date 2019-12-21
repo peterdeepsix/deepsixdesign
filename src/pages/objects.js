@@ -12,7 +12,7 @@ const LoadablePredictObjects = Loadable(() =>
 const Objects = () => (
     <Layout>
         <SEO title="Objects" />
-        <LoadablePredictObjects />
+            <LoadablePredictObjects />
     </Layout>
 )
 
