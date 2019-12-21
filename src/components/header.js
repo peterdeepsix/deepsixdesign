@@ -1,4 +1,4 @@
-import Link from "../components/Link"
+import Link from "../components/link"
 import PropTypes from "prop-types"
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
