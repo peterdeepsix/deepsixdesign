@@ -21,13 +21,6 @@ const IndexPage = () => (
                 >
                     Holy Frigsmas
                 </Typography>
-                <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    align="center"
-                >
-                    Yip Yip, Yehaw!
-                </Typography>
             </Box>
             <Box my={4}>
                 <Image />
