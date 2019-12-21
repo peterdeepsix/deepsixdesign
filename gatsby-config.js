@@ -25,13 +25,13 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `gatsby-starter-default`,
-                short_name: `starter`,
+                name: `Deep Six Design`,
+                short_name: `Deep Six`,
                 start_url: `/`,
                 background_color: `#fff`,
                 theme_color: `#FF1654`,
                 display: `minimal-ui`,
-                icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/images/logo.png`, // This path is relative to the root of the site.
             },
         },
         {
