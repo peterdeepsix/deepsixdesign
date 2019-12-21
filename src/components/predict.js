@@ -4,9 +4,6 @@ import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import "@tensorflow/tfjs";
 import "./styles.css";
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-
 export default class Predict extends React.Component {
   videoRef = React.createRef();
   canvasRef = React.createRef();
@@ -84,25 +81,21 @@ export default class Predict extends React.Component {
 
   render() {
     return (
-      <Container maxWidth="sm">
-        <Box my={4}>
-          <video
-            className="size"
-            autoPlay
-            playsInline
-            muted
-            ref={this.videoRef}
-            width="600"
-            height="500"
-          />
-          <canvas
-            className="size"
-            ref={this.canvasRef}
-            width="600"
-            height="500"
-          />
-        </Box>
-      </Container>
+      <React.Fragment><video
+      className="size"
+      autoPlay
+      playsInline
+      muted
+      ref={this.videoRef}
+      width="600"
+      height="500"
+    />
+    <canvas
+      className="size"
+      ref={this.canvasRef}
+      width="600"
+      height="500"
+    /></React.Fragment>
     );
   }
 }
