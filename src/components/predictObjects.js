@@ -36,7 +36,7 @@ const PredictObjects = () => {
                 ref={videoRef}
                 autoPlay
                 width={size.width}
-                height={size.height - 64}
+                height={size.height}
             />
         </Container>
     )

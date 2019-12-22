@@ -2,11 +2,10 @@ import { useEffect, useRef } from "react"
 
 export default ({ audio, video } = {}) => {
     const ref = useRef(null)
-    // Ref is already set when useEffect() is called
     useEffect(() => {
-        const attachCam = async (ref, audio = true, opts = {}) => {
+        const attachCam = async (ref, audio = false, opts = {}) => {
             const {
-                facingMode = "user",
+                facingMode = "environment",
                 width = ref.width,
                 height = ref.height,
             } = opts
