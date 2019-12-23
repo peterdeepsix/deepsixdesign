@@ -1,3 +1,4 @@
+require("dotenv").config()
 module.exports = {
     siteMetadata: {
         title: `Deep Six Design`,
@@ -40,6 +41,21 @@ module.exports = {
                 // Add any options here
             },
         },
+        {
+            resolve: "gatsby-plugin-firebase",
+            options: {
+              features: {
+                auth: true,
+                database: false,
+                firestore: true,
+                storage: true,
+                messaging: false,
+                functions: true,
+                performance: true,
+                analytics: true,
+              },
+            },
+          },
         {
             resolve: `gatsby-plugin-offline`,
             options: {
