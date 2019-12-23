@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 import Loadable from '@loadable/component';
 
@@ -23,23 +24,50 @@ const Objects = () => {
       <SEO title="Objects" />
       <Container maxWidth="md">
         <Box my={4}>
-          <Typography
-            variant="h4"
-            component="h4"
-            gutterBottom
-            align="center"
+          <Button
+            color="primary"
+            variant="outlined"
+            onClick={() => setIsCameraOpen(true)}
           >
-            Infrimation Mahcine
-          </Typography>
+            Open Camera
+          </Button>
+
+          <Button
+            onClick={() => {
+              setIsCameraOpen(false);
+              setCardImage(undefined);
+            }}
+          >
+            Close Camera
+          </Button>
         </Box>
-        <Box my={4}>
-          <Paper>
-            <LoadablePredictObjects
-              onCapture={blob => setCardImage(blob)}
-              onClear={() => setCardImage(undefined)}
-            />
-          </Paper>
-        </Box>
+
+        {cardImage && (
+          <Box my={4}>
+            <Paper>
+              <Typography variant="h6" gutterBottom>
+                Image
+              </Typography>
+              <img
+                src={cardImage && URL.createObjectURL(cardImage)}
+              />
+            </Paper>
+          </Box>
+        )}
+
+        {isCameraOpen && (
+          <Box my={4}>
+            <Paper>
+              <Typography variant="h6" gutterBottom>
+                Camera
+              </Typography>
+              <LoadablePredictObjects
+                onCapture={blob => setCardImage(blob)}
+                onClear={() => setCardImage(undefined)}
+              />
+            </Paper>
+          </Box>
+        )}
       </Container>
     </Layout>
   );

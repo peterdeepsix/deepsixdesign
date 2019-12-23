@@ -10,8 +10,9 @@ import {
   Container,
   Flash,
   Overlay,
-  Button,
 } from './styles';
+
+import Button from '@material-ui/core/Button';
 
 import DisplayObjects from './displayObjects';
 
@@ -152,6 +153,7 @@ const PredictObjects = ({ onCapture, onClear }) => {
 
             {isVideoPlaying && (
               <Button
+                color="primary"
                 onClick={isCanvasEmpty ? handleCapture : handleClear}
               >
                 {isCanvasEmpty
