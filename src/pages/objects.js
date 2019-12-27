@@ -9,15 +9,17 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
+import DisplayObjects from '../components/displayObjects';
+import PredictObjects from '../components/predictObjects';
+
 import Loadable from '@loadable/component';
 
-const LoadablePredictObjects = Loadable(() =>
-  import('../components/predictObjects'),
-);
+const LoadableCamera = Loadable(() => import('../components/camera'));
 
 const Objects = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
+  const [cardObjects, setCardObjects] = useState();
 
   return (
     <Layout>
@@ -42,12 +44,16 @@ const Objects = () => {
           </Button>
         </Box>
 
-        {cardImage && (
+        {cardObjects && (
           <Box my={4}>
             <Paper>
               <Typography variant="h6" gutterBottom>
                 Image
               </Typography>
+              <DisplayObjects
+                image={cardImage && URL.createObjectURL(cardImage)}
+                objects={cardObjects}
+              />
               <img
                 src={cardImage && URL.createObjectURL(cardImage)}
               />
@@ -61,8 +67,10 @@ const Objects = () => {
               <Typography variant="h6" gutterBottom>
                 Camera
               </Typography>
-              <LoadablePredictObjects
-                onCapture={blob => setCardImage(blob)}
+              <LoadableCamera
+                onCapture={(blob, objects) => {
+                  setCardImage(blob);
+                }}
                 onClear={() => setCardImage(undefined)}
               />
             </Paper>

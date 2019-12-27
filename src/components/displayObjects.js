@@ -2,14 +2,14 @@ import React from 'react';
 import Boundingbox from 'react-bounding-box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const DisplayObjects = ({ objects, videoRef }) => {
+const DisplayObjects = ({ objects, image }) => {
   return (
     <React.Fragment>
       {objects ? (
         objects.map(
           ({ left, top, width, height, label, score }, index) => {
             const params = {
-              image: { videoRef },
+              image: { image },
               boxes: [
                 [{ top }, { left }, { width }, { height }, { label }],
               ],
