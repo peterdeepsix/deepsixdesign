@@ -41,7 +41,7 @@ const Header = ({ siteTitle }) => {
         <Typography variant="h6" className={classes.title}>
           {siteTitle}
         </Typography>
-        <IconButton
+        {/* <IconButton
           edge="end"
           component={Link}
           to="/objects"
@@ -49,7 +49,7 @@ const Header = ({ siteTitle }) => {
           aria-label="objects"
         >
           <AspectRatioOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
       </Toolbar>
     </AppBar>
   );
