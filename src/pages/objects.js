@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 import DisplayObjects from '../components/displayObjects';
-import PredictObjects from '../components/predictObjects';
+// import PredictObjects from '../components/predictObjects';
 
 import Loadable from '@loadable/component';
 
