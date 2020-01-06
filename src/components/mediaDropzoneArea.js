@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import CircularDeterminate from '../components/circularDeterminate';
+
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+
 import { DropzoneDialog } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class MediaDropzoneArea extends Component {
   constructor(props) {
@@ -9,6 +15,8 @@ class MediaDropzoneArea extends Component {
       open: false,
       files: [],
       progress: 0,
+      loading: false,
+      imageUrl: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,22 +35,19 @@ class MediaDropzoneArea extends Component {
         let progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
         );
-        this.setState({ progress });
+        this.setState({ progress: progress, loading: true });
       },
       error => {
         console.log(error);
       },
       () => {
-        this.setState({
-          progress: 100,
-        });
-        uploadTask.snapshot.ref
-          .getDownloadURL()
-          .then(downloadURL =>
-            console.log(
-              `Your uploaded image is now available at ${downloadURL}`,
-            ),
-          );
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL =>
+          this.setState({
+            imageUrl: downloadURL,
+            loading: false,
+            progress: 0,
+          }),
+        );
       },
     );
   }
@@ -68,16 +73,30 @@ class MediaDropzoneArea extends Component {
   }
 
   render() {
+    const { imageUrl, loading, progress, open } = this.state;
     return (
       <div>
         <Button
           variant="outlined"
           onClick={this.handleOpen.bind(this)}
+          disabled={loading}
         >
-          Upload media
+          Upload Media
+          <CircularDeterminate
+            progress={progress}
+            loading={loading}
+          />
         </Button>
+        {imageUrl && (
+          <Container maxWidth="sm">
+            <Box my={4}>
+              <img src={imageUrl} alt="wow" />
+            </Box>
+          </Container>
+        )}
+
         <DropzoneDialog
-          open={this.state.open}
+          open={open}
           onSave={this.handleSave.bind(this)}
           acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
           showPreviews={true}
