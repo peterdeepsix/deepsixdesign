@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export, react/prop-types */
+import 'babel-polyfill';
 import React from 'react';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';

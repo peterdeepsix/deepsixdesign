@@ -2,6 +2,8 @@ import React from 'react';
 import LogRocket from 'logrocket';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
+import MediaDropzoneArea from '../components/mediaDropzoneArea';
+
 function FirebaseObject() {
   const [user, setUser] = React.useState();
 
@@ -15,25 +17,28 @@ function FirebaseObject() {
       });
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // User is signed in.
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
+        const isAnonymous = user.isAnonymous;
+        const uid = user.uid;
         setUser(user.uid);
         LogRocket.identify(user.uid, {
-          name: `Anonymous - ${user.uid}`,
+          name: `Anonymous - ${uid}`,
           email: 'anonymous@example.com',
-          isAnonymous: 'true',
+          isAnonymous: isAnonymous,
         });
-        // ...
+        console.log(`${uid} is signed in.`);
       } else {
-        // User is signed out.
-        // ...
+        console.log(`User has signed out.`);
       }
       // ...
     });
   }, []);
 
-  return <p>{user && user.name}</p>;
+  return (
+    <React.Fragment>
+      <MediaDropzoneArea />
+      <p>{user && user.name}</p>
+    </React.Fragment>
+  );
 }
 
 export default FirebaseObject;

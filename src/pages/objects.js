@@ -55,6 +55,7 @@ const Objects = () => {
                 objects={cardObjects}
               />
               <img
+                alt="Output"
                 src={cardImage && URL.createObjectURL(cardImage)}
               />
             </Paper>
@@ -70,6 +71,9 @@ const Objects = () => {
               <LoadableCamera
                 onCapture={(blob, objects) => {
                   setCardImage(blob);
+                  console.log(`blog ${blob}`);
+                  setCardObjects(objects[0]);
+                  console.log(`blog ${objects}`);
                 }}
                 onClear={() => setCardImage(undefined)}
               />

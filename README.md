@@ -1,8 +1,15 @@
-# docker
+# docker dev environment
 
 docker-compose up --build
 
-# git user
+# update all packages
+
+npm install -g npm-check-updates
+ncu -u
+npm update
+npm install
+
+# git user set
 
 git config --global user.email "peter@deepsixdesign.com"
 git config --global user.name "Peter Arnold"
@@ -11,7 +18,7 @@ git config --global user.name "Peter Arnold"
 
 curl https://www.npmjs.com/install.sh | sudo sh
 
-# gcloud local builder
+# gcloud local builder for dev
 
 cloud-build-local --config=cloudbuild.yaml --dryrun=false --push .
 

@@ -5,10 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
-import AspectRatioOutlinedIcon from '@material-ui/icons/AspectRatioOutlined';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +15,9 @@ const useStyles = makeStyles(theme => ({
   },
   leftButton: {
     marginRight: theme.spacing(2),
+  },
+  rightButton: {
+    marginLeft: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
@@ -41,15 +43,16 @@ const Header = ({ siteTitle }) => {
         <Typography variant="h6" className={classes.title}>
           {siteTitle}
         </Typography>
-        {/* <IconButton
+        <IconButton
           edge="end"
+          className={classes.rightButton}
           component={Link}
           to="/objects"
           color="inherit"
           aria-label="objects"
         >
-          <AspectRatioOutlinedIcon />
-        </IconButton> */}
+          <MenuIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
