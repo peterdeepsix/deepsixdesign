@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useFirebase } from 'gatsby-plugin-firebase';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import FirebaseObject from '../components/firebaseObject';
+import DisplayObjects from '../components/displayObjects';
+import MediaDropzoneArea from '../components/mediaDropzoneArea';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -9,31 +13,39 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-import DisplayObjects from '../components/displayObjects';
-// import PredictObjects from '../components/predictObjects';
-
+// Async loadable imports
 import Loadable from '@loadable/component';
-
 const LoadableCamera = Loadable(() => import('../components/camera'));
 
 const Objects = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
   const [cardObjects, setCardObjects] = useState();
+  const [storage, setStorage] = useState();
+
+  useFirebase(firebase => {
+    setStorage(firebase.storage());
+  }, []);
 
   return (
     <Layout>
       <SEO title="Objects" />
       <Container maxWidth="md">
         <Box my={4}>
+          <FirebaseObject />
+        </Box>
+        <Box my={4}>
+          <MediaDropzoneArea storage={storage} />
+        </Box>
+        <Box my={4}>
           <Button
-            color="primary"
             variant="outlined"
             onClick={() => setIsCameraOpen(true)}
           >
             Open Camera
           </Button>
-
+        </Box>
+        <Box my={4}>
           <Button
             onClick={() => {
               setIsCameraOpen(false);

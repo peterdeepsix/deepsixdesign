@@ -2,7 +2,7 @@ import React from 'react';
 import LogRocket from 'logrocket';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import MediaDropzoneArea from '../components/mediaDropzoneArea';
+import Typography from '@material-ui/core/Typography';
 
 function FirebaseObject() {
   const [user, setUser] = React.useState();
@@ -19,7 +19,7 @@ function FirebaseObject() {
       if (user) {
         const isAnonymous = user.isAnonymous;
         const uid = user.uid;
-        setUser(user.uid);
+        setUser(user);
         LogRocket.identify(user.uid, {
           name: `Anonymous - ${uid}`,
           email: 'anonymous@example.com',
@@ -35,8 +35,9 @@ function FirebaseObject() {
 
   return (
     <React.Fragment>
-      <MediaDropzoneArea />
-      <p>{user && user.name}</p>
+      {user && (
+        <Typography variant="body1">User UID - {user.uid}</Typography>
+      )}
     </React.Fragment>
   );
 }
