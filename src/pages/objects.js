@@ -24,7 +24,7 @@ const Objects = () => {
   const [storage, setStorage] = useState();
 
   useFirebase(firebase => {
-    setStorage(firebase.storage());
+    setStorage(firebase.storage('gs://plexus-1d216-media-raw'));
   }, []);
 
   return (
