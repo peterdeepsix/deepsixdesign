@@ -75,7 +75,7 @@ class MediaDropzoneArea extends Component {
   render() {
     const { imageUrl, loading, progress, open } = this.state;
     return (
-      <div>
+      <React.Fragment>
         <Button
           variant="outlined"
           onClick={this.handleOpen.bind(this)}
@@ -99,10 +99,18 @@ class MediaDropzoneArea extends Component {
           open={open}
           onSave={this.handleSave.bind(this)}
           acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
-          showPreviews={true}
+          dialogTitle="Upload Media"
+          dropzoneText="Drag and drop media files, or click to select."
+          maxFileSize={50000000}
+          filesLimit={100}
+          maxWidth="xs"
+          fullWidth={true}
+          showFileNames={true}
+          showPreviews={false}
+          showPreviewsInDropzone={true}
           onClose={this.handleClose.bind(this)}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
