@@ -32,14 +32,12 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#FF1654`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/logo.png`,
       },
     },
     {
       resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
+      options: {},
     },
     {
       resolve: 'gatsby-plugin-firebase',
@@ -69,7 +67,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-offline`,
       options: {
-        precachePages: [`/`, `/objects/`, `/poses/`],
+        precachePages: [`/`, `/src/models/`],
       },
     },
   ],

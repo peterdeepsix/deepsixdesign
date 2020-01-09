@@ -68,7 +68,8 @@ function PredictionsTable(props) {
   const { storage } = props;
 
   useEffect(() => {
-    //asd
+    setPredictions('yes');
+    console.log('loaded predictions');
   });
 
   return (
@@ -95,6 +96,16 @@ function PredictionsTable(props) {
                 filename: '00000000.jpg',
                 height: 1024,
                 width: 1024,
+              },
+              {
+                filename: '00000001.jpg',
+                height: 2048,
+                width: 2048,
+              },
+              {
+                filename: '00000002.jpg',
+                height: 512,
+                width: 512,
               },
             ]}
             title="Predictions"
