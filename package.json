@@ -27,6 +27,7 @@
     "gatsby-transformer-sharp": "^2.3.9",
     "logrocket": "^1.0.5",
     "logrocket-react": "^4.0.1",
+    "material-table": "^1.54.2",
     "material-ui-dropzone": "^2.4.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

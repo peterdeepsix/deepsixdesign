@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 import Loadable from '@loadable/component';
 const LoadableCamera = Loadable(() => import('../components/camera'));
 
-const Objects = () => {
+const Upload = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
   const [cardObjects, setCardObjects] = useState();
@@ -97,4 +97,4 @@ const Objects = () => {
   );
 };
 
-export default Objects;
+export default Upload;

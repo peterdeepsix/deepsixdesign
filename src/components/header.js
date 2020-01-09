@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
-import MenuIcon from '@material-ui/icons/Menu';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,7 +28,7 @@ const Header = ({ siteTitle }) => {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar color="inherit" position="static">
       <Toolbar>
         <IconButton
           edge="start"
@@ -47,11 +47,11 @@ const Header = ({ siteTitle }) => {
           edge="end"
           className={classes.rightButton}
           component={Link}
-          to="/objects"
+          to="/"
           color="inherit"
-          aria-label="objects"
+          aria-label="index"
         >
-          <MenuIcon />
+          <SearchOutlinedIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

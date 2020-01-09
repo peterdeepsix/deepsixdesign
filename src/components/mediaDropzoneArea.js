@@ -103,7 +103,7 @@ class MediaDropzoneArea extends Component {
           dropzoneText="Drag and drop media files, or click to select."
           maxFileSize={50000000}
           filesLimit={100}
-          maxWidth="xs"
+          maxWidth="sm"
           fullWidth={true}
           showFileNames={true}
           showPreviews={false}
