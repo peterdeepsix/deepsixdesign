@@ -213,31 +213,38 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
                 subheader="This will be wild."
               />
               <CardContent>
-                <TextField
-                  ref={titleRef}
-                  htmlFor="title"
-                  id="title"
-                  label="Title"
-                  name="title"
-                  onChange={handleTitleChange}
-                />
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="MM/dd/yyyy"
-                  margin="normal"
-                  id="date-picker-inline"
-                  label="Due Date"
-                  value={dueDate}
-                  className={classes.textField}
-                  onChange={handleDueDateChange}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-                {message && (
-                  <Typography variant="body1">{message}</Typography>
-                )}
+                <Box>
+                  {' '}
+                  <TextField
+                    ref={titleRef}
+                    htmlFor="title"
+                    id="title"
+                    label="Title"
+                    name="title"
+                    onChange={handleTitleChange}
+                  />
+                </Box>
+                <Box>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Due Date"
+                    value={dueDate}
+                    className={classes.textField}
+                    onChange={handleDueDateChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+                  />
+                </Box>
+                <Box>
+                  {message && (
+                    <Typography variant="body1">{message}</Typography>
+                  )}
+                </Box>
               </CardContent>
               <CardActions>
                 <Button
