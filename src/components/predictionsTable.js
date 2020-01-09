@@ -101,6 +101,7 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     minWidth: 275,
+    marginBottom: 12,
   },
   bullet: {
     display: 'inline-block',
@@ -194,19 +195,19 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
   const bull = <span className={classes.bullet}>•</span>;
   return (
     <React.Fragment>
-      <div style={{ maxWidth: '100%' }}>
-        <ul>
-          {predictions.map(({ id, title, dueAt }) => (
-            <li key={id}>
-              <h3>{title}</h3>
-              <time>
-                {dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))}
-              </time>
-            </li>
-          ))}
-        </ul>
-        <form onSubmit={handleSubmit}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <ul>
+        {predictions.map(({ id, title, dueAt }) => (
+          <li key={id}>
+            <h3>{title}</h3>
+            <time>
+              {dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))}
+            </time>
+          </li>
+        ))}
+      </ul>
+      <form onSubmit={handleSubmit}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Box>
             <Card className={classes.card} variant="outlined">
               <CardHeader
                 title="Create a New Prediction"
@@ -257,50 +258,52 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
                 </Button>
               </CardActions>
             </Card>
-            <Grid container justify="space-around"></Grid>
-          </MuiPickersUtilsProvider>
-        </form>
-
-        <MaterialTable
-          components={{
-            Container: props => (
-              <Card {...props} variant="outlined" />
-            ),
-          }}
-          icons={tableIcons}
-          columns={[
-            { title: 'Filename', field: 'filename' },
-            {
-              title: 'Width',
-              field: 'width',
-              type: 'numeric',
-            },
-            {
-              title: 'Height',
-              field: 'height',
-              type: 'numeric',
-            },
-          ]}
-          data={[
-            {
-              filename: '00000000.jpg',
-              height: 1024,
-              width: 1024,
-            },
-            {
-              filename: '00000001.jpg',
-              height: 2048,
-              width: 2048,
-            },
-            {
-              filename: '00000002.jpg',
-              height: 512,
-              width: 512,
-            },
-          ]}
-          title="Predictions"
-        />
-      </div>
+          </Box>
+        </MuiPickersUtilsProvider>
+      </form>
+      <Box>
+        <div style={{ maxWidth: '100%' }}>
+          <MaterialTable
+            components={{
+              Container: props => (
+                <Card {...props} variant="outlined" />
+              ),
+            }}
+            icons={tableIcons}
+            columns={[
+              { title: 'Filename', field: 'filename' },
+              {
+                title: 'Width',
+                field: 'width',
+                type: 'numeric',
+              },
+              {
+                title: 'Height',
+                field: 'height',
+                type: 'numeric',
+              },
+            ]}
+            data={[
+              {
+                filename: '00000000.jpg',
+                height: 1024,
+                width: 1024,
+              },
+              {
+                filename: '00000001.jpg',
+                height: 2048,
+                width: 2048,
+              },
+              {
+                filename: '00000002.jpg',
+                height: 512,
+                width: 512,
+              },
+            ]}
+            title="Predictions"
+          />
+        </div>
+      </Box>
     </React.Fragment>
   );
 };
