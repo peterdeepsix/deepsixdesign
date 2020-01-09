@@ -24,7 +24,7 @@ const Media = () => {
     <Layout>
       <SEO title="Media" />
       <Container maxWidth="md">
-        <Box my={4}>asd</Box>
+        <Box my={4}>Media</Box>
       </Container>
     </Layout>
   );

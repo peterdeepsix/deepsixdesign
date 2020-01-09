@@ -4,7 +4,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
@@ -31,11 +31,11 @@ const Footer = ({ siteTitle }) => {
       className={classes.root}
     >
       <BottomNavigationAction
-        to="/"
-        aria-label="index"
+        to="/about"
+        aria-label="about"
         component={Link}
-        label="Index"
-        icon={<HomeOutlinedIcon />}
+        label="About"
+        icon={<NaturePeopleOutlinedIcon />}
       />
       <BottomNavigationAction
         to="/upload"

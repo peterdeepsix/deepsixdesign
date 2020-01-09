@@ -24,7 +24,7 @@ const Predictions = () => {
 
   return (
     <Layout>
-      <SEO title="Objects" />
+      <SEO title="Predictions" />
       <Container maxWidth="md">
         <Box my={4}>
           <PredictionsTable />

@@ -29,7 +29,7 @@ const Upload = () => {
 
   return (
     <Layout>
-      <SEO title="Objects" />
+      <SEO title="Upload" />
       <Container maxWidth="md">
         <Box my={4}>
           <FirebaseObject />
