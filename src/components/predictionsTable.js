@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import { Paper } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
@@ -206,83 +207,59 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
         </ul>
         <form onSubmit={handleSubmit}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Container maxWidth="md">
-              <Card className={classes.card} variant="outlined">
-                <CardHeader
-                  title="Create a New Prediction"
-                  subheader="This will be wild."
+            <Card className={classes.card} variant="outlined">
+              <CardHeader
+                title="Create a New Prediction"
+                subheader="This will be wild."
+              />
+              <CardContent>
+                <TextField
+                  ref={titleRef}
+                  htmlFor="title"
+                  id="title"
+                  label="Title"
+                  name="title"
+                  onChange={handleTitleChange}
                 />
-                <CardMedia
-                  className={classes.media}
-                  image="/static/images/cards/paella.jpg"
-                  title="Paella dish"
+                <KeyboardDatePicker
+                  disableToolbar
+                  variant="inline"
+                  format="MM/dd/yyyy"
+                  margin="normal"
+                  id="date-picker-inline"
+                  label="Due Date"
+                  value={dueDate}
+                  className={classes.textField}
+                  onChange={handleDueDateChange}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
                 />
-                <CardContent>
-                  {/* <Typography
-                    className={classes.title}
-                    color="textSecondary"
-                    gutterBottom
-                  >
-                    Word of the Day
-                  </Typography>
-                  <Typography variant="h5" component="h2">
-                    be{bull}nev{bull}o{bull}lent
-                  </Typography>
-                  <Typography
-                    className={classes.pos}
-                    color="textSecondary"
-                  >
-                    adjective
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography> */}
-                  <TextField
-                    ref={titleRef}
-                    htmlFor="title"
-                    id="title"
-                    label="Title"
-                    name="title"
-                    onChange={handleTitleChange}
-                  />
-                  <KeyboardDatePicker
-                    disableToolbar
-                    variant="inline"
-                    format="MM/dd/yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    label="Due Date"
-                    value={dueDate}
-                    className={classes.textField}
-                    onChange={handleDueDateChange}
-                    KeyboardButtonProps={{
-                      'aria-label': 'change date',
-                    }}
-                  />
-                  {message && (
-                    <Typography variant="body1">{message}</Typography>
-                  )}
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    variant="contained"
-                    type="submit"
-                    disabled={!title || isSubmitting}
-                  >
-                    Add Prediction
-                  </Button>
-                </CardActions>
-              </Card>
-              <Box m={1}></Box>
-            </Container>
+                {message && (
+                  <Typography variant="body1">{message}</Typography>
+                )}
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="outlined"
+                  type="submit"
+                  color="primary"
+                  disabled={!title || isSubmitting}
+                >
+                  Add Prediction
+                </Button>
+              </CardActions>
+            </Card>
             <Grid container justify="space-around"></Grid>
           </MuiPickersUtilsProvider>
         </form>
 
         <MaterialTable
+          components={{
+            Container: props => (
+              <Card {...props} variant="outlined" />
+            ),
+          }}
           icons={tableIcons}
           columns={[
             { title: 'Filename', field: 'filename' },
