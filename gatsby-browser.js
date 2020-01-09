@@ -5,8 +5,11 @@ import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 import TopLayout from './plugins/gatsby-plugin-top-layout/TopLayout';
 
+// mobx stores
+import provideStores from './provide-stores';
+
 export const wrapRootElement = ({ element }) => {
-  return <TopLayout>{element}</TopLayout>;
+  return <TopLayout>{provideStores({ element })}</TopLayout>;
 };
 
 export const onClientEntry = () => {

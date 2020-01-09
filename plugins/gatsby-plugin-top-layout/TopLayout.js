@@ -19,7 +19,6 @@ export default function TopLayout(props) {
         />
       </Helmet>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         {props.children}
       </ThemeProvider>
