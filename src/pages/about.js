@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
 
 const About = () => {

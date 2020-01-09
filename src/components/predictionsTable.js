@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
+import React, { useEffect, forwardRef } from 'react';
 
 import MaterialTable from 'material-table';
 import {
@@ -64,18 +63,13 @@ const tableIcons = {
   )),
 };
 
-function PredictionsTable() {
+function PredictionsTable(props) {
   const [predictions, setPredictions] = React.useState();
+  const { storage } = props;
 
-  useFirebase(firebase => {
-    firebase
-      .auth()
-      .signInAnonymously()
-      .catch(function(error) {
-        console.log(error.code);
-        console.log(error.message);
-      });
-  }, []);
+  useEffect(() => {
+    //asd
+  });
 
   return (
     <React.Fragment>
@@ -84,28 +78,26 @@ function PredictionsTable() {
           <MaterialTable
             icons={tableIcons}
             columns={[
-              { title: 'Adı', field: 'name' },
-              { title: 'Soyadı', field: 'surname' },
+              { title: 'Filename', field: 'filename' },
               {
-                title: 'Doğum Yılı',
-                field: 'birthYear',
+                title: 'Width',
+                field: 'width',
                 type: 'numeric',
               },
               {
-                title: 'Doğum Yeri',
-                field: 'birthCity',
-                lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+                title: 'Height',
+                field: 'height',
+                type: 'numeric',
               },
             ]}
             data={[
               {
-                name: 'Mehmet',
-                surname: 'Baran',
-                birthYear: 1987,
-                birthCity: 63,
+                filename: '00000000.jpg',
+                height: 1024,
+                width: 1024,
               },
             ]}
-            title="Demo Title"
+            title="Predictions"
           />
         </div>
       )}

@@ -6,8 +6,6 @@ import SEO from '../components/seo';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 // Async loadable imports
 import Loadable from '@loadable/component';
@@ -27,7 +25,7 @@ const Predictions = () => {
       <SEO title="Predictions" />
       <Container maxWidth="md">
         <Box my={4}>
-          <PredictionsTable />
+          <PredictionsTable storage={storage} />
         </Box>
       </Container>
     </Layout>
