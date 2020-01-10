@@ -12,7 +12,6 @@ import Loading from './loading';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 import MaterialTable from 'material-table';
 import {
@@ -78,7 +77,9 @@ const tableIcons = {
 };
 
 const useStyles = makeStyles(theme => ({
-  root: {},
+  root: {
+    maxWidth: '100%',
+  },
 }));
 
 const PredictionsTable = ({ predictions: predictionsStore }) => {
@@ -89,9 +90,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // wait for firestore to be initialized
     if (!firestore) return;
-    // avoid race conditions
     let didCancel = false;
 
     const getPredictions = async () => {
@@ -101,20 +100,12 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     getPredictions();
     return () => (didCancel = true);
   }, [firestore]);
+
   if (isLoading) return <Loading />;
   return (
-    <div style={{ maxWidth: '100%' }}>
-      <ul>
-        {predictions.map(({ id, title, dueAt }) => (
-          <li key={id}>
-            <h3>{title}</h3>
-            <time>
-              {dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))}
-            </time>
-          </li>
-        ))}
-      </ul>
-      {/* <MaterialTable
+    <div className={classes.root}>
+      {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}
+      <MaterialTable
         components={{
           Container: props => <Card {...props} variant="outlined" />,
         }}
@@ -126,7 +117,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
         ]}
         data={predictions}
         title="Predictions"
-      /> */}
+      />
     </div>
   );
 };

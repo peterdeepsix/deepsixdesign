@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     bottom: 0,
   },
+  offset: theme.mixins.toolbar,
 }));
 
 const Footer = ({ siteTitle }) => {
@@ -22,43 +23,46 @@ const Footer = ({ siteTitle }) => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.root}
-    >
-      <BottomNavigationAction
-        to="/about"
-        aria-label="about"
-        component={Link}
-        label="About"
-        icon={<NaturePeopleOutlinedIcon />}
-      />
-      <BottomNavigationAction
-        to="/upload"
-        aria-label="upload"
-        component={Link}
-        label="Upload"
-        icon={<CloudUploadOutlinedIcon />}
-      />
-      <BottomNavigationAction
-        to="/media"
-        aria-label="media"
-        component={Link}
-        label="Media"
-        icon={<PermMediaOutlinedIcon />}
-      />
-      <BottomNavigationAction
-        to="/predictions"
-        aria-label="predictions"
-        component={Link}
-        label="Predictions"
-        icon={<LandscapeOutlinedIcon />}
-      />
-    </BottomNavigation>
+    <React.Fragment>
+      <div className={classes.offset} />
+      <BottomNavigation
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+        showLabels
+        className={classes.root}
+      >
+        <BottomNavigationAction
+          to="/about"
+          aria-label="about"
+          component={Link}
+          label="About"
+          icon={<NaturePeopleOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          to="/upload"
+          aria-label="upload"
+          component={Link}
+          label="Upload"
+          icon={<CloudUploadOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          to="/media"
+          aria-label="media"
+          component={Link}
+          label="Media"
+          icon={<PermMediaOutlinedIcon />}
+        />
+        <BottomNavigationAction
+          to="/predictions"
+          aria-label="predictions"
+          component={Link}
+          label="Predictions"
+          icon={<LandscapeOutlinedIcon />}
+        />
+      </BottomNavigation>
+    </React.Fragment>
   );
 };
 

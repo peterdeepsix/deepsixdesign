@@ -11,7 +11,7 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    marginTop: theme.spacing(2),
   },
   leftButton: {
     marginRight: theme.spacing(2),
@@ -22,39 +22,43 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  offset: theme.mixins.toolbar,
 }));
 
 const Header = ({ siteTitle }) => {
   const classes = useStyles();
 
   return (
-    <AppBar color="inherit" position="static">
-      <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.leftButton}
-          component={Link}
-          to="/"
-          color="inherit"
-          aria-label="index"
-        >
-          <ChangeHistoryIcon />
-        </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          {siteTitle}
-        </Typography>
-        <IconButton
-          edge="end"
-          className={classes.rightButton}
-          component={Link}
-          to="/"
-          color="inherit"
-          aria-label="index"
-        >
-          <SearchOutlinedIcon />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <div className={classes.root}>
+      <AppBar color="inherit" position="fixed">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.leftButton}
+            component={Link}
+            to="/"
+            color="inherit"
+            aria-label="index"
+          >
+            <ChangeHistoryIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            {siteTitle}
+          </Typography>
+          <IconButton
+            edge="end"
+            className={classes.rightButton}
+            component={Link}
+            to="/"
+            color="inherit"
+            aria-label="index"
+          >
+            <SearchOutlinedIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.offset} />
+    </div>
   );
 };
 
