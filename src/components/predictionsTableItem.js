@@ -5,10 +5,9 @@ import dateFormat from 'date-format';
 const PredictionsTableItem = ({
   predictions: predictionsStore,
   prediction,
-  rowData,
 }) => {
   const [isBusy, setIsBusy] = useState(false);
-  const { title, status, dueAt } = rowData;
+  const { title, status, dueAt } = prediction;
   const { firestore } = predictionsStore;
 
   const handleMarkComplete = async () => {

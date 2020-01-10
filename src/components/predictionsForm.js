@@ -9,6 +9,8 @@ import { inject, observer } from 'mobx-react';
 import dateFormat from 'date-format';
 import 'date-fns';
 
+import { useFirebase } from 'gatsby-plugin-firebase';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
@@ -26,6 +28,8 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+
+import MediaDropzoneArea from '../components/mediaDropzoneArea';
 
 const useStyles = makeStyles(theme => ({
   grid: {
@@ -60,6 +64,11 @@ const PredictionsForm = ({ predictions: predictionsStore }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [prediction, setPrediction] = useState('');
   const [message, setMessage] = useState('');
+  const [storage, setStorage] = useState(null);
+
+  useFirebase(firebase => {
+    setStorage(firebase.storage());
+  }, []);
 
   const handleTitleChange = event =>
     setTitle(event.target.value.trim());
@@ -106,6 +115,9 @@ const PredictionsForm = ({ predictions: predictionsStore }) => {
           />
           <CardContent>
             <Box>
+              <MediaDropzoneArea storage={storage} />
+            </Box>
+            <Box>
               <TextField
                 ref={titleRef}
                 htmlFor="title"
@@ -138,14 +150,16 @@ const PredictionsForm = ({ predictions: predictionsStore }) => {
             </Box>
           </CardContent>
           <CardActions>
-            <Button
-              variant="outlined"
-              type="submit"
-              color="primary"
-              disabled={!title || isSubmitting}
-            >
-              Add Prediction
-            </Button>
+            <Box>
+              <Button
+                variant="outlined"
+                type="submit"
+                color="primary"
+                disabled={!title || isSubmitting}
+              >
+                Add Prediction
+              </Button>
+            </Box>
           </CardActions>
         </Card>
       </MuiPickersUtilsProvider>

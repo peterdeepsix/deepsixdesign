@@ -125,6 +125,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
         }}
         icons={tableIcons}
         columns={[
+          { title: 'ID', field: 'id' },
           { title: 'Title', field: 'title' },
           { title: 'Status', field: 'status' },
           { title: 'Due At', field: 'dueAt' },
@@ -134,7 +135,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
         //   {
         //     tooltip: 'Show Status',
         //     render: rowData => {
-        //       return <PredictionsTableItem rowData={rowData} />;
+        //       return <PredictionsTableItem prediction={rowData} />;
         //     },
         //   },
         // ]}

@@ -6,7 +6,6 @@ import Box from '@material-ui/core/Box';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 class MediaDropzoneArea extends Component {
   constructor(props) {
@@ -90,7 +89,7 @@ class MediaDropzoneArea extends Component {
         {imageUrl && (
           <Container maxWidth="sm">
             <Box my={4}>
-              <img src={imageUrl} alt="wow" />
+              <img src={imageUrl} width={275} alt="wow" />
             </Box>
           </Container>
         )}

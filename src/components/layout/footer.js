@@ -34,10 +34,10 @@ const Footer = ({ siteTitle }) => {
         className={classes.root}
       >
         <BottomNavigationAction
-          to="/about"
-          aria-label="about"
+          to="/timeline"
+          aria-label="timeline"
           component={Link}
-          label="About"
+          label="Timeline"
           icon={<NaturePeopleOutlinedIcon />}
         />
         <BottomNavigationAction

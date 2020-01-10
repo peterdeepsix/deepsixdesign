@@ -5,7 +5,6 @@ import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import FirebaseObject from '../components/firebaseObject';
 import DisplayObjects from '../components/displayObjects';
-import MediaDropzoneArea from '../components/mediaDropzoneArea';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -21,11 +20,6 @@ const Upload = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
   const [cardObjects, setCardObjects] = useState();
-  const [storage, setStorage] = useState();
-
-  useFirebase(firebase => {
-    setStorage(firebase.storage());
-  }, []);
 
   return (
     <DefaultLayout>
@@ -33,9 +27,6 @@ const Upload = () => {
       <Container maxWidth="md">
         <Box my={4}>
           <FirebaseObject />
-        </Box>
-        <Box my={4}>
-          <MediaDropzoneArea storage={storage} />
         </Box>
         <Box my={4}>
           <Button
