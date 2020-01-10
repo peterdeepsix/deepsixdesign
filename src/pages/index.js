@@ -4,7 +4,7 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import Image from '../components/image';
 import SEO from '../components/seo';
 
@@ -13,14 +13,14 @@ const IndexPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <Layout>
+    <DefaultLayout>
       <SEO title="Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Image />
         </Box>
       </Container>
-    </Layout>
+    </DefaultLayout>
   );
 };
 

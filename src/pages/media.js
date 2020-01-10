@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 
 import Container from '@material-ui/core/Container';
@@ -8,12 +8,12 @@ import Box from '@material-ui/core/Box';
 
 const Media = () => {
   return (
-    <Layout>
+    <DefaultLayout>
       <SEO title="Media" />
       <Container maxWidth="md">
         <Box my={4}>Media</Box>
       </Container>
-    </Layout>
+    </DefaultLayout>
   );
 };
 

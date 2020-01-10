@@ -6,7 +6,7 @@ import setupLogRocketReact from 'logrocket-react';
 import TopLayout from './plugins/gatsby-plugin-top-layout/TopLayout';
 
 // mobx stores
-import provideStores from './provide-stores';
+import provideStores from './src/providers/provide-stores';
 
 export const wrapRootElement = ({ element }) => {
   return <TopLayout>{provideStores({ element })}</TopLayout>;

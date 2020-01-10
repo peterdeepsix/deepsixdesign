@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 
 const About = () => {
@@ -13,14 +13,14 @@ const About = () => {
     firebase.analytics().logEvent('visited_about');
   }, []);
   return (
-    <Layout>
+    <DefaultLayout>
       <SEO title="About" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="body1">About</Typography>
         </Box>
       </Container>
-    </Layout>
+    </DefaultLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import Layout from '../components/layout';
+import DefaultLayout from '../layouts/defaultLayout';
 import SEO from '../components/seo';
 import FirebaseObject from '../components/firebaseObject';
 import DisplayObjects from '../components/displayObjects';
@@ -28,7 +28,7 @@ const Upload = () => {
   }, []);
 
   return (
-    <Layout>
+    <DefaultLayout>
       <SEO title="Upload" />
       <Container maxWidth="md">
         <Box my={4}>
@@ -93,7 +93,7 @@ const Upload = () => {
           </Box>
         )}
       </Container>
-    </Layout>
+    </DefaultLayout>
   );
 };
 
