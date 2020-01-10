@@ -9,6 +9,7 @@ import { inject, observer } from 'mobx-react';
 import dateFormat from 'date-format';
 
 import Loading from './loading';
+import PredictionsTableItem from './predictionsTableItem';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -30,6 +31,9 @@ import {
   SaveAlt,
   Search,
   ViewColumn,
+  DoneOutlineOutlined,
+  OpenInNewOutlined,
+  AccountCircleOutlined,
 } from '@material-ui/icons';
 
 const tableIcons = {
@@ -74,6 +78,15 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => (
     <ViewColumn {...props} ref={ref} />
   )),
+  DoneOutlineOutlined: forwardRef((props, ref) => (
+    <DoneOutlineOutlined {...props} ref={ref} />
+  )),
+  OpenInNewOutlined: forwardRef((props, ref) => (
+    <OpenInNewOutlined {...props} ref={ref} />
+  )),
+  AccountCircleOutlined: forwardRef((props, ref) => (
+    <AccountCircleOutlined {...props} ref={ref} />
+  )),
 };
 
 const useStyles = makeStyles(theme => ({
@@ -106,6 +119,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     <div className={classes.root}>
       {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}
       <MaterialTable
+        title="Predictions"
         components={{
           Container: props => <Card {...props} variant="outlined" />,
         }}
@@ -116,7 +130,14 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
           { title: 'Due At', field: 'dueAt' },
         ]}
         data={predictions}
-        title="Predictions"
+        // detailPanel={[
+        //   {
+        //     tooltip: 'Show Status',
+        //     render: rowData => {
+        //       return <PredictionsTableItem rowData={rowData} />;
+        //     },
+        //   },
+        // ]}
       />
     </div>
   );
