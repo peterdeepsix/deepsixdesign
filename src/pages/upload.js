@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../layouts/defaultLayout';
+import DefaultLayout from '../components/layout/defaultLayout';
 import SEO from '../components/seo';
 import FirebaseObject from '../components/firebaseObject';
 import DisplayObjects from '../components/displayObjects';

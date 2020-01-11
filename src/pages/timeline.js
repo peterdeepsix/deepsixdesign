@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DefaultLayout from '../layouts/defaultLayout';
-import StoreLayout from '../layouts/storeLayout';
+import DefaultLayout from '../components/layout/defaultLayout';
+import StoreLayout from '../components/layout/storeLayout';
 
 import SEO from '../components/seo';
 import Loading from '../components/loading';

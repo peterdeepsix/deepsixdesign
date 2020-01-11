@@ -1,16 +1,19 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from '../components/layout/header';
-import Footer from '../components/layout/footer';
+import Header from '../layout/header';
+import Footer from '../layout/footer';
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           title
         }
+      }
+      sitePage {
+        id
       }
     }
   `);
@@ -19,7 +22,7 @@ const DefaultLayout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      <Footer />
+      <Footer siteTitle={data.sitePage.id} />
     </>
   );
 };

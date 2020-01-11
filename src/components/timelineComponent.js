@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  forwardRef,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
 
