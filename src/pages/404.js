@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultLayout from '../components/layout/defaultLayout';
+import DefaultLayout from '../components/layouts/defaultLayout';
 import SEO from '../components/seo';
 
 import Typography from '@material-ui/core/Typography';

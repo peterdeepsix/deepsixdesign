@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from '../layout/header';
-import Footer from '../layout/footer';
+import Header from '../layouts/header';
+import Footer from '../layouts/footer';
 
 const DefaultLayout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
@@ -18,10 +18,16 @@ const DefaultLayout = ({ children, location }) => {
     }
   `);
 
+  const childrenClone = React.Children.map(children, child => {
+    return React.cloneElement(child, {
+      location: location,
+    });
+  });
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
+      <main>{childrenClone}</main>
       <Footer siteTitle={data.sitePage.id} />
     </>
   );

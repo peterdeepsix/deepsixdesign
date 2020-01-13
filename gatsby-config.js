@@ -21,6 +21,22 @@ module.exports = {
         path: `${__dirname}/src/models`,
       },
     },
+    {
+      resolve: 'gatsby-source-firestore',
+      options: {
+        credential: require('./service-account.json'),
+        types: [
+          {
+            type: 'Products',
+            collection: 'products',
+            map: doc => ({
+              title: doc.title,
+              product___NODE: doc.id,
+            }),
+          },
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

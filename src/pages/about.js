@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../components/layout/defaultLayout';
+import DefaultLayout from '../components/layouts/defaultLayout';
 import SEO from '../components/seo';
 
 import Container from '@material-ui/core/Container';

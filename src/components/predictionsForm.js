@@ -12,12 +12,6 @@ import 'date-fns';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
 import { makeStyles } from '@material-ui/core/styles';
-
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -47,22 +41,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsForm = ({ predictions: predictionsStore }) => {
+const PredictionsForm = ({
+  handleClose,
+  predictions: predictionsStore,
+}) => {
   const classes = useStyles();
-  const [isLoading, setIsLoading] = useState(true);
-  const { predictions, firestore } = predictionsStore;
-
-  const [isBusy, setIsBusy] = useState(false);
-
-  const inputRef = useRef(null);
-  const [predictionValue, setPredictionValue] = useState('');
+  const { firestore } = predictionsStore;
 
   const titleRef = useRef(null);
   const [title, setTitle] = useState('');
   const [dueDate, setDueDate] = useState(new Date());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
-  const [prediction, setPrediction] = useState('');
   const [message, setMessage] = useState('');
   const [storage, setStorage] = useState(null);
 
@@ -91,6 +81,7 @@ const PredictionsForm = ({ predictions: predictionsStore }) => {
 
     if (success) {
       titleRef.current.value = '';
+      handleClose();
       setMessage('Prediction added!');
     } else {
       setMessage('An error occurred adding the prediction.');
@@ -108,60 +99,50 @@ const PredictionsForm = ({ predictions: predictionsStore }) => {
   return (
     <form onSubmit={handleSubmit}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Card className={classes.card} variant="outlined">
-          <CardHeader
-            title="Create a New Prediction"
-            subheader="This will be wild."
+        <Box>
+          <TextField
+            ref={titleRef}
+            htmlFor="title"
+            id="title"
+            label="Title"
+            name="title"
+            onChange={handleTitleChange}
           />
-          <CardContent>
-            <Box>
-              <MediaDropzoneArea storage={storage} />
-            </Box>
-            <Box>
-              <TextField
-                ref={titleRef}
-                htmlFor="title"
-                id="title"
-                label="Title"
-                name="title"
-                onChange={handleTitleChange}
-              />
-            </Box>
-            <Box>
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="MM/dd/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Due Date"
-                value={dueDate}
-                className={classes.textField}
-                onChange={handleDueDateChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </Box>
-            <Box>
-              {message && (
-                <Typography variant="body1">{message}</Typography>
-              )}
-            </Box>
-          </CardContent>
-          <CardActions>
-            <Box>
-              <Button
-                variant="outlined"
-                type="submit"
-                color="primary"
-                disabled={!title || isSubmitting}
-              >
-                Add Prediction
-              </Button>
-            </Box>
-          </CardActions>
-        </Card>
+        </Box>
+        <Box>
+          <KeyboardDatePicker
+            disableToolbar
+            variant="inline"
+            format="MM/dd/yyyy"
+            margin="normal"
+            id="date-picker-inline"
+            label="Due Date"
+            value={dueDate}
+            className={classes.textField}
+            onChange={handleDueDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />
+        </Box>
+        <Box>
+          <MediaDropzoneArea storage={storage} />
+        </Box>
+        <Box>
+          {message && (
+            <Typography variant="body1">{message}</Typography>
+          )}
+        </Box>
+        <Box>
+          <Button
+            variant="outlined"
+            type="submit"
+            color="primary"
+            disabled={!title || isSubmitting}
+          >
+            Add Prediction
+          </Button>
+        </Box>
       </MuiPickersUtilsProvider>
     </form>
   );
