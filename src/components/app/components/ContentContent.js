@@ -89,7 +89,6 @@ const ContentContent = ({ classes }) => (
         <li>Capture wordly patterns, common and rare.</li>
         <li>
           Search for 2 signature matches (content, style) in AquilaDB.
-          (AppBar)
         </li>
         <li>
           Run results (content, style) through Neural Style Transfer

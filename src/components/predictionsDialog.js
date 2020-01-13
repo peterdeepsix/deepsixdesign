@@ -42,13 +42,19 @@ const PredictionsDialog = ({ children }) => {
 
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={handleClickOpen}
-      >
-        Generate Vision
-      </Button>
+      <Container>
+        <Box>
+          {' '}
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={handleClickOpen}
+          >
+            Generate Vision
+          </Button>
+        </Box>
+      </Container>
+
       <Dialog
         fullScreen
         open={open}

@@ -15,7 +15,7 @@ const NavHeaderEx = ({ collapsed }) => (
       />
       <div style={{ paddingBottom: 16 }} />
       <Typography variant={'h6'} noWrap>
-        Peter Arnold
+        Anonymous User
       </Typography>
       <Typography color={'textSecondary'} noWrap gutterBottom>
         deepsixdesign.com
