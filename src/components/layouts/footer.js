@@ -1,12 +1,12 @@
 import Link from '../Link';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
-import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
+import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 
 const useStyles = makeStyles(theme => ({
@@ -18,15 +18,14 @@ const useStyles = makeStyles(theme => ({
   offset: theme.mixins.toolbar,
 }));
 
-const Footer = ({ siteTitle, location }) => {
+const Footer = () => {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState();
 
   return (
     <React.Fragment>
       <div className={classes.offset} />
-      {console.log(siteTitle)}
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
@@ -43,18 +42,19 @@ const Footer = ({ siteTitle, location }) => {
           icon={<NaturePeopleOutlinedIcon />}
         />
         <BottomNavigationAction
-          to="/upload"
-          aria-label="upload"
+          to="/camera"
+          aria-label="camera"
           component={Link}
-          label="Upload"
-          icon={<CloudUploadOutlinedIcon />}
+          label="Camera"
+          icon={<AddAPhotoOutlinedIcon />}
+          PermMediaOutlinedIcon
         />
         <BottomNavigationAction
           to="/media"
           aria-label="media"
           component={Link}
           label="Media"
-          icon={<PermMediaOutlinedIcon />}
+          icon={<CloudUploadOutlinedIcon />}
         />
         <BottomNavigationAction
           to="/predictions"

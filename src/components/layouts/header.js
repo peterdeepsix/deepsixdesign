@@ -52,7 +52,7 @@ const Header = ({ siteTitle }) => {
             component={Link}
             to="/app"
             variant="outlined"
-            color="primary"
+            color="inherit"
             startIcon={<ExitToAppOutlinedIcon />}
             aria-label="app"
           >

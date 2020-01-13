@@ -9,6 +9,7 @@ import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
+import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
 
 import Link from '../../Link';
@@ -20,13 +21,13 @@ const list = [
     to: '/timeline',
   },
   {
-    primaryText: 'Upload',
-    icon: <CloudUploadOutlinedIcon />,
-    to: '/upload',
+    primaryText: 'Camera',
+    icon: <AddAPhotoOutlinedIcon />,
+    to: '/camera',
   },
   {
     primaryText: 'Media',
-    icon: <PermMediaOutlinedIcon />,
+    icon: <CloudUploadOutlinedIcon />,
     to: '/media',
   },
   {

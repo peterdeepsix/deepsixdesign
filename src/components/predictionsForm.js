@@ -23,8 +23,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import MediaDropzoneArea from '../components/mediaDropzoneArea';
-
 const useStyles = makeStyles(theme => ({
   grid: {
     flexGrow: 1,
@@ -124,9 +122,6 @@ const PredictionsForm = ({
               'aria-label': 'change date',
             }}
           />
-        </Box>
-        <Box>
-          <MediaDropzoneArea storage={storage} />
         </Box>
         <Box>
           {message && (
