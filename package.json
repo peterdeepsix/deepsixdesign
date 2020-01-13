@@ -2,7 +2,7 @@
   "name": "deepsixdesign",
   "private": true,
   "description": "deepsixdesign.com",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Peter Arnold <peter@deepsixdesign.com>",
   "dependencies": {
     "@loadable/component": "^5.12.0",
