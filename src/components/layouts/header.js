@@ -5,9 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,16 +46,18 @@ const Header = ({ siteTitle }) => {
           <Typography variant="h6" className={classes.title}>
             {siteTitle}
           </Typography>
-          <IconButton
+          <Button
             edge="end"
             className={classes.rightButton}
             component={Link}
-            to="/"
-            color="inherit"
-            aria-label="index"
+            to="/app"
+            variant="outlined"
+            color="primary"
+            startIcon={<ExitToAppOutlinedIcon />}
+            aria-label="app"
           >
-            <SearchOutlinedIcon />
-          </IconButton>
+            App
+          </Button>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

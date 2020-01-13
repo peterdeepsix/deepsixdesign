@@ -13,13 +13,12 @@ import {
   SidebarTriggerIcon,
   muiTreasuryPreset,
 } from '@mui-treasury/layout';
-import {
-  HeaderMockUp,
-  NavHeaderMockUp,
-  NavContentMockUp,
-  ContentMockUp,
-  FooterMockUp,
-} from '@mui-treasury/mockup/layout';
+
+import NavContent from './components/NavContent';
+import NavHeader from './components/NavHeader';
+import HeaderContent from './components/HeaderContent';
+import FooterContent from './components/FooterContent';
+import ContentContent from './components/ContentContent';
 
 const App = () => (
   <Root config={muiTreasuryPreset}>
@@ -31,23 +30,23 @@ const App = () => (
             <SidebarTrigger className={headerStyles.leftTrigger}>
               <SidebarTriggerIcon />
             </SidebarTrigger>
-            <HeaderMockUp />
+            <HeaderContent />
           </Toolbar>
         </Header>
         <Sidebar>
-          <NavHeaderMockUp collapsed={collapsed} />
+          <NavHeader collapsed={collapsed} />
           <div className={sidebarStyles.container}>
-            <NavContentMockUp />
+            <NavContent />
           </div>
           <CollapseBtn className={sidebarStyles.collapseBtn}>
             <CollapseIcon />
           </CollapseBtn>
         </Sidebar>
         <Content>
-          <ContentMockUp />
+          <ContentContent />
         </Content>
         <Footer>
-          <FooterMockUp />
+          <FooterContent />
         </Footer>
       </>
     )}
