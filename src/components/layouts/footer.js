@@ -34,6 +34,7 @@ const Footer = () => {
         className={classes.root}
       >
         <BottomNavigationAction
+          color="textSecondary"
           to="/gallery"
           aria-label="gallery"
           component={Link}
@@ -41,6 +42,7 @@ const Footer = () => {
           icon={<PermMediaOutlinedIcon />}
         />
         <BottomNavigationAction
+          color="textSecondary"
           to="/products"
           aria-label="products"
           component={Link}
@@ -48,6 +50,7 @@ const Footer = () => {
           icon={<LandscapeOutlinedIcon />}
         />
         <BottomNavigationAction
+          color="textSecondary"
           to="/cart"
           aria-label="cart"
           component={Link}

@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(2),
   },
+  appBar: {
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+  },
   leftButton: {
     marginRight: theme.spacing(2),
   },
@@ -31,9 +34,15 @@ const Header = ({ siteTitle }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar color="inherit" position="fixed">
+      <AppBar
+        elevation={0}
+        className={classes.appBar}
+        position="fixed"
+        color="inherit"
+      >
         <Toolbar>
           <IconButton
+            color="textSecondary"
             edge="start"
             className={classes.leftButton}
             component={Link}
@@ -42,16 +51,20 @@ const Header = ({ siteTitle }) => {
           >
             <ChangeHistoryIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            color="textSecondary"
+            variant="h6"
+            className={classes.title}
+          >
             {siteTitle}
           </Typography>
           <Button
             edge="end"
+            variant="outlined"
             className={classes.rightButton}
             component={Link}
             to="/app"
-            variant="outlined"
-            startIcon={<ExitToAppOutlinedIcon />}
+            endIcon={<ExitToAppOutlinedIcon />}
             aria-label="app"
           >
             App
