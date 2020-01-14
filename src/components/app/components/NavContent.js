@@ -15,10 +15,16 @@ import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
 import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 import Link from '../../Link';
 
 const list = [
+  {
+    primaryText: 'App',
+    icon: <ExitToAppOutlinedIcon />,
+    to: '/app',
+  },
   {
     primaryText: 'Timeline',
     icon: <TimelineOutlinedIcon />,
