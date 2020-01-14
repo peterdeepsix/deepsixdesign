@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
-import TopLayout from './plugins/gatsby-plugin-top-layout/TopLayout';
+import TopLayout from './src/components/layouts/topLayout';
 
 // mobx stores
 import provideStores from './src/providers/provide-stores';
