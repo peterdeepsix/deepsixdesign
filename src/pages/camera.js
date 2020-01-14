@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../components/layouts/defaultLayout';
+import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 import FirebaseObject from '../components/firebaseObject';
 import DisplayObjects from '../components/displayObjects';
@@ -22,7 +22,7 @@ const Camera = () => {
   const [cardObjects, setCardObjects] = useState();
 
   return (
-    <DefaultLayout>
+    <AppLayout>
       <SEO title="Upload" />
       <Container maxWidth="md">
         <Box my={4}>
@@ -84,7 +84,7 @@ const Camera = () => {
           </Box>
         )}
       </Container>
-    </DefaultLayout>
+    </AppLayout>
   );
 };
 

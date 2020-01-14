@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../components/layouts/defaultLayout';
+import AppLayout from '../components/layouts/appLayout';
 import MediaDropzoneArea from '../components/mediaDropzoneArea';
 import SEO from '../components/seo';
 
@@ -18,14 +18,14 @@ const Media = () => {
     setStorage(firebase.storage());
   }, []);
   return (
-    <DefaultLayout>
+    <AppLayout>
       <SEO title="Media" />
       <Container maxWidth="sm">
         <Box my={4}>
           <MediaDropzoneArea storage={storage} />
         </Box>
       </Container>
-    </DefaultLayout>
+    </AppLayout>
   );
 };
 

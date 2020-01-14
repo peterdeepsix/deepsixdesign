@@ -3,16 +3,10 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 
 import DefaultLayout from '../components/layouts/defaultLayout';
 import SEO from '../components/seo';
-import Loading from '../components/loading';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-
-import Loadable from '@loadable/component';
-
-const Image = Loadable(() => import('../components/image'), {
-  fallback: <Loading />,
-});
+import Typography from '@material-ui/core/Typography';
 
 const IndexPage = () => {
   useFirebase(firebase => {
@@ -23,7 +17,7 @@ const IndexPage = () => {
       <SEO title="Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
-          <Image />
+          <Typography variant="h1">Products</Typography>
         </Box>
       </Container>
     </DefaultLayout>

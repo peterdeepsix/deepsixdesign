@@ -1,27 +1,29 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../components/layouts/defaultLayout';
+import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
+import Loading from '../components/loading';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Loadable from '@loadable/component';
 
-const About = () => {
+const AboutComponent = Loadable(
+  () => import('../components/about/index'),
+  {
+    fallback: <Loading />,
+  },
+);
+
+const AboutPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_about');
+    firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <DefaultLayout>
-      <SEO title="About" />
-      <Container maxWidth="sm">
-        <Box my={4}>
-          <Typography variant="body1">About</Typography>
-        </Box>
-      </Container>
-    </DefaultLayout>
+    <AppLayout>
+      <SEO title="Deep Six Design" />
+      <AboutComponent />
+    </AppLayout>
   );
 };
 
-export default About;
+export default AboutPage;

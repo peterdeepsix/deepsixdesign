@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
-import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
-import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
+import PermMediaIcon from '@material-ui/icons/PermMedia';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 
 const useStyles = makeStyles(theme => ({
@@ -35,33 +35,27 @@ const Footer = () => {
         className={classes.root}
       >
         <BottomNavigationAction
-          to="/timeline"
-          aria-label="timeline"
+          to="/gallery"
+          aria-label="gallery"
           component={Link}
-          label="Timeline"
-          icon={<NaturePeopleOutlinedIcon />}
-        />
-        <BottomNavigationAction
-          to="/camera"
-          aria-label="camera"
-          component={Link}
-          label="Camera"
-          icon={<AddAPhotoOutlinedIcon />}
+          label="Gallery"
+          icon={<PermMediaIcon />}
           PermMediaOutlinedIcon
         />
         <BottomNavigationAction
-          to="/media"
-          aria-label="media"
+          to="/products"
+          aria-label="products"
           component={Link}
-          label="Media"
-          icon={<CloudUploadOutlinedIcon />}
-        />
-        <BottomNavigationAction
-          to="/predictions"
-          aria-label="predictions"
-          component={Link}
-          label="Predictions"
+          label="Products"
           icon={<LandscapeOutlinedIcon />}
+        />
+
+        <BottomNavigationAction
+          to="/cart"
+          aria-label="cart"
+          component={Link}
+          label="Cart"
+          icon={<ShoppingCartOutlinedIcon />}
         />
       </BottomNavigation>
     </React.Fragment>

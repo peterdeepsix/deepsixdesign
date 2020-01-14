@@ -1,4 +1,5 @@
 import React from 'react';
+
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
@@ -7,17 +8,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
-import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
+import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
+import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
+import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
+import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 
 import Link from '../../Link';
 
 const list = [
   {
     primaryText: 'Timeline',
-    icon: <NaturePeopleOutlinedIcon />,
+    icon: <TimelineOutlinedIcon />,
     to: '/timeline',
   },
   {
@@ -35,7 +39,28 @@ const list = [
     icon: <LandscapeOutlinedIcon />,
     to: '/predictions',
   },
+  {
+    primaryText: 'About',
+    icon: <NaturePeopleOutlinedIcon />,
+    to: '/about',
+  },
+  {
+    primaryText: 'Blog',
+    icon: <FeaturedPlayListOutlinedIcon />,
+    to: '/blog',
+  },
+  {
+    primaryText: 'Terms & Conditions',
+    icon: <GavelOutlinedIcon />,
+    to: '/terms',
+  },
+  {
+    primaryText: 'Contact Us',
+    icon: <ContactMailOutlinedIcon />,
+    to: '/contact',
+  },
 ];
+
 const NavContent = ({ onClickItem }) => (
   <List>
     {list.map(({ to, primaryText, icon }, i) => (

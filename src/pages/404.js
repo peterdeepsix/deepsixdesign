@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultLayout from '../components/layouts/defaultLayout';
+import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 
 import Typography from '@material-ui/core/Typography';
@@ -17,7 +17,7 @@ const NotFoundPage = () => {
   const classes = useStyles();
 
   return (
-    <DefaultLayout>
+    <AppLayout>
       <div className={classes.root}>
         <SEO title="404: Not found" />
         <Typography variant="h1" component="h1" gutterBottom>
@@ -27,7 +27,7 @@ const NotFoundPage = () => {
           Spread love and light!
         </Typography>
       </div>
-    </DefaultLayout>
+    </AppLayout>
   );
 };
 export default NotFoundPage;

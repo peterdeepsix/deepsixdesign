@@ -3,6 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
+import Link from '../../Link';
+
 const FooterContent = () => (
   <div style={{ maxWidth: 700, margin: 'auto', textAlign: 'center' }}>
     <Typography variant="caption" align={'center'}>
@@ -15,6 +17,8 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
+          component={Link}
+          to="/about"
         >
           About
         </Typography>
@@ -24,6 +28,8 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
+          component={Link}
+          to="/blog"
         >
           Blog
         </Typography>
@@ -33,6 +39,8 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
+          component={Link}
+          to="/terms"
         >
           Terms & Conditions
         </Typography>
@@ -42,8 +50,10 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
+          component={Link}
+          to="/contact"
         >
-          Contact us
+          Contact Us
         </Typography>
       </Grid>
     </Grid>
