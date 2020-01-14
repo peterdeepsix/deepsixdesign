@@ -70,6 +70,7 @@ const NavContent = ({ onClickItem }) => (
         button
         to={to}
         component={Link}
+        color="inherit"
       >
         <ListItemIcon>
           <Icon>{icon}</Icon>
@@ -81,12 +82,18 @@ const NavContent = ({ onClickItem }) => (
       </ListItem>
     ))}
     <Divider style={{ margin: '12px 0' }} />
-    <ListItem button to="/" component={Link} onClick={onClickItem}>
+    <ListItem
+      color="inherit"
+      button
+      to="/"
+      component={Link}
+      onClick={onClickItem}
+    >
       <ListItemIcon>
         <ChangeHistoryIcon />
       </ListItemIcon>
       <ListItemText
-        primary={'Loot Castle'}
+        primary={'Deep Six Design'}
         primaryTypographyProps={{ noWrap: true }}
       />
     </ListItem>

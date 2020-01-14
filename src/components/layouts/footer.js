@@ -4,8 +4,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
-import PermMediaIcon from '@material-ui/icons/PermMedia';
+import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 
@@ -39,14 +38,15 @@ const Footer = () => {
           aria-label="gallery"
           component={Link}
           label="Gallery"
-          icon={<PermMediaIcon />}
-          PermMediaOutlinedIcon
+          color="inherit"
+          icon={<PermMediaOutlinedIcon />}
         />
         <BottomNavigationAction
           to="/products"
           aria-label="products"
           component={Link}
           label="Products"
+          color="inherit"
           icon={<LandscapeOutlinedIcon />}
         />
 
@@ -55,6 +55,7 @@ const Footer = () => {
           aria-label="cart"
           component={Link}
           label="Cart"
+          color="inherit"
           icon={<ShoppingCartOutlinedIcon />}
         />
       </BottomNavigation>
