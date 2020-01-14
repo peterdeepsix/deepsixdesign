@@ -38,7 +38,6 @@ const Footer = () => {
           aria-label="gallery"
           component={Link}
           label="Gallery"
-          color="inherit"
           icon={<PermMediaOutlinedIcon />}
         />
         <BottomNavigationAction
@@ -46,16 +45,13 @@ const Footer = () => {
           aria-label="products"
           component={Link}
           label="Products"
-          color="inherit"
           icon={<LandscapeOutlinedIcon />}
         />
-
         <BottomNavigationAction
           to="/cart"
           aria-label="cart"
           component={Link}
           label="Cart"
-          color="inherit"
           icon={<ShoppingCartOutlinedIcon />}
         />
       </BottomNavigation>

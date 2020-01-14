@@ -38,7 +38,6 @@ const Header = ({ siteTitle }) => {
             className={classes.leftButton}
             component={Link}
             to="/"
-            color="inherit"
             aria-label="index"
           >
             <ChangeHistoryIcon />
@@ -52,7 +51,6 @@ const Header = ({ siteTitle }) => {
             component={Link}
             to="/app"
             variant="outlined"
-            color="inherit"
             startIcon={<ExitToAppOutlinedIcon />}
             aria-label="app"
           >

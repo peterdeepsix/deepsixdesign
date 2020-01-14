@@ -21,8 +21,13 @@ import Link from '../../Link';
 
 const list = [
   {
-    primaryText: 'App',
-    icon: <ExitToAppOutlinedIcon />,
+    primaryText: 'About',
+    icon: <NaturePeopleOutlinedIcon />,
+    to: '/about',
+  },
+  {
+    primaryText: 'App Render',
+    icon: <ChangeHistoryIcon />,
     to: '/app',
   },
   {
@@ -31,39 +36,19 @@ const list = [
     to: '/timeline',
   },
   {
-    primaryText: 'Camera',
-    icon: <AddAPhotoOutlinedIcon />,
-    to: '/camera',
-  },
-  {
-    primaryText: 'Media',
-    icon: <CloudUploadOutlinedIcon />,
-    to: '/media',
-  },
-  {
     primaryText: 'Predictions',
     icon: <LandscapeOutlinedIcon />,
     to: '/predictions',
   },
   {
-    primaryText: 'About',
-    icon: <NaturePeopleOutlinedIcon />,
-    to: '/about',
+    primaryText: 'Upload Media',
+    icon: <CloudUploadOutlinedIcon />,
+    to: '/media',
   },
   {
-    primaryText: 'Blog',
-    icon: <FeaturedPlayListOutlinedIcon />,
-    to: '/blog',
-  },
-  {
-    primaryText: 'Terms & Conditions',
-    icon: <GavelOutlinedIcon />,
-    to: '/terms',
-  },
-  {
-    primaryText: 'Contact Us',
-    icon: <ContactMailOutlinedIcon />,
-    to: '/contact',
+    primaryText: 'Camera',
+    icon: <AddAPhotoOutlinedIcon />,
+    to: '/camera',
   },
 ];
 
@@ -91,12 +76,43 @@ const NavContent = ({ onClickItem }) => (
     <ListItem
       color="inherit"
       button
+      to="/terms"
+      component={Link}
+      onClick={onClickItem}
+    >
+      <ListItemIcon>
+        <GavelOutlinedIcon />
+      </ListItemIcon>
+      <ListItemText
+        primary={'Terms & Conditions'}
+        primaryTypographyProps={{ noWrap: true }}
+      />
+    </ListItem>
+    <ListItem
+      color="inherit"
+      button
+      to="/contact"
+      component={Link}
+      onClick={onClickItem}
+    >
+      <ListItemIcon>
+        <ContactMailOutlinedIcon />
+      </ListItemIcon>
+      <ListItemText
+        primary={'Contact Us'}
+        primaryTypographyProps={{ noWrap: true }}
+      />
+    </ListItem>
+    <Divider style={{ margin: '12px 0' }} />
+    <ListItem
+      color="inherit"
+      button
       to="/"
       component={Link}
       onClick={onClickItem}
     >
       <ListItemIcon>
-        <ChangeHistoryIcon />
+        <ExitToAppOutlinedIcon />
       </ListItemIcon>
       <ListItemText
         primary={'Deep Six Design'}
