@@ -13,7 +13,7 @@ import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
 import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
-import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
+import CameraOutlinedIcon from '@material-ui/icons/CameraOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
@@ -26,8 +26,8 @@ const list = [
     to: '/about',
   },
   {
-    primaryText: 'App Render',
-    icon: <ChangeHistoryIcon />,
+    primaryText: 'Render',
+    icon: <CameraOutlinedIcon />,
     to: '/app',
   },
   {
@@ -41,7 +41,7 @@ const list = [
     to: '/predictions',
   },
   {
-    primaryText: 'Upload Media',
+    primaryText: 'Upload',
     icon: <CloudUploadOutlinedIcon />,
     to: '/media',
   },
@@ -84,7 +84,7 @@ const NavContent = ({ onClickItem }) => (
         <GavelOutlinedIcon />
       </ListItemIcon>
       <ListItemText
-        primary={'Terms & Conditions'}
+        primary={'Terms'}
         primaryTypographyProps={{ noWrap: true }}
       />
     </ListItem>
@@ -99,7 +99,7 @@ const NavContent = ({ onClickItem }) => (
         <ContactMailOutlinedIcon />
       </ListItemIcon>
       <ListItemText
-        primary={'Contact Us'}
+        primary={'Contact'}
         primaryTypographyProps={{ noWrap: true }}
       />
     </ListItem>

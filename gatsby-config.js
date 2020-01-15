@@ -27,11 +27,14 @@ module.exports = {
         credential: require('./service-account.json'),
         types: [
           {
-            type: 'Products',
-            collection: 'products',
+            type: 'processes',
+            collection: 'processes',
             map: doc => ({
               title: doc.title,
-              product___NODE: doc.id,
+              step: doc.step,
+              definition: doc.definition,
+              synonyms: doc.synonyms,
+              process___NODE: doc.id,
             }),
           },
         ],

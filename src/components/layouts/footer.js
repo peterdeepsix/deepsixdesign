@@ -4,7 +4,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
+import CameraOutlinedIcon from '@material-ui/icons/CameraOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 
@@ -39,7 +39,7 @@ const Footer = () => {
           aria-label="gallery"
           component={Link}
           label="Gallery"
-          icon={<PermMediaOutlinedIcon />}
+          icon={<CameraOutlinedIcon />}
         />
         <BottomNavigationAction
           color="textSecondary"

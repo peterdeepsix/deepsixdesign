@@ -8,7 +8,11 @@ import Search from '@material-ui/icons/Search';
 import MoreVert from '@material-ui/icons/MoreVert';
 import Favorite from '@material-ui/icons/Favorite';
 import Phone from '@material-ui/icons/Phone';
+import Button from '@material-ui/core/Button';
 import Camera from '@material-ui/icons/Camera';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+
+import Link from '../../Link';
 
 const styles = ({
   spacing,
@@ -80,6 +84,7 @@ const HeaderContent = ({ classes, screen }) => (
       Plexus Prediction Engine v1.0.0
     </Typography>
     <div className={classes.grow} />
+
     <div className={classes.search}>
       <div className={classes.searchIcon}>
         <Search />
@@ -92,6 +97,16 @@ const HeaderContent = ({ classes, screen }) => (
         }}
       />
     </div>
+    <Button
+      edge="end"
+      variant="outlined"
+      component={Link}
+      to="/"
+      endIcon={<ExitToAppOutlinedIcon />}
+      aria-label="index"
+    >
+      D6d
+    </Button>
     {screen === 'xs' && (
       <IconButton>
         <MoreVert />

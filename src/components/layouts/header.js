@@ -63,9 +63,9 @@ const Header = ({ siteTitle }) => {
             variant="outlined"
             className={classes.rightButton}
             component={Link}
-            to="/app"
+            to="/about"
             endIcon={<ExitToAppOutlinedIcon />}
-            aria-label="app"
+            aria-label="about"
           >
             App
           </Button>

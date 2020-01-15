@@ -20,7 +20,7 @@ const styles = ({ breakpoints, transitions }) => ({
 
 const AboutComponent = ({ classes }) => (
   <div className={classes.root}>
-    <Typography variant={'overline'}>INTRODUCING</Typography>
+    <Typography variant={'overline'}>Introducing</Typography>
     <Typography weight={'bold'} variant={'h4'} gutterBottom>
       Plexus Prediction <Link underline={'none'}>Engine</Link>
     </Typography>
@@ -41,7 +41,6 @@ const AboutComponent = ({ classes }) => (
       ipsum primis in faucibus.
     </Typography>
     <br />
-    <br />
     <Typography weight={'bold'} variant={'h5'} gutterBottom>
       {'Take Me There!'}
     </Typography>
@@ -58,24 +57,26 @@ const AboutComponent = ({ classes }) => (
       </ul>
     </Typography>
     <br />
-    <br />
     <Typography weight={'bold'} variant={'h5'} gutterBottom>
       Objectives
     </Typography>
     <Typography>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-      amet scelerisque purus, sit amet placerat ligula. Sed malesuada
-      molestie pharetra. Morbi vestibulum, ligula ut tincidunt
-      maximus, quam libero placerat metus, quis vestibulum lacus massa
-      sit amet urna. Praesent ultricies tortor eu mauris varius
-      pellentesque. Aliquam dictum tortor erat, et varius leo aliquam
-      pharetra. Pellentesque luctus rutrum lectus sit amet dignissim.
-      Phasellus non efficitur nibh, in eleifend quam. Nam a efficitur
-      nisl. Suspendisse maximus vestibulum sapien, et interdum purus
-      ultricies eu. Donec egestas magna metus, a blandit massa
-      vestibulum nec. Aliquam a sollicitudin nisl, vel tincidunt erat.
+      In mainstream theories of natural language syntax, every
+      syntactically-valid utterance can be extended to produce a new,
+      longer one, because of recursion.[5] If this process can be
+      continued indefinitely, then there is no upper bound on the
+      length of a well-formed utterance and the number of unique
+      well-formed strings of any language is countably infinite.[6]
+      However, the books in the Library of Babel are of bounded length
+      ("each book is of four hundred and ten pages; each page, of
+      forty lines, each line, of some eighty letters"), so the Library
+      can only contain a finite number of distinct strings, and thus
+      cannot contain all possible well-formed utterances. Borges'
+      narrator notes this fact, but believes that the Library is
+      nevertheless infinite; he speculates that it repeats itself
+      periodically, giving an eventual "order" to the "disorder" of
+      the seemingly-random arrangement of books.
     </Typography>
-    <br />
     <br />
     <Typography weight={'bold'} variant={'h5'} gutterBottom>
       Solution
@@ -106,6 +107,10 @@ const AboutComponent = ({ classes }) => (
       permanent form
     </Typography>
     <Typography>
+      <b>Train</b> - To make prepared (as by exercise) for a test of
+      skill.
+    </Typography>
+    <Typography>
       <b>Predict</b> - Fortell and forecast (patterns) on the basis of
       observation, experience, or scientific reason.
     </Typography>
@@ -114,8 +119,6 @@ const AboutComponent = ({ classes }) => (
       characteristics) to other people or to objects.
       <Link href={'https://deepsixdesign.com'}>Deep Six Design</Link>
     </Typography>
-    <br />
-    <br />
     <br />
   </div>
 );

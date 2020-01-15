@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
 
-import Loading from './loading';
+import Loading from '../loading';
 
 import { makeStyles } from '@material-ui/core/styles';
 import dateFormat from 'date-format';
-import Card from '@material-ui/core/Card';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import WallpaperOutlinedIcon from '@material-ui/icons/WallpaperOutlined';
@@ -23,7 +22,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimelineComponent = ({ predictions: predictionsStore }) => {
+const TimelineComponent = ({
+  data,
+  predictions: predictionsStore,
+}) => {
   const classes = useStyles();
 
   const { predictions, firestore } = predictionsStore;
@@ -77,6 +79,7 @@ const TimelineComponent = ({ predictions: predictionsStore }) => {
               gutterBottom
             >
               {prediction.title}
+              {console.log(data)}
             </Typography>
             <Typography
               className="vertical-timeline-element-subtitle"
