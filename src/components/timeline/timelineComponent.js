@@ -7,6 +7,7 @@ import Loading from '../loading';
 import { makeStyles } from '@material-ui/core/styles';
 import dateFormat from 'date-format';
 import Container from '@material-ui/core/Container';
+import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import WallpaperOutlinedIcon from '@material-ui/icons/WallpaperOutlined';
 
@@ -80,10 +81,12 @@ const TimelineComponent = ({
               variant="h6"
               gutterBottom
             >
-              {edge.node.step}
+              {edge.node.synonyms.map(synonym => (
+                <Chip label={synonym} />
+              ))}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              hello
+              {edge.node.definition}
             </Typography>
           </VerticalTimelineElement>
         ))}

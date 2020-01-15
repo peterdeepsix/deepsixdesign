@@ -23,6 +23,8 @@ export const query = graphql`
           id
           title
           step
+          definition
+          synonyms
         }
       }
     }
