@@ -21,6 +21,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: '100%',
   },
+  chip: {
+    display: 'flex',
+    justifyContent: 'start',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
+  },
 }));
 
 const TimelineComponent = ({
@@ -74,17 +82,22 @@ const TimelineComponent = ({
               variant="h4"
               gutterBottom
             >
-              {edge.node.title}
+              Step - {edge.node.step}
             </Typography>
+            <br />
             <Typography
               className="vertical-timeline-element-subtitle"
               variant="h6"
               gutterBottom
             >
+              {edge.node.title}
+            </Typography>
+            <br />
+            <div className={classes.chip}>
               {edge.node.synonyms.map(synonym => (
                 <Chip label={synonym} />
               ))}
-            </Typography>
+            </div>
             <Typography variant="body1" gutterBottom>
               {edge.node.definition}
             </Typography>
