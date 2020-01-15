@@ -49,15 +49,10 @@ const TimelineComponent = ({
   return (
     <Container>
       <VerticalTimeline>
-        {predictions.map(prediction => (
+        {data.allProcesses.edges.map(edge => (
           <VerticalTimelineElement
-            key={prediction.id}
-            prediction={prediction}
+            key={edge.node.id}
             className="vertical-timeline-element--work"
-            date={dateFormat.asString(
-              'MM/dd/yyyy h:mm',
-              new Date(prediction.dueAt),
-            )}
             contentStyle={{
               boxShadow: 'none',
               border: '1px solid rgba(0, 0, 0, 0.12)',
@@ -78,18 +73,17 @@ const TimelineComponent = ({
               variant="h4"
               gutterBottom
             >
-              {prediction.title}
-              {console.log(data)}
+              {edge.node.title}
             </Typography>
             <Typography
               className="vertical-timeline-element-subtitle"
               variant="h6"
               gutterBottom
             >
-              {prediction.id}
+              {edge.node.step}
             </Typography>
             <Typography variant="body1" gutterBottom>
-              {prediction.status}
+              hello
             </Typography>
           </VerticalTimelineElement>
         ))}

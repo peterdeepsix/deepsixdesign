@@ -20,11 +20,9 @@ export const query = graphql`
     allProcesses {
       edges {
         node {
-          title
-          synonyms
-          step
-          definition
           id
+          title
+          step
         }
       }
     }
