@@ -29,6 +29,18 @@ const AboutComponent = ({ classes }) => (
       <Typography gutterBottom>
         <b>Version 1.0.0</b>
       </Typography>
+      <br />
+      <Typography weight={'bold'} variant={'h5'} gutterBottom>
+        Objectives
+      </Typography>
+      <Typography>
+        Capture wordly patterns in order to create visions, from which
+        projected beauty emerges.
+      </Typography>
+      <br />
+      <Typography weight={'bold'} variant={'h5'} gutterBottom>
+        Prior Art
+      </Typography>
       <Typography indent={'small'}>
         In mainstream theories of natural language syntax, every
         syntactically-valid utterance can be extended to produce a
@@ -36,7 +48,7 @@ const AboutComponent = ({ classes }) => (
         continued indefinitely, then there is no upper bound on the
         length of a well-formed utterance and the number of unique
         well-formed strings of any language is countably infinite.
-        However, the books in the Library of Babel are of bounded
+        However, the books in the Library of Babel are of bounded--**/
         length ("each book is of four hundred and ten pages; each
         page, of forty lines, each line, of some eighty letters"), so
         the Library can only contain a finite number of distinct
@@ -48,69 +60,32 @@ const AboutComponent = ({ classes }) => (
       </Typography>
       <br />
       <Typography weight={'bold'} variant={'h5'} gutterBottom>
-        {'Take Me There!'}
-      </Typography>
-      <Typography gutterBottom>
-        Thankful for
-        <br />
-      </Typography>
-      <Typography component={'div'}>
-        <ul>
-          <li>Connection</li>
-          <li>Experience</li>
-          <li>Love</li>
-          <li>Contrast</li>
-        </ul>
-      </Typography>
-      <br />
-      <Typography weight={'bold'} variant={'h5'} gutterBottom>
-        Objectives
-      </Typography>
-      <Typography>Charge hard, my wayward son!</Typography>
-      <br />
-      <Typography weight={'bold'} variant={'h5'} gutterBottom>
-        Solution
+        Strategy
       </Typography>
       <Typography>
-        Capture wordly patterns in order to create visions, from which
-        projected beauty emerges.
+        Taking out of scope problems beyond completion.
+      </Typography>
+      <br />
+      <Typography weight={'bold'} variant={'h5'} gutterBottom>
+        Actions
       </Typography>
       <Typography component={'div'}>
         <ol>
           <li>Capture wordly patterns, common and rare.</li>
           <li>
-            Search for 2 signature matches (content, style) in
-            AquilaDB.
+            Query AquilaDB for signature matches in both content and
+            style layers.
           </li>
           <li>
-            Run results (content, style) through Neural Style Transfer
-            to predict a vision.
+            Input the signature matches through the Neural Style
+            Transfer algorithm (NST).
           </li>
           <li>
-            Run the (worldly_pattern, vision ) through Neural Style
-            Transfer to project emergent beauty.
+            Return the resulting signature back through the NST
+            algorithm with the worldly paterns.
           </li>
+          <li>Display, observe, ponder and predict.</li>
         </ol>
-      </Typography>
-      <Typography>
-        <b>Capture</b> - To emphasize, represent, or preserve
-        (something, such as a scene, mood, or quality) in a more or
-        less permanent form
-      </Typography>
-      <Typography>
-        <b>Train</b> - To make prepared (as by exercise) for a test of
-        skill.
-      </Typography>
-      <Typography>
-        <b>Predict</b> - Fortell and forecast (patterns) on the basis
-        of observation, experience, or scientific reason.
-      </Typography>
-      <Typography>
-        <b>Project</b> to attribute (one's own ideas, feelings, or
-        characteristics) to other people or to objects.
-        <Link href={'https://deepsixdesign.com'}>
-          Deep Six Design
-        </Link>
       </Typography>
       <br />
     </div>
