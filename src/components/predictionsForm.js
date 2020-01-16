@@ -135,7 +135,7 @@ const PredictionsForm = ({
             color="primary"
             disabled={!title || isSubmitting}
           >
-            Add Prediction
+            Create Prediction
           </Button>
         </Box>
       </MuiPickersUtilsProvider>

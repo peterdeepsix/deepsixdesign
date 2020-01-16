@@ -26,15 +26,16 @@ const list = [
     to: '/about',
   },
   {
-    primaryText: 'Render',
-    icon: <CameraOutlinedIcon />,
-    to: '/app',
-  },
-  {
     primaryText: 'Timeline',
     icon: <TimelineOutlinedIcon />,
     to: '/timeline',
   },
+  {
+    primaryText: 'Render',
+    icon: <CameraOutlinedIcon />,
+    to: '/app',
+  },
+
   {
     primaryText: 'Predictions',
     icon: <LandscapeOutlinedIcon />,

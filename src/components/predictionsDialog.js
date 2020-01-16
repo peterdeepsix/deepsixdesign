@@ -11,12 +11,22 @@ import Slide from '@material-ui/core/Slide';
 import Fade from '@material-ui/core/Fade';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import Fab from '@material-ui/core/Fab';
+import ShutterSpeedOutlinedIcon from '@material-ui/icons/ShutterSpeedOutlined';
+import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 
 import PredictionsForm from './predictionsForm';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
     position: 'relative',
+  },
+  margin: {
+    margin: theme.spacing(1),
+    marginLeft: theme.spacing(0),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -42,19 +52,16 @@ const PredictionsDialog = ({ children }) => {
 
   return (
     <React.Fragment>
-      <Container>
-        <Box>
-          {' '}
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={handleClickOpen}
-          >
-            Generate Vision
-          </Button>
-        </Box>
-      </Container>
-
+      <Button
+        variant="outlined"
+        color="primary"
+        aria-label="add"
+        onClick={handleClickOpen}
+        className={classes.margin}
+      >
+        <ShutterSpeedOutlinedIcon className={classes.extendedIcon} />
+        Create Prediction
+      </Button>
       <Dialog
         fullScreen
         open={open}
@@ -72,7 +79,7 @@ const PredictionsDialog = ({ children }) => {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Generate Vision
+              Create Prediction
             </Typography>
           </Toolbar>
         </AppBar>

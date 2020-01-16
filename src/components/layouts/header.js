@@ -42,7 +42,7 @@ const Header = ({ siteTitle }) => {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
+            color="textSecondary"
             edge="start"
             className={classes.leftButton}
             component={Link}
@@ -52,7 +52,7 @@ const Header = ({ siteTitle }) => {
             <ChangeHistoryIcon />
           </IconButton>
           <Typography
-            color="inherit"
+            color="textSecondary"
             variant="h6"
             className={classes.title}
           >

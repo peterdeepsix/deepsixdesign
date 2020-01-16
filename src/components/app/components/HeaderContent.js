@@ -6,10 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Search from '@material-ui/icons/Search';
 import MoreVert from '@material-ui/icons/MoreVert';
-import Favorite from '@material-ui/icons/Favorite';
-import Phone from '@material-ui/icons/Phone';
 import Button from '@material-ui/core/Button';
-import Camera from '@material-ui/icons/Camera';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 import Link from '../../Link';
@@ -84,7 +81,13 @@ const HeaderContent = ({ classes, screen }) => (
       Plexus Prediction Engine v1.0.0
     </Typography>
     <div className={classes.grow} />
-
+    {screen === 'xs' && <p>xs</p>}
+    {screen === 'sm' && (
+      <>
+        <p>sm</p>
+      </>
+    )}
+    {isWidthUp('md', screen) && <></>}
     <div className={classes.search}>
       <div className={classes.searchIcon}>
         <Search />
@@ -97,44 +100,6 @@ const HeaderContent = ({ classes, screen }) => (
         }}
       />
     </div>
-    <Button
-      edge="end"
-      variant="outlined"
-      component={Link}
-      to="/"
-      endIcon={<ExitToAppOutlinedIcon />}
-      aria-label="index"
-    >
-      D6d
-    </Button>
-    {screen === 'xs' && (
-      <IconButton>
-        <MoreVert />
-      </IconButton>
-    )}
-    {screen === 'sm' && (
-      <>
-        <IconButton>
-          <Favorite />
-        </IconButton>
-        <IconButton>
-          <MoreVert />
-        </IconButton>
-      </>
-    )}
-    {isWidthUp('md', screen) && (
-      <>
-        <IconButton>
-          <Favorite />
-        </IconButton>
-        <IconButton>
-          <Phone />
-        </IconButton>
-        <IconButton>
-          <Camera />
-        </IconButton>
-      </>
-    )}
   </>
 );
 
