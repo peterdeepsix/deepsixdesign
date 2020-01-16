@@ -43,7 +43,6 @@ const Header = ({ siteTitle }) => {
       >
         <Toolbar className={classes.toolbar}>
           <IconButton
-            color="textSecondary"
             edge="start"
             className={classes.leftButton}
             component={Link}
