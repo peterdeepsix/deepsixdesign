@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
@@ -14,6 +15,8 @@ import {
   muiTreasuryPreset,
 } from '@mui-treasury/layout';
 
+import theme from '../../configs/theme';
+
 import NavContent from '../app/components/NavContent';
 import NavHeader from '../app/components/NavHeader';
 import HeaderContent from '../app/components/HeaderContent';
@@ -23,7 +26,7 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <main>
-        <Root config={muiTreasuryPreset}>
+        <Root theme={theme} config={muiTreasuryPreset}>
           {({ headerStyles, sidebarStyles, collapsed }) => (
             <>
               <CssBaseline />

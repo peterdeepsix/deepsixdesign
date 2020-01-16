@@ -13,7 +13,6 @@ import PredictionsTableItem from './predictionsTableItem';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import Skeleton from '@material-ui/lab/Skeleton';
 
 import MaterialTable from 'material-table';
 import {
@@ -115,15 +114,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading)
-    return (
-      <div>
-        <Loading />
-        <Skeleton variant="text" />
-        <Skeleton variant="text" />
-        <Skeleton variant="rect" width={210} height={118} />
-      </div>
-    );
+  if (isLoading) return <Loading />;
   return (
     <div className={classes.root}>
       {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}
