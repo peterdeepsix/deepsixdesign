@@ -17,7 +17,7 @@ const TimelineComponent = Loadable(
 
 export const query = graphql`
   query TimelinePageQuery {
-    allProcesses {
+    allProcesses(sort: { fields: step }) {
       edges {
         node {
           id

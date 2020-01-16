@@ -19,7 +19,7 @@ const styles = ({
   shape,
 }) => ({
   header: {
-    fontWeight: 900,
+    fontWeight: 600,
     minWidth: 0,
     fontSize: 18,
   },

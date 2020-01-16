@@ -113,7 +113,6 @@ const TimelineComponent = ({
               component={Link}
               to={`/${edge.node.slug}`}
               variant="outlined"
-              color="primary"
             >
               {edge.node.title} Details
             </Button>
