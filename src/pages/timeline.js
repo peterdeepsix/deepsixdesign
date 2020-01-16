@@ -21,6 +21,7 @@ export const query = graphql`
       edges {
         node {
           id
+          slug
           title
           step
           definition

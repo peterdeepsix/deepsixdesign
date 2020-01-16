@@ -5,9 +5,10 @@ import { inject, observer } from 'mobx-react';
 import Loading from '../loading';
 
 import { makeStyles } from '@material-ui/core/styles';
-import dateFormat from 'date-format';
+import Link from '../Link';
 import Container from '@material-ui/core/Container';
 import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import WallpaperOutlinedIcon from '@material-ui/icons/WallpaperOutlined';
 
@@ -22,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '100%',
   },
   chip: {
+    marginLeft: theme.spacing(-0.5),
     display: 'flex',
     justifyContent: 'start',
     flexWrap: 'wrap',
@@ -68,6 +70,7 @@ const TimelineComponent = ({
             }}
             contentArrowStyle={{
               borderRight: '7px solid  rgba(0, 0, 0, 0.54)',
+              // top: '22px',
             }}
             iconStyle={{
               background: '#fff',
@@ -78,29 +81,42 @@ const TimelineComponent = ({
             icon={<WallpaperOutlinedIcon />}
           >
             <Typography
+              className="vertical-timeline-element-subtitle"
+              variant={'overline'}
+              gutterBottom
+            >
+              Step {edge.node.step}
+            </Typography>
+            <Typography
               className="vertical-timeline-element-title"
               variant="h4"
               gutterBottom
             >
-              Step - {edge.node.step}
-            </Typography>
-            <br />
-            <Typography
-              className="vertical-timeline-element-subtitle"
-              variant="h6"
-              gutterBottom
-            >
               {edge.node.title}
             </Typography>
-            <br />
-            <div className={classes.chip}>
-              {edge.node.synonyms.map(synonym => (
-                <Chip label={synonym} />
-              ))}
-            </div>
             <Typography variant="body1" gutterBottom>
               {edge.node.definition}
             </Typography>
+            <br />
+            <div className={classes.chip}>
+              {edge.node.synonyms.map((synonym, index) => (
+                <Chip
+                  key={index}
+                  label={synonym}
+                  variant="outlined"
+                  size="small"
+                />
+              ))}
+            </div>
+            <br />
+            <Button
+              component={Link}
+              to={`/${edge.node.slug}`}
+              variant="outlined"
+              color="primary"
+            >
+              {edge.node.title} Details
+            </Button>
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>

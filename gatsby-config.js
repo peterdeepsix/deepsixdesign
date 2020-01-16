@@ -34,6 +34,7 @@ module.exports = {
               step: doc.step,
               definition: doc.definition,
               synonyms: doc.synonyms,
+              slug: doc.slug,
               process___NODE: doc.id,
             }),
           },
