@@ -17,7 +17,7 @@ const IndexPage = () => {
       <SEO title="Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
-          <Typography variant="h1">Gallery</Typography>
+          <Typography variant="h4">Gallery</Typography>
         </Box>
       </Container>
     </DefaultLayout>

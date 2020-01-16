@@ -3,6 +3,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
+import FirebaseObject from './firebaseObject';
+
 const NavHeaderEx = ({ collapsed }) => (
   <>
     <div style={{ padding: collapsed ? 8 : 16, transition: '0.3s' }}>
@@ -17,9 +19,7 @@ const NavHeaderEx = ({ collapsed }) => (
       <Typography variant={'h6'} noWrap>
         Anonymous User
       </Typography>
-      <Typography color={'textSecondary'} noWrap gutterBottom>
-        deepsixdesign.com
-      </Typography>
+      <FirebaseObject />
     </div>
     <Divider />
   </>

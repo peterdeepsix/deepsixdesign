@@ -13,7 +13,7 @@ const ContactPage = () => {
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <Typography variant="h1">Contact</Typography>
+      <Typography variant="h4">Contact</Typography>
     </AppLayout>
   );
 };

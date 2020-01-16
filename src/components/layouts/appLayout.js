@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import {
@@ -22,7 +23,27 @@ import NavHeader from '../app/components/NavHeader';
 import HeaderContent from '../app/components/HeaderContent';
 import FooterContent from '../app/components/FooterContent';
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  toolbar: {
+    // minHeight: 128,
+    // alignItems: 'flex-start',
+    // paddingTop: theme.spacing(1),
+    // paddingBottom: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    alignSelf: 'flex-end',
+  },
+}));
+
 const AppLayout = ({ children }) => {
+  const classes = useStyles();
   return (
     <>
       <main>
@@ -31,7 +52,7 @@ const AppLayout = ({ children }) => {
             <>
               <CssBaseline />
               <Header>
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
                   <SidebarTrigger
                     className={headerStyles.leftTrigger}
                   >

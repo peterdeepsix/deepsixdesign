@@ -20,7 +20,7 @@ const NotFoundPage = () => {
     <AppLayout>
       <div className={classes.root}>
         <SEO title="404: Not found" />
-        <Typography variant="h6" component="h6" gutterBottom>
+        <Typography variant="h4" component="h4" gutterBottom>
           404: Not found
         </Typography>
         <Typography variant="body1" gutterBottom>

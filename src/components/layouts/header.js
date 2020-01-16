@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
   },
+  toolbar: {},
   leftButton: {
     marginRight: theme.spacing(2),
   },
@@ -40,7 +41,7 @@ const Header = ({ siteTitle }) => {
         position="fixed"
         color="inherit"
       >
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <IconButton
             color="textSecondary"
             edge="start"

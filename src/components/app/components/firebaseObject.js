@@ -36,7 +36,9 @@ function FirebaseObject() {
   return (
     <React.Fragment>
       {user && (
-        <Typography variant="body1">User UID - {user.uid}</Typography>
+        <Typography color={'textSecondary'} noWrap variant="body1">
+          {user.uid}
+        </Typography>
       )}
     </React.Fragment>
   );

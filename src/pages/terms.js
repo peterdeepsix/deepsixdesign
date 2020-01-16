@@ -13,7 +13,7 @@ const TermsPage = () => {
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <Typography variant="h1">Terms</Typography>
+      <Typography variant="h4">Terms</Typography>
     </AppLayout>
   );
 };

@@ -3,7 +3,6 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 
 import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
-import FirebaseObject from '../components/firebaseObject';
 import DisplayObjects from '../components/displayObjects';
 
 import Container from '@material-ui/core/Container';
@@ -25,9 +24,6 @@ const Camera = () => {
     <AppLayout>
       <SEO title="Upload" />
       <Container maxWidth="md">
-        <Box my={4}>
-          <FirebaseObject />
-        </Box>
         <Box my={4}>
           <Button
             variant="outlined"

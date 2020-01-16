@@ -13,7 +13,7 @@ const BlogPage = () => {
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <Typography variant="h1">Blog</Typography>
+      <Typography variant="h4">Blog</Typography>
     </AppLayout>
   );
 };
