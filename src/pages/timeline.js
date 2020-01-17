@@ -34,12 +34,10 @@ export const query = graphql`
 
 const Timeline = ({ data }) => {
   return (
-    <AppLayout>
-      <StoreLayout>
-        <SEO title="Timeline" />
-        <TimelineComponent data={data} />
-      </StoreLayout>
-    </AppLayout>
+    <StoreLayout>
+      <SEO title="Timeline" />
+      <TimelineComponent data={data} />
+    </StoreLayout>
   );
 };
 

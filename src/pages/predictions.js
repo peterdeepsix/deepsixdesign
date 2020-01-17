@@ -1,6 +1,5 @@
 import React from 'react';
 
-import AppLayout from '../components/layouts/appLayout';
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
 import Loading from '../components/loading';
@@ -16,12 +15,10 @@ const PredictionsComponent = Loadable(
 
 const Predictions = () => {
   return (
-    <AppLayout>
-      <StoreLayout>
-        <SEO title="Predictions" />
-        <PredictionsComponent />
-      </StoreLayout>
-    </AppLayout>
+    <StoreLayout>
+      <SEO title="Predictions" />
+      <PredictionsComponent />
+    </StoreLayout>
   );
 };
 

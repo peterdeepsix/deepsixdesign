@@ -1,9 +1,10 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 
 const BlogPage = () => {
@@ -11,10 +12,14 @@ const BlogPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <AppLayout>
-      <SEO title="Deep Six Design" />
-      <Typography variant="h4">Blog</Typography>
-    </AppLayout>
+    <React.Fragment>
+      <SEO title="Blog - Deep Six Design" />
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h4">Blog</Typography>
+        </Box>
+      </Container>
+    </React.Fragment>
   );
 };
 

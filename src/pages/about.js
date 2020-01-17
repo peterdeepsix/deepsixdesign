@@ -1,7 +1,6 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 import Loading from '../components/loading';
 
@@ -19,10 +18,10 @@ const AboutPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <AppLayout>
+    <React.Fragment>
       <SEO title="Deep Six Design" />
       <AboutComponent />
-    </AppLayout>
+    </React.Fragment>
   );
 };
 

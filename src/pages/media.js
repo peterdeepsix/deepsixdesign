@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import AppLayout from '../components/layouts/appLayout';
 import MediaDropzoneArea from '../components/mediaDropzoneArea';
 import SEO from '../components/seo';
 
@@ -18,14 +17,14 @@ const Media = () => {
     setStorage(firebase.storage());
   }, []);
   return (
-    <AppLayout>
+    <React.Fragment>
       <SEO title="Media" />
       <Container maxWidth="sm">
         <Box my={4}>
           <MediaDropzoneArea storage={storage} />
         </Box>
       </Container>
-    </AppLayout>
+    </React.Fragment>
   );
 };
 

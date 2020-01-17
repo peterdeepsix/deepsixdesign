@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 import DisplayObjects from '../components/displayObjects';
 
@@ -21,7 +20,7 @@ const Camera = () => {
   const [cardObjects, setCardObjects] = useState();
 
   return (
-    <AppLayout>
+    <React.Fragment>
       <SEO title="Upload" />
       <Container maxWidth="md">
         <Box my={4}>
@@ -80,7 +79,7 @@ const Camera = () => {
           </Box>
         )}
       </Container>
-    </AppLayout>
+    </React.Fragment>
   );
 };
 

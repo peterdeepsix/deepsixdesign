@@ -18,10 +18,10 @@ const IndexPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <div>
+    <React.Fragment>
       <SEO title="Deep Six Design" />
       <AboutComponent />
-    </div>
+    </React.Fragment>
   );
 };
 
