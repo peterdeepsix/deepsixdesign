@@ -6,13 +6,6 @@ import Loading from '../components/loading';
 
 import Loadable from '@loadable/component';
 
-const AppLayout = Loadable(
-  () => import('../components/layouts/appLayout'),
-  {
-    fallback: <Loading isCircular />,
-  },
-);
-
 const AboutComponent = Loadable(
   () => import('../components/about/aboutComponent'),
   {
@@ -25,10 +18,10 @@ const IndexPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <AppLayout>
+    <div>
       <SEO title="Deep Six Design" />
       <AboutComponent />
-    </AppLayout>
+    </div>
   );
 };
 

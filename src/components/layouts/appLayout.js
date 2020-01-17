@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Helmet } from 'react-helmet';
+
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -64,8 +66,14 @@ const useStyles = makeStyles(theme => ({
 const AppLayout = ({ children }) => {
   const classes = useStyles();
   return (
-    <>
+    <React.Fragment>
       <main>
+        <Helmet>
+          <meta
+            name="viewport"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+          />
+        </Helmet>
         <Root theme={theme} config={muiTreasuryPreset}>
           {({ headerStyles, sidebarStyles, collapsed }) => (
             <>
@@ -97,7 +105,7 @@ const AppLayout = ({ children }) => {
           )}
         </Root>
       </main>
-    </>
+    </React.Fragment>
   );
 };
 

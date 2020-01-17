@@ -2,11 +2,11 @@ import 'babel-polyfill';
 import React from 'react';
 
 // material-ui
-import TopLayout from './src/components/layouts/topLayout';
+import AppLayout from './src/components/layouts/appLayout';
 
 // mobx stores
 import provideStores from './src/providers/provide-stores';
 
 export const wrapRootElement = ({ element }) => {
-  return provideStores(<HelmetLayout>{element}</HelmetLayout>);
+  return provideStores(<AppLayout>{element}</AppLayout>);
 };
