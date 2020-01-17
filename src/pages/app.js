@@ -8,7 +8,7 @@ import Loading from '../components/loading';
 import Loadable from '@loadable/component';
 
 const AppComponent = Loadable(
-  () => import('../components/app/index'),
+  () => import('../components/app/appComponent'),
   {
     fallback: <Loading />,
   },

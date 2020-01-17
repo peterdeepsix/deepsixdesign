@@ -8,7 +8,7 @@ import React, {
 import { inject, observer } from 'mobx-react';
 import dateFormat from 'date-format';
 
-import Loading from './loading';
+import Loading from '../loading';
 import PredictionsTableItem from './predictionsTableItem';
 
 import { makeStyles } from '@material-ui/core/styles';

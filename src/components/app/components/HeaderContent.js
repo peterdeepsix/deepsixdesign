@@ -78,7 +78,7 @@ const HeaderContent = ({ classes, screen }) => (
       color={'textSecondary'}
       className={classes.header}
     >
-      Plexus Prediction Engine v1.0.0
+      Plexus Prediction Engine v1.0.2
     </Typography>
     <div className={classes.grow} />
     {screen === 'xs' && <p>xs</p>}

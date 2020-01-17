@@ -8,7 +8,7 @@ import Link from '../../Link';
 const FooterContent = () => (
   <div style={{ maxWidth: 700, margin: 'auto', textAlign: 'center' }}>
     <Typography variant="caption" align={'center'}>
-      © Copyright 2020
+      © Copyright 2020 - Deep Six Design
     </Typography>
     <Divider style={{ margin: '24px auto', width: 60 }} />
     <Grid container justify={'center'} spacing={2}>

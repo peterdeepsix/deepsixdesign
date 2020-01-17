@@ -1,21 +1,27 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import Typography from '@material-ui/core/Typography';
-
 import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 
-const TermsPage = () => {
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+
+const CartPage = () => {
   useFirebase(firebase => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <Typography variant="h4">Terms</Typography>
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h4">Terms & Conditions</Typography>
+        </Box>
+      </Container>
     </AppLayout>
   );
 };
 
-export default TermsPage;
+export default CartPage;

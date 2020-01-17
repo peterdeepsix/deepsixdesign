@@ -1,10 +1,12 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import Typography from '@material-ui/core/Typography';
-
 import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
+
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 const ContactPage = () => {
   useFirebase(firebase => {
@@ -13,7 +15,11 @@ const ContactPage = () => {
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <Typography variant="h4">Contact</Typography>
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h4">Contact</Typography>
+        </Box>
+      </Container>
     </AppLayout>
   );
 };

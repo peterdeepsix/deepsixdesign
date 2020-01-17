@@ -3,6 +3,7 @@ import React from 'react';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
@@ -16,6 +17,8 @@ import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
 import CameraOutlinedIcon from '@material-ui/icons/CameraOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
 
 import Link from '../../Link';
 
@@ -42,6 +45,11 @@ const list = [
     to: '/predictions',
   },
   {
+    primaryText: 'Gallery',
+    icon: <ViewModuleIcon />,
+    to: '/gallery',
+  },
+  {
     primaryText: 'Upload',
     icon: <CloudUploadOutlinedIcon />,
     to: '/media',
@@ -55,6 +63,37 @@ const list = [
 
 const NavContent = ({ onClickItem }) => (
   <List>
+    <ListItem
+      color="inherit"
+      button
+      to="/products"
+      component={Link}
+      onClick={onClickItem}
+    >
+      <ListItemIcon>
+        <ChangeHistoryIcon />
+      </ListItemIcon>
+      <ListItemText
+        primary={'Products'}
+        primaryTypographyProps={{ noWrap: true }}
+      />
+    </ListItem>
+    <ListItem
+      color="inherit"
+      button
+      to="/cart"
+      component={Link}
+      onClick={onClickItem}
+    >
+      <ListItemIcon>
+        <ShoppingCartOutlinedIcon />
+      </ListItemIcon>
+      <ListItemText
+        primary={'Shopping Cart'}
+        primaryTypographyProps={{ noWrap: true }}
+      />
+    </ListItem>
+    <Divider style={{ margin: '12px 0' }} />
     {list.map(({ to, primaryText, icon }, i) => (
       <ListItem
         key={primaryText}
@@ -101,22 +140,6 @@ const NavContent = ({ onClickItem }) => (
       </ListItemIcon>
       <ListItemText
         primary={'Contact'}
-        primaryTypographyProps={{ noWrap: true }}
-      />
-    </ListItem>
-    <Divider style={{ margin: '12px 0' }} />
-    <ListItem
-      color="inherit"
-      button
-      to="/"
-      component={Link}
-      onClick={onClickItem}
-    >
-      <ListItemIcon>
-        <ExitToAppOutlinedIcon />
-      </ListItemIcon>
-      <ListItemText
-        primary={'Deep Six Design'}
         primaryTypographyProps={{ noWrap: true }}
       />
     </ListItem>

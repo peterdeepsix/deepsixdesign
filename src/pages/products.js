@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DefaultLayout from '../components/layouts/defaultLayout';
+import AppLayout from '../components/layouts/appLayout';
 import SEO from '../components/seo';
 
 import Container from '@material-ui/core/Container';
@@ -13,14 +13,14 @@ const IndexPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <DefaultLayout>
+    <AppLayout>
       <SEO title="Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="h4">Products</Typography>
         </Box>
       </Container>
-    </DefaultLayout>
+    </AppLayout>
   );
 };
 
