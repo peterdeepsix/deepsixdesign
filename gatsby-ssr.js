@@ -8,5 +8,5 @@ import TopLayout from './src/components/layouts/topLayout';
 import provideStores from './src/providers/provide-stores';
 
 export const wrapRootElement = ({ element }) => {
-  return provideStores(<TopLayout>{element}</TopLayout>);
+  return provideStores(<HelmetLayout>{element}</HelmetLayout>);
 };

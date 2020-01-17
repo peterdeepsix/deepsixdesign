@@ -5,6 +5,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#FF1654',
+      contrastText: '#000',
     },
     secondary: {
       main: '#70C1B3',
@@ -20,9 +21,12 @@ const theme = createMuiTheme({
     button: {
       textTransform: 'none',
     },
+    overline: {
+      textTransform: 'none',
+    },
     fontFamily: [
-      'Roboto',
-      'Lato',
+      'Muli',
+      'Nunito',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',

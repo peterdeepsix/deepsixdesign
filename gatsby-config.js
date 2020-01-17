@@ -10,8 +10,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`lato`],
-        display: 'swap',
+        fonts: [`muli`, `nunito`],
       },
     },
     {

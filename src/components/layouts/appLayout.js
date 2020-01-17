@@ -2,6 +2,7 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
 import Toolbar from '@material-ui/core/Toolbar';
 import {
   Root,
@@ -17,11 +18,34 @@ import {
 } from '@mui-treasury/layout';
 
 import theme from '../../configs/theme';
+import Loading from '../loading';
 
-import NavContent from '../app/components/NavContent';
-import NavHeader from '../app/components/NavHeader';
-import HeaderContent from '../app/components/HeaderContent';
-import FooterContent from '../app/components/FooterContent';
+import Loadable from '@loadable/component';
+
+const NavContent = Loadable(
+  () => import('../app/components/NavContent'),
+  {
+    fallback: <Loading isCircular />,
+  },
+);
+const NavHeader = Loadable(
+  () => import('../app/components/NavHeader'),
+  {
+    fallback: <Loading isCircular />,
+  },
+);
+const HeaderContent = Loadable(
+  () => import('../app/components/HeaderContent'),
+  {
+    fallback: <Loading isCircular />,
+  },
+);
+const FooterContent = Loadable(
+  () => import('../app/components/FooterContent'),
+  {
+    fallback: <Loading isCircular />,
+  },
+);
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,12 +54,7 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  toolbar: {
-    // minHeight: 128,
-    // alignItems: 'flex-start',
-    // paddingTop: theme.spacing(1),
-    // paddingBottom: theme.spacing(2),
-  },
+  toolbar: {},
   title: {
     flexGrow: 1,
     alignSelf: 'flex-end',
