@@ -18,7 +18,7 @@ import CameraOutlinedIcon from '@material-ui/icons/CameraOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 
 import Link from '../../Link';
 
@@ -29,16 +29,15 @@ const list = [
     to: '/about',
   },
   {
+    primaryText: 'Render App',
+    icon: <CameraOutlinedIcon />,
+    to: '/app',
+  },
+  {
     primaryText: 'Timeline',
     icon: <TimelineOutlinedIcon />,
     to: '/timeline',
   },
-  {
-    primaryText: 'Render',
-    icon: <CameraOutlinedIcon />,
-    to: '/app',
-  },
-
   {
     primaryText: 'Predictions',
     icon: <LandscapeOutlinedIcon />,
@@ -46,7 +45,7 @@ const list = [
   },
   {
     primaryText: 'Gallery',
-    icon: <ViewModuleIcon />,
+    icon: <ViewModuleOutlinedIcon />,
     to: '/gallery',
   },
   {
