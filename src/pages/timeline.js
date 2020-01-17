@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import AppLayout from '../components/layouts/appLayout';
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
 import Loading from '../components/loading';
@@ -35,7 +34,7 @@ export const query = graphql`
 const Timeline = ({ data }) => {
   return (
     <StoreLayout>
-      <SEO title="Timeline" />
+      <SEO title="Timeline - Deep Six Design" />
       <TimelineComponent data={data} />
     </StoreLayout>
   );
