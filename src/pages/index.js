@@ -3,7 +3,7 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 
 import SEO from '../components/seo';
 import IndefiniteLoading from '../components/loading/indefiniteLoading';
-import StoreLayout from '../components/layouts/storeLayout';
+import StoreLayout from '../layouts/storeLayout';
 import Loadable from '@loadable/component';
 
 const IndexComponent = Loadable(

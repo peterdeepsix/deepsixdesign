@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -7,9 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
-import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
-import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
 import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
@@ -119,22 +117,6 @@ const NavContent = () => {
         </ListItem>
       ))}
       <Divider style={{ margin: '12px 0' }} />
-      <ListItem
-        color="inherit"
-        button
-        component={Link}
-        to="/terms"
-        selected={selectedIndex === 9}
-        onClick={event => handleListItemClick(event, 9)}
-      >
-        <ListItemIcon>
-          <GavelOutlinedIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={'Terms'}
-          primaryTypographyProps={{ noWrap: true }}
-        />
-      </ListItem>
       <ListItem
         color="inherit"
         button

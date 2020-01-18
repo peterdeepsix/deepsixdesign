@@ -3,7 +3,7 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
-import StoreLayout from '../components/layouts/storeLayout';
+import StoreLayout from '../layouts/storeLayout';
 import SEO from '../components/seo';
 import IndefiniteLoading from '../components/loading/indefiniteLoading';
 

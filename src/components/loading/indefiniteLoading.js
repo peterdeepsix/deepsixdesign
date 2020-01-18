@@ -4,14 +4,15 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const IndefiniteLoading = props => {
   const { isCircular, loading } = props;
+  // REMOVE NEGATION LATER
   {
-    return (
-      (isCircular && (
-        <CircularProgress loading={loading}></CircularProgress>
-      )) || (
-        <LinearProgress size={14} loading={loading}></LinearProgress>
-      )
-    );
+    if (!loading)
+      return (
+        (isCircular && (
+          <CircularProgress loading={loading}></CircularProgress>
+        )) || <LinearProgress loading={loading}></LinearProgress>
+      );
+    return null;
   }
 };
 

@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
-import AppLayout from './src/components/layouts/appLayout';
+import AppLayout from './src/layouts/appLayout';
 
 import provideStores from './src/providers/provide-stores';
 

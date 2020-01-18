@@ -2,11 +2,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Loadable from '@loadable/component';
 
-import IndefiniteLoading from '../loading/indefiniteLoading';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
-const AppComponent = Loadable(() => import('../app/appComponent'), {
-  fallback: <IndefiniteLoading />,
-});
+const AppComponent = Loadable(
+  () => import('../components/app/appComponent'),
+  {
+    fallback: <IndefiniteLoading isCircular />,
+  },
+);
 
 const AppLayout = ({ children }) => {
   return (
