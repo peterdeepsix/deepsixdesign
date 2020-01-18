@@ -16,7 +16,7 @@ const NavHeaderEx = ({ collapsed }) => (
         }}
       />
       <div style={{ paddingBottom: 16 }} />
-      <Typography variant={'h6'} noWrap>
+      <Typography variant="subtitle2" noWrap>
         Anonymous User
       </Typography>
       <FirebaseObject />

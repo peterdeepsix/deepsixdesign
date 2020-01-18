@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -23,16 +23,6 @@ import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 import Link from '../../Link';
 
 const list = [
-  {
-    primaryText: 'About',
-    icon: <NaturePeopleOutlinedIcon />,
-    to: '/about',
-  },
-  {
-    primaryText: 'Render App',
-    icon: <CameraOutlinedIcon />,
-    to: '/app',
-  },
   {
     primaryText: 'Timeline',
     icon: <TimelineOutlinedIcon />,
@@ -60,89 +50,117 @@ const list = [
   },
 ];
 
-const NavContent = ({ onClickItem }) => (
-  <List>
-    <ListItem
-      color="inherit"
-      button
-      to="/products"
-      component={Link}
-      onClick={onClickItem}
-    >
-      <ListItemIcon>
-        <ChangeHistoryIcon />
-      </ListItemIcon>
-      <ListItemText
-        primary={'Products'}
-        primaryTypographyProps={{ noWrap: true }}
-      />
-    </ListItem>
-    <ListItem
-      color="inherit"
-      button
-      to="/cart"
-      component={Link}
-      onClick={onClickItem}
-    >
-      <ListItemIcon>
-        <ShoppingCartOutlinedIcon />
-      </ListItemIcon>
-      <ListItemText
-        primary={'Shopping Cart'}
-        primaryTypographyProps={{ noWrap: true }}
-      />
-    </ListItem>
-    <Divider style={{ margin: '12px 0' }} />
-    {list.map(({ to, primaryText, icon }, i) => (
+const NavContent = () => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
+  return (
+    <List>
       <ListItem
-        key={primaryText}
-        selected={i === 0}
-        button
-        to={to}
-        component={Link}
         color="inherit"
+        button
+        component={Link}
+        to="/about"
+        selected={selectedIndex === 0}
+        onClick={event => handleListItemClick(event, 0)}
       >
         <ListItemIcon>
-          <Icon>{icon}</Icon>
+          <NaturePeopleOutlinedIcon />
         </ListItemIcon>
         <ListItemText
-          primary={primaryText}
+          primary={'About'}
           primaryTypographyProps={{ noWrap: true }}
         />
       </ListItem>
-    ))}
-    <Divider style={{ margin: '12px 0' }} />
-    <ListItem
-      color="inherit"
-      button
-      to="/terms"
-      component={Link}
-      onClick={onClickItem}
-    >
-      <ListItemIcon>
-        <GavelOutlinedIcon />
-      </ListItemIcon>
-      <ListItemText
-        primary={'Terms'}
-        primaryTypographyProps={{ noWrap: true }}
-      />
-    </ListItem>
-    <ListItem
-      color="inherit"
-      button
-      to="/contact"
-      component={Link}
-      onClick={onClickItem}
-    >
-      <ListItemIcon>
-        <ContactMailOutlinedIcon />
-      </ListItemIcon>
-      <ListItemText
-        primary={'Contact'}
-        primaryTypographyProps={{ noWrap: true }}
-      />
-    </ListItem>
-  </List>
-);
+      <ListItem
+        color="inherit"
+        button
+        to="/products"
+        component={Link}
+        selected={selectedIndex === 1}
+        onClick={event => handleListItemClick(event, 1)}
+      >
+        <ListItemIcon>
+          <ChangeHistoryIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary={'Products'}
+          primaryTypographyProps={{ noWrap: true }}
+        />
+      </ListItem>
+      <ListItem
+        color="inherit"
+        button
+        component={Link}
+        to="/cart"
+        selected={selectedIndex === 2}
+        onClick={event => handleListItemClick(event, 2)}
+      >
+        <ListItemIcon>
+          <ShoppingCartOutlinedIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary={'Shopping Cart'}
+          primaryTypographyProps={{ noWrap: true }}
+        />
+      </ListItem>
+      <Divider style={{ margin: '12px 0' }} />
+      {list.map(({ to, primaryText, icon }, i) => (
+        <ListItem
+          key={primaryText}
+          color="inherit"
+          button
+          component={Link}
+          to={to}
+          selected={selectedIndex === 3 + i}
+          onClick={event => handleListItemClick(event, 3 + i)}
+        >
+          <ListItemIcon>
+            <Icon>{icon}</Icon>
+          </ListItemIcon>
+          <ListItemText
+            primary={primaryText}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+      ))}
+      <Divider style={{ margin: '12px 0' }} />
+      <ListItem
+        color="inherit"
+        button
+        component={Link}
+        to="/terms"
+        selected={selectedIndex === 9}
+        onClick={event => handleListItemClick(event, 9)}
+      >
+        <ListItemIcon>
+          <GavelOutlinedIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary={'Terms'}
+          primaryTypographyProps={{ noWrap: true }}
+        />
+      </ListItem>
+      <ListItem
+        color="inherit"
+        button
+        component={Link}
+        to="/contact"
+        selected={selectedIndex === 10}
+        onClick={event => handleListItemClick(event, 10)}
+      >
+        <ListItemIcon>
+          <ContactMailOutlinedIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary={'Contact'}
+          primaryTypographyProps={{ noWrap: true }}
+        />
+      </ListItem>
+    </List>
+  );
+};
 
 export default NavContent;

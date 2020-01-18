@@ -3,7 +3,7 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 
 import SEO from '../components/seo';
 import Loading from '../components/loading';
-
+import StoreLayout from '../components/layouts/storeLayout';
 import Loadable from '@loadable/component';
 
 const AboutComponent = Loadable(
@@ -18,10 +18,10 @@ const IndexPage = () => {
     firebase.analytics().logEvent('visited_index');
   }, []);
   return (
-    <React.Fragment>
+    <StoreLayout>
       <SEO title="Deep Six Design" />
       <AboutComponent />
-    </React.Fragment>
+    </StoreLayout>
   );
 };
 

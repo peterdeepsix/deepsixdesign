@@ -1,11 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { useFirebase } from 'gatsby-plugin-firebase';
+import Loadable from '@loadable/component';
 
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
 import Loading from '../components/loading';
 
-import Loadable from '@loadable/component';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const ProcessComponent = Loadable(
   () => import('../components/process/processComponent'),
@@ -32,10 +35,18 @@ export const query = graphql`
 `;
 
 export default ({ data }) => {
+  const node = data.allProcesses.edges[0].node;
+  useFirebase(firebase => {
+    firebase.analytics().logEvent(`visited_${node.slug}`);
+  }, []);
   return (
     <StoreLayout>
-      <SEO title="Timeline" />
-      <ProcessComponent data={data} />
+      <SEO title="Timeline - Deep Six Design" />
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <ProcessComponent data={data} />
+        </Box>
+      </Container>
     </StoreLayout>
   );
 };

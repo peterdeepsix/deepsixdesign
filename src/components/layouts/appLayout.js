@@ -1,111 +1,24 @@
 import React from 'react';
-
 import { Helmet } from 'react-helmet';
-
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-
-import Toolbar from '@material-ui/core/Toolbar';
-import {
-  Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon,
-  muiTreasuryPreset,
-} from '@mui-treasury/layout';
-
-import theme from '../../configs/theme';
-import Loading from '../loading';
-
 import Loadable from '@loadable/component';
 
-const NavContent = Loadable(
-  () => import('../app/components/NavContent'),
-  {
-    fallback: <Loading isCircular />,
-  },
-);
-const NavHeader = Loadable(
-  () => import('../app/components/NavHeader'),
-  {
-    fallback: <Loading isCircular />,
-  },
-);
-const HeaderContent = Loadable(
-  () => import('../app/components/HeaderContent'),
-  {
-    fallback: <Loading isCircular />,
-  },
-);
-const FooterContent = Loadable(
-  () => import('../app/components/FooterContent'),
-  {
-    fallback: <Loading isCircular />,
-  },
-);
+import Loading from '../loading';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  toolbar: {},
-  title: {
-    flexGrow: 1,
-    alignSelf: 'flex-end',
-  },
-}));
+const AppComponent = Loadable(() => import('../app/appComponent'), {
+  fallback: <Loading isCircular />,
+});
 
 const AppLayout = ({ children }) => {
-  const classes = useStyles();
   return (
-    <React.Fragment>
-      <main>
-        <Helmet>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-        </Helmet>
-        <Root theme={theme} config={muiTreasuryPreset}>
-          {({ headerStyles, sidebarStyles, collapsed }) => (
-            <>
-              <CssBaseline />
-              <Header>
-                <Toolbar className={classes.toolbar}>
-                  <SidebarTrigger
-                    className={headerStyles.leftTrigger}
-                  >
-                    <SidebarTriggerIcon />
-                  </SidebarTrigger>
-                  <HeaderContent />
-                </Toolbar>
-              </Header>
-              <Sidebar>
-                <NavHeader collapsed={collapsed} />
-                <div className={sidebarStyles.container}>
-                  <NavContent />
-                </div>
-                <CollapseBtn className={sidebarStyles.collapseBtn}>
-                  <CollapseIcon />
-                </CollapseBtn>
-              </Sidebar>
-              <Content>{children}</Content>
-              <Footer>
-                <FooterContent />
-              </Footer>
-            </>
-          )}
-        </Root>
-      </main>
-    </React.Fragment>
+    <main>
+      <Helmet>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+        />
+      </Helmet>
+      <AppComponent>{children}</AppComponent>
+    </main>
   );
 };
 

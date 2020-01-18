@@ -9,11 +9,11 @@ import Typography from '@material-ui/core/Typography';
 
 const IndexPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_index');
+    firebase.analytics().logEvent('visited_products');
   }, []);
   return (
     <React.Fragment>
-      <SEO title="Deep Six Design" />
+      <SEO title="Products - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="h4">Products</Typography>

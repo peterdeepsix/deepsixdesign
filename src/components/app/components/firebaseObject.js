@@ -35,9 +35,13 @@ function FirebaseObject() {
 
   return (
     <React.Fragment>
-      {user && (
+      {(user && (
         <Typography color={'textSecondary'} noWrap variant="body1">
           {user.uid}
+        </Typography>
+      )) || (
+        <Typography color={'textSecondary'} noWrap variant="body1">
+          Not signed in
         </Typography>
       )}
     </React.Fragment>

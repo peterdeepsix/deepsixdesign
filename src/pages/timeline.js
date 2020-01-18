@@ -1,11 +1,11 @@
 import React from 'react';
+import { useFirebase } from 'gatsby-plugin-firebase';
 import { graphql } from 'gatsby';
+import Loadable from '@loadable/component';
 
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
 import Loading from '../components/loading';
-
-import Loadable from '@loadable/component';
 
 const TimelineComponent = Loadable(
   () => import('../components/timeline/timelineComponent'),
@@ -31,7 +31,10 @@ export const query = graphql`
   }
 `;
 
-const Timeline = ({ data }) => {
+const TimelinePage = ({ data }) => {
+  useFirebase(firebase => {
+    firebase.analytics().logEvent('visited_timeline');
+  }, []);
   return (
     <StoreLayout>
       <SEO title="Timeline - Deep Six Design" />
@@ -40,4 +43,4 @@ const Timeline = ({ data }) => {
   );
 };
 
-export default Timeline;
+export default TimelinePage;
