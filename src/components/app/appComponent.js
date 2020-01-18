@@ -77,12 +77,12 @@ const config = {
       inset: false,
       variant: 'permanent',
       width: 256,
-      collapsible: false,
+      collapsible: true,
       collapsedWidth: 64,
     },
     header: {
       position: 'relative',
-      clipped: false,
+      clipped: true,
       offsetHeight: 64,
       persistentBehavior: 'flexible',
     },
@@ -105,7 +105,7 @@ const config = {
     },
     header: {
       position: 'relative',
-      clipped: false,
+      clipped: true,
       offsetHeight: 64,
       persistentBehavior: 'fit',
     },
