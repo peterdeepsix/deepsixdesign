@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import SEO from '../components/seo';
-import DisplayObjects from '../components/displayObjects';
+import DisplayObjects from '../../components/displayObjects';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -12,16 +11,15 @@ import Button from '@material-ui/core/Button';
 
 // Async loadable imports
 import Loadable from '@loadable/component';
-const LoadableCamera = Loadable(() => import('../components/camera'));
+const LoadableCamera = Loadable(() => import('./camera'));
 
-const Camera = () => {
+const StreamComponent = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
   const [cardObjects, setCardObjects] = useState();
 
   return (
     <React.Fragment>
-      <SEO title="Upload" />
       <Container maxWidth="md">
         <Box my={4}>
           <Button
@@ -83,4 +81,4 @@ const Camera = () => {
   );
 };
 
-export default Camera;
+export default StreamComponent;

@@ -3,22 +3,19 @@ import React, { useState } from 'react';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Icon from '@material-ui/core/Icon';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
-import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 import GavelOutlinedIcon from '@material-ui/icons/GavelOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 import AddAPhotoOutlinedIcon from '@material-ui/icons/AddAPhotoOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
 import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
-import CameraOutlinedIcon from '@material-ui/icons/CameraOutlined';
 import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
+import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
 
 import Link from '../../Link';
 
@@ -39,14 +36,9 @@ const list = [
     to: '/gallery',
   },
   {
-    primaryText: 'Upload',
-    icon: <CloudUploadOutlinedIcon />,
-    to: '/media',
-  },
-  {
-    primaryText: 'Camera',
-    icon: <AddAPhotoOutlinedIcon />,
-    to: '/camera',
+    primaryText: 'Stream',
+    icon: <AllInclusiveOutlinedIcon />,
+    to: '/stream',
   },
 ];
 

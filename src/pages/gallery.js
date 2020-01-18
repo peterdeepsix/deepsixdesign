@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
 import StoreLayout from '../components/layouts/storeLayout';
@@ -8,7 +7,6 @@ import Loading from '../components/loading';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 
 import Loadable from '@loadable/component';
 
@@ -19,24 +17,7 @@ const GalleryComponent = Loadable(
   },
 );
 
-// export const query = graphql`
-//   query TimelinePageQuery {
-//     allProcesses(sort: { fields: step }) {
-//       edges {
-//         node {
-//           id
-//           slug
-//           title
-//           step
-//           definition
-//           synonyms
-//         }
-//       }
-//     }
-//   }
-// `;
-
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   useFirebase(firebase => {
     firebase.analytics().logEvent('visited_index');
   }, []);

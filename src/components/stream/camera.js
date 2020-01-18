@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import Measure from 'react-measure';
-import { useUserMedia } from '../hooks/useUserMedia';
-import { useCardRatio } from '../hooks/useCardRatio';
-import { useOffsets } from '../hooks/useOffsets';
+import { useUserMedia } from '../../hooks/useUserMedia';
+import { useCardRatio } from '../../hooks/useCardRatio';
+import { useOffsets } from '../../hooks/useOffsets';
 import {
   Video,
   Canvas,

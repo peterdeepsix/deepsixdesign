@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CircularDeterminate from '../components/circularDeterminate';
+import CircularDeterminate from '../../components/circularDeterminate';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 import { DropzoneDialog } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
 
-class MediaDropzoneArea extends Component {
+class MediaUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +23,7 @@ class MediaDropzoneArea extends Component {
   handleSubmit(files) {
     const file = files[0];
     const storage = this.props.storage;
+    const firestore = this.props.firestore;
     let uploadTask = storage
       .ref()
       .child(file.name)
@@ -40,13 +41,26 @@ class MediaDropzoneArea extends Component {
         console.log(error);
       },
       () => {
-        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL =>
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           this.setState({
             imageUrl: downloadURL,
             loading: false,
             progress: 0,
-          }),
-        );
+          });
+          firestore
+            .collection('predictions')
+            .doc()
+            .set(downloadURL)
+            .then(() => {
+              console.log('A new predictions has been added');
+            })
+            .catch(error => {
+              console.log(
+                `A error occured addding a new prediction. ${error}`,
+              );
+              this.setState({ loading: false });
+            });
+        });
       },
     );
   }
@@ -114,4 +128,4 @@ class MediaDropzoneArea extends Component {
   }
 }
 
-export default MediaDropzoneArea;
+export default MediaUpload;
