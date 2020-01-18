@@ -25,8 +25,7 @@ const theme = createMuiTheme({
       textTransform: 'none',
     },
     fontFamily: [
-      // 'Muli',
-      'Nunito',
+      'Muli',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',

@@ -115,10 +115,10 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
   }, [firestore]);
 
   const handleMarkComplete = async () => {
-    await predictionsStore.updatePrediction({
-      ...prediction,
-      status: 'complete',
-    });
+    // await predictionsStore.updatePrediction({
+    //   ...prediction,
+    //   status: 'complete',
+    // });
     console.log('gang gang buzz buzz');
   };
 

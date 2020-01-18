@@ -29,11 +29,10 @@ const PredictionsTableItem = ({
       {status !== 'complete' && (
         <Box my={4}>
           <Button
-            disabled={!firestore || isBusy}
             onClick={handleMarkComplete(prediction)}
             variant="outlined"
           >
-            {isBusy ? '...' : 'Mark Complete'}
+            Toggle Status
           </Button>
         </Box>
       )}
