@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
 import { inject } from 'mobx-react';
 import dateFormat from 'date-format';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 const PredictionsTableItem = ({
   predictions: predictionsStore,
   prediction,
+  handleMarkComplete,
 }) => {
-  const [isBusy, setIsBusy] = useState(false);
   const { title, status, dueAt } = prediction;
   const { firestore } = predictionsStore;
 
-  const handleMarkComplete = async () => {
-    setIsBusy(true);
-    // update the task with the new status
-    await predictionsStore.updatePrediction({
-      ...prediction,
-      status: 'complete',
-    });
-    setIsBusy(false);
-  };
-
   return (
-    <li>
-      <h3>{title}</h3>
-      <div>
-        <time>Due {dateFormat('MM/dd/yyyy', new Date(dueAt))}</time>
-      </div>
-      <div>
-        <mark>{status}</mark>
-        {status !== 'complete' && (
-          <button
+    <Container maxWidth="sm">
+      <Box my={4}>
+        <Typography variant="h6">{title}</Typography>
+      </Box>
+      <Box my={4}>
+        <Typography variant="h6">
+          Due {dateFormat('MM/dd/yyyy', new Date(dueAt))}
+        </Typography>
+      </Box>
+      <Box my={4}>Status - {status}</Box>
+
+      {status !== 'complete' && (
+        <Box my={4}>
+          <Button
             disabled={!firestore || isBusy}
-            onClick={handleMarkComplete}
+            onClick={handleMarkComplete(prediction)}
+            variant="outlined"
           >
             {isBusy ? '...' : 'Mark Complete'}
-          </button>
-        )}
-      </div>
-    </li>
+          </Button>
+        </Box>
+      )}
+    </Container>
   );
 };
 

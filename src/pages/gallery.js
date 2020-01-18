@@ -45,7 +45,7 @@ const IndexPage = ({ data }) => {
       <SEO title="Gallery" />
       <Container maxWidth="sm">
         <Box my={4}>
-          <Typography variant="h4">Gallery</Typography>
+          <GalleryComponent></GalleryComponent>
         </Box>
       </Container>
     </StoreLayout>

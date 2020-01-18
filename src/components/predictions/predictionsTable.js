@@ -114,6 +114,14 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
+  const handleMarkComplete = async () => {
+    await predictionsStore.updatePrediction({
+      ...prediction,
+      status: 'complete',
+    });
+    console.log('gang gang buzz buzz');
+  };
+
   if (isLoading) return <Loading />;
   return (
     <div className={classes.root}>
@@ -131,14 +139,20 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
           { title: 'Due At', field: 'dueAt' },
         ]}
         data={predictions}
-        // detailPanel={[
-        //   {
-        //     tooltip: 'Show Status',
-        //     render: rowData => {
-        //       return <PredictionsTableItem prediction={rowData} />;
-        //     },
-        //   },
-        // ]}
+        detailPanel={[
+          {
+            tooltip: 'Show Status',
+            render: rowData => {
+              return (
+                <PredictionsTableItem
+                  handleMarkComplete={handleMarkComplete}
+                  prediction={rowData}
+                />
+              );
+            },
+          },
+        ]}
+        onRowClick={(event, rowData, togglePanel) => togglePanel()}
       />
     </div>
   );
