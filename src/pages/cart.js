@@ -13,7 +13,7 @@ const CartPage = () => {
   }, []);
   return (
     <React.Fragment>
-      <SEO title="Deep Six Design" />
+      <SEO title="Shopping Cart - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="h4">Shopping Cart</Typography>

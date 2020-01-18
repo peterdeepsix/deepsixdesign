@@ -12,7 +12,6 @@ import {
   Header,
   Sidebar,
   Content,
-  Footer,
   CollapseBtn,
   CollapseIcon,
   SidebarTrigger,

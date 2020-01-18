@@ -19,7 +19,7 @@ const Predictions = () => {
   }, []);
   return (
     <StoreLayout>
-      <SEO title="Predictions" />
+      <SEO title="Predictions - Deep Six Design" />
       <PredictionsComponent />
     </StoreLayout>
   );

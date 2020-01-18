@@ -5,7 +5,7 @@ import Loadable from '@loadable/component';
 import IndefiniteLoading from '../loading/indefiniteLoading';
 
 const AppComponent = Loadable(() => import('../app/appComponent'), {
-  fallback: <IndefiniteLoading isCircular />,
+  fallback: <IndefiniteLoading />,
 });
 
 const AppLayout = ({ children }) => {

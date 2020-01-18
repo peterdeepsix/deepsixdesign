@@ -20,7 +20,7 @@ const StreamPage = () => {
   }, []);
   return (
     <StoreLayout>
-      <SEO title="Predictions" />
+      <SEO title="Stream - Deep Six Design" />
       <StreamComponent />
     </StoreLayout>
   );

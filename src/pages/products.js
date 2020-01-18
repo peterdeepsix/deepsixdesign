@@ -7,7 +7,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-const IndexPage = () => {
+const ProductsPage = () => {
   useFirebase(firebase => {
     firebase.analytics().logEvent('visited_products');
   }, []);
@@ -23,4 +23,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default ProductsPage;

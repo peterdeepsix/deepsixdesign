@@ -13,7 +13,7 @@ const ContactPage = () => {
   }, []);
   return (
     <React.Fragment>
-      <SEO title="Deep Six Design" />
+      <SEO title="Contact - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="h4">Contact</Typography>

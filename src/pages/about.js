@@ -18,7 +18,7 @@ const AboutPage = () => {
   }, []);
   return (
     <React.Fragment>
-      <SEO title="Deep Six Design" />
+      <SEO title="About - Deep Six Design" />
       <AboutComponent />
     </React.Fragment>
   );

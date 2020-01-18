@@ -16,13 +16,13 @@ const GalleryComponent = Loadable(
   },
 );
 
-const IndexPage = () => {
+const GalleryPage = () => {
   useFirebase(firebase => {
     firebase.analytics().logEvent('visited_gallery');
   }, []);
   return (
     <StoreLayout>
-      <SEO title="Gallery" />
+      <SEO title="Gallery - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <GalleryComponent></GalleryComponent>
@@ -32,4 +32,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default GalleryPage;
