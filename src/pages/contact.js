@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const ContactPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_index');
+    firebase.analytics().logEvent('visited_contact');
   }, []);
   return (
     <React.Fragment>

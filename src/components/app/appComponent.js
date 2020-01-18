@@ -1,12 +1,11 @@
 import React from 'react';
+import Loadable from '@loadable/component';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import MenuIcon from '@material-ui/icons/Menu';
-import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../../configs/theme';
+import IndefiniteLoading from '../loading/indefiniteLoading';
 
 import {
   Root,
@@ -20,31 +19,28 @@ import {
   SidebarTriggerIcon,
 } from '@mui-treasury/layout';
 
-import Loadable from '@loadable/component';
-import Loading from '../loading';
-
 const NavContent = Loadable(
   () => import('../app/components/NavContent'),
   {
-    fallback: <Loading isCircular />,
+    fallback: <IndefiniteLoading isCircular />,
   },
 );
 const NavHeader = Loadable(
   () => import('../app/components/NavHeader'),
   {
-    fallback: <Loading isCircular />,
+    fallback: <IndefiniteLoading isCircular />,
   },
 );
 const HeaderContent = Loadable(
   () => import('../app/components/HeaderContent'),
   {
-    fallback: <Loading isCircular />,
+    fallback: <IndefiniteLoading isCircular />,
   },
 );
 const FooterContent = Loadable(
   () => import('../app/components/FooterContent'),
   {
-    fallback: <Loading isCircular />,
+    fallback: <IndefiniteLoading isCircular />,
   },
 );
 
@@ -123,7 +119,7 @@ const config = {
   },
 };
 
-const AppComponent = ({ children, location, ...props }) => (
+const AppComponent = ({ children, location }) => (
   <Root theme={theme} config={config}>
     {({ headerStyles, sidebarStyles, collapsed, opened }) => (
       <>

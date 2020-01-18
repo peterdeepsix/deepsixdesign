@@ -1,25 +1,24 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
-
-import StoreLayout from '../components/layouts/storeLayout';
-import SEO from '../components/seo';
-import Loading from '../components/loading';
+import Loadable from '@loadable/component';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-import Loadable from '@loadable/component';
+import StoreLayout from '../components/layouts/storeLayout';
+import SEO from '../components/seo';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
 const GalleryComponent = Loadable(
   () => import('../components/gallery/galleryComponent'),
   {
-    fallback: <Loading />,
+    fallback: <IndefiniteLoading />,
   },
 );
 
 const IndexPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_index');
+    firebase.analytics().logEvent('visited_gallery');
   }, []);
   return (
     <StoreLayout>

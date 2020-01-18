@@ -8,7 +8,7 @@ import React, {
 import { inject, observer } from 'mobx-react';
 import dateFormat from 'date-format';
 
-import Loading from '../loading';
+import IndefiniteLoading from '../loading/indefiniteLoading';
 import PredictionsTableItem from './predictionsTableItem';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -122,7 +122,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     console.log('gang gang buzz buzz');
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <IndefiniteLoading />;
   return (
     <div className={classes.root}>
       {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}

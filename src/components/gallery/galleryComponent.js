@@ -3,7 +3,7 @@ import { useFirebase } from 'gatsby-plugin-firebase';
 
 import { inject, observer } from 'mobx-react';
 
-import Loading from '../loading';
+import IndefiniteLoading from '../loading/indefiniteLoading';
 import MediaUpload from './mediaUpload';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -49,7 +49,7 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
     setStorage(firebase.storage());
   }, []);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <IndefiniteLoading />;
 
   return (
     <Container>

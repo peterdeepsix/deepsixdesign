@@ -1,21 +1,20 @@
 import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
+import Loadable from '@loadable/component';
 
 import SEO from '../components/seo';
-import Loading from '../components/loading';
-
-import Loadable from '@loadable/component';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
 const AboutComponent = Loadable(
   () => import('../components/about/aboutComponent'),
   {
-    fallback: <Loading />,
+    fallback: <IndefiniteLoading />,
   },
 );
 
 const AboutPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_index');
+    firebase.analytics().logEvent('visited_about');
   }, []);
   return (
     <React.Fragment>

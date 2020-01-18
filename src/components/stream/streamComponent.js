@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
-import DisplayObjects from '../../components/displayObjects';
+import DisplayObjects from './displayObjects';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';

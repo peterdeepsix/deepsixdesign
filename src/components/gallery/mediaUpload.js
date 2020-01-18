@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CircularDeterminate from '../../components/circularDeterminate';
+import DefiniteLoading from '../../components/loading/definiteLoading';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -21,6 +21,7 @@ class MediaUpload extends Component {
   }
 
   handleSubmit(files) {
+    console.log(`Handle submit - File - ${file}`);
     const file = files[0];
     const storage = this.props.storage;
     const firestore = this.props.firestore;
@@ -36,6 +37,7 @@ class MediaUpload extends Component {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
         );
         this.setState({ progress: progress, loading: true });
+        console.log(`Progress - ${progress}`);
       },
       error => {
         console.log(error);
@@ -47,19 +49,19 @@ class MediaUpload extends Component {
             loading: false,
             progress: 0,
           });
-          firestore
-            .collection('predictions')
-            .doc()
-            .set(downloadURL)
-            .then(() => {
-              console.log('A new predictions has been added');
-            })
-            .catch(error => {
-              console.log(
-                `A error occured addding a new prediction. ${error}`,
-              );
-              this.setState({ loading: false });
-            });
+          // firestore
+          //   .collection('predictions')
+          //   .doc()
+          //   .set(downloadURL)
+          //   .then(() => {
+          //     console.log('A new predictions has been added');
+          //   })
+          //   .catch(error => {
+          //     console.log(
+          //       `A error occured addding a new prediction. ${error}`,
+          //     );
+          //     this.setState({ loading: false });
+          //   });
         });
       },
     );
@@ -95,7 +97,8 @@ class MediaUpload extends Component {
           disabled={loading}
         >
           Upload Media
-          <CircularDeterminate
+          <DefiniteLoading
+            isCircular
             progress={progress}
             loading={loading}
           />

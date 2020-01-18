@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
 
-import Loading from '../loading';
+import IndefiniteLoading from '../loading/indefiniteLoading';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '../Link';
@@ -55,7 +55,7 @@ const TimelineComponent = ({
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <IndefiniteLoading />;
 
   return (
     <Container>

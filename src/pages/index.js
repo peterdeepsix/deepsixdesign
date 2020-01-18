@@ -2,14 +2,14 @@ import React from 'react';
 import { useFirebase } from 'gatsby-plugin-firebase';
 
 import SEO from '../components/seo';
-import Loading from '../components/loading';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 import StoreLayout from '../components/layouts/storeLayout';
 import Loadable from '@loadable/component';
 
-const AboutComponent = Loadable(
-  () => import('../components/about/aboutComponent'),
+const IndexComponent = Loadable(
+  () => import('../components/index/indexComponent'),
   {
-    fallback: <Loading isCircular />,
+    fallback: <IndefiniteLoading />,
   },
 );
 
@@ -20,7 +20,7 @@ const IndexPage = () => {
   return (
     <StoreLayout>
       <SEO title="Deep Six Design" />
-      <AboutComponent />
+      <IndexComponent />
     </StoreLayout>
   );
 };

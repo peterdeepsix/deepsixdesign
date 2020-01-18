@@ -5,7 +5,7 @@ import Loadable from '@loadable/component';
 
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
-import Loading from '../components/loading';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -13,7 +13,7 @@ import Box from '@material-ui/core/Box';
 const ProcessComponent = Loadable(
   () => import('../components/process/processComponent'),
   {
-    fallback: <Loading />,
+    fallback: <IndefiniteLoading />,
   },
 );
 

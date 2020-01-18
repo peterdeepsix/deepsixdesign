@@ -5,12 +5,12 @@ import Loadable from '@loadable/component';
 
 import StoreLayout from '../components/layouts/storeLayout';
 import SEO from '../components/seo';
-import Loading from '../components/loading';
+import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
 const TimelineComponent = Loadable(
   () => import('../components/timeline/timelineComponent'),
   {
-    fallback: <Loading />,
+    fallback: <IndefiniteLoading />,
   },
 );
 
