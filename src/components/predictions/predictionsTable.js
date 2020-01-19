@@ -137,6 +137,8 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
           { title: 'Title', field: 'title' },
           { title: 'Status', field: 'status' },
           { title: 'Due At', field: 'dueAt' },
+          { title: 'Created At', field: 'createdAt' },
+          { title: 'Input Image', field: 'inputImageUrl' },
         ]}
         data={predictions}
         detailPanel={[
@@ -146,7 +148,7 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
               return (
                 <PredictionsTableItem
                   handleMarkComplete={handleMarkComplete}
-                  prediction={rowData}
+                  rowData={rowData}
                 />
               );
             },

@@ -58,7 +58,7 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
           setLoading(false);
           setProgress(0);
           const newDoc = {
-            inputImgUrl: downloadURL,
+            inputImageUrl: downloadURL,
             title: 'Yehaw',
             dueAt: 1579201369659,
             createdAt: 1579201373011,

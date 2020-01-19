@@ -8,11 +8,11 @@ import Button from '@material-ui/core/Button';
 
 const PredictionsTableItem = ({
   predictions: predictionsStore,
-  prediction,
+  rowData,
   handleMarkComplete,
 }) => {
-  const { title, status, dueAt } = prediction;
-  const { firestore } = predictionsStore;
+  const { title, status, dueAt, createdAt, inputImageUrl } = rowData;
+  const { predictions } = predictionsStore;
 
   return (
     <Container maxWidth="sm">
@@ -20,20 +20,29 @@ const PredictionsTableItem = ({
         <Typography variant="h6">{title}</Typography>
       </Box>
       <Box my={4}>
-        <Typography variant="h6">
+        <Typography variant="body1">
+          Created {dateFormat('MM/dd/yyyy', new Date(createdAt))}
+        </Typography>
+      </Box>
+      <Box my={4}>
+        <Typography variant="body1">
           Due {dateFormat('MM/dd/yyyy', new Date(dueAt))}
         </Typography>
       </Box>
-      <Box my={4}>Status - {status}</Box>
-
+      <Box my={4}>
+        <Typography variant="body1">Status - {status}</Typography>
+      </Box>
+      {inputImageUrl && (
+        <Container maxWidth="sm">
+          <Box my={4}>
+            <img src={inputImageUrl} width={275} alt="wow" />
+          </Box>
+        </Container>
+      )}
       {status !== 'complete' && (
         <Box my={4}>
-          <Button
-            onClick={handleMarkComplete(prediction)}
-            variant="outlined"
-          >
-            Toggle Status
-          </Button>
+          {console.log(rowData)}
+          <Button variant="outlined">Toggle Status</Button>
         </Box>
       )}
     </Container>
