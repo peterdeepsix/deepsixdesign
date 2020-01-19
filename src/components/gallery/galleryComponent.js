@@ -47,8 +47,8 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
 
   return (
     <React.Fragment>
-      <MediaUpload />
       <MediaGrid />
+      <MediaUpload />
     </React.Fragment>
   );
 };

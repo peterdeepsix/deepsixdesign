@@ -16,6 +16,7 @@ import {
   CollapseIcon,
   SidebarTrigger,
   SidebarTriggerIcon,
+  Footer,
 } from '@mui-treasury/layout';
 
 const NavContent = Loadable(
@@ -98,7 +99,7 @@ const config = {
       anchor: 'left',
       hidden: false,
       inset: false,
-      variant: 'persistent',
+      variant: 'permanent',
       width: 256,
       collapsible: true,
       collapsedWidth: 64,
@@ -141,8 +142,9 @@ const AppComponent = ({ children, location }) => (
           </CollapseBtn>
         </Sidebar>
         <Content>{children}</Content>
-        {/* <Footer></Footer> */}
-        <FooterContent />
+        <Footer>
+          <FooterContent />
+        </Footer>
       </>
     )}
   </Root>

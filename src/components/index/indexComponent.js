@@ -7,7 +7,7 @@ import Image from './image';
 const IndexComponent = () => {
   return (
     <Container>
-      <Box>
+      <Box maxWidth="sm">
         <Image />
       </Box>
     </Container>

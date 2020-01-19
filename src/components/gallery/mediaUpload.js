@@ -2,12 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
 import DefiniteLoading from '../../components/loading/definiteLoading';
-
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import FabZoom from './fabZoom';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
-import Button from '@material-ui/core/Button';
 
 const MediaUpload = ({ predictions: predictionsStore }) => {
   const { storage, firestore } = predictionsStore;
@@ -98,18 +95,12 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
 
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        onClick={handleOpen}
-        disabled={loading}
-      >
-        Upload Media
-        {/* <DefiniteLoading
+      <FabZoom onClick={handleOpen} disabled={loading} />
+      {/* <DefiniteLoading
           isCircular
           progress={progress}
           loading={loading}
         /> */}
-      </Button>
       <DropzoneDialog
         open={open}
         onSave={handleSave}
@@ -120,7 +111,7 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
         filesLimit={100}
         maxWidth="sm"
         fullWidth={true}
-        showFileNames={true}
+        showFileNames={false}
         showPreviews={false}
         showPreviewsInDropzone={true}
         onClose={handleClose}
