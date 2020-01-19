@@ -118,10 +118,6 @@ const Generator = () => {
     setLocations(locations.slice(0, -1));
   }
 
-  React.useEffect(() => {
-    draw();
-  });
-
   return (
     <>
       <div className="controls">
