@@ -31,8 +31,6 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const [storage, setStorage] = useState(null);
-
   useEffect(() => {
     if (!firestore) return;
     let didCancel = false;
@@ -45,15 +43,11 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  useFirebase(firebase => {
-    setStorage(firebase.storage());
-  }, []);
-
   if (isLoading) return <IndefiniteLoading />;
 
   return (
     <Container>
-      <MediaUpload firestore={firestore} storage={storage} />
+      <MediaUpload />
     </Container>
   );
 };

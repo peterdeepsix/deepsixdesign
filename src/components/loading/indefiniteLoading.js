@@ -8,9 +8,9 @@ const IndefiniteLoading = props => {
   {
     if (!loading)
       return (
-        (isCircular && (
-          <CircularProgress loading={loading}></CircularProgress>
-        )) || <LinearProgress loading={loading}></LinearProgress>
+        (isCircular && <CircularProgress></CircularProgress>) || (
+          <LinearProgress></LinearProgress>
+        )
       );
     return null;
   }

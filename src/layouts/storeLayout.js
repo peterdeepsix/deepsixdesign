@@ -10,6 +10,7 @@ const StoreLayout = ({ predictions: predictionsStore, children }) => {
     if (!firebase) return;
     // after firebase init add it to the store
     predictionsStore.setFirestore(firebase.firestore());
+    predictionsStore.setStorage(firebase.storage());
   }, [firebase]);
 
   return <div>{children}</div>;

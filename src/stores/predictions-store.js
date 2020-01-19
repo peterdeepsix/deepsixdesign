@@ -2,10 +2,15 @@ import { observable, action, decorate, toJS } from 'mobx';
 
 class PredictionsStore {
   firestore = null;
+  storage = null;
   predictions = [];
 
   setFirestore(firestore) {
     this.firestore = firestore;
+  }
+
+  setStorage(storage) {
+    this.storage = storage;
   }
 
   async getPredictions() {
@@ -67,6 +72,7 @@ class PredictionsStore {
 
   dehydrate() {
     return {
+      storage: this.storage,
       firestore: this.firestore,
       predictions: this.predictions,
     };
@@ -74,9 +80,11 @@ class PredictionsStore {
 }
 
 decorate(PredictionsStore, {
+  storage: observable,
   firestore: observable,
   predictions: observable,
   setFirestore: action,
+  setStorage: action,
   getPredictions: action,
   addPredictions: action,
   updatePredictions: action,
