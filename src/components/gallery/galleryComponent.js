@@ -8,7 +8,6 @@ import MediaUpload from './mediaUpload';
 import MediaGrid from './mediaGrid';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,10 +46,10 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
   if (isLoading) return <IndefiniteLoading />;
 
   return (
-    <Container>
+    <React.Fragment>
       <MediaUpload />
       <MediaGrid />
-    </Container>
+    </React.Fragment>
   );
 };
 

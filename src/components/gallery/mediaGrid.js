@@ -20,9 +20,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
-  gridList: {
-    width: 500,
-  },
+  gridList: {},
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
@@ -49,23 +47,19 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile
-          key="Subheader"
-          cols={2}
-          style={{ height: 'auto' }}
-        >
-          <ListSubheader component="div">Predictions</ListSubheader>
-        </GridListTile>
-        {predictions.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.inputImageUrl} alt={tile.title} />
+      <GridList spacing={0} className={classes.gridList}>
+        {predictions.map(prediction => (
+          <GridListTile key={prediction.id}>
+            <img
+              src={prediction.inputImageUrl}
+              alt={prediction.title}
+            />
             <GridListTileBar
-              title={tile.title}
-              subtitle={<span>status: {tile.status}</span>}
+              title={prediction.title}
+              subtitle={<span>status: {prediction.status}</span>}
               actionIcon={
                 <IconButton
-                  aria-label={`info about ${tile.title}`}
+                  aria-label={`info about ${prediction.title}`}
                   className={classes.icon}
                 >
                   <InfoIcon />
