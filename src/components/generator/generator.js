@@ -108,6 +108,7 @@ const Generator = () => {
   );
 
   function handleCanvasClick(e) {
+    handleClear()
     const newLocation = { x: e.clientX, y: e.clientY };
     setLocations([...locations, newLocation]);
   }
@@ -129,7 +130,6 @@ const Generator = () => {
         ref={canvasRef}
         width={window.innerWidth}
         height={window.innerHeight}
-        onClick={handleCanvasClick}
       />
     </>
   );
