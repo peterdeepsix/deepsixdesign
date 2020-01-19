@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import usePersistentCanvas from '../../hooks/usePersistentCanvas';
+import React, { useEffect, useRef } from 'react';
 
 var white = '#F2F5F1';
 var colors = ['#D40920', '#1356A2', '#F7D842'];
@@ -14,7 +13,7 @@ const squares = [
   },
 ];
 
-function draw(ctx, location) {
+function draw(ctx) {
   for (var i = 0; i < size; i += step) {
     splitSquaresWith({ y: i });
     splitSquaresWith({ x: i });
@@ -102,9 +101,15 @@ function splitOnY(square, splitAt) {
 }
 
 const Generator = () => {
-  const [locations, setLocations, canvasRef] = usePersistentCanvas(
-    draw,
-  );
+  const canvasRef = useRef(null);
+  let ctx = null
+  useEffect(() => {
+    if (canvasRef) {
+      ctx = canvasRef.current.getContext('2d');
+      draw(ctx)
+    }
+  });
+
   return (
     <>
       <canvas
