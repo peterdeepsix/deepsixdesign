@@ -30,7 +30,7 @@ const GeneratorComponent = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading />;
+  // if (isLoading) return <IndefiniteLoading />;
 
   return (
     <React.Fragment>

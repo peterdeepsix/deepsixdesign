@@ -8,24 +8,39 @@ const HOOK_PATH = new Path2D(HOOK_SVG);
 const SCALE = 0.3;
 const OFFSET = 80;
 
+const size = window.innerWidth;
+
+const squares = [
+  {
+    x: 0,
+    y: 0,
+    width: size,
+    height: size,
+  },
+];
+
 function draw(ctx, location) {
-  ctx.fillStyle = 'deepskyblue';
-  ctx.shadowColor = 'dodgerblue';
-  ctx.shadowBlur = 20;
-  ctx.save();
-  ctx.scale(SCALE, SCALE);
-  ctx.translate(
-    location.x / SCALE - OFFSET,
-    location.y / SCALE - OFFSET,
-  );
-  ctx.fill(HOOK_PATH);
-  ctx.restore();
+  for (var i = 0; i < squares.length; i++) {
+    ctx.beginPath();
+    ctx.rect(
+      squares[i].x,
+      squares[i].y,
+      squares[i].width,
+      squares[i].height,
+    );
+    ctx.stroke();
+  }
 }
+
+draw();
 
 const Generator = () => {
   const [locations, setLocations, canvasRef] = usePersistentCanvas(
     draw,
   );
+
+  const context = canvasRef.getContext('2d');
+
   function handleCanvasClick(e) {
     const newLocation = { x: e.clientX, y: e.clientY };
     setLocations([...locations, newLocation]);
