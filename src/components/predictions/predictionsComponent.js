@@ -10,9 +10,9 @@ import Box from '@material-ui/core/Box';
 const PredictionsComponent = () => {
   return (
     <Container>
-      <Box>
+      {/* <Box>
         <PredictionsDialog />
-      </Box>
+      </Box> */}
       <Box>
         <PredictionsTable />
       </Box>
