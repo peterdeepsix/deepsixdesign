@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import usePersistentCanvas from '../../hooks/usePersistentCanvas';
-import Button from '@material-ui/core/Button';
 
 var white = '#F2F5F1';
 var colors = ['#D40920', '#1356A2', '#F7D842'];
