@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from '../loading/indefiniteLoading';
 import MediaUpload from './mediaUpload';
+import MediaGrid from './mediaGrid';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -48,6 +49,7 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
   return (
     <Container>
       <MediaUpload />
+      <MediaGrid />
     </Container>
   );
 };

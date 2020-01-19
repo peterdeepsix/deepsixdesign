@@ -110,14 +110,6 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
           loading={loading}
         /> */}
       </Button>
-      {imageUrl && (
-        <Container maxWidth="sm">
-          <Box my={4}>
-            <img src={imageUrl} width={275} alt="wow" />
-          </Box>
-        </Container>
-      )}
-
       <DropzoneDialog
         open={open}
         onSave={handleSave}
