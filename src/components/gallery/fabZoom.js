@@ -19,11 +19,12 @@ const useStyles = makeStyles(theme => ({
   },
   fab: {
     margin: 0,
-    position: 'fixed',
-    right: theme.spacing(2),
-    bottom: theme.spacing(2),
-    top: 'auto',
-    left: 'auto',
+    position: 'static',
+    right: 'auto',
+    bottom: 'auto',
+    top: theme.spacing(2),
+    left: theme.spacing(2),
+    zIndex: 10000,
   },
 }));
 
@@ -88,6 +89,7 @@ export default function FloatingActionButtonZoom(props) {
         unmountOnExit
       > */}
       <Fab
+        sticky
         variant="extended"
         aria-label="Create Prediction"
         className={classes.fab}

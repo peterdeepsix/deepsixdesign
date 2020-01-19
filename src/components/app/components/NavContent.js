@@ -14,6 +14,7 @@ import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
+import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 
 import Link from '../../Link';
 
@@ -32,6 +33,11 @@ const list = [
     primaryText: 'Gallery',
     icon: <ViewModuleOutlinedIcon />,
     to: '/gallery',
+  },
+  {
+    primaryText: 'Generator',
+    icon: <AutorenewOutlinedIcon />,
+    to: '/generator',
   },
   {
     primaryText: 'Stream',

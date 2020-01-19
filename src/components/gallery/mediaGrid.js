@@ -47,7 +47,7 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
 
   return (
     <div className={classes.root}>
-      <GridList spacing={0} className={classes.gridList}>
+      <GridList spacing={2} className={classes.gridList}>
         {predictions.map(prediction => (
           <GridListTile key={prediction.id}>
             <img
@@ -56,7 +56,6 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
             />
             <GridListTileBar
               title={prediction.title}
-              subtitle={<span>status: {prediction.status}</span>}
               actionIcon={
                 <IconButton
                   aria-label={`info about ${prediction.title}`}

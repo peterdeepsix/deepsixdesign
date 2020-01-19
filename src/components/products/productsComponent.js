@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
 
 import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from '../loading/indefiniteLoading';
-import MediaUpload from './mediaUpload';
-import MediaGrid from './mediaGrid';
 
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    maxWidth: '100%',
-  },
-  chip: {
-    marginLeft: theme.spacing(-0.5),
-    display: 'flex',
-    justifyContent: 'start',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
-  },
+  root: {},
 }));
 
-const GalleryComponent = ({ predictions: predictionsStore }) => {
+const ProductsComponent = ({ predictions: predictionsStore }) => {
   const classes = useStyles();
 
   const { predictions, firestore } = predictionsStore;
@@ -45,12 +31,7 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
 
   if (isLoading) return <IndefiniteLoading />;
 
-  return (
-    <React.Fragment>
-      <MediaUpload />
-      <MediaGrid />
-    </React.Fragment>
-  );
+  return <React.Fragment>Products</React.Fragment>;
 };
 
-export default inject('predictions')(observer(GalleryComponent));
+export default inject('predictions')(observer(ProductsComponent));

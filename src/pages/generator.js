@@ -7,27 +7,27 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Loadable from '@loadable/component';
 
-const ProductsComponent = Loadable(
-  () => import('../components/products/productsComponent'),
+const GeneratorComponent = Loadable(
+  () => import('../components/generator/generatorComponent'),
   {
     fallback: <IndefiniteLoading />,
   },
 );
 
-const ProductsPage = () => {
+const GeneratorPage = () => {
   useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_products');
+    firebase.analytics().logEvent('visited_generator');
   }, []);
   return (
     <React.Fragment>
-      <SEO title="Products - Deep Six Design" />
+      <SEO title="Generator - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
-          <ProductsComponent />
+          <GeneratorComponent />
         </Box>
       </Container>
     </React.Fragment>
   );
 };
 
-export default ProductsPage;
+export default GeneratorPage;
