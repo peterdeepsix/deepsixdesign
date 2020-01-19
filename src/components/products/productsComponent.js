@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from '../loading/indefiniteLoading';
+import Typography from '@material-ui/core/button'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -31,7 +32,7 @@ const ProductsComponent = ({ predictions: predictionsStore }) => {
 
   if (isLoading) return <IndefiniteLoading />;
 
-  return <React.Fragment>Products</React.Fragment>;
+  return <React.Fragment><Typography variant="h4">Shopping Cart</Typography></React.Fragment>;
 };
 
 export default inject('predictions')(observer(ProductsComponent));

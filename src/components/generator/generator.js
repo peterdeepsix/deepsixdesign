@@ -106,26 +106,8 @@ const Generator = () => {
   const [locations, setLocations, canvasRef] = usePersistentCanvas(
     draw,
   );
-
-  function handleCanvasClick(e) {
-    handleClear()
-    const newLocation = { x: e.clientX, y: e.clientY };
-    setLocations([...locations, newLocation]);
-  }
-  function handleClear() {
-    setLocations([]);
-  }
-  function handleUndo() {
-    setLocations(locations.slice(0, -1));
-  }
-
   return (
     <>
-      <div className="controls">
-        <Button onClick={handleCanvasClick}>Draw</Button>
-        <Button onClick={handleClear}>Clear</Button>
-        <Button onClick={handleUndo}>Undo</Button>
-      </div>
       <canvas
         ref={canvasRef}
         width={window.innerWidth}
