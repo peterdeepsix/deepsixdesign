@@ -7,7 +7,7 @@ steps:
     args: ['add', 'firebase-tools']
   - name: node:10.15.1
     entrypoint: yarn
-    args: ['build']
+    args: ['build', '--token', '$_SERVICE_ACCOUNT']
   - name: 'node:10.15.1'
     entrypoint: './node_modules/.bin/firebase'
     args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
