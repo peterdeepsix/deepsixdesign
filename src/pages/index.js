@@ -1,27 +1,26 @@
 import React from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
 
-import SEO from '../components/seo';
-import IndefiniteLoading from '../components/loading/indefiniteLoading';
-import StoreLayout from '../layouts/storeLayout';
+import SEO from 'src/components/seo';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
 import Loadable from '@loadable/component';
 
+import StoreProvider from 'src/providers/storeProvider';
+import PredictionsStore from 'src/stores/predictionsStore'
+
 const IndexComponent = Loadable(
-  () => import('../components/index/indexComponent'),
+  () => import('src/components/index/indexComponent'),
   {
     fallback: <IndefiniteLoading />,
   },
 );
 
 const IndexPage = () => {
-  useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_index');
-  }, []);
   return (
-    <StoreLayout>
+    <StoreProvider predictions={new PredictionsStore()}>
       <SEO title="Deep Six Design" />
       <IndexComponent />
-    </StoreLayout>
+    </StoreProvider>
   );
 };
 

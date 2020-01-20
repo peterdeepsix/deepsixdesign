@@ -17,9 +17,11 @@
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "date-format": "^3.0.0",
+    "env-cmd": "^10.0.1",
     "firebase": "^7.7.0",
     "gatsby": "^2.18.25",
     "gatsby-image": "^2.2.39",
+    "gatsby-plugin-env-variables": "^1.0.1",
     "gatsby-plugin-firebase": "^0.1.8",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.37",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "^1.19.1"
   },
   "keywords": [

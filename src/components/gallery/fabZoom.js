@@ -89,7 +89,7 @@ export default function FloatingActionButtonZoom(props) {
         unmountOnExit
       > */}
       <Fab
-        sticky
+        sticky="true"
         variant="extended"
         aria-label="Create Prediction"
         className={classes.fab}

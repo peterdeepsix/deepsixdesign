@@ -6,7 +6,10 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    'gatsby-plugin-root-import',
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -19,13 +22,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `models`,
-        path: `${__dirname}/src/models`,
       },
     },
     {
@@ -48,8 +44,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -80,14 +74,14 @@ module.exports = {
           analytics: true,
         },
         credentials: {
-          apiKey: 'AIzaSyDPXTzBCOsuTu8-4J39dN5GcLoe3s8CrBI',
-          authDomain: 'plexus-1d216.firebaseapp.com',
-          databaseURL: 'https://plexus-1d216.firebaseio.com',
-          projectId: 'plexus-1d216',
-          storageBucket: 'plexus-1d216.appspot.com',
-          messagingSenderId: '602861693791',
-          appId: '1:602861693791:web:f961d42e4ee8ffac76a4ea',
-          measurementId: 'G-XQ871X0RD7',
+          apiKey: process.env._F_APIKEY,
+          authDomain: process.env._F_AUTHDOMAIN,
+          databaseURL: process.env._F_DATABASEURL,
+          projectId: process.env._F_PROJECTID,
+          storageBucket: process.env._F_STORAGEBUCKET,
+          messagingSenderId: process.env._F_MESSAGINGSENDERID,
+          appId: process.env._F_APPID,
+          measurementId: process.env._F_MEASUREMENTID,
         },
       },
     },

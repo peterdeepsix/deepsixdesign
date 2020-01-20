@@ -6,6 +6,7 @@ import { inject, observer } from 'mobx-react';
 import IndefiniteLoading from '../loading/indefiniteLoading';
 import MediaUpload from './mediaUpload';
 import MediaGrid from './mediaGrid';
+import DetailDialog from './detailDialog';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -46,10 +47,11 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
   if (isLoading) return <IndefiniteLoading />;
 
   return (
-    <React.Fragment>
+    <>
+      <DetailDialog />
       <MediaUpload />
       <MediaGrid />
-    </React.Fragment>
+    </ >
   );
 };
 

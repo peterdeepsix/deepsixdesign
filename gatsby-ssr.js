@@ -1,12 +1,23 @@
 import 'babel-polyfill';
 import React from 'react';
 
-// material-ui
-import AppLayout from './src/layouts/appLayout';
+import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react';
 
-// mobx stores
-import provideStores from './src/providers/provide-stores';
+import StoreProvider from 'src/providers/storeProvider';
+import PredictionsStore from 'src/stores/predictionsStore'
 
 export const wrapRootElement = ({ element }) => {
-  return provideStores(<AppLayout>{element}</AppLayout>);
+  return (
+    <AppLayout>
+      <StoreLayout>
+        {element}
+      </StoreLayout>
+    </AppLayout>
+  )
+};
+
+export const onClientEntry = () => {
+  LogRocket.init('6frqmr/deepsixdesign');
+  setupLogRocketReact(LogRocket);
 };

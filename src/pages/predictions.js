@@ -1,22 +1,18 @@
 import React from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
 import Loadable from '@loadable/component';
 
-import StoreLayout from '../layouts/storeLayout';
-import SEO from '../components/seo';
-import IndefiniteLoading from '../components/loading/indefiniteLoading';
+import StoreLayout from 'src/layouts/storeLayout';
+import SEO from 'src/components/seo';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const PredictionsComponent = Loadable(
-  () => import('../components/predictions/predictionsComponent'),
+  () => import('src/components/predictions/predictionsComponent'),
   {
     fallback: <IndefiniteLoading />,
   },
 );
 
 const Predictions = () => {
-  useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_predictions');
-  }, []);
   return (
     <StoreLayout>
       <SEO title="Predictions - Deep Six Design" />

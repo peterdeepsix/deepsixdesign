@@ -1,26 +1,22 @@
 import React from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
 import Loadable from '@loadable/component';
 
-import SEO from '../components/seo';
-import IndefiniteLoading from '../components/loading/indefiniteLoading';
+import SEO from 'src/components/seo';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const AboutComponent = Loadable(
-  () => import('../components/about/aboutComponent'),
+  () => import('src/components/about/aboutComponent'),
   {
     fallback: <IndefiniteLoading />,
   },
 );
 
 const AboutPage = () => {
-  useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_about');
-  }, []);
   return (
-    <React.Fragment>
+    <>
       <SEO title="About - Deep Six Design" />
       <AboutComponent />
-    </React.Fragment>
+    </>
   );
 };
 

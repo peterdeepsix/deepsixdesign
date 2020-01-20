@@ -4,8 +4,9 @@ import Loadable from '@loadable/component';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import theme from '../../configs/theme';
-import IndefiniteLoading from '../loading/indefiniteLoading';
+import theme from 'src/configs/theme';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+import StoreLayout from 'src/layouts/storeLayout';
 
 import {
   Root,

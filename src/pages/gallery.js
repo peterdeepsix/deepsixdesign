@@ -1,14 +1,13 @@
 import React from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
 import Loadable from '@loadable/component';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-import StoreLayout from '../layouts/storeLayout';
-import SEO from '../components/seo';
-import IndefiniteLoading from '../components/loading/indefiniteLoading';
+import StoreLayout from 'src/layouts/storeLayout';
+import SEO from 'src/components/seo';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const GalleryComponent = Loadable(
-  () => import('../components/gallery/galleryComponent'),
+  () => import('src/components/gallery/galleryComponent'),
   {
     fallback: <IndefiniteLoading />,
   },
@@ -26,9 +25,6 @@ const GalleryComponent = Loadable(
 
 const GalleryPage = () => {
   const classes = useStyles();
-  useFirebase(firebase => {
-    firebase.analytics().logEvent('visited_gallery');
-  }, []);
   return (
     <StoreLayout>
       <SEO title="Gallery - Deep Six Design" />
