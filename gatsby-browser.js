@@ -5,14 +5,12 @@ import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 
 import AppLayout from 'src/layouts/appLayout'
-import StoreLayout from 'src/layouts/storeLayout'
+import provideStores from 'src/providers/provideStores '
 
 export const wrapRootElement = ({ element }) => {
-  return (
+  return provideStores(
     <AppLayout>
-      {/* <StoreLayout> */}
       {element}
-      {/* </StoreLayout> */}
     </AppLayout>
   )
 };

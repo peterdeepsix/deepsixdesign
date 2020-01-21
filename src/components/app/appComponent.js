@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 import theme from 'src/configs/theme';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
-import StoreLayout from 'src/layouts/storeLayout';
 
 import {
   Root,
