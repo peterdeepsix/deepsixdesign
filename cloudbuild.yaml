@@ -1,10 +1,15 @@
 steps:
   - name: node:10.15.1
     entrypoint: yarn
+    args: ['install']
+
+  - name: node:10.15.1
+    entrypoint: yarn
+    args: ['add', 'firebase-tools']
+
+  - name: node:10.15.1
+    entrypoint: yarn
     args: ['env-cmd', 'build']
-  - name: 'node:10.15.1'
-    entrypoint: './node_modules/.bin/firebase'
-    args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
     env:
       - '_F_APIKEY=${_F_APIKEY}'
       - '_F_AUTHDOMAIN=${_F_AUTHDOMAIN}'
@@ -14,30 +19,6 @@ steps:
       - '_F_APPID=${_F_APPID}'
       - '_F_MEASUREMENTID=${_F_MEASUREMENTID}'
 
-    steps:
-      - name: node:10.15.1
-        entrypoint: yarn
-        args: ['install']
-
-      - name: node:10.15.1
-        entrypoint: yarn
-        args: ['add', 'firebase-tools']
-
-       - name: node:10.15.1
-        entrypoint: yarn
-        args: ['env-cmd', 'build']
-      - name: 'node:10.15.1'
-        entrypoint: './node_modules/.bin/firebase'
-        args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
-        env:
-          - '_F_APIKEY=${_F_APIKEY}'
-          - '_F_AUTHDOMAIN=${_F_AUTHDOMAIN}'
-          - '_F_DATABASEURL=${_F_DATABASEURL}'
-          - '_F_PROJECTID=${ _F_PROJECTID}'
-          - '_F_STORAGEBUCKET=${_F_STORAGEBUCKET}'
-          - '_F_APPID=${_F_APPID}'
-          - '_F_MEASUREMENTID=${_F_MEASUREMENTID}'
-
-      - name: 'node:10.15.1'
-        entrypoint: './node_modules/.bin/firebase'
-        args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
+  - name: 'node:10.15.1'
+    entrypoint: './node_modules/.bin/firebase'
+    args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
