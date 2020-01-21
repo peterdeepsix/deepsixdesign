@@ -9,7 +9,7 @@ steps:
 
   - name: node:10.15.1
     entrypoint: yarn
-    args: ['env-cmd', 'build']
+    args: ['build']
     env:
       - '_F_APIKEY=${_F_APIKEY}'
       - '_F_AUTHDOMAIN=${_F_AUTHDOMAIN}'
