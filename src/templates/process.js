@@ -1,9 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { useFirebase } from 'gatsby-plugin-firebase';
 import Loadable from '@loadable/component';
 
-import StoreLayout from '../layouts/storeLayout';
+import AppLayout from '../layouts/appLayout';
 import SEO from '../components/seo';
 import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
@@ -36,17 +35,14 @@ export const query = graphql`
 
 export default ({ data }) => {
   const node = data.allProcesses.edges[0].node;
-  useFirebase(firebase => {
-    firebase.analytics().logEvent(`visited_${node.slug}`);
-  }, []);
   return (
-    <StoreLayout>
+    <AppLayout>
       <SEO title="Timeline - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <ProcessComponent data={data} />
         </Box>
       </Container>
-    </StoreLayout>
+    </AppLayout>
   );
 };

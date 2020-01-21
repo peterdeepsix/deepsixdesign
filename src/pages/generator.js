@@ -1,10 +1,12 @@
 import React from 'react';
+import Loadable from '@loadable/component';
 
-import SEO from 'src/components/seo';
-import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Loadable from '@loadable/component';
+
+import SEO from 'src/components/seo';
+import AppLayout from 'src/layouts/appLayout'
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const GeneratorComponent = Loadable(
   () => import('src/components/generator/generatorComponent'),
@@ -15,14 +17,14 @@ const GeneratorComponent = Loadable(
 
 const GeneratorPage = () => {
   return (
-    <>
+    <AppLayout>
       <SEO title="Generator - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
           <GeneratorComponent />
         </Box>
       </Container>
-    </>
+    </AppLayout>
   );
 };
 

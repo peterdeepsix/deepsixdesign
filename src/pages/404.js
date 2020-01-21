@@ -5,11 +5,12 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
 import SEO from 'src/components/seo';
+import AppLayout from 'src/layouts/appLayout'
 
 const NotFoundPage = () => {
 
   return (
-    <>
+    <AppLayout>
       <SEO title="404: Not found - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>
@@ -22,7 +23,7 @@ const NotFoundPage = () => {
           </Typography>
         </Box>
       </Container>
-    </>
+    </AppLayout>
   );
 };
 export default NotFoundPage;

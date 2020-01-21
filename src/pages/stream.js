@@ -1,9 +1,11 @@
 import React from 'react';
+import Loadable from '@loadable/component';
 
 import SEO from 'src/components/seo';
+import AppLayout from 'src/layouts/appLayout'
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-import Loadable from '@loadable/component';
+
 
 const StreamComponent = Loadable(
   () => import('src/components/stream/streamComponent'),
@@ -14,10 +16,10 @@ const StreamComponent = Loadable(
 
 const StreamPage = () => {
   return (
-    <>
+    <AppLayout>
       <SEO title="Stream - Deep Six Design" />
       <StreamComponent />
-    </>
+    </AppLayout>
   );
 };
 

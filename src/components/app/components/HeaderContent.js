@@ -83,28 +83,11 @@ const styles = ({
 });
 
 const HeaderContent = ({ classes, screen }) => {
-  const classes2 = useStyles();
   return (
     <>
-
-      <div className={classes.root}>
-        <Avatar alt="logo" src="src/images/logo.png" />
-      </div>
-
-
-      {screen === 'xs' &&
-        <>
-          <Typography variant="h5" noWrap className={classes.header}>
-            dsD
-          </Typography></>}
-
-      {screen === 'sm' &&
-        <>
-          <Typography variant="h5" noWrap className={classes.header}>
-            dsD
-          </Typography>
-        </>
-      }
+      <Typography variant="h5" color='textSecondary' noWrap className={classes.header}>
+        Plexus
+      </Typography>
 
 
       {isWidthUp('md', screen) &&
