@@ -7,7 +7,7 @@ import IndefiniteLoading from '../components/loading/indefiniteLoading';
 const AppComponent = Loadable(
   () => import('../components/app/appComponent'),
   {
-    fallback: <IndefiniteLoading isCircular />,
+    fallback: <IndefiniteLoading message='AppComponent' />,
   },
 );
 

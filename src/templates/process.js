@@ -13,7 +13,7 @@ import Box from '@material-ui/core/Box';
 const ProcessComponent = Loadable(
   () => import('../components/process/processComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='IndefiniteLoading' />,
   },
 );
 

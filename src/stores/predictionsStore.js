@@ -12,6 +12,7 @@ class PredictionsStore {
 
   setStorageRef(storage) {
     this.storageRef = storage.ref()
+    console.log(`setStorageRef - ${this.storageRef}`)
   }
 
   async getPredictions() {

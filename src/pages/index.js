@@ -8,7 +8,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const IndexComponent = Loadable(
   () => import('src/components/index/indexComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='IndexComponent' />,
   },
 );
 

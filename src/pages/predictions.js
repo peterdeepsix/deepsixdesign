@@ -8,7 +8,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const PredictionsComponent = Loadable(
   () => import('src/components/predictions/predictionsComponent'),
   {
-    fallback: <IndefiniteLoading message='Loading predictions page ...' />,
+    fallback: <IndefiniteLoading message='PredictionsComponent' />,
   },
 );
 

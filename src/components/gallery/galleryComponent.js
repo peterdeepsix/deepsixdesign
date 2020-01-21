@@ -13,7 +13,7 @@ const MediaGrid = Loadable(
 const CreatePredictionDialog = Loadable(
   () => import('src/components/gallery/createPredictionDialog'),
   {
-    fallback: <IndefiniteLoading message='loading createPredictionDialog' />,
+    fallback: <IndefiniteLoading message='CreatePredictionDialog' />,
   },
 );
 

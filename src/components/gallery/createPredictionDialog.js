@@ -16,7 +16,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const MediaUpload = Loadable(
     () => import('src/components/gallery/mediaUpload'),
     {
-        fallback: <IndefiniteLoading message='loading mediaUpload' />,
+        fallback: <IndefiniteLoading message='MediaUpload' />,
     },
 );
 

@@ -9,7 +9,7 @@ import Loadable from '@loadable/component';
 const GeneratorComponent = Loadable(
   () => import('src/components/generator/generatorComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='GeneratorComponent' />,
   },
 );
 

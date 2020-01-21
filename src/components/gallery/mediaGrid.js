@@ -45,7 +45,7 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading message='Loading mediaGrid ...' />;
+  if (isLoading) return <IndefiniteLoading message='MediaGrid' />;
   return (
     <div className={classes.root}>
       <GridList spacing={2} className={classes.gridList}>

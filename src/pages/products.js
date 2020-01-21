@@ -11,7 +11,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const ProductsComponent = Loadable(
   () => import('src/components/products/productsComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='ProductsComponent' />,
   },
 );
 

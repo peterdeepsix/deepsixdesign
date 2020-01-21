@@ -8,8 +8,19 @@ import Search from '@material-ui/icons/Search';
 import MoreVert from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 
 import Link from '../../Link';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 const styles = ({
   spacing,
@@ -71,36 +82,42 @@ const styles = ({
   },
 });
 
-const HeaderContent = ({ classes, screen }) => (
-  <>
-    <Typography
-      noWrap
-      color={'textSecondary'}
-      className={classes.header}
-    >
-      Deep Six Design - Plexus Prediction Engine v1.0.2
-    </Typography>
-    <div className={classes.grow} />
-    {screen === 'xs' && <p>xs</p>}
-    {screen === 'sm' && (
-      <>
-        <p>sm</p>
-      </>
-    )}
-    {isWidthUp('md', screen) && <></>}
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <Search />
+const HeaderContent = ({ classes, screen }) => {
+  const classes2 = useStyles();
+  return (
+    <>
+      <div className={classes.root}>
+        <Avatar alt="logo" src="src/images/logo.png" />
       </div>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-      />
-    </div>
-  </>
-);
+      <div className={classes.grow} />
+      <Typography variant="h5" noWrap className={classes.header}>
+        Deep Six Design
+      </Typography>
+      <div className={classes.grow} />
+      <Typography color={'textSecondary'} ariant="caption" display="block" noWrap className={classes.header}>
+        Plexus Prediction Engine v1.0.2
+      </Typography>
+      {screen === 'xs' && <p>xs</p>}
+      {screen === 'sm' && (
+        <>
+          <p>sm</p>
+        </>
+      )}
+      {isWidthUp('md', screen) && <></>}
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <Search />
+        </div>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+        />
+      </div>
+    </>
+  )
+};
 
 export default withStyles(styles)(HeaderContent);

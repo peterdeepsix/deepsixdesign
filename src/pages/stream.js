@@ -8,7 +8,7 @@ import Loadable from '@loadable/component';
 const StreamComponent = Loadable(
   () => import('src/components/stream/streamComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message="StreamComponent" />,
   },
 );
 

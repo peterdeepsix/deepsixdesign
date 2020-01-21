@@ -55,7 +55,7 @@ const TimelineComponent = ({
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading />;
+  if (isLoading) return <IndefiniteLoading message='TimelineComponent' />;
 
   return (
     <Container>

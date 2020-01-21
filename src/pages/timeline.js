@@ -8,7 +8,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const TimelineComponent = Loadable(
   () => import('src/components/timeline/timelineComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='TimelineComponent' />,
   },
 );
 

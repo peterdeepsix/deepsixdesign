@@ -8,7 +8,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 const AboutComponent = Loadable(
   () => import('src/components/about/aboutComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='AboutComponent' />,
   },
 );
 
