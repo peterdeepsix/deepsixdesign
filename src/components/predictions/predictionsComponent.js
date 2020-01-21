@@ -32,7 +32,7 @@ const PredictionsComponent = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true)
   }, [firestore])
 
-  if (isLoading) return <IndefiniteLoading message='Loading predictions...' />
+  if (isLoading) return <IndefiniteLoading message='Loading predictions component ...' />
   return (
     <div className={classes.container}>
       <Container>
