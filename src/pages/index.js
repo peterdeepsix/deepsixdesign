@@ -2,7 +2,7 @@ import React from 'react';
 
 import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
-import StoreLayout from 'src/layouts/storeLayout'
+import AppLayout from 'src/layouts/appLayout'
 
 import Loadable from '@loadable/component';
 
@@ -15,10 +15,10 @@ const IndexComponent = Loadable(
 
 const IndexPage = () => {
   return (
-    <StoreLayout>
+    <AppLayout>
       <SEO title="Deep Six Design" />
       <IndexComponent />
-    </StoreLayout>
+    </AppLayout>
   );
 };
 
