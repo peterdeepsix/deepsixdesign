@@ -86,36 +86,39 @@ const HeaderContent = ({ classes, screen }) => {
   const classes2 = useStyles();
   return (
     <>
+
       <div className={classes.root}>
         <Avatar alt="logo" src="src/images/logo.png" />
       </div>
-      <div className={classes.grow} />
-      <Typography variant="h5" noWrap className={classes.header}>
-        Deep Six Design
-      </Typography>
-      <div className={classes.grow} />
-      <Typography color={'textSecondary'} ariant="caption" display="block" noWrap className={classes.header}>
-        Plexus Prediction Engine v1.0.2
-      </Typography>
-      {screen === 'xs' && <p>xs</p>}
-      {screen === 'sm' && (
+
+
+      {screen === 'xs' &&
         <>
-          <p>sm</p>
+          <Typography variant="h5" noWrap className={classes.header}>
+            dsD
+          </Typography></>}
+
+      {screen === 'sm' &&
+        <>
+          <Typography variant="h5" noWrap className={classes.header}>
+            dsD
+          </Typography>
         </>
-      )}
-      {isWidthUp('md', screen) && <></>}
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <Search />
-        </div>
-        <InputBase
-          placeholder="Search…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-        />
-      </div>
+      }
+
+
+      {isWidthUp('md', screen) &&
+        <>
+          <div className={classes.grow} />
+          <Typography variant="h5" noWrap className={classes.header}>
+            Deep Six Design
+          </Typography>
+          <Typography color={'textSecondary'} ariant="caption" display="block" noWrap className={classes.header}>
+            Plexus Prediction Engine v1.0.2
+          </Typography>
+        </>
+      }
+
     </>
   )
 };
