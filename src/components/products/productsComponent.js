@@ -32,7 +32,9 @@ const ProductsComponent = ({ predictions: predictionsStore }) => {
 
   if (isLoading) return <IndefiniteLoading message='ProductsComponent' />;
 
-  return <React.Fragment><Typography variant="h4">Products</Typography></React.Fragment>;
+  return <>
+    <Typography variant="h4">Products</Typography>
+  </>;
 };
 
 export default inject('predictions')(observer(ProductsComponent));
