@@ -18,6 +18,7 @@ steps:
       - '_F_STORAGEBUCKET=${_F_STORAGEBUCKET}'
       - '_F_APPID=${_F_APPID}'
       - '_F_MEASUREMENTID=${_F_MEASUREMENTID}'
+      - '_SERVICEACCOUNT=${_SERVICEACCOUNT}'
 
   - name: node:10.15.1
     entrypoint: yarn
