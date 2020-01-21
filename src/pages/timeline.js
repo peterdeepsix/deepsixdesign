@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
-import StoreLayout from 'src/layouts/storeLayout';
 import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -32,10 +31,10 @@ export const query = graphql`
 
 const TimelinePage = ({ data }) => {
   return (
-    <StoreLayout>
+    <>
       <SEO title="Timeline - Deep Six Design" />
       <TimelineComponent data={data} />
-    </StoreLayout>
+    </>
   );
 };
 

@@ -10,9 +10,9 @@ import PredictionsStore from 'src/stores/predictionsStore'
 export const wrapRootElement = ({ element }) => {
   return (
     <AppLayout>
-      <StoreLayout>
-        {element}
-      </StoreLayout>
+      {/* <StoreLayout> */}
+      {element}
+      {/* </StoreLayout> */}
     </AppLayout>
   )
 };

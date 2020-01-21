@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-import StoreLayout from 'src/layouts/storeLayout';
 import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -26,14 +25,14 @@ const GalleryComponent = Loadable(
 const GalleryPage = () => {
   const classes = useStyles();
   return (
-    <StoreLayout>
+    <>
       <SEO title="Gallery - Deep Six Design" />
       <Container maxWidth="lg" className={classes.container}>
         <Box my={4}>
           <GalleryComponent></GalleryComponent>
         </Box>
       </Container>
-    </StoreLayout>
+    </>
   );
 };
 

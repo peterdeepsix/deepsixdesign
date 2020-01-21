@@ -10,9 +10,9 @@ import StoreLayout from 'src/layouts/storeLayout'
 export const wrapRootElement = ({ element }) => {
   return (
     <AppLayout>
-      <StoreLayout>
-        {element}
-      </StoreLayout>
+      {/* <StoreLayout> */}
+      {element}
+      {/* </StoreLayout> */}
     </AppLayout>
   )
 };

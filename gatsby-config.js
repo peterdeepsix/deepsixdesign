@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: {
     title: `Deep Six Design`,
     description: `Take me there.`,
-    author: `@gatsbyjs`,
+    author: `peter@deepsixdesign.com`,
   },
   plugins: [
     'gatsby-plugin-root-import',

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import StoreLayout from 'src/layouts/storeLayout';
 import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -15,10 +14,10 @@ const StreamComponent = Loadable(
 
 const StreamPage = () => {
   return (
-    <StoreLayout>
+    <>
       <SEO title="Stream - Deep Six Design" />
       <StreamComponent />
-    </StoreLayout>
+    </>
   );
 };
 

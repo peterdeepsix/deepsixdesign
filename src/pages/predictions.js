@@ -1,7 +1,6 @@
 import React from 'react';
 import Loadable from '@loadable/component';
 
-import StoreLayout from 'src/layouts/storeLayout';
 import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -14,10 +13,10 @@ const PredictionsComponent = Loadable(
 
 const Predictions = () => {
   return (
-    <StoreLayout>
+    <>
       <SEO title="Predictions - Deep Six Design" />
       <PredictionsComponent />
-    </StoreLayout>
+    </>
   );
 };
 
