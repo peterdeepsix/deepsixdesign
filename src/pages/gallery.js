@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import SEO from 'src/components/seo';
+import AppLayout from 'src/layouts/appLayout'
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const useStyles = makeStyles(theme => ({
@@ -25,14 +26,14 @@ const GalleryComponent = Loadable(
 const GalleryPage = () => {
   const classes = useStyles();
   return (
-    <>
+    <AppLayout>
       <SEO title="Gallery - Deep Six Design" />
       <Container maxWidth="lg" className={classes.container}>
         <Box my={4}>
-          <GalleryComponent></GalleryComponent>
+          <GalleryComponent />
         </Box>
       </Container>
-    </>
+    </AppLayout>
   );
 };
 

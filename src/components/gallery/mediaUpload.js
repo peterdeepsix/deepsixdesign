@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
-import DefiniteLoading from '../../components/loading/definiteLoading';
-import FabZoom from './fabZoom';
+import DefiniteLoading from 'src/components/loading/definiteLoading';
+import FabZoom from 'src/components/gallery/fabZoom';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
@@ -30,6 +30,7 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
 
   const handleSubmit = files => {
     console.log(`Handle submit - File - ${file}`);
+    console.log(`storage - ${storage}`);
     const file = files[0];
     let uploadTask = storage
       .ref()
@@ -96,11 +97,11 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
   return (
     <React.Fragment>
       <FabZoom onClick={handleOpen} disabled={loading} />
-      {/* <DefiniteLoading
-          isCircular
-          progress={progress}
-          loading={loading}
-        /> */}
+      <DefiniteLoading
+        isCircular
+        progress={progress}
+        loading={loading}
+      />
       <DropzoneDialog
         open={open}
         onSave={handleSave}

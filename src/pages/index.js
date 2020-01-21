@@ -1,10 +1,9 @@
 import React from 'react';
+import Loadable from '@loadable/component';
 
 import SEO from 'src/components/seo';
-import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import AppLayout from 'src/layouts/appLayout'
-
-import Loadable from '@loadable/component';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const IndexComponent = Loadable(
   () => import('src/components/index/indexComponent'),

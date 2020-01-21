@@ -16,7 +16,7 @@ const DefiniteLoading = props => {
         <LinearProgress
           variant="determinate"
           progress={progress}
-          loading={loading}
+          loading={`${loading}`}
         ></LinearProgress>
       )
     );

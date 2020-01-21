@@ -95,24 +95,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsTable = ({ predictions: predictionsStore }) => {
+const PredictionsTable = ({ predictions }) => {
   const classes = useStyles();
-
-  const { predictions, firestore } = predictionsStore;
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
 
   const handleMarkComplete = async () => {
     // await predictionsStore.updatePrediction({
@@ -122,7 +106,6 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
     console.log('gang gang buzz buzz');
   };
 
-  if (isLoading) return <IndefiniteLoading />;
   return (
     <div className={classes.root}>
       {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}
@@ -160,4 +143,4 @@ const PredictionsTable = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default inject('predictions')(observer(PredictionsTable));
+export default PredictionsTable;

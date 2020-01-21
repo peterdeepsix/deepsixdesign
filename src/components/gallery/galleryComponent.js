@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { useFirebase } from 'gatsby-plugin-firebase';
-
-import { inject, observer } from 'mobx-react';
-
-import IndefiniteLoading from '../loading/indefiniteLoading';
-import MediaUpload from './mediaUpload';
-import MediaGrid from './mediaGrid';
-import DetailDialog from './detailDialog';
+import Loadable from '@loadable/component';
 
 import { makeStyles } from '@material-ui/core/styles';
+
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
+const MediaUpload = Loadable(
+  () => import('src/components/gallery/mediaUpload'),
+  {
+    fallback: <IndefiniteLoading />,
+  },
+);
+
+const MediaGrid = Loadable(
+  () => import('src/components/gallery/mediaGrid'),
+  {
+    fallback: <IndefiniteLoading />,
+  },
+);
+
+const DetailDialog = Loadable(
+  () => import('src/components/gallery/detailDialog'),
+  {
+    fallback: <IndefiniteLoading />,
+  },
+);
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,27 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const GalleryComponent = ({ predictions: predictionsStore }) => {
-  const classes = useStyles();
-
-  const { predictions, firestore } = predictionsStore;
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
-
-  if (isLoading) return <IndefiniteLoading />;
-
+const GalleryComponent = () => {
   return (
     <>
       <DetailDialog />
@@ -55,4 +53,4 @@ const GalleryComponent = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default inject('predictions')(observer(GalleryComponent));
+export default GalleryComponent;
