@@ -11,11 +11,11 @@ function FirebaseObject() {
     firebase
       .auth()
       .signInAnonymously()
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error.code);
         console.log(error.message);
       });
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         const isAnonymous = user.isAnonymous;
         const uid = user.uid;
@@ -36,14 +36,15 @@ function FirebaseObject() {
   return (
     <React.Fragment>
       {(user && (
-        <Typography color={'textSecondary'} noWrap variant="body1">
+        <Typography variant="caption" display="block" gutterBottom>
           {user.uid}
         </Typography>
       )) || (
-        <Typography color={'textSecondary'} noWrap variant="body1">
-          Not signed in
+
+          <Typography variant="caption" display="block" gutterBottom>
+            Not signed in
         </Typography>
-      )}
+        )}
     </React.Fragment>
   );
 }

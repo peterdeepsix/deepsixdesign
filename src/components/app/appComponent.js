@@ -22,25 +22,25 @@ import {
 const NavContent = Loadable(
   () => import('../app/components/NavContent'),
   {
-    fallback: <IndefiniteLoading isCircular />,
+    fallback: <IndefiniteLoading isCircular message='loading NavContent' />,
   },
 );
 const NavHeader = Loadable(
   () => import('../app/components/NavHeader'),
   {
-    fallback: <IndefiniteLoading isCircular />,
+    fallback: <IndefiniteLoading isCircular message='loading NavHeader' />,
   },
 );
 const HeaderContent = Loadable(
   () => import('../app/components/HeaderContent'),
   {
-    fallback: <IndefiniteLoading isCircular />,
+    fallback: <IndefiniteLoading isCircular message='loading HeaderContent' />,
   },
 );
 const FooterContent = Loadable(
   () => import('../app/components/FooterContent'),
   {
-    fallback: <IndefiniteLoading isCircular />,
+    fallback: <IndefiniteLoading isCircular message='loading FooterContent' />,
   },
 );
 

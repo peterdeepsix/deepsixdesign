@@ -52,11 +52,7 @@ const PredictionsForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [message, setMessage] = useState('');
-  const [storage, setStorage] = useState(null);
 
-  useFirebase(firebase => {
-    setStorage(firebase.storage());
-  }, []);
 
   const handleTitleChange = event =>
     setTitle(event.target.value.trim());

@@ -28,7 +28,9 @@ const useStyles = makeStyles(theme => ({
 
 const MediaGrid = ({ predictions: predictionsStore }) => {
   const classes = useStyles();
+
   const { predictions, firestore } = predictionsStore;
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,8 +45,7 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading />;
-
+  if (isLoading) return <IndefiniteLoading message='Loading mediaGrid ...' />;
   return (
     <div className={classes.root}>
       <GridList spacing={2} className={classes.gridList}>

@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 const GalleryComponent = Loadable(
   () => import('src/components/gallery/galleryComponent'),
   {
-    fallback: <IndefiniteLoading />,
+    fallback: <IndefiniteLoading message='loading galleryComponent ...' />,
   },
 );
 

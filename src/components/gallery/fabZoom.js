@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Zoom from '@material-ui/core/Zoom';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { green } from '@material-ui/core/colors';
 
@@ -16,15 +16,6 @@ const useStyles = makeStyles(theme => ({
     width: 500,
     position: 'relative',
     minHeight: 200,
-  },
-  fab: {
-    margin: 0,
-    position: 'static',
-    right: 'auto',
-    bottom: 'auto',
-    top: theme.spacing(2),
-    left: theme.spacing(2),
-    zIndex: 10000,
   },
 }));
 
@@ -88,18 +79,17 @@ export default function FloatingActionButtonZoom(props) {
         timeout={transitionDuration}
         unmountOnExit
       > */}
-      <Fab
+      <Button
         sticky="true"
-        variant="extended"
-        aria-label="Create Prediction"
-        className={classes.fab}
+        variant="contained"
+        aria-label="Upload Media"
         color="primary"
         onClick={onClick}
         disabled={disabled}
       >
         <AddIcon />
         Create Prediction
-      </Fab>
+      </Button>
       {/* </Zoom> */}
     </div>
   );

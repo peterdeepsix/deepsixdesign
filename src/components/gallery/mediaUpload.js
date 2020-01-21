@@ -3,39 +3,23 @@ import React, { useEffect, useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import DefiniteLoading from 'src/components/loading/definiteLoading';
 import FabZoom from 'src/components/gallery/fabZoom';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
 const MediaUpload = ({ predictions: predictionsStore }) => {
-  const { storage, firestore } = predictionsStore;
+  const { storageRef, firestore } = predictionsStore;
 
   const [open, setOpen] = useState(false);
   const [files, setFiles] = useState([]);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
 
   const handleSubmit = files => {
-    console.log(`Handle submit - File - ${file}`);
-    console.log(`storage - ${storage}`);
     const file = files[0];
-    let uploadTask = storage
-      .ref()
-      .child(file.name)
-      .put(file);
+
+    console.log(`storage - ${storageRef}`);
+    const uploadTask = storageRef.child(file.name).put(file);
 
     uploadTask.on(
       'state_changed',
@@ -52,7 +36,6 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
       },
       () => {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          setImageUrl(downloadURL);
           setLoading(false);
           setProgress(0);
           const newDoc = {
