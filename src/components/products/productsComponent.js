@@ -30,7 +30,7 @@ const ProductsComponent = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading messaege='ProductsComponent' />;
+  if (isLoading) return <IndefiniteLoading message='ProductsComponent' />;
 
   return <React.Fragment><Typography variant="h4">Products</Typography></React.Fragment>;
 };

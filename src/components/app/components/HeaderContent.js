@@ -86,7 +86,7 @@ const HeaderContent = ({ classes, screen }) => {
   return (
     <>
       <Typography variant="h5" color='textSecondary' noWrap className={classes.header}>
-        Plexus
+        Plexus Prediction Engine v1.0.2
       </Typography>
 
 

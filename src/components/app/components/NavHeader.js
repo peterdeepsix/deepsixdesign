@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import FirebaseObject from './firebaseObject';
 
 const NavHeaderEx = ({ collapsed }) => (
@@ -16,7 +16,9 @@ const NavHeaderEx = ({ collapsed }) => (
             height: collapsed ? 48 : 60,
             transition: '0.3s',
           }}
-        />
+        >
+          <PersonAddOutlinedIcon color='inherit' />
+        </Avatar>
       </Box>
       <div style={{ paddingBottom: 16 }} />
       <Typography variant="subtitle2" noWrap>
