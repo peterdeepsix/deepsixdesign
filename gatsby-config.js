@@ -1,8 +1,5 @@
 require('dotenv').config();
 
-const firestoreCredential = process.env._SERVICEACCOUNT
-console.log(process.env._SERVICEACCOUNT)
-
 module.exports = {
   siteMetadata: {
     title: `Deep Six Design`,
@@ -28,26 +25,26 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // {
-    //   resolve: 'gatsby-source-firestore',
-    //   options: {
-    //     credential: firestoreCredential,
-    //     types: [
-    //       {
-    //         type: 'processes',
-    //         collection: 'processes',
-    //         map: doc => ({
-    //           title: doc.title,
-    //           step: doc.step,
-    //           definition: doc.definition,
-    //           synonyms: doc.synonyms,
-    //           slug: doc.slug,
-    //           process___NODE: doc.id,
-    //         }),
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-firestore',
+      options: {
+        credential: process.env._SERVICEACCOUNT,
+        types: [
+          {
+            type: 'processes',
+            collection: 'processes',
+            map: doc => ({
+              title: doc.title,
+              step: doc.step,
+              definition: doc.definition,
+              synonyms: doc.synonyms,
+              slug: doc.slug,
+              process___NODE: doc.id,
+            }),
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
