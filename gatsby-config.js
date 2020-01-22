@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-firestore',
       options: {
-        credential: process.env._SERVICEACCOUNT,
+        credential: require('./service-account.json'),
         types: [
           {
             type: 'processes',

@@ -1,33 +1,53 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
+
 import FirebaseObject from './firebaseObject';
 
-const NavHeaderEx = ({ collapsed }) => (
-  <>
-    <div style={{ padding: collapsed ? 8 : 16, transition: '0.3s' }}>
-      <Box my={1}>
-        <Avatar
-          style={{
-            width: collapsed ? 48 : 60,
-            height: collapsed ? 48 : 60,
-            transition: '0.3s',
-          }}
-        >
-          <PersonAddOutlinedIcon color='inherit' />
-        </Avatar>
-      </Box>
-      <div style={{ paddingBottom: 16 }} />
-      <Typography variant="subtitle2" noWrap>
-        Anonymous User
-      </Typography>
-      <FirebaseObject />
-    </div>
-    <Divider />
-  </>
-);
+const useStyles = makeStyles((theme, collapsed) => ({
+  root: {
+    paddingTop: collapsed ? theme.spacing(10) : theme.spacing(2),
+    paddingBottom: collapsed ? theme.spacing(1) : theme.spacing(2),
+    paddingLeft: collapsed ? theme.spacing(1) : theme.spacing(2),
+    paddingRight: collapsed ? theme.spacing(1) : theme.spacing(2),
+    transition: '0.3s'
+  },
+  button: {
+    marginBottom: theme.spacing(1),
+  },
+}));
+
+const NavHeaderEx = ({ collapsed }) => {
+  const classes = useStyles(collapsed);
+  return (
+    <>
+      <div className={classes.root}>
+        <Box my={1}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            startIcon={<PersonAddOutlinedIcon className={classes.extendedIcon} />}
+            className={classes.button}
+          >
+            Sign In
+      </Button>
+        </Box>
+        <Box my={1} >
+          <Typography variant="subtitle2" noWrap>
+            Anonymous User
+          </Typography>
+          <FirebaseObject />
+        </Box>
+      </div>
+      <Divider />
+    </>
+  )
+}
 
 export default NavHeaderEx;
