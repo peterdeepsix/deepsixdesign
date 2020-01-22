@@ -27,7 +27,7 @@ const AboutComponent = ({ classes }) => (
         Plexus Prediction <Link underline={'none'}>Engine</Link>
       </Typography>
       <Typography gutterBottom>
-        <b>Version 1.0.0</b>
+        <b>Version 1.0.2</b>
       </Typography>
       <br />
       <Typography weight={'bold'} variant={'h5'} gutterBottom>
