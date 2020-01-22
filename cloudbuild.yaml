@@ -37,3 +37,8 @@ steps:
   - name: 'node:10.15.1'
     entrypoint: './node_modules/.bin/firebase'
     args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
+
+  secrets:
+    - kmsKeyName: projects/$PROJECT_ID/locations/global/keyRings/production-key-ring/cryptoKeys/service-account-key
+      secretEnv:
+        MY_SECRET: [base64-encoded encrypted secret]
