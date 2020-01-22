@@ -36,12 +36,12 @@ function FirebaseObject() {
   return (
     <React.Fragment>
       {(user && (
-        <Typography variant="caption" display="block" gutterBottom>
+        <Typography variant="caption" display="block">
           {user.uid}
         </Typography>
       )) || (
 
-          <Typography variant="caption" display="block" gutterBottom>
+          <Typography variant="caption" display="block">
             Not signed in
         </Typography>
         )}
