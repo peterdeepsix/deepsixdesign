@@ -1,10 +1,23 @@
 steps:
+  # decrypt the value in ./my-secret
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+    - kms
+    - decrypt
+    - --location=global
+    - --keyring=${_KEYRING}
+    - --key=${_KEY}
+    - --ciphertext=file=./service-account.json.enc
+    - --plaintext-file=./service-account.json
+  
   - name: node:10.15.1
     entrypoint: yarn
     args: ['install']
+
   - name: node:10.15.1
     entrypoint: yarn
     args: ['add', 'firebase-tools']
+
   - name: node:10.15.1
     entrypoint: yarn
     args: ["run", "create-env"]
@@ -17,9 +30,16 @@ steps:
       - '_F_APPID=${_F_APPID}'
       - '_F_MEASUREMENTID=${_F_MEASUREMENTID}'
       - '_SERVICEACCOUNT=${_SERVICEACCOUNT}'
+
   - name: node:10.15.1
     entrypoint: yarn
     args: ['build']
+
   - name: 'node:10.15.1'
     entrypoint: './node_modules/.bin/firebase'
     args: ['deploy', '--project', '$PROJECT_ID', '--token', '$_TOKEN']
+
+    secrets:
+      - kmsKeyName: projects/vmi-integration/locations/global/keyRings/vmi-integration-secrets/cryptoKeys/vertigo-js-node-api
+        secretEnv:
+          REDIS_PW: CiQAkmpYKP7L1ELHIrdvp/J43k1w6EN/l4wgVZnBMMhbEr/dFxYSPQBMN3wJgwxNRTNmNpaif4rSOSHKy7gHTamaxsxo3la2qCLJfVSHz8jUA4jERssiMZAeKhHvfp5LBTDvjxk=
