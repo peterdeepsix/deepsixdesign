@@ -16,7 +16,7 @@ const Predictions = () => {
   return (
     <AppLayout>
       <SEO title="Predictions - Deep Six Design" />
-      <PredictionsComponent />
+      {/* <PredictionsComponent /> */}
     </AppLayout>
   );
 };

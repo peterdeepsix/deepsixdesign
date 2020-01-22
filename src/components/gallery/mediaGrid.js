@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { inject, observer } from 'mobx-react';
-
 import IndefiniteLoading from '../loading/indefiniteLoading';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -73,4 +71,4 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default inject('predictions')(observer(MediaGrid));
+export default MediaGrid

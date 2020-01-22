@@ -16,7 +16,7 @@ import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 
-import Link from '../../Link';
+import Link from 'src/components/Link';
 
 const list = [
   {

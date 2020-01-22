@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { inject, observer } from 'mobx-react'
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading'
 import PredictionsTable from './predictionsTable';
@@ -44,4 +43,4 @@ const PredictionsComponent = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default inject('predictions')(observer(PredictionsComponent))
+export default PredictionsComponent

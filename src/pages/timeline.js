@@ -34,7 +34,7 @@ const TimelinePage = ({ data }) => {
   return (
     <AppLayout>
       <SEO title="Timeline - Deep Six Design" />
-      <TimelineComponent data={data} />
+      {/* <TimelineComponent data={data} /> */}
     </AppLayout>
   );
 };

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { inject, observer } from 'mobx-react';
-
 import IndefiniteLoading from '../loading/indefiniteLoading';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -123,4 +121,4 @@ const TimelineComponent = ({
   );
 };
 
-export default inject('predictions')(observer(TimelineComponent));
+export default TimelineComponent;

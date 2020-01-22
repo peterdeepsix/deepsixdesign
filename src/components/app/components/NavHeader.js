@@ -7,6 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
+import Link from 'src/components/Link';
 import FirebaseObject from './firebaseObject';
 
 const useStyles = makeStyles((theme, collapsed) => ({
@@ -34,6 +35,8 @@ const NavHeaderEx = ({ collapsed }) => {
             size="large"
             startIcon={<PersonAddOutlinedIcon className={classes.extendedIcon} />}
             className={classes.button}
+            component={Link}
+            to="/signin"
           >
             Sign In
       </Button>

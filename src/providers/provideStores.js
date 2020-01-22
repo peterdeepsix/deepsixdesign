@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import PredictionsStore from 'src/stores/predictionsStore';
+import FirebaseStore from 'src/stores/firebaseStore';
 
 export default ({ element }) => (
-  <Provider predictions={new PredictionsStore()}>
+  <Provider firebaseStore={new FirebaseStore()}>
     {element}
   </Provider>
 );

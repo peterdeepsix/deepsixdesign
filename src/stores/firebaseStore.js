@@ -1,10 +1,20 @@
 import { observable, action, decorate, toJS } from 'mobx';
 
-class PredictionsStore {
+class FirebaseStore {
+  firebase = null;
+  auth = null;
   firestore = null;
   storageRef = null;
 
   predictions = [];
+
+  setFirebase(firebase) {
+    this.firebase = firebase;
+  }
+
+  setAuth(auth) {
+    this.auth = auth;
+  }
 
   setFirestore(firestore) {
     this.firestore = firestore;
@@ -12,7 +22,6 @@ class PredictionsStore {
 
   setStorageRef(storage) {
     this.storageRef = storage.ref()
-    console.log(`setStorageRef - ${this.storageRef}`)
   }
 
   async getPredictions() {
@@ -74,17 +83,23 @@ class PredictionsStore {
 
   dehydrate() {
     return {
-      storage: this.storage,
+      firebase: this.auth,
+      auth: this.auth,
+      storageRef: this.storageRef,
       firestore: this.firestore,
       predictions: this.predictions,
     };
   }
 }
 
-decorate(PredictionsStore, {
+decorate(FirebaseStore, {
+  firebase: observable,
+  auth: observable,
   storageRef: observable,
   firestore: observable,
   predictions: observable,
+  setFirebase: action,
+  setAuth: action,
   setFirestore: action,
   setStorageRef: action,
   getPredictions: action,
@@ -92,4 +107,4 @@ decorate(PredictionsStore, {
   updatePredictions: action,
 });
 
-export default PredictionsStore;
+export default FirebaseStore;

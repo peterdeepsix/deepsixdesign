@@ -5,7 +5,6 @@ import React, {
   useState,
 } from 'react';
 
-import { inject, observer } from 'mobx-react';
 import dateFormat from 'date-format';
 
 import IndefiniteLoading from '../loading/indefiniteLoading';

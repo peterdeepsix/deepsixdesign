@@ -30,7 +30,7 @@ const GalleryPage = () => {
       <SEO title="Gallery - Deep Six Design" />
       <Container maxWidth="lg" className={classes.container}>
         <Box my={4}>
-          <GalleryComponent />
+          {/* <GalleryComponent /> */}
         </Box>
       </Container>
     </AppLayout>

@@ -16,7 +16,7 @@ const ProductsPage = () => {
   return (
     <AppLayout>
       <SEO title="Products - Deep Six Design" />
-      <ProductsComponent />
+      {/* <ProductsComponent /> */}
     </AppLayout>
   );
 };
