@@ -13,6 +13,7 @@ const IndexComponent = ({ predictions: predictionsStore }) => {
     let didCancel = false
 
     const getTasks = async () => {
+      console.log('getTasks')
       await predictionsStore.getTasks()
       if (!didCancel) setIsLoading(false)
     }

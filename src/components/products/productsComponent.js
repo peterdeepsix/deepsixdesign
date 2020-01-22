@@ -21,7 +21,7 @@ const ProductsComponent = ({ predictions: predictionsStore }) => {
   useEffect(() => {
     if (!firestore) return;
     let didCancel = false;
-
+    console.log('trying to get predictions')
     const getPredictions = async () => {
       await predictionsStore.getPredictions();
       if (!didCancel) setIsLoading(false);
@@ -31,8 +31,8 @@ const ProductsComponent = ({ predictions: predictionsStore }) => {
   }, [firestore]);
 
   if (isLoading) return <IndefiniteLoading message='ProductsComponent' />;
-
   return <>
+    {}
     <Typography variant="h4">Products</Typography>
   </>;
 };
