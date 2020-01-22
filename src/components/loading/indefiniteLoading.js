@@ -10,7 +10,7 @@ const IndefiniteLoading = props => {
   return (
     (isCircular && <Box><CircularProgress />{message}</Box>) || (
       <Box><LinearProgress /><Typography variant="caption" display="block" gutterBottom>
-        loading {message} ...
+        Loading {message} ...
       </Typography></Box>
     )
   );
