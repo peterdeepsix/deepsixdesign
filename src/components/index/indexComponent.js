@@ -1,40 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { inject, observer } from 'mobx-react'
+import React from 'react'
 
+import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-const IndexComponent = ({ predictions: predictionsStore }) => {
-  const [isLoading, setIsLoading] = useState(true)
-  const { predictions, firestore } = predictionsStore
-
-  useEffect(() => {
-    if (!firestore) return
-    let didCancel = false
-
-    const getTasks = async () => {
-      console.log('getTasks')
-      await predictionsStore.getTasks()
-      if (!didCancel) setIsLoading(false)
-    }
-    getTasks()
-    return () => (didCancel = true)
-  }, [firestore])
-
-  if (isLoading) return 'Loading predictions...'
+const IndexComponent = () => {
   return (
-    <Container>
-      <Box maxWidth="sm">
-        <ul>
-          {predictions.map(prediction => (
-            <div key={prediction.id}>
-              <p>{prediction.title}</p>
-            </div>
-          ))}
-        </ul>
+    <Container maxWidth="sm">
+      <Box my={4}>
+        <Typography variant="h4">Light forward</Typography>
       </Box>
     </Container>
   );
 };
 
-export default inject('predictions')(observer(IndexComponent))
+export default IndexComponent

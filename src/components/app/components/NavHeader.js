@@ -11,8 +11,8 @@ import FirebaseObject from './firebaseObject';
 
 const useStyles = makeStyles((theme, collapsed) => ({
   root: {
-    paddingTop: collapsed ? theme.spacing(10) : theme.spacing(2),
-    paddingBottom: collapsed ? theme.spacing(1) : theme.spacing(2),
+    paddingTop: collapsed ? theme.spacing(1) : theme.spacing(2),
+    paddingBottom: collapsed ? theme.spacing(1) : theme.spacing(1),
     paddingLeft: collapsed ? theme.spacing(1) : theme.spacing(2),
     paddingRight: collapsed ? theme.spacing(1) : theme.spacing(2),
     transition: '0.3s'
