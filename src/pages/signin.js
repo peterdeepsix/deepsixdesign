@@ -3,6 +3,7 @@ import Loadable from '@loadable/component';
 
 import SEO from 'src/components/seo';
 import AppLayout from 'src/layouts/appLayout'
+import StoreLayout from 'src/layouts/storeLayout'
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const SignInComponent = Loadable(
@@ -16,7 +17,10 @@ const SignInPage = () => {
   return (
     <AppLayout>
       <SEO title="Deep Six Design" />
-      <SignInComponent />
+      <StoreLayout>
+        <SignInComponent />
+      </StoreLayout>
+
     </AppLayout>
   );
 };

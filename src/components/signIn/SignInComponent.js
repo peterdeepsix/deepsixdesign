@@ -1,25 +1,42 @@
-import React from 'react'
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+import React, { useEffect, useState } from 'react'
+import { inject, observer } from 'mobx-react'
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-const SignInComponent = () => {
-    const uiConfig = {
-        signInFlow: 'popup',
-        signInSuccessUrl: '/about',
-        signInOptions: [
-            // auth.GoogleAuthProvider.PROVIDER_ID,
-        ]
-    };
+const SignInComponent = ({ objects: objectsStore }) => {
+    const [isLoading, setIsLoading] = useState(true)
+    const { objects, firestore } = objectsStore
 
+    useEffect(() => {
+        if (!firestore) return
+        let didCancel = false
+
+        const getObjects = async () => {
+            await objectsStore.getObjects()
+            if (!didCancel) setIsLoading(false)
+        }
+        getObjects()
+        return () => (didCancel = true)
+    }, [firestore])
+
+    if (isLoading) return (
+        <Container maxWidth="sm">
+            <Box my={4}>
+                Sign In - isLoading
+            {console.log(objects)}
+            </Box>
+        </Container>
+    );
     return (
         <Container maxWidth="sm">
             <Box my={4}>
-                <StyledFirebaseAuth uiConfig={uiConfig} />
+                Sign In - Objects
+            {console.log(objects)}
             </Box>
         </Container>
     );
 }
 
-export default SignInComponent
+export default inject('objects')(observer(SignInComponent))

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import FirebaseStore from 'src/stores/firebaseStore';
+import ObjectsStore from 'src/stores/objectsStore';
 
 export default ({ element }) => (
-  <Provider firebaseStore={new FirebaseStore()}>
+  <Provider objects={new ObjectsStore()}>
     {element}
   </Provider>
 );
