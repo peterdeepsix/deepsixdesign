@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
 import Link from 'src/components/Link';
-import FirebaseObject from './firebaseObject';
+import UserObject from './userObject';
 
 const useStyles = makeStyles((theme, collapsed) => ({
   root: {
@@ -43,9 +43,9 @@ const NavHeaderEx = ({ collapsed }) => {
         </Box>
         <Box my={1} >
           <Typography variant="subtitle2" noWrap>
-            Anonymous User
+            Free User
           </Typography>
-          <FirebaseObject />
+          <UserObject />
         </Box>
       </div>
       <Divider />

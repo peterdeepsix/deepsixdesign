@@ -15,13 +15,12 @@ const SignInComponent = Loadable(
 
 const SignInPage = () => {
   return (
-    <AppLayout>
-      <SEO title="Deep Six Design" />
-      <StoreLayout>
+    <StoreLayout>
+      <AppLayout>
+        <SEO title="Deep Six Design" />
         <SignInComponent />
-      </StoreLayout>
-
-    </AppLayout>
+      </AppLayout>
+    </StoreLayout>
   );
 };
 
