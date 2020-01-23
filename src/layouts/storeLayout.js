@@ -8,6 +8,7 @@ const StoreLayout = ({ objects: objectsStore, children }) => {
   useMemo(() => {
     if (!firebase) return
     objectsStore.setFirestore(firebase.firestore())
+    objectsStore.setAuth(firebase.auth())
   }, [firebase])
 
   return <div>{children}</div>
