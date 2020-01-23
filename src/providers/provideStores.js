@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import ObjectsStore from 'src/stores/objectsStore';
+import rootStore from 'src/stores/rootStore';
 
 export default ({ element }) => (
-  <Provider objects={new ObjectsStore()}>
+  <Provider {...rootStore}>
     {element}
   </Provider>
 );

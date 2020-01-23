@@ -2,15 +2,10 @@ import { observable, action, decorate, toJS } from 'mobx';
 
 class ObjectsStore {
   firestore = null;
-  auth = null;
-
   objects = [];
 
   setFirestore(firestore) {
     this.firestore = firestore;
-  }
-  setAuth(auth) {
-    this.auth = auth;
   }
 
   async getObjects() {
@@ -80,10 +75,8 @@ class ObjectsStore {
 
 decorate(ObjectsStore, {
   firestore: observable,
-  auth: observable,
   objects: observable,
   setFirestore: action,
-  setAuth: action,
   getObjects: action,
   addObject: action,
   updateObject: action,

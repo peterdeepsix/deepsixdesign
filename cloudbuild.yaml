@@ -21,14 +21,14 @@ steps:
     entrypoint: yarn
     args: ["run", "create-env"]
     env:
-      - '_F_APIKEY=${_F_APIKEY}'
-      - '_F_AUTHDOMAIN=${_F_AUTHDOMAIN}'
-      - '_F_DATABASEURL=${_F_DATABASEURL}'
-      - '_F_PROJECTID=${ _F_PROJECTID}'
-      - '_F_STORAGEBUCKET=${_F_STORAGEBUCKET}'
-      - '_F_APPID=${_F_APPID}'
-      - '_F_MEASUREMENTID=${_F_MEASUREMENTID}'
-      - '_SERVICEACCOUNT=${_SERVICEACCOUNT}'
+      - '_F_APIKEY=$_F_APIKEY'
+      - '_F_AUTHDOMAIN=$_F_AUTHDOMAIN'
+      - '_F_DATABASEURL=$_F_DATABASEURL'
+      - '_F_PROJECTID=$_F_PROJECTID'
+      - '_F_STORAGEBUCKET=$_F_STORAGEBUCKET'
+      - '_F_APPID=_F_APPID'
+      - '_F_MEASUREMENTID=$_F_MEASUREMENTID'
+      - '_SERVICEACCOUNT=$_SERVICEACCOUNT'
 
   - name: node:10.15.1
     entrypoint: yarn
