@@ -13,14 +13,13 @@ class ObjectsStore {
     try {
       const { docs } = await this.firestore
         .collection('objects')
-        .orderBy('dueAt', 'asc')
         .limit(100)
         .get();
       const objects = docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
       }));
-      this.predictions.replace(objects);
+      this.objects.replace(objects);
     } catch (error) {
       console.log(error);
     }

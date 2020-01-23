@@ -34,6 +34,11 @@ const SignInComponent = ({ objects: objectsStore }) => {
             <Box my={4}>
                 Sign In - Objects
             {console.log(objects)}
+                <ul>
+                    {objects.map(object => (
+                        <p key={object.id}>{object.title}</p>
+                    ))}
+                </ul>
             </Box>
         </Container>
     );
