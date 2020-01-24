@@ -67,7 +67,6 @@ class ObjectsStore {
   dehydrate() {
     return {
       firestore: this.firestore,
-      auth: this.auth,
       objects: this.objects,
     };
   }
