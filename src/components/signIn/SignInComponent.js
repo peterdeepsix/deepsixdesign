@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { inject, observer } from 'mobx-react'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -10,7 +11,15 @@ const SignInComponent = ({ history, objectsStore, sessionStore }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
     const { objects, firestore } = objectsStore
-    const { auth, authUser } = sessionStore
+    const { auth, googleProvider } = sessionStore
+
+    const uiConfig = {
+        signInFlow: 'popup',
+        signInSuccessUrl: '/signedIn',
+        signInOptions: [
+            googleProvider.PROVIDER_ID,
+        ]
+    };
 
     useEffect(() => {
         if (!firestore) return
@@ -26,35 +35,17 @@ const SignInComponent = ({ history, objectsStore, sessionStore }) => {
 
 
     const onSubmit = event => {
-        auth.doSignInWithGoogle()
-            .then(socialAuthUser => {
-                return auth.user(socialAuthUser.user.uid).set({
-                    username: socialAuthUser.user.displayName,
-                    email: socialAuthUser.user.email,
-                    roles: {},
-                });
-            })
-            .then(() => {
-                setError(null)
-                history.push('/about');
-            })
-            .catch(error => {
-                if (error.code === 'ERROR_MSG_ACCOUNT_EXISTS') {
-                    error.message = 'ERROR_MSG_ACCOUNT_EXISTS';
-                }
-
-                setError(error)
-            });
-
-        event.preventDefault();
+        console.log(auth)
     };
+
+
 
     if (isLoading) return 'Loading objects...'
     return (
         <Container maxWidth="sm">
             <Box my={4}>
                 <Button variant='outlined' color='primary' onClick={onSubmit}>Sign In With Google</Button>
-                {console.log(objects)}
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 <ul>
                     {objects.map(object => (
                         <p key={object.id}>{object.title}</p>
