@@ -85,15 +85,10 @@ const SignInComponent = ({ history, store }) => {
     return (
         <Container maxWidth="sm">
             <Box my={4}>
-                <p>{error}</p>
-                <p>{authUser}</p>
+
                 <Button variant='outlined' color='primary' onClick={onSubmit}>Sign In With Google</Button>
+                <p>{error}</p>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
-                <ul>
-                    {objects.map(object => (
-                        <p key={object.id}>{object.title}</p>
-                    ))}
-                </ul>
             </Box>
         </Container>
     );
