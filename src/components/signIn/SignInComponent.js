@@ -19,8 +19,9 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 `;
 
 const SignInComponent = ({ history, store }) => {
-    const { objectsStore } = store
+    const { objectsStore, sessionStore } = store
     const { objects, firestore } = objectsStore
+    const { auth, authUser, googleProvider } = sessionStore
     // const { auth, googleProvider } = sessionStore
 
     const [isLoading, setIsLoading] = useState(true)

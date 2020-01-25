@@ -4,9 +4,11 @@ import { FirebaseContext } from 'gatsby-plugin-firebase'
 
 const StoreLayout = ({ store, children }) => {
   const firebase = useContext(FirebaseContext)
+  const { objectsStore, sessionStore } = store
   useMemo(() => {
     if (!firebase) return
-    store.objectsStore.setFirestore(firebase.firestore())
+    objectsStore.setFirestore(firebase.firestore())
+    sessionStore.setAuth(firebase.auth())
   }, [firebase])
 
   return <div>{children}</div>
