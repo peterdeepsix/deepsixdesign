@@ -9,6 +9,7 @@ const StoreLayout = ({ store, children }) => {
     if (!firebase) return
     objectsStore.setFirestore(firebase.firestore())
     sessionStore.setAuth(firebase.auth())
+    sessionStore.setGoogleProvider(new firebase.auth.GoogleAuthProvider())
   }, [firebase])
 
   return <div>{children}</div>

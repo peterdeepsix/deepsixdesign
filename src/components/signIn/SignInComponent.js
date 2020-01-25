@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { inject, observer } from 'mobx-react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -22,17 +21,17 @@ const SignInComponent = ({ history, store }) => {
     const { objectsStore, sessionStore } = store
     const { objects, firestore } = objectsStore
     const { auth, authUser, googleProvider } = sessionStore
-    // const { auth, googleProvider } = sessionStore
 
     const [isLoading, setIsLoading] = useState(true)
-    // const [error, setError] = useState(null)
+    const [error, setError] = useState(null)
 
-    // const uiConfig = {
-    //     signInFlow: 'popup',
-    //     signInSuccessUrl: '/signedIn',
-    //     signInOptions: [
-    //     ]
-    // };
+    const uiConfig = {
+        signInFlow: 'popup',
+        signInSuccessUrl: '/signedIn',
+        signInOptions: [
+            googleProvider.PROVIDER_ID,
+        ]
+    };
 
     useEffect(() => {
         if (!firestore) return
@@ -46,38 +45,38 @@ const SignInComponent = ({ history, store }) => {
         return () => (didCancel = true)
     }, [firestore])
 
-    // const onSubmit = event => {
-    //     firebase
-    //         .signInWithPopup(googleProvider)
-    //         .then(socialAuthUser => {
-    //             return firebase.user(socialAuthUser.user.uid).set({
-    //                 username: socialAuthUser.user.displayName,
-    //                 email: socialAuthUser.user.email,
-    //                 roles: {},
-    //             });
-    //         })
-    //         .then(() => {
-    //             setError(null)
-    //             history.push('/about');
-    //         })
-    //         .catch(error => {
-    //             if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-    //                 error.message = ERROR_MSG_ACCOUNT_EXISTS;
-    //             }
+    const onSubmit = event => {
+        // firebase
+        //     .signInWithPopup(googleProvider)
+        //     .then(socialAuthUser => {
+        //         return firebase.user(socialAuthUser.user.uid).set({
+        //             username: socialAuthUser.user.displayName,
+        //             email: socialAuthUser.user.email,
+        //             roles: {},
+        //         });
+        //     })
+        //     .then(() => {
+        //         setError(null)
+        //         history.push('/about');
+        //     })
+        //     .catch(error => {
+        //         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
+        //             error.message = ERROR_MSG_ACCOUNT_EXISTS;
+        //         }
 
-    //             setError(error)
-    //         });
+        //         setError(error)
+        //     });
 
-    //     event.preventDefault();
-    // };
+        event.preventDefault();
+    };
 
     if (isLoading) return 'Loading objects...'
     return (
         <Container maxWidth="sm">
             <Box my={4}>
-                {/* <p>{error}</p>
+                <p>{error}</p>
                 <Button variant='outlined' color='primary' onClick={onSubmit}>Sign In With Google</Button>
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} /> */}
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 <ul>
                     {objects.map(object => (
                         <p key={object.id}>{object.title}</p>

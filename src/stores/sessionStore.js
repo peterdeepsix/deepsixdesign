@@ -38,6 +38,7 @@ decorate(SessionStore, {
   auth: observable,
   authUser: observable,
   googleProvider: observable,
+  setFirebase: action,
   setAuthUser: action,
   setGoogleProvider: action,
   getAuthUser: action,
