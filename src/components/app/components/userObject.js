@@ -6,9 +6,13 @@ import Typography from '@material-ui/core/Typography';
 function UserObject({ store }) {
   const { sessionStore } = store
   const { authUser } = sessionStore
-  return (
-    <Typography variant="caption" display="block">{authUser}</Typography>
-  );
+  if (authUser) {
+    return (
+      <Typography variant="caption" display="block">{authUser.displayName}</Typography>
+    );
+  }
+  return null
+
 }
 
 export default inject('store')(observer(UserObject))

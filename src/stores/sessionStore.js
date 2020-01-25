@@ -9,8 +9,8 @@ class SessionStore {
     this.auth = auth;
   }
 
-  setAuthUser(authUser) {
-    this.authUser = authUser;
+  setAuthUser() {
+    this.authUser = this.auth.currentUser;
   }
 
   setGoogleProvider(googleProvider) {

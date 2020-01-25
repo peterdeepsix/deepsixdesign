@@ -18,12 +18,11 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 `;
 
 const SignInComponent = ({ history, store }) => {
-    const { objectsStore, sessionStore } = store
-    const { objects, firestore } = objectsStore
+    const { sessionStore } = store
     const { auth, authUser, googleProvider } = sessionStore
+    const { currentUser } = auth
 
     const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
     const [isBusy, setIsBusy] = useState(false)
 
     const uiConfig = {
@@ -34,23 +33,11 @@ const SignInComponent = ({ history, store }) => {
         ]
     };
 
-    const updateUser = async (displayName) => {
+    const updateUser = async () => {
         setIsBusy(true)
-        await sessionStore.setAuthUser(displayName)
+        await sessionStore.setAuthUser()
         setIsBusy(false)
     }
-
-    useEffect(() => {
-        if (!firestore) return
-        let didCancel = false
-
-        const getObjects = async () => {
-            await objectsStore.getObjects()
-            if (!didCancel) setIsLoading(false)
-        }
-        getObjects()
-        return () => (didCancel = true)
-    }, [firestore])
 
     const onSubmit = event => {
         if (!auth) return
@@ -62,7 +49,8 @@ const SignInComponent = ({ history, store }) => {
                 const user = result.user;
                 console.log('setAuthUser')
                 console.log(user.displayName)
-                if (user) { updateUser(user.displayName) }
+                if (user) { updateUser() }
+                if (!didCancel) setIsLoading(false)
 
             }).catch(function (error) {
                 const errorCode = error.code;
@@ -74,21 +62,21 @@ const SignInComponent = ({ history, store }) => {
                 const credential = error.credential;
                 console.log(`credential - ${credential}`)
             });
-            if (!didCancel) setIsLoading(false)
+
         }
         SignIn()
         return () => (didCancel = true)
         event.preventDefault();
     };
 
-    if (isLoading) return 'Loading objects...'
     return (
         <Container maxWidth="sm">
             <Box my={4}>
 
                 <Button variant='outlined' color='primary' onClick={onSubmit}>Sign In With Google</Button>
-                <p>{error}</p>
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+                {currentUser && <div><StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+                    <p>{(currentUser.displayName)}</p></div>
+                }
             </Box>
         </Container>
     );
