@@ -24,6 +24,7 @@ const SignInComponent = ({ history, store }) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [isBusy, setIsBusy] = useState(false)
 
     const uiConfig = {
         signInFlow: 'popup',
@@ -32,6 +33,12 @@ const SignInComponent = ({ history, store }) => {
             googleProvider.PROVIDER_ID,
         ]
     };
+
+    const updateUser = async (displayName) => {
+        setIsBusy(true)
+        await sessionStore.setAuthUser(displayName)
+        setIsBusy(false)
+    }
 
     useEffect(() => {
         if (!firestore) return
@@ -46,27 +53,31 @@ const SignInComponent = ({ history, store }) => {
     }, [firestore])
 
     const onSubmit = event => {
-        // firebase
-        //     .signInWithPopup(googleProvider)
-        //     .then(socialAuthUser => {
-        //         return firebase.user(socialAuthUser.user.uid).set({
-        //             username: socialAuthUser.user.displayName,
-        //             email: socialAuthUser.user.email,
-        //             roles: {},
-        //         });
-        //     })
-        //     .then(() => {
-        //         setError(null)
-        //         history.push('/about');
-        //     })
-        //     .catch(error => {
-        //         if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-        //             error.message = ERROR_MSG_ACCOUNT_EXISTS;
-        //         }
+        if (!auth) return
+        let didCancel = false
 
-        //         setError(error)
-        //     });
+        const SignIn = async () => {
+            await auth.signInWithPopup(googleProvider).then(function (result) {
+                const token = result.credential.accessToken;
+                const user = result.user;
+                console.log('setAuthUser')
+                console.log(user.displayName)
+                if (user) { updateUser(user.displayName) }
 
+            }).catch(function (error) {
+                const errorCode = error.code;
+                console.log(`errorCode - ${errorCode}`)
+                const errorMessage = error.message;
+                console.log(`errorMessage - ${errorMessage}`)
+                const email = error.email;
+                console.log(`email - ${email}`)
+                const credential = error.credential;
+                console.log(`credential - ${credential}`)
+            });
+            if (!didCancel) setIsLoading(false)
+        }
+        SignIn()
+        return () => (didCancel = true)
         event.preventDefault();
     };
 
@@ -75,6 +86,7 @@ const SignInComponent = ({ history, store }) => {
         <Container maxWidth="sm">
             <Box my={4}>
                 <p>{error}</p>
+                <p>{authUser}</p>
                 <Button variant='outlined' color='primary' onClick={onSubmit}>Sign In With Google</Button>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 <ul>
