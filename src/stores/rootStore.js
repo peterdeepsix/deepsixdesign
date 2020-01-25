@@ -7,7 +7,6 @@ class RootStore {
         this.sessionStore = new SessionStore(this);
     }
 }
+const Store = new RootStore()
 
-const rootStore = new RootStore();
-
-export default rootStore;
+export default Store;

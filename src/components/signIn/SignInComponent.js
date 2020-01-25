@@ -18,8 +18,8 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   your personal account page.
 `;
 
-const SignInComponent = ({ history, rootStore }) => {
-    const { objectsStore, sessionStore } = rootStore
+const SignInComponent = ({ history, store }) => {
+    const { objectsStore } = store
     const { objects, firestore } = objectsStore
     // const { auth, googleProvider } = sessionStore
 
@@ -87,4 +87,4 @@ const SignInComponent = ({ history, rootStore }) => {
     );
 }
 
-export default inject('rootStore')(observer(SignInComponent))
+export default inject('store')(observer(SignInComponent))
