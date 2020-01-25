@@ -58,10 +58,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {},
-    },
-    {
       resolve: 'gatsby-plugin-firebase',
       options: {
         features: {

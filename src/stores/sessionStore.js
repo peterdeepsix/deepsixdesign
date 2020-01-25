@@ -1,30 +1,32 @@
 import { observable, action, decorate } from 'mobx';
 
+
 class SessionStore {
-  auth = null
+  authUser = null
   googleProvider = null
 
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
-  setAuth(auth) {
-    this.auth = auth;
+  setAuthUser(authUser) {
+    this.authUser = authUser;
   }
-  setGoogleProvider(firebase) {
-    this.googleProvider = new firebase.auth.GoogleAuthProvider();
+  setGoogleProvider(googleProvider) {
+    this.googleProvider = googleProvider;
   }
-
   dehydrate() {
     return {
-      auth: this.auth,
-      googleProvider: this.googleProvider
+      authUser: this.authUser,
+      googleProvider: this.googleProvider,
+
     };
   }
 }
 decorate(SessionStore, {
-  auth: observable,
+  authUser: observable,
   googleProvider: observable,
-  setAuth: action,
+  setAuthUser: action,
+  setGoogleProvider: action,
 });
 
 export default SessionStore;
