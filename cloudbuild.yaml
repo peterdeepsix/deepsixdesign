@@ -3,11 +3,11 @@ steps:
     args:
     - kms
     - decrypt
-    - --ciphertext-file=service-account-dev.json.enc
+    - --ciphertext-file=$_CIPHERTEXTFILE
     - --plaintext-file=service-account.json
     - --location=global
     - --keyring=$_KEYRING
-    - --key=service-account-key
+    - --key=$_KEY
   
   - name: node:10.15.1
     entrypoint: yarn
