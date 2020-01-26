@@ -3,10 +3,10 @@ steps:
     args:
     - kms
     - decrypt
-    - --ciphertext-file=service-account.json.enc
+    - --ciphertext-file=$_CIPHERTEXTFILE
     - --plaintext-file=service-account.json
     - --location=global
-    - --keyring=production-key-ring
+    - --keyring=$_KEYRING
     - --key=service-account-key
   
   - name: node:10.15.1
