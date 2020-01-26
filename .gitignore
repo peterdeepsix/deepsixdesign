@@ -1,6 +1,8 @@
 # firebase
 firebase/
 service-account.json
+service-account-dev.json
+service-account-prod.json
 # \
 
 # Logs
