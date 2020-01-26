@@ -52,7 +52,7 @@ module.exports = {
         short_name: `Deep Six`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#FF1654`,
+        theme_color: `#18435A`,
         display: `fullscreen`,
         icon: `src/images/logo.png`,
       },
