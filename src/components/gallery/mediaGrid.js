@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from '../loading/indefiniteLoading';
 
@@ -24,12 +25,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const MediaGrid = ({ predictions: predictionsStore }) => {
+const MediaGrid = ({ store }) => {
   const classes = useStyles();
 
-  const { predictions, firestore } = predictionsStore;
-
   const [isLoading, setIsLoading] = useState(true);
+
+  const { sessionStore } = store;
+  const { auth, authUser, googleProvider } = sessionStore;
+
+  const { predictionsStore } = store;
+  const { predictions, firestore } = predictionsStore;
 
   useEffect(() => {
     if (!firestore) return;
@@ -43,7 +48,7 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
     return () => (didCancel = true);
   }, [firestore]);
 
-  if (isLoading) return <IndefiniteLoading message='MediaGrid' />;
+  if (isLoading) return <IndefiniteLoading message="MediaGrid" />;
   return (
     <div className={classes.root}>
       <GridList spacing={2} className={classes.gridList}>
@@ -71,4 +76,4 @@ const MediaGrid = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default MediaGrid
+export default inject('store')(observer(MediaGrid));

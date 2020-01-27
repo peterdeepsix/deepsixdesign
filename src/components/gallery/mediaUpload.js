@@ -7,8 +7,9 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
-const MediaUpload = ({ predictions: predictionsStore }) => {
-  const { storageRef, firestore } = predictionsStore;
+const MediaUpload = ({ store }) => {
+  const { predictionsStore } = store;
+  const { storage, firestore } = predictionsStore;
 
   const [open, setOpen] = useState(false);
   const [files, setFiles] = useState([]);
@@ -104,4 +105,4 @@ const MediaUpload = ({ predictions: predictionsStore }) => {
   );
 };
 
-export default inject('predictions')(observer(MediaUpload));
+export default inject('store')(observer(MediaUpload));

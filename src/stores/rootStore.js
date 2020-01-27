@@ -4,7 +4,7 @@ import PredictionsStore from './predictionsStore';
 
 class RootStore {
   constructor() {
-    this.objectsStore = new ObjectsStore(this);
+    // this.objectsStore = new ObjectsStore(this);
     this.sessionStore = new SessionStore(this);
     this.predictionsStore = new PredictionsStore(this);
   }

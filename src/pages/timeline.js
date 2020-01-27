@@ -3,13 +3,13 @@ import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
 import SEO from 'src/components/seo';
-import AppLayout from 'src/layouts/appLayout'
+import AppLayout from 'src/layouts/appLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const TimelineComponent = Loadable(
   () => import('src/components/timeline/timelineComponent'),
   {
-    fallback: <IndefiniteLoading message='TimelineComponent' />,
+    fallback: <IndefiniteLoading message="TimelineComponent" />,
   },
 );
 
@@ -34,7 +34,7 @@ const TimelinePage = ({ data }) => {
   return (
     <AppLayout>
       <SEO title="Timeline - Deep Six Design" />
-      {/* <TimelineComponent data={data} /> */}
+      <TimelineComponent data={data} />
     </AppLayout>
   );
 };
