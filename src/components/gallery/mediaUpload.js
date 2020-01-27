@@ -19,8 +19,8 @@ const MediaUpload = ({ store }) => {
   const handleSubmit = files => {
     const file = files[0];
 
-    console.log(`storage - ${storageRef}`);
-    const uploadTask = storageRef.child(file.name).put(file);
+    console.log(`storage - ${storage}`);
+    const uploadTask = storage.child(file.name).put(file);
 
     uploadTask.on(
       'state_changed',
