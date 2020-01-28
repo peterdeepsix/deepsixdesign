@@ -92,13 +92,14 @@ decorate(SessionStore, {
   authToken: observable,
   loggedIn: observable,
   googleProvider: observable,
-  setFirebase: action,
-  setAuthUser: action,
-  setLoggedIn: action,
-  setGoogleProvider: action,
   getAuthUser: action,
   getAuthToken: action,
   getLoggedIn: action,
+  setFirebase: action,
+  setAuthUser: action,
+  setAuthToken: action,
+  setLoggedIn: action,
+  setGoogleProvider: action,
 });
 
 export default SessionStore;
