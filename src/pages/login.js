@@ -7,7 +7,7 @@ import AppLayout from 'src/layouts/appLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const LoginComponent = Loadable(
-  () => import('src/components/login/LoginComponent'),
+  () => import('src/components/login/loginComponent'),
   {
     fallback: <IndefiniteLoading message="LoginComponent" />,
   },
