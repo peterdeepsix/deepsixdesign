@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
+import { inject, observer } from 'mobx-react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -16,41 +18,47 @@ const useStyles = makeStyles((theme, collapsed) => ({
     paddingBottom: collapsed ? theme.spacing(1) : theme.spacing(1),
     paddingLeft: collapsed ? theme.spacing(1) : theme.spacing(2),
     paddingRight: collapsed ? theme.spacing(1) : theme.spacing(2),
-    transition: '0.3s'
+    transition: '0.3s',
   },
   button: {
     marginBottom: theme.spacing(1),
   },
 }));
 
-const NavHeaderEx = ({ collapsed }) => {
+const NavHeaderEx = ({ collapsed, history, store }) => {
   const classes = useStyles(collapsed);
+
+  const { sessionStore } = store;
+  const { auth, authUser, loggedIn, googleProvider } = sessionStore;
+
   return (
     <>
       <div className={classes.root}>
-        <Box my={1}>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            startIcon={<PersonAddOutlinedIcon className={classes.extendedIcon} />}
-            className={classes.button}
-            component={Link}
-            to="/signin"
-          >
-            Sign In
-      </Button>
-        </Box>
-        <Box my={1} >
-          <Typography variant="subtitle2" noWrap>
-            Free User
-          </Typography>
-          <UserObject />
-        </Box>
+        {(!authUser && (
+          <>
+            <Box my={1}>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="large"
+                startIcon={
+                  <PersonAddOutlinedIcon
+                    className={classes.extendedIcon}
+                  />
+                }
+                className={classes.button}
+                component={Link}
+                to="/signin"
+              >
+                Sign In
+              </Button>
+            </Box>
+            <Divider />
+          </>
+        )) || <UserObject />}
       </div>
-      <Divider />
     </>
-  )
-}
+  );
+};
 
-export default NavHeaderEx;
+export default inject('store')(observer(NavHeaderEx));
