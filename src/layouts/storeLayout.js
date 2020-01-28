@@ -25,6 +25,8 @@ const StoreLayout = ({ store, children }) => {
     predictionsStore.setFirestore(firebase.firestore());
 
     sessionStore.setAuth(firebase.auth());
+    sessionStore.setAuthUser();
+    sessionStore.setLoggedIn();
     sessionStore.setGoogleProvider(
       new firebase.auth.GoogleAuthProvider(),
     );

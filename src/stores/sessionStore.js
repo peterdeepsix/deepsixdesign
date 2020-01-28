@@ -21,8 +21,14 @@ class SessionStore {
   }
 
   setLoggedIn(loggedIn) {
-    this.loggedIn = loggedIn;
-    localStorage.setItem('loggedIn', loggedIn);
+    this.loggedIn = localStorage.getItem('loggedIn');
+    if (loggedIn) {
+      this.loggedIn = loggedIn;
+      localStorage.setItem('loggedIn', loggedIn);
+    } else {
+      localStorage.setItem('loggedIn', this.loggedIn);
+    }
+    console.log(`set logged in to ${this.loggedIn}`);
   }
 
   onAuthUserListener = (next, fallback) =>
