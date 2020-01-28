@@ -18,7 +18,7 @@ class LoginComponent extends React.Component {
   };
   render() {
     if (isLoggedIn()) {
-      navigate(`/predictions`);
+      navigate(`/about`);
     }
     return (
       <>

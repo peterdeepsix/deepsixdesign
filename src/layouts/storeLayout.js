@@ -1,26 +1,30 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, {
+  useContext,
+  useMemo,
+  useEffect,
+  useState,
+} from 'react';
 import { inject } from 'mobx-react';
 import { FirebaseContext } from 'gatsby-plugin-firebase';
 
 const StoreLayout = ({ store, children }) => {
   const firebase = useContext(FirebaseContext);
 
-  const [storage, setStorage] = useState(null);
-  const [firestore, setFirestore] = useState(null);
-  const [auth, setAuth] = useState(null);
-  const { sessionStore, predictionsStore } = store;
+  const { firebaseStore, sessionStore, predictionsStore } = store;
+
+  useEffect(() => {
+    console.log('checked for user');
+  });
 
   useMemo(() => {
     if (!firebase) return;
 
-    setStorage(firebase.storage());
-    setFirestore(firebase.firestore());
-    setAuth(firebase.auth());
+    firebaseStore.setFirebase(firebase);
 
-    predictionsStore.setStorage(storage);
-    predictionsStore.setFirestore(firestore);
+    predictionsStore.setStorage(firebase.storage());
+    predictionsStore.setFirestore(firebase.firestore());
 
-    sessionStore.setAuth(auth);
+    sessionStore.setAuth(firebase.auth());
     sessionStore.setGoogleProvider(
       new firebase.auth.GoogleAuthProvider(),
     );

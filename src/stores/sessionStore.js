@@ -18,6 +18,10 @@ class SessionStore {
     this.googleProvider = googleProvider;
   }
 
+  setLoggedIn(loggedIn) {
+    this.loggedIn = loggedIn;
+  }
+
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
