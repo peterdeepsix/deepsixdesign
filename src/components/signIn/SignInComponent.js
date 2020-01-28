@@ -20,7 +20,6 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 const SignInComponent = ({ history, store }) => {
   const { sessionStore } = store;
   const { auth, authUser, loggedIn, googleProvider } = sessionStore;
-  const { currentUser } = auth;
 
   const [isLoading, setIsLoading] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
@@ -31,10 +30,21 @@ const SignInComponent = ({ history, store }) => {
     signInOptions: [googleProvider.PROVIDER_ID],
   };
 
-  const updateUser = async () => {
+  const updateAuthUser = async user => {
     setIsBusy(true);
-    await sessionStore.setAuthUser();
-    await sessionStore.setLoggedIn(true);
+    await sessionStore.setAuthUser(user);
+    setIsBusy(false);
+  };
+
+  const updateAuthToken = async token => {
+    setIsBusy(true);
+    await sessionStore.setAuthToken(token);
+    setIsBusy(false);
+  };
+
+  const updateLoggedIn = async loggedIn => {
+    setIsBusy(true);
+    await sessionStore.setLoggedIn(loggedIn);
     setIsBusy(false);
   };
 
@@ -48,10 +58,10 @@ const SignInComponent = ({ history, store }) => {
         .then(function(result) {
           const token = result.credential.accessToken;
           const user = result.user;
-          console.log('setAuthUser');
-          console.log(user.displayName);
           if (user) {
-            updateUser();
+            updateAuthUser(user);
+            updateAuthToken(token);
+            updateLoggedIn(true);
           }
           if (!didCancel) setIsLoading(false);
         })
@@ -80,17 +90,15 @@ const SignInComponent = ({ history, store }) => {
         .signOut()
         .then(function() {
           sessionStore.setAuthUser(null);
-          sessionStore.setLoggedIn(false);
+          sessionStore.setAuthToken(null);
+          sessionStore.setLoggedIn(null);
           if (!didCancel) setIsLoading(false);
         })
         .catch(function(error) {
-          const errorCode = error.code;
-          console.log(`errorCode - ${errorCode}`);
-          const errorMessage = error.message;
-          console.log(`errorMessage - ${errorMessage}`);
-          const email = error.email;
+          const { code, message, email, credential } = error;
+          console.log(`errorCode - ${code}`);
+          console.log(`errorMessage - ${message}`);
           console.log(`email - ${email}`);
-          const credential = error.credential;
           console.log(`credential - ${credential}`);
         });
     };
@@ -111,13 +119,13 @@ const SignInComponent = ({ history, store }) => {
         <Button variant="outlined" onClick={signOut}>
           Sign Out
         </Button>
-        {currentUser && (
+        {authUser && (
           <div>
             <StyledFirebaseAuth
               uiConfig={uiConfig}
               firebaseAuth={auth}
             />
-            <p>{currentUser.displayName}</p>
+            <p>{authUser.displayName}</p>
           </div>
         )}
       </Box>

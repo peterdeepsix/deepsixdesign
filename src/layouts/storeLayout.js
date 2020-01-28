@@ -13,7 +13,10 @@ const StoreLayout = ({ store, children }) => {
   const { firebaseStore, sessionStore, predictionsStore } = store;
 
   useEffect(() => {
-    console.log('checked for user');
+    console.log('get on useEffect');
+    sessionStore.getAuthUser();
+    sessionStore.getAuthToken();
+    sessionStore.getLoggedIn();
   });
 
   useMemo(() => {
@@ -25,8 +28,6 @@ const StoreLayout = ({ store, children }) => {
     predictionsStore.setFirestore(firebase.firestore());
 
     sessionStore.setAuth(firebase.auth());
-    sessionStore.setAuthUser();
-    sessionStore.setLoggedIn();
     sessionStore.setGoogleProvider(
       new firebase.auth.GoogleAuthProvider(),
     );

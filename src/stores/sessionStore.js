@@ -11,67 +11,75 @@ class SessionStore {
     this.auth = auth;
   }
 
-  setAuthUser() {
-    this.authUser = this.auth.currentUser;
-    localStorage.setItem('authUser', this.auth.currentUser);
+  getAuthToken() {
+    this.authToken = localStorage.getItem('authToken');
+    console.log('getAuthToken');
+    console.log(this.authToken);
+  }
+  getAuthUser() {
+    this.authUser = localStorage.getItem('authUser');
+    console.log('getAuthUser');
+    console.log(this.authUser);
+  }
+  getLoggedIn() {
+    this.loggedIn = localStorage.getItem('loggedIn');
+    console.log('getLoggedIn');
+    console.log(this.loggedIn);
+  }
+
+  setAuthToken(authToken) {
+    this.authToken = authToken;
+    localStorage.setItem('authToken', authToken);
+  }
+
+  setAuthUser(authUser) {
+    this.authUser = authUser;
+    localStorage.setItem('authUser', authUser);
+  }
+
+  setLoggedIn(loggedIn) {
+    this.loggedIn = loggedIn;
+    localStorage.setItem('loggedIn', loggedIn);
   }
 
   setGoogleProvider(googleProvider) {
     this.googleProvider = googleProvider;
   }
 
-  setLoggedIn(loggedIn) {
-    this.loggedIn = localStorage.getItem('loggedIn');
-    if (loggedIn) {
-      this.loggedIn = loggedIn;
-      localStorage.setItem('loggedIn', loggedIn);
-    } else {
-      localStorage.setItem('loggedIn', this.loggedIn);
-    }
-    console.log(`set logged in to ${this.loggedIn}`);
-  }
+  // onAuthUserListener = (next, fallback) =>
+  //   this.auth.onAuthStateChanged(authUser => {
+  //     if (authUser) {
+  //       this.user(authUser.uid)
+  //         .once('value')
+  //         .then(snapshot => {
+  //           const dbUser = snapshot.val();
 
-  onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.user(authUser.uid)
-          .once('value')
-          .then(snapshot => {
-            const dbUser = snapshot.val();
+  //           // default empty roles
+  //           if (!dbUser.roles) {
+  //             dbUser.roles = {};
+  //           }
 
-            // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
+  //           // merge auth and db user
+  //           authUser = {
+  //             uid: authUser.uid,
+  //             email: authUser.email,
+  //             emailVerified: authUser.emailVerified,
+  //             providerData: authUser.providerData,
+  //             ...dbUser,
+  //           };
 
-            // merge auth and db user
-            authUser = {
-              uid: authUser.uid,
-              email: authUser.email,
-              emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              ...dbUser,
-            };
-
-            next(authUser);
-          });
-      } else {
-        fallback();
-      }
-    });
-
-  async getAuthUser() {
-    try {
-      console.log('get Auth User');
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //           next(authUser);
+  //         });
+  //     } else {
+  //       fallback();
+  //     }
+  //   });
 
   dehydrate() {
     return {
       auth: this.auth,
       authUser: this.authUser,
+      authToken: this.authToken,
       loggedIn: this.loggedIn,
       googleProvider: this.googleProvider,
     };
@@ -81,12 +89,16 @@ class SessionStore {
 decorate(SessionStore, {
   auth: observable,
   authUser: observable,
+  authToken: observable,
   loggedIn: observable,
   googleProvider: observable,
   setFirebase: action,
   setAuthUser: action,
+  setLoggedIn: action,
   setGoogleProvider: action,
   getAuthUser: action,
+  getAuthToken: action,
+  getLoggedIn: action,
 });
 
 export default SessionStore;
