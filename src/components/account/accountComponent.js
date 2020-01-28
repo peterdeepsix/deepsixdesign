@@ -17,7 +17,7 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   your personal account page.
 `;
 
-const SignInComponent = ({ history, store }) => {
+const AccountComponent = ({ history, store }) => {
   const { sessionStore } = store;
   const { auth, authUser, loggedIn, googleProvider } = sessionStore;
 
@@ -107,14 +107,14 @@ const SignInComponent = ({ history, store }) => {
     event.preventDefault();
   };
 
-  if (loggedIn) {
-    navigate(`/account`);
+  if (!loggedIn) {
+    navigate(`/signin`);
   }
   return (
     <Container maxWidth="sm">
       <Box my={4}>
-        <Button variant="outlined" color="primary" onClick={onSubmit}>
-          Sign In With Google
+        <Button variant="outlined" onClick={signOut}>
+          Sign Out
         </Button>
         {auth && (
           <div>
@@ -129,4 +129,4 @@ const SignInComponent = ({ history, store }) => {
   );
 };
 
-export default inject('store')(observer(SignInComponent));
+export default inject('store')(observer(AccountComponent));
