@@ -1,9 +1,10 @@
 import { observable, action, decorate, toJS } from 'mobx';
+import localStorage from 'mobx-localstorage';
 
 class SessionStore {
   auth = null;
   authUser = null;
-  loggedIn = false;
+  loggedIn = null;
   googleProvider = null;
 
   setAuth(auth) {
@@ -12,6 +13,7 @@ class SessionStore {
 
   setAuthUser() {
     this.authUser = this.auth.currentUser;
+    localStorage.setItem('authUser', this.auth.currentUser);
   }
 
   setGoogleProvider(googleProvider) {
@@ -20,6 +22,7 @@ class SessionStore {
 
   setLoggedIn(loggedIn) {
     this.loggedIn = loggedIn;
+    localStorage.setItem('loggedIn', loggedIn);
   }
 
   onAuthUserListener = (next, fallback) =>

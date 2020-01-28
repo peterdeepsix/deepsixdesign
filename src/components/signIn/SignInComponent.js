@@ -70,14 +70,46 @@ const SignInComponent = ({ history, store }) => {
     return () => (didCancel = true);
     event.preventDefault();
   };
+
+  const signOut = event => {
+    if (!auth) return;
+    let didCancel = false;
+
+    const SignOut = async () => {
+      await auth
+        .signOut()
+        .then(function() {
+          sessionStore.setAuthUser(null);
+          sessionStore.setLoggedIn(false);
+          if (!didCancel) setIsLoading(false);
+        })
+        .catch(function(error) {
+          const errorCode = error.code;
+          console.log(`errorCode - ${errorCode}`);
+          const errorMessage = error.message;
+          console.log(`errorMessage - ${errorMessage}`);
+          const email = error.email;
+          console.log(`email - ${email}`);
+          const credential = error.credential;
+          console.log(`credential - ${credential}`);
+        });
+    };
+    SignOut();
+    return () => (didCancel = true);
+    event.preventDefault();
+  };
+
   if (loggedIn) {
-    navigate(`/about`);
+    // navigate(`/about`);
   }
   return (
     <Container maxWidth="sm">
       <Box my={4}>
         <Button variant="outlined" color="primary" onClick={onSubmit}>
           Sign In With Google
+        </Button>
+        <Button variant="outlined" onClick={signOut}>
+          Sign Out
         </Button>
         {currentUser && (
           <div>
