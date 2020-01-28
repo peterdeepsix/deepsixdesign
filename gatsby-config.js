@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 module.exports = {
   siteMetadata: {
@@ -84,8 +86,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-offline`,
-      options: {
-      },
+      options: {},
     },
   ],
 };

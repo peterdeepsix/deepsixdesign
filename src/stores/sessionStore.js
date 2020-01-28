@@ -1,9 +1,10 @@
 import { observable, action, decorate, toJS } from 'mobx';
 
 class SessionStore {
-  auth = null
+  auth = null;
   authUser = null;
-  googleProvider = null
+  loggedIn = false;
+  googleProvider = null;
 
   setAuth(auth) {
     this.auth = auth;
@@ -48,7 +49,7 @@ class SessionStore {
 
   async getAuthUser() {
     try {
-      console.log('get Auth User')
+      console.log('get Auth User');
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +59,7 @@ class SessionStore {
     return {
       auth: this.auth,
       authUser: this.authUser,
+      loggedIn: this.loggedIn,
       googleProvider: this.googleProvider,
     };
   }
@@ -66,6 +68,7 @@ class SessionStore {
 decorate(SessionStore, {
   auth: observable,
   authUser: observable,
+  loggedIn: observable,
   googleProvider: observable,
   setFirebase: action,
   setAuthUser: action,
