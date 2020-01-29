@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme, collapsed) => ({
     transition: '0.3s',
   },
   button: {
+    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    marginLeft: theme.spacing(2),
   },
 }));
 
