@@ -28,7 +28,12 @@ function UserObject({ store }) {
     return (
       <div className={classes.root}>
         <List disableGutters>
-          <ListItem color="inherit" component={Link} to="/account">
+          <ListItem
+            button
+            color="inherit"
+            component={Link}
+            to="/account"
+          >
             <ListItemAvatar>
               <Avatar alt="User Photo" src={authUser.photoURL} />
             </ListItemAvatar>
