@@ -14,10 +14,10 @@ import UserObject from './userObject';
 
 const useStyles = makeStyles((theme, collapsed) => ({
   root: {
-    paddingTop: collapsed ? theme.spacing(1) : theme.spacing(2),
-    paddingBottom: collapsed ? theme.spacing(1) : theme.spacing(1),
-    paddingLeft: collapsed ? theme.spacing(1) : theme.spacing(2),
-    paddingRight: collapsed ? theme.spacing(1) : theme.spacing(2),
+    paddingTop: collapsed ? theme.spacing(0) : theme.spacing(0),
+    paddingBottom: collapsed ? theme.spacing(0) : theme.spacing(0),
+    paddingLeft: collapsed ? theme.spacing(0) : theme.spacing(0),
+    paddingRight: collapsed ? theme.spacing(0) : theme.spacing(0),
     transition: '0.3s',
   },
   button: {
@@ -55,7 +55,12 @@ const NavHeaderEx = ({ collapsed, history, store }) => {
             </Box>
             <Divider />
           </>
-        )) || <UserObject />}
+        )) || (
+          <>
+            <UserObject />
+            <Divider />
+          </>
+        )}
       </div>
     </>
   );

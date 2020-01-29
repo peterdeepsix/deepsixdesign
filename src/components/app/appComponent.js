@@ -22,25 +22,25 @@ import {
 const NavContent = Loadable(
   () => import('../app/components/NavContent'),
   {
-    fallback: <IndefiniteLoading message='NavContent' />,
+    fallback: <IndefiniteLoading message="NavContent" />,
   },
 );
 const NavHeader = Loadable(
   () => import('../app/components/NavHeader'),
   {
-    fallback: <IndefiniteLoading message='NavHeader' />,
+    fallback: <IndefiniteLoading message="NavHeader" />,
   },
 );
 const HeaderContent = Loadable(
   () => import('../app/components/HeaderContent'),
   {
-    fallback: <IndefiniteLoading message='HeaderContent' />,
+    fallback: <IndefiniteLoading message="HeaderContent" />,
   },
 );
 const FooterContent = Loadable(
   () => import('../app/components/FooterContent'),
   {
-    fallback: <IndefiniteLoading message='FooterContent' />,
+    fallback: <IndefiniteLoading message="FooterContent" />,
   },
 );
 
@@ -54,7 +54,7 @@ const config = {
       hidden: false,
       inset: false,
       variant: 'temporary',
-      width: 240,
+      width: 320,
       collapsible: false,
       collapsedWidth: 64,
     },
@@ -77,7 +77,7 @@ const config = {
       hidden: false,
       inset: false,
       variant: 'persistent',
-      width: 256,
+      width: 320,
       collapsible: true,
       collapsedWidth: 64,
     },
@@ -100,7 +100,7 @@ const config = {
       hidden: false,
       inset: false,
       variant: 'permanent',
-      width: 256,
+      width: 320,
       collapsible: true,
       collapsedWidth: 64,
     },

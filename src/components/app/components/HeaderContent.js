@@ -1,26 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { isWidthUp } from '@material-ui/core/withWidth';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Search from '@material-ui/icons/Search';
-import MoreVert from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
-import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-
-import Link from '../../Link';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 
 const styles = ({
   spacing,
@@ -85,25 +66,34 @@ const styles = ({
 const HeaderContent = ({ classes, screen }) => {
   return (
     <>
-      <Typography variant="h5" color='textSecondary' noWrap className={classes.header}>
+      <Typography
+        variant="h5"
+        color="textSecondary"
+        noWrap
+        className={classes.header}
+      >
         Plexus Prediction Engine v1.0.2
       </Typography>
 
-
-      {isWidthUp('md', screen) &&
+      {isWidthUp('md', screen) && (
         <>
           <div className={classes.grow} />
           <Typography variant="h5" noWrap className={classes.header}>
             Deep Six Design
           </Typography>
-          <Typography color={'textSecondary'} ariant="caption" display="block" noWrap className={classes.header}>
+          <Typography
+            color={'textSecondary'}
+            ariant="caption"
+            display="block"
+            noWrap
+            className={classes.header}
+          >
             Plexus Prediction Engine v1.0.2
           </Typography>
         </>
-      }
-
+      )}
     </>
-  )
+  );
 };
 
 export default withStyles(styles)(HeaderContent);
