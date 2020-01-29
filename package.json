@@ -57,7 +57,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "create-env": "printenv > .env",
+    "create-env": "printenv > .env.production",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
