@@ -10,7 +10,6 @@ import { DropzoneDialog } from 'material-ui-dropzone';
 const MediaUpload = ({ store }) => {
   const { predictionsStore } = store;
   const { storage, firestore } = predictionsStore;
-
   const [open, setOpen] = useState(false);
   const [files, setFiles] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -20,7 +19,10 @@ const MediaUpload = ({ store }) => {
     const file = files[0];
 
     console.log(`storage - ${storage}`);
-    const uploadTask = storage.child(file.name).put(file);
+    const uploadTask = storage
+      .ref()
+      .child(file.name)
+      .put(file);
 
     uploadTask.on(
       'state_changed',

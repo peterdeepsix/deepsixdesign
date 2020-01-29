@@ -8,11 +8,9 @@ class PredictionsStore {
   setFirestore(firestore) {
     this.firestore = firestore;
   }
-
   setStorage(storage) {
     this.storage = storage;
   }
-
   async getPredictions() {
     try {
       const { docs } = await this.firestore
@@ -80,6 +78,7 @@ class PredictionsStore {
 decorate(PredictionsStore, {
   firestore: observable,
   predictions: observable,
+  storage: observable,
   setFirestore: action,
   getPredictions: action,
   addPrediction: action,
