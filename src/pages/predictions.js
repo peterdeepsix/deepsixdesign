@@ -8,7 +8,7 @@ import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import PrivateRouteComponent from 'src/components/privateRoute/privateRouteComponent';
 
 const LoginComponent = Loadable(
-  () => import('src/components/login/loginComponent'),
+  () => import('src/components/login/logInComponent'),
   {
     fallback: <IndefiniteLoading message="LoginComponent" />,
   },
