@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
@@ -53,93 +54,101 @@ const NavContent = () => {
     setSelectedIndex(index);
   };
   return (
-    <List>
-      <ListItem
-        color="inherit"
-        button
-        component={Link}
-        to="/about"
-        selected={selectedIndex === 0}
-        onClick={event => handleListItemClick(event, 0)}
-      >
-        <ListItemIcon>
-          <NaturePeopleOutlinedIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={'About'}
-          primaryTypographyProps={{ noWrap: true }}
-        />
-      </ListItem>
-      <ListItem
-        color="inherit"
-        button
-        to="/products"
-        component={Link}
-        selected={selectedIndex === 1}
-        onClick={event => handleListItemClick(event, 1)}
-      >
-        <ListItemIcon>
-          <ChangeHistoryIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={'Products'}
-          primaryTypographyProps={{ noWrap: true }}
-        />
-      </ListItem>
-      <ListItem
-        color="inherit"
-        button
-        component={Link}
-        to="/cart"
-        selected={selectedIndex === 2}
-        onClick={event => handleListItemClick(event, 2)}
-      >
-        <ListItemIcon>
-          <ShoppingCartOutlinedIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={'Shopping Cart'}
-          primaryTypographyProps={{ noWrap: true }}
-        />
-      </ListItem>
-      <Divider style={{ margin: '12px 0' }} />
-      {list.map(({ to, primaryText, icon }, i) => (
+    <>
+      <List subheader={<ListSubheader>Commerce Store</ListSubheader>}>
         <ListItem
-          key={primaryText}
           color="inherit"
           button
           component={Link}
-          to={to}
-          selected={selectedIndex === 3 + i}
-          onClick={event => handleListItemClick(event, 3 + i)}
+          to="/about"
+          selected={selectedIndex === 0}
+          onClick={event => handleListItemClick(event, 0)}
         >
           <ListItemIcon>
-            <Icon>{icon}</Icon>
+            <NaturePeopleOutlinedIcon />
           </ListItemIcon>
           <ListItemText
-            primary={primaryText}
+            primary={'About'}
             primaryTypographyProps={{ noWrap: true }}
           />
         </ListItem>
-      ))}
-      <Divider style={{ margin: '12px 0' }} />
-      <ListItem
-        color="inherit"
-        button
-        component={Link}
-        to="/contact"
-        selected={selectedIndex === 10}
-        onClick={event => handleListItemClick(event, 10)}
+        <ListItem
+          color="inherit"
+          button
+          to="/products"
+          component={Link}
+          selected={selectedIndex === 1}
+          onClick={event => handleListItemClick(event, 1)}
+        >
+          <ListItemIcon>
+            <ChangeHistoryIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Products'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/cart"
+          selected={selectedIndex === 2}
+          onClick={event => handleListItemClick(event, 2)}
+        >
+          <ListItemIcon>
+            <ShoppingCartOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Shopping Cart'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <Divider style={{ margin: '12px 0' }} />
+      </List>
+      <List
+        subheader={
+          <ListSubheader>Application - Login Required</ListSubheader>
+        }
       >
-        <ListItemIcon>
-          <ContactMailOutlinedIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={'Contact'}
-          primaryTypographyProps={{ noWrap: true }}
-        />
-      </ListItem>
-    </List>
+        {list.map(({ to, primaryText, icon }, i) => (
+          <ListItem
+            key={primaryText}
+            color="inherit"
+            button
+            component={Link}
+            to={to}
+            selected={selectedIndex === 3 + i}
+            onClick={event => handleListItemClick(event, 3 + i)}
+          >
+            <ListItemIcon>
+              <Icon>{icon}</Icon>
+            </ListItemIcon>
+            <ListItemText
+              primary={primaryText}
+              primaryTypographyProps={{ noWrap: true }}
+            />
+          </ListItem>
+        ))}
+        <Divider style={{ margin: '12px 0' }} />
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/contact"
+          selected={selectedIndex === 10}
+          onClick={event => handleListItemClick(event, 10)}
+        >
+          <ListItemIcon>
+            <ContactMailOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Contact'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+      </List>
+    </>
   );
 };
 
