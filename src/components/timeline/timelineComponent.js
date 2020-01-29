@@ -31,29 +31,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TimelineComponent = ({
-  data,
-  predictions: predictionsStore,
-}) => {
+const TimelineComponent = ({ data }) => {
   const classes = useStyles();
-
-  const { predictions, firestore } = predictionsStore;
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
-
-  if (isLoading) return <IndefiniteLoading message='TimelineComponent' />;
 
   return (
     <Container>
