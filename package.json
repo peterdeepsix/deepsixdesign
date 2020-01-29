@@ -36,6 +36,7 @@
     "material-table": "^1.55.0",
     "material-ui-dropzone": "^2.4.7",
     "mobx": "^5.15.3",
+    "mobx-localstorage": "^1.2.0",
     "mobx-react": "^6.1.5",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -56,7 +57,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "create-env": "printenv > .env",
+    "create-env": "printenv > .env.production",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",

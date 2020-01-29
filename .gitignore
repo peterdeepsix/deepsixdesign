@@ -3,6 +3,8 @@ firebase/
 service-account.json
 service-account-dev.json
 service-account-prod.json
+.env.development
+.env.production
 # \
 
 # Logs

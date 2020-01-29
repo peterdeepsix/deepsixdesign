@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "plexus-1d216"
+    "default": "deepsixdesign-web-prod",
+    "dev": "deepsixdesign-web-dev",
+    "prod": "deepsixdesign-web-prod"
   }
 }
