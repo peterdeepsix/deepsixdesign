@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme, collapsed) => ({
   },
   button: {
     marginBottom: theme.spacing(1),
+    marginLeft: theme.spacing(2),
   },
 }));
 
