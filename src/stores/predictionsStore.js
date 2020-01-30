@@ -21,7 +21,7 @@ class PredictionsStore {
         id: doc.id,
         ...doc.data(),
       }));
-      this.objects.replace(predictions);
+      this.predictions.replace(predictions);
     } catch (error) {
       console.log(error);
     }
