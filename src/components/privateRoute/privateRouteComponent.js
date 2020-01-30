@@ -8,9 +8,8 @@ const PrivateRouteComponent = ({
   location,
   ...rest
 }) => {
-  const { sessionStore } = store;
-  const { authUser } = sessionStore;
-  console.log(authUser);
+  const { authUser } = store.sessionStore;
+
   if (!authUser && location.pathname !== `/signin`) {
     navigate('/signin');
     return null;

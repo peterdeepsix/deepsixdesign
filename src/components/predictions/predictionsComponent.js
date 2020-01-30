@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import PredictionsTable from './predictionsTable';
+import PredictionsDialog from './predictionsDialog';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -14,12 +15,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsComponent = ({ history, store }) => {
+const PredictionsComponent = ({ store }) => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
-
-  const { sessionStore } = store;
-  const { auth, authUser, googleProvider } = sessionStore;
 
   const { predictionsStore } = store;
   const { predictions, firestore } = predictionsStore;
@@ -42,6 +40,7 @@ const PredictionsComponent = ({ history, store }) => {
     <div className={classes.container}>
       <Container>
         <Box>
+          <PredictionsDialog />
           <PredictionsTable predictions={predictions} />
         </Box>
       </Container>
