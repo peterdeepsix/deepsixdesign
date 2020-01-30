@@ -39,7 +39,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsForm = ({ handleClose, store }) => {
+const PredictionsForm = ({
+  handleSubmission,
+  handleClose,
+  store,
+}) => {
   const classes = useStyles();
   const { firestore } = store.predictionsStore;
 

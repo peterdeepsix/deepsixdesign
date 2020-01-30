@@ -1,56 +1,31 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import Loadable from '@loadable/component';
+
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
-import ShutterSpeedOutlinedIcon from '@material-ui/icons/ShutterSpeedOutlined';
-
-import Loadable from '@loadable/component';
+import PredictionsForm from './predictionsForm';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const MediaUploadComponent = Loadable(
-  () => import('src//components/mediaUpload/mediaUploadComponent'),
-  {
-    fallback: <IndefiniteLoading message="MediaUploadComponent" />,
-  },
-);
+// const MediaUpload = Loadable(
+//   () => import('src/components/gallery/mediaUpload'),
+//   {
+//     fallback: <IndefiniteLoading message="MediaUpload" />,
+//   },
+// );
 
-const PredictionsForm = Loadable(() => import('./predictionsForm'), {
-  fallback: <IndefiniteLoading message="PredictionsForm" />,
-});
-
-const useStyles = makeStyles(theme => ({
-  appBar: {
-    position: 'relative',
-  },
-  margin: {
-    margin: theme.spacing(1),
-    marginLeft: theme.spacing(0),
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-}));
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-const PredictionsDialog = ({ children }) => {
-  const classes = useStyles();
+export default function PredictionDialog() {
   const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,46 +35,40 @@ const PredictionsDialog = ({ children }) => {
     setOpen(false);
   };
 
+  const handleSubmission = () => {
+    setOpen(true);
+  };
+
   return (
-    <React.Fragment>
+    <div>
       <Button
         variant="outlined"
         color="primary"
-        aria-label="add"
         onClick={handleClickOpen}
-        className={classes.margin}
       >
-        <ShutterSpeedOutlinedIcon className={classes.extendedIcon} />
         Create Prediction
       </Button>
       <Dialog
-        fullScreen
+        fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
-        TransitionComponent={Transition}
+        aria-labelledby="responsive-dialog-title"
       >
-        <AppBar color="inherit" className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Create Prediction
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Container>
-          <MediaUploadComponent />
-          <PredictionsForm handleClose={handleClose} />
-        </Container>
+        <DialogTitle id="responsive-dialog-title">
+          {'Create Prediction'}
+        </DialogTitle>
+        <DialogContent>
+          <PredictionsForm
+            handleSubmission={handleSubmission}
+            handleClose={handleClose}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose}>
+            Cancel
+          </Button>
+        </DialogActions>
       </Dialog>
-    </React.Fragment>
+    </div>
   );
-};
-
-export default PredictionsDialog;
+}

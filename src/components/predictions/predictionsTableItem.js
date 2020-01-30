@@ -36,7 +36,9 @@ const PredictionsTableItem = ({ rowData, handleMarkComplete }) => {
       {status !== 'complete' && (
         <Box my={4}>
           {console.log(rowData)}
-          <Button variant="outlined">Toggle Status</Button>
+          <Button variant="outlined" onClick={handleMarkComplete}>
+            Toggle Status
+          </Button>
         </Box>
       )}
     </Container>

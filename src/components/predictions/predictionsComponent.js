@@ -4,7 +4,6 @@ import { inject, observer } from 'mobx-react';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import PredictionsTable from './predictionsTable';
 import PredictionsDialog from './predictionsDialog';
-import PredictionsDialogButton from './predictionsDialogButton';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -41,7 +40,7 @@ const PredictionsComponent = ({ store }) => {
     <div className={classes.container}>
       <Container>
         <Box>
-          <PredictionsDialogButton />
+          <PredictionsDialog />
           <PredictionsTable predictions={predictions} />
         </Box>
       </Container>

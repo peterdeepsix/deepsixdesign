@@ -120,7 +120,6 @@ const PredictionsTable = ({ predictions }) => {
           { title: 'Status', field: 'status' },
           { title: 'Due At', field: 'dueAt' },
           { title: 'Created At', field: 'createdAt' },
-          { title: 'Input Image', field: 'inputImageUrl' },
         ]}
         data={predictions}
         detailPanel={[
