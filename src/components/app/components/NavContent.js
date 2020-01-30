@@ -55,7 +55,9 @@ const NavContent = () => {
   };
   return (
     <>
-      <List subheader={<ListSubheader>Commerce Store</ListSubheader>}>
+      <List
+        subheader={<ListSubheader>Company Information</ListSubheader>}
+      >
         <ListItem
           color="inherit"
           button
@@ -72,6 +74,25 @@ const NavContent = () => {
             primaryTypographyProps={{ noWrap: true }}
           />
         </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/contact"
+          selected={selectedIndex === 10}
+          onClick={event => handleListItemClick(event, 10)}
+        >
+          <ListItemIcon>
+            <ContactMailOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Contact'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+      </List>
+      <Divider style={{ margin: '12px 0' }} />
+      <List subheader={<ListSubheader>Commerce Store</ListSubheader>}>
         <ListItem
           color="inherit"
           button
@@ -108,7 +129,7 @@ const NavContent = () => {
       </List>
       <List
         subheader={
-          <ListSubheader>Application - Login Required</ListSubheader>
+          <ListSubheader>Plexus Prediction Engine</ListSubheader>
         }
       >
         {list.map(({ to, primaryText, icon }, i) => (
@@ -130,23 +151,6 @@ const NavContent = () => {
             />
           </ListItem>
         ))}
-        <Divider style={{ margin: '12px 0' }} />
-        <ListItem
-          color="inherit"
-          button
-          component={Link}
-          to="/contact"
-          selected={selectedIndex === 10}
-          onClick={event => handleListItemClick(event, 10)}
-        >
-          <ListItemIcon>
-            <ContactMailOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary={'Contact'}
-            primaryTypographyProps={{ noWrap: true }}
-          />
-        </ListItem>
       </List>
     </>
   );
