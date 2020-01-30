@@ -129,7 +129,7 @@ const NavContent = () => {
       </List>
       <List
         subheader={
-          <ListSubheader>Application - Login Required</ListSubheader>
+          <ListSubheader>Plexus Prediction Engine</ListSubheader>
         }
       >
         {list.map(({ to, primaryText, icon }, i) => (
