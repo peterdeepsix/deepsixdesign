@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
 import DefiniteLoading from 'src/components/loading/definiteLoading';
-import FabZoom from 'src/components/gallery/fabZoom';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
-const MediaUpload = ({ store }) => {
+import Button from '@material-ui/core/Button';
+
+const MediaUploadComponent = ({ store }) => {
   const { predictionsStore } = store;
   const { storage, firestore } = predictionsStore;
   const [open, setOpen] = useState(false);
@@ -82,7 +83,7 @@ const MediaUpload = ({ store }) => {
 
   return (
     <React.Fragment>
-      <FabZoom onClick={handleOpen} disabled={loading} />
+      <Button onClick={handleOpen} disabled={loading} />
       <DefiniteLoading
         isCircular
         progress={progress}
@@ -107,4 +108,4 @@ const MediaUpload = ({ store }) => {
   );
 };
 
-export default inject('store')(observer(MediaUpload));
+export default inject('store')(observer(MediaUploadComponent));

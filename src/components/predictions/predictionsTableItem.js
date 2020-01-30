@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-import { inject } from 'mobx-react';
+import React from 'react';
 import dateFormat from 'date-format';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
-const PredictionsTableItem = ({
-  predictions: predictionsStore,
-  rowData,
-  handleMarkComplete,
-}) => {
+const PredictionsTableItem = ({ rowData, handleMarkComplete }) => {
   const { title, status, dueAt, createdAt, inputImageUrl } = rowData;
-  const { predictions } = predictionsStore;
 
   return (
     <Container maxWidth="sm">
@@ -49,4 +43,4 @@ const PredictionsTableItem = ({
   );
 };
 
-export default inject('predictions')(PredictionsTableItem);
+export default PredictionsTableItem;
