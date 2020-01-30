@@ -23,6 +23,8 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
+import MediaUploadComponent from 'src/components/mediaUpload/mediaUploadComponent';
+
 const useStyles = makeStyles(theme => ({
   grid: {
     flexGrow: 1,
@@ -93,6 +95,9 @@ const PredictionsForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Box>
+          <MediaUploadComponent />
+        </Box>
         <Box>
           <TextField
             ref={titleRef}
