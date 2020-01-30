@@ -39,12 +39,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsForm = ({
-  handleClose,
-  predictions: predictionsStore,
-}) => {
+const PredictionsForm = ({ handleClose, store }) => {
   const classes = useStyles();
-  const { firestore } = predictionsStore;
+  const { firestore } = store.predictionsStore;
 
   const titleRef = useRef(null);
   const [title, setTitle] = useState('');
@@ -52,7 +49,6 @@ const PredictionsForm = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [message, setMessage] = useState('');
-
 
   const handleTitleChange = event =>
     setTitle(event.target.value.trim());
@@ -68,7 +64,7 @@ const PredictionsForm = ({
     setIsSubmitting(true);
 
     // add the new task
-    const success = await predictionsStore.addPrediction({
+    const success = await store.predictionsStore.addPrediction({
       title,
       dueAt: dueDate.valueOf(),
     });
@@ -139,4 +135,4 @@ const PredictionsForm = ({
   );
 };
 
-export default inject('predictions')(observer(PredictionsForm));
+export default inject('store')(observer(PredictionsForm));
