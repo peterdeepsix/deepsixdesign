@@ -1,10 +1,19 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Router } from '@reach/router';
 import Loadable from '@loadable/component';
+import { graphql } from 'gatsby';
 
 import SEO from 'src/components/seo';
 import AppLayout from 'src/layouts/appLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+import PrivateRouteComponent from 'src/components/privateRoute/privateRouteComponent';
+
+const LoginComponent = Loadable(
+  () => import('src/components/login/logInComponent'),
+  {
+    fallback: <IndefiniteLoading message="LoginComponent" />,
+  },
+);
 
 const TimelineComponent = Loadable(
   () => import('src/components/timeline/timelineComponent'),
@@ -34,7 +43,14 @@ const TimelinePage = ({ data }) => {
   return (
     <AppLayout>
       <SEO title="Timeline - Deep Six Design" />
-      <TimelineComponent data={data} />
+      <Router>
+        <PrivateRouteComponent
+          path="//timeline"
+          component={TimelineComponent}
+          data={data}
+        />
+        <LoginComponent path="/signin" />
+      </Router>
     </AppLayout>
   );
 };

@@ -30,7 +30,7 @@ const Predictions = () => {
           path="/predictions"
           component={PredictionsComponent}
         />
-        <LoginComponent path="/login" />
+        <LoginComponent path="/signin" />
       </Router>
     </AppLayout>
   );

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import { navigate } from 'gatsby';
-import { isLoggedIn } from 'src/services/auth';
+
 const PrivateRouteComponent = ({
+  store,
   component: Component,
   location,
   ...rest
 }) => {
-  if (!isLoggedIn() && location.pathname !== `/login`) {
-    navigate('/login');
+  const { sessionStore } = store;
+  const { authUser } = sessionStore;
+  console.log(authUser);
+  if (!authUser && location.pathname !== `/signin`) {
+    navigate('/signin');
     return null;
   }
   return <Component {...rest} />;
 };
-export default PrivateRouteComponent;
+export default inject('store')(observer(PrivateRouteComponent));

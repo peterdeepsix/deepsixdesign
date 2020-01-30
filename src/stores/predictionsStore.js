@@ -8,11 +8,9 @@ class PredictionsStore {
   setFirestore(firestore) {
     this.firestore = firestore;
   }
-
   setStorage(storage) {
     this.storage = storage;
   }
-
   async getPredictions() {
     try {
       const { docs } = await this.firestore
@@ -23,7 +21,7 @@ class PredictionsStore {
         id: doc.id,
         ...doc.data(),
       }));
-      this.objects.replace(predictions);
+      this.predictions.replace(predictions);
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +78,7 @@ class PredictionsStore {
 decorate(PredictionsStore, {
   firestore: observable,
   predictions: observable,
+  storage: observable,
   setFirestore: action,
   getPredictions: action,
   addPrediction: action,
