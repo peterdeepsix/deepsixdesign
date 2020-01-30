@@ -6,15 +6,19 @@ import React, {
 } from 'react';
 
 import { inject, observer } from 'mobx-react';
-import dateFormat from 'date-format';
 import 'date-fns';
-
-import { useFirebase } from 'gatsby-plugin-firebase';
+import { Formik, Form } from 'formik';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Button, LinearProgress } from '@material-ui/core';
+import {
+  TimePicker,
+  DatePicker,
+  DateTimePicker,
+} from 'formik-material-ui-pickers';
+
 import Box from '@material-ui/core/Box';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -49,34 +53,22 @@ const PredictionsForm = ({
   const classes = useStyles();
   const { firestore } = store.predictionsStore;
 
-  const titleRef = useRef(null);
-  const [title, setTitle] = useState('');
-  const [dueDate, setDueDate] = useState(new Date());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleTitleChange = event =>
-    setTitle(event.target.value.trim());
-
-  const handleDueDateChange = date => {
-    setDueDate(date);
-  };
-
-  const handleSubmit = async event => {
-    event.preventDefault();
+  const handleSubmit = async values => {
     // avoid double submissions
     if (isSubmitting) return;
     setIsSubmitting(true);
 
     // add the new task
     const success = await store.predictionsStore.addPrediction({
-      title,
-      dueAt: dueDate.valueOf(),
+      title: values.title,
+      dueAt: values.dueAt.valueOf(),
     });
 
     if (success) {
-      titleRef.current.value = '';
       handleClose();
       setMessage('Prediction added!');
     } else {
@@ -93,54 +85,51 @@ const PredictionsForm = ({
 
   if (!isInitialized) return null;
   return (
-    <form onSubmit={handleSubmit}>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Box>
-          <MediaUploadComponent />
-        </Box>
-        <Box>
-          <TextField
-            ref={titleRef}
-            htmlFor="title"
-            id="title"
-            label="Title"
-            name="title"
-            onChange={handleTitleChange}
-          />
-        </Box>
-        <Box>
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            format="MM/dd/yyyy"
-            margin="normal"
-            id="date-picker-inline"
-            label="Due Date"
-            value={dueDate}
-            className={classes.textField}
-            onChange={handleDueDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}
-          />
-        </Box>
-        <Box>
-          {message && (
-            <Typography variant="body1">{message}</Typography>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Box>
+        <Formik
+          initialValues={{
+            dueAt: new Date(),
+            title: '',
+            description: '',
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            handleSubmit(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ submitForm, isSubmitting }) => (
+            <Form>
+              <TextField name="title" label="Title" />
+              <br />
+              <TextField name="description" label="Description" />
+              <br />
+              <DatePicker name="dueAt" label="Due At" />
+              <br />
+              <MediaUploadComponent />
+              <br />
+              {isSubmitting && <LinearProgress />}
+              <br />
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={isSubmitting}
+                onClick={submitForm}
+                variant="outlined"
+                type="submit"
+              >
+                Submit
+              </Button>
+            </Form>
           )}
-        </Box>
-        <Box>
-          <Button
-            variant="outlined"
-            type="submit"
-            color="primary"
-            disabled={!title || isSubmitting}
-          >
-            Create Prediction
-          </Button>
-        </Box>
-      </MuiPickersUtilsProvider>
-    </form>
+        </Formik>
+      </Box>
+      <Box>
+        {message && (
+          <Typography variant="body1">{message}</Typography>
+        )}
+      </Box>
+    </MuiPickersUtilsProvider>
   );
 };
 
