@@ -109,6 +109,7 @@ const PredictionsTable = ({ predictions }) => {
     <div className={classes.root}>
       <MaterialTable
         title="Predictions"
+        icons={tableIcons}
         components={{
           Container: props => <Card {...props} variant="outlined" />,
         }}

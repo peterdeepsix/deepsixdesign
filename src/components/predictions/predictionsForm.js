@@ -21,8 +21,6 @@ import { DropzoneDialog } from 'material-ui-dropzone';
 import DateFnsUtils from '@date-io/date-fns';
 import 'date-fns';
 
-import MediaUploadComponent from 'src/components/mediaUpload/mediaUploadComponent';
-
 const useStyles = makeStyles(theme => ({
   grid: {
     flexGrow: 1,
@@ -108,7 +106,7 @@ const PredictionsForm = ({ handleClose, store }) => {
           initialValues={{
             dueAt: new Date(),
             title: '',
-            status: '',
+            status: 'pending',
           }}
           onSubmit={(values, { setSubmitting }) => {
             store.predictionsStore.addPrediction({
@@ -117,70 +115,87 @@ const PredictionsForm = ({ handleClose, store }) => {
               dueAt: values.dueAt.valueOf(),
               inputImageUrl: inputImageUrl,
             });
-            console.log(files);
             setSubmitting(false);
+            handleClose();
           }}
         >
           {({ submitForm, isSubmitting }) => (
             <Form>
-              <TextField type="text" label="Title" name="title" />
+              <Box>
+                <TextField type="text" label="Title" name="title" />
+              </Box>
               <br />
-              <FormControl>
-                <InputLabel htmlFor="status">Status</InputLabel>
-                <Select
-                  type="text"
-                  name="status"
-                  inputProps={{
-                    id: 'status',
-                  }}
+              <Box>
+                <FormControl>
+                  <InputLabel htmlFor="status">Status</InputLabel>
+                  <Select
+                    type="text"
+                    name="status"
+                    inputProps={{
+                      id: 'status',
+                    }}
+                  >
+                    <MenuItem value="not started">
+                      Not Started
+                    </MenuItem>
+                    <MenuItem value="pending">Pending</MenuItem>
+                    <MenuItem value="completed">Completed</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+              <br />
+              <Box>
+                <DatePicker
+                  variant="outlined"
+                  name="dueAt"
+                  label="Due At"
+                />
+              </Box>
+              <br />
+              <Box>
+                <Button
+                  variant="outlined"
+                  onClick={handleDropzoneOpen}
                 >
-                  <MenuItem value="not started">Not Started</MenuItem>
-                  <MenuItem value="pending">Pending</MenuItem>
-                  <MenuItem value="completed">Completed</MenuItem>
-                </Select>
-              </FormControl>
+                  Upload Media
+                </Button>
+                <DropzoneDialog
+                  open={open}
+                  onSave={handleDropzoneSave}
+                  acceptedFiles={[
+                    'image/jpeg',
+                    'image/png',
+                    'image/bmp',
+                  ]}
+                  dialogTitle="Upload Media"
+                  dropzoneText="Drag and drop media files, or click to select."
+                  maxFileSize={50000000}
+                  filesLimit={1}
+                  maxWidth="sm"
+                  fullWidth={true}
+                  showFileNames={false}
+                  showPreviews={false}
+                  showPreviewsInDropzone={true}
+                  onClose={handleDropzoneClose}
+                />
+              </Box>
               <br />
-              <DatePicker
-                variant="outlined"
-                name="dueAt"
-                label="Due At"
-              />
-              <br />
-              <Button variant="outlined" onClick={handleDropzoneOpen}>
-                Upload Media
-              </Button>
-              <DropzoneDialog
-                open={open}
-                onSave={handleDropzoneSave}
-                acceptedFiles={[
-                  'image/jpeg',
-                  'image/png',
-                  'image/bmp',
-                ]}
-                dialogTitle="Upload Media"
-                dropzoneText="Drag and drop media files, or click to select."
-                maxFileSize={50000000}
-                filesLimit={1}
-                maxWidth="sm"
-                fullWidth={true}
-                showFileNames={false}
-                showPreviews={false}
-                showPreviewsInDropzone={true}
-                onClose={handleDropzoneClose}
-              />
-              <br />
-              <img width={200} src={inputImageUrl} />
+              <Box>
+                <img width={200} src={inputImageUrl} />
+              </Box>
               {isSubmitting && <LinearProgress />}
               <br />
-              <Button
-                variant="contained"
-                color="primary"
-                disabled={isSubmitting}
-                onClick={submitForm}
-                variant="outlined"
-              >
-                Submit
-              </Button>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={isSubmitting}
+                  onClick={submitForm}
+                  variant="outlined"
+                >
+                  Submit Prediction
+                </Button>
+              </Box>
             </Form>
           )}
         </Formik>

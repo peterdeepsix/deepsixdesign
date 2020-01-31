@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from '@loadable/component';
 
 import { useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Button from '@material-ui/core/Button';
@@ -15,16 +16,16 @@ import PredictionsForm from './predictionsForm';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-// const MediaUpload = Loadable(
-//   () => import('src/components/gallery/mediaUpload'),
-//   {
-//     fallback: <IndefiniteLoading message="MediaUpload" />,
-//   },
-// );
+const useStyles = makeStyles(theme => ({
+  button: {
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 export default function PredictionDialog() {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
+  const classes = useStyles();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClickOpen = () => {
@@ -44,6 +45,8 @@ export default function PredictionDialog() {
       <Button
         variant="outlined"
         color="primary"
+        size="large"
+        className={classes.button}
         onClick={handleClickOpen}
       >
         Create Prediction
