@@ -31,7 +31,6 @@ class PredictionsStore {
     try {
       const ref = await this.firestore.collection('predictions').add({
         ...prediction,
-        status: 'pending',
         createdAt: new Date().valueOf(),
       });
       const doc = await ref.get();

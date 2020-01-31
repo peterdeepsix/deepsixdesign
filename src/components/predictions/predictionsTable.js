@@ -107,20 +107,16 @@ const PredictionsTable = ({ predictions }) => {
 
   return (
     <div className={classes.root}>
-      {/* to change time use this - dateFormat('MM/dd/yyyy h:mm', new Date(dueAt))*/}
       <MaterialTable
         title="Predictions"
         components={{
           Container: props => <Card {...props} variant="outlined" />,
         }}
-        icons={tableIcons}
         columns={[
-          { title: 'ID', field: 'id' },
           { title: 'Title', field: 'title' },
           { title: 'Status', field: 'status' },
           { title: 'Due At', field: 'dueAt' },
           { title: 'Created At', field: 'createdAt' },
-          { title: 'Input Image', field: 'inputImageUrl' },
         ]}
         data={predictions}
         detailPanel={[

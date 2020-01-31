@@ -1,6 +1,5 @@
 import React from 'react';
 import Loadable from '@loadable/component';
-import { inject, observer } from 'mobx-react';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -11,17 +10,9 @@ const MediaGrid = Loadable(
   },
 );
 
-const CreatePredictionDialog = Loadable(
-  () => import('src/components/gallery/createPredictionDialog'),
-  {
-    fallback: <IndefiniteLoading message="CreatePredictionDialog" />,
-  },
-);
-
 const GalleryComponent = () => {
   return (
     <>
-      <CreatePredictionDialog />
       <MediaGrid />
     </>
   );

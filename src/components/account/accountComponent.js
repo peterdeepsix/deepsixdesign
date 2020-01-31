@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 import { inject, observer } from 'mobx-react';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -23,12 +22,6 @@ const AccountComponent = ({ history, store }) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
-
-  const uiConfig = {
-    signInFlow: 'popup',
-    signInSuccessUrl: '/signedIn',
-    signInOptions: [googleProvider.PROVIDER_ID],
-  };
 
   const updateAuthUser = async user => {
     setIsBusy(true);
@@ -116,14 +109,6 @@ const AccountComponent = ({ history, store }) => {
         <Button variant="outlined" onClick={signOut}>
           Sign Out
         </Button>
-        {auth && (
-          <div>
-            <StyledFirebaseAuth
-              uiConfig={uiConfig}
-              firebaseAuth={auth}
-            />
-          </div>
-        )}
       </Box>
     </Container>
   );

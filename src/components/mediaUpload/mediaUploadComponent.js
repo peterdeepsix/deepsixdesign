@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
-import DefiniteLoading from 'src/components/loading/definiteLoading';
-import FabZoom from 'src/components/gallery/fabZoom';
-import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
-const MediaUpload = ({ store }) => {
+import Button from '@material-ui/core/Button';
+
+const MediaUploadComponent = ({ store }) => {
   const { predictionsStore } = store;
   const { storage, firestore } = predictionsStore;
   const [open, setOpen] = useState(false);
@@ -18,7 +17,6 @@ const MediaUpload = ({ store }) => {
   const handleSubmit = files => {
     const file = files[0];
 
-    console.log(`storage - ${storage}`);
     const uploadTask = storage
       .ref()
       .child(file.name)
@@ -66,10 +64,6 @@ const MediaUpload = ({ store }) => {
     );
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleSave = files => {
     handleSubmit(files);
     setOpen(false);
@@ -80,14 +74,13 @@ const MediaUpload = ({ store }) => {
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
-      <FabZoom onClick={handleOpen} disabled={loading} />
-      <DefiniteLoading
-        isCircular
-        progress={progress}
-        loading={loading}
-      />
+      <Button onClick={handleOpen} />
       <DropzoneDialog
         open={open}
         onSave={handleSave}
@@ -107,4 +100,4 @@ const MediaUpload = ({ store }) => {
   );
 };
 
-export default inject('store')(observer(MediaUpload));
+export default inject('store')(observer(MediaUploadComponent));
