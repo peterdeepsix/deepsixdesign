@@ -134,7 +134,7 @@ const AppComponent = ({ children, location }) => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#1976d2',
+            main: '#FF1654',
             contrastText: '#000',
           },
           secondary: {
