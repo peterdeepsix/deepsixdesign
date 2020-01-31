@@ -1,31 +1,25 @@
-import React, {
-  useEffect,
-  forwardRef,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
-import 'date-fns';
+
 import { Formik, Form } from 'formik';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import { Button, LinearProgress } from '@material-ui/core';
-import {
-  TimePicker,
-  DatePicker,
-  DateTimePicker,
-} from 'formik-material-ui-pickers';
-
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { Button, LinearProgress } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
+import { DatePicker } from 'formik-material-ui-pickers';
+import { Select, TextField } from 'formik-material-ui';
+
+import { DropzoneDialog } from 'material-ui-dropzone';
+
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import 'date-fns';
 
 import MediaUploadComponent from 'src/components/mediaUpload/mediaUploadComponent';
 
@@ -45,43 +39,66 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PredictionsForm = ({
-  handleSubmission,
-  handleClose,
-  store,
-}) => {
+const PredictionsForm = ({ handleClose, store }) => {
   const classes = useStyles();
-  const { firestore } = store.predictionsStore;
+  const { firestore, storage } = store.predictionsStore;
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [message, setMessage] = useState('');
+  const [open, setOpen] = useState(false);
+  const [files, setFiles] = useState([]);
+  const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [inputImageUrl, setInputImageUrl] = useState([]);
 
-  const handleSubmit = async values => {
-    // avoid double submissions
-    if (isSubmitting) return;
-    setIsSubmitting(true);
-
-    // add the new task
-    const success = await store.predictionsStore.addPrediction({
-      title: values.title,
-      dueAt: values.dueAt.valueOf(),
-    });
-
-    if (success) {
-      handleClose();
-      setMessage('Prediction added!');
-    } else {
-      setMessage('An error occurred adding the prediction.');
-    }
-    setIsSubmitting(false);
-  };
-
-  // wait for the firestore to be ready
   useEffect(() => {
     if (!firestore) return;
     setIsInitialized(true);
   }, [firestore, setIsInitialized]);
+
+  const handleDropzoneClose = () => {
+    setOpen(false);
+  };
+
+  const handleDropzoneSave = files => {
+    setFiles(files);
+    handleSubmit(files);
+    setOpen(false);
+  };
+
+  const handleDropzoneOpen = () => {
+    setOpen(true);
+  };
+
+  const handleSubmit = files => {
+    const file = files[0];
+
+    const uploadTask = storage
+      .ref()
+      .child(file.name)
+      .put(file);
+
+    uploadTask.on(
+      'state_changed',
+      snapshot => {
+        let progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
+        );
+        setProgress(progress);
+        setLoading(true);
+        console.log(`Progress - ${progress}`);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          setLoading(false);
+          setInputImageUrl(downloadURL);
+        });
+      },
+    );
+  };
 
   if (!isInitialized) return null;
   return (
@@ -91,23 +108,68 @@ const PredictionsForm = ({
           initialValues={{
             dueAt: new Date(),
             title: '',
-            description: '',
+            status: '',
           }}
           onSubmit={(values, { setSubmitting }) => {
-            handleSubmit(values);
+            store.predictionsStore.addPrediction({
+              title: values.title,
+              status: values.status,
+              dueAt: values.dueAt.valueOf(),
+              inputImageUrl: inputImageUrl,
+            });
+            console.log(files);
             setSubmitting(false);
           }}
         >
           {({ submitForm, isSubmitting }) => (
             <Form>
-              <TextField name="title" label="Title" />
+              <TextField type="text" label="Title" name="title" />
               <br />
-              <TextField name="description" label="Description" />
+              <FormControl>
+                <InputLabel htmlFor="status">Status</InputLabel>
+                <Select
+                  type="text"
+                  name="status"
+                  inputProps={{
+                    id: 'status',
+                  }}
+                >
+                  <MenuItem value="not started">Not Started</MenuItem>
+                  <MenuItem value="pending">Pending</MenuItem>
+                  <MenuItem value="completed">Completed</MenuItem>
+                </Select>
+              </FormControl>
               <br />
-              <DatePicker name="dueAt" label="Due At" />
+              <DatePicker
+                variant="outlined"
+                name="dueAt"
+                label="Due At"
+              />
               <br />
-              <MediaUploadComponent />
+              <Button variant="outlined" onClick={handleDropzoneOpen}>
+                Upload Media
+              </Button>
+              <DropzoneDialog
+                open={open}
+                onSave={handleDropzoneSave}
+                acceptedFiles={[
+                  'image/jpeg',
+                  'image/png',
+                  'image/bmp',
+                ]}
+                dialogTitle="Upload Media"
+                dropzoneText="Drag and drop media files, or click to select."
+                maxFileSize={50000000}
+                filesLimit={1}
+                maxWidth="sm"
+                fullWidth={true}
+                showFileNames={false}
+                showPreviews={false}
+                showPreviewsInDropzone={true}
+                onClose={handleDropzoneClose}
+              />
               <br />
+              <img width={200} src={inputImageUrl} />
               {isSubmitting && <LinearProgress />}
               <br />
               <Button
@@ -116,7 +178,6 @@ const PredictionsForm = ({
                 disabled={isSubmitting}
                 onClick={submitForm}
                 variant="outlined"
-                type="submit"
               >
                 Submit
               </Button>

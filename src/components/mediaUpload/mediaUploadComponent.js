@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { inject, observer } from 'mobx-react';
-import DefiniteLoading from 'src/components/loading/definiteLoading';
-import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { DropzoneDialog } from 'material-ui-dropzone';
 
@@ -19,7 +17,6 @@ const MediaUploadComponent = ({ store }) => {
   const handleSubmit = files => {
     const file = files[0];
 
-    console.log(`storage - ${storage}`);
     const uploadTask = storage
       .ref()
       .child(file.name)
@@ -67,10 +64,6 @@ const MediaUploadComponent = ({ store }) => {
     );
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleSave = files => {
     handleSubmit(files);
     setOpen(false);
@@ -81,14 +74,13 @@ const MediaUploadComponent = ({ store }) => {
     setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
-      <Button onClick={handleOpen} disabled={loading} />
-      <DefiniteLoading
-        isCircular
-        progress={progress}
-        loading={loading}
-      />
+      <Button onClick={handleOpen} />
       <DropzoneDialog
         open={open}
         onSave={handleSave}
