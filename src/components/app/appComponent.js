@@ -1,6 +1,10 @@
 import React from 'react';
 import Loadable from '@loadable/component';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { red } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -119,35 +123,81 @@ const config = {
   },
 };
 
-const AppComponent = ({ children, location }) => (
-  <Root theme={theme} config={config}>
-    {({ headerStyles, sidebarStyles, collapsed, opened }) => (
-      <>
-        <CssBaseline />
-        <Header>
-          <Toolbar>
-            <SidebarTrigger className={headerStyles.leftTrigger}>
-              <SidebarTriggerIcon />
-            </SidebarTrigger>
-            <HeaderContent />
-          </Toolbar>
-        </Header>
-        <Sidebar>
-          <NavHeader collapsed={collapsed} />
-          <div className={sidebarStyles.container}>
-            <NavContent />
-          </div>
-          <CollapseBtn className={sidebarStyles.collapseBtn}>
-            <CollapseIcon />
-          </CollapseBtn>
-        </Sidebar>
-        <Content>{children}</Content>
-        <Footer>
-          <FooterContent />
-        </Footer>
-      </>
-    )}
-  </Root>
-);
+const AppComponent = ({ children, location }) => {
+  const prefersDarkMode = useMediaQuery(
+    '(prefers-color-scheme: dark)',
+  );
+
+  const themeMemo = React.useMemo(
+    theme =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#1976d2',
+            contrastText: '#000',
+          },
+          secondary: {
+            main: '#FF1654',
+          },
+          error: {
+            main: red.A400,
+          },
+        },
+        typography: {
+          button: {
+            textTransform: 'none',
+          },
+          overline: {
+            textTransform: 'none',
+          },
+          fontFamily: [
+            'Muli',
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+          ].join(','),
+        },
+      }),
+    [prefersDarkMode],
+  );
+
+  return (
+    <Root theme={themeMemo} config={config}>
+      {({ headerStyles, sidebarStyles, collapsed, opened }) => (
+        <>
+          <CssBaseline />
+          <Header>
+            <Toolbar>
+              <SidebarTrigger className={headerStyles.leftTrigger}>
+                <SidebarTriggerIcon />
+              </SidebarTrigger>
+              <HeaderContent />
+            </Toolbar>
+          </Header>
+          <Sidebar>
+            <NavHeader collapsed={collapsed} />
+            <div className={sidebarStyles.container}>
+              <NavContent />
+            </div>
+            <CollapseBtn className={sidebarStyles.collapseBtn}>
+              <CollapseIcon />
+            </CollapseBtn>
+          </Sidebar>
+          <Content>{children}</Content>
+          <Footer>
+            <FooterContent />
+          </Footer>
+        </>
+      )}
+    </Root>
+  );
+};
 
 export default AppComponent;
