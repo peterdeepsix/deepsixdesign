@@ -9,12 +9,13 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import PredictionsForm from './predictionsForm';
-
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
+const PredictionsForm = Loadable(() => import('./predictionsForm'), {
+  fallback: <IndefiniteLoading message="PredictionsForm" />,
+});
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -53,6 +54,7 @@ export default function PredictionDialog() {
       </Button>
       <Dialog
         fullScreen={fullScreen}
+        fullWidth
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
