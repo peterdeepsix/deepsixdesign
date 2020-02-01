@@ -88,5 +88,11 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {},
     },
+    {
+      resolve: `gatsby-plugin-stripe`,
+      options: {
+        async: true,
+      },
+    },
   ],
 };

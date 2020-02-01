@@ -16,6 +16,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
+import AllInboxOutlinedIcon from '@material-ui/icons/AllInboxOutlined';
 
 import Link from 'src/components/Link';
 
@@ -87,6 +88,22 @@ const NavContent = () => {
           </ListItemIcon>
           <ListItemText
             primary={'Contact'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/dependencies"
+          selected={selectedIndex === 10}
+          onClick={event => handleListItemClick(event, 10)}
+        >
+          <ListItemIcon>
+            <AllInboxOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Dependencies'}
             primaryTypographyProps={{ noWrap: true }}
           />
         </ListItem>
