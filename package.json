@@ -36,6 +36,7 @@
     "gatsby-plugin-stripe": "^1.2.3",
     "gatsby-source-filesystem": "^2.1.47",
     "gatsby-source-firestore": "^1.0.3",
+    "gatsby-source-stripe": "^3.0.5",
     "gatsby-transformer-sharp": "^2.3.13",
     "logrocket": "^1.0.6",
     "logrocket-react": "^4.0.1",

@@ -94,5 +94,14 @@ module.exports = {
         async: true,
       },
     },
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Product', 'Sku'],
+        secretKey: process.env._STRIPE_SECRET_KEY,
+        downloadFiles: true,
+        auth: false,
+      },
+    },
   ],
 };

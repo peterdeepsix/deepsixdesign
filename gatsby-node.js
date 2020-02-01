@@ -1,4 +1,5 @@
 const path = require(`path`);
+const slug = require('slug');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -17,6 +18,19 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allStripeSku {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            product {
+              id
+              name
+            }
+          }
+        }
+      }
     }
   `);
   result.data.allProcesses.edges.forEach(({ node }) => {
@@ -29,6 +43,22 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+  // Create product pages
+  const products = {}
+
+  result.data.allStripeSku.edges.forEach(({ node }) => {
+    products[node.product.id] = node.fields.slug
+  })
+
+  const productTemplate = path.resolve('src/templates/product.js')
+  Object.entries(products).forEach(([id, slug]) => {
+    createPage({
+      path: 'buy/' + slug,
+      component: productTemplate,
+      context: { id }
+    })
+  })
+})
 };
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -46,5 +76,22 @@ exports.onCreatePage = async ({ page, actions }) => {
     page.matchPath = '/app/*';
 
     createPage(page);
+  }
+};
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+
+  // Add slug for page generation.
+  if (node.internal.type === 'StripeSku') {
+    const value = slug(
+      node.product.name,
+      slug.defaults.modes['rfc3986'],
+    );
+    createNodeField({
+      node,
+      name: 'slug',
+      value,
+    });
   }
 };
