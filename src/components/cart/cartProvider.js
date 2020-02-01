@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { ProductsContext } from './productsProvider';
+import { ProductsContext } from 'src/components/products/productsProvider';
 
 export const CartContext = React.createContext();
 

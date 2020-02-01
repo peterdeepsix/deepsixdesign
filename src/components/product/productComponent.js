@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Img from 'gatsby-image';
-import { ProductsContext } from './ProductsProvider';
-import { CartContext } from './CartProvider';
+import { ProductsContext } from 'src/components/products/ProductsProvider';
+import { CartContext } from 'src/components/cart/CartProvider';
 
 const ProductComponent = ({ productId }) => {
   const { products } = useContext(ProductsContext);

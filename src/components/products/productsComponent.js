@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Img from 'gatsby-image';
 import { ProductsContext } from './productsProvider';
-import { CartContext } from 'src/cart/cartProvider';
+import { CartContext } from 'src/components/cart/cartProvider';
 
 const useStyles = makeStyles(theme => ({
   root: {},

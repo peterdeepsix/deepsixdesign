@@ -12,11 +12,6 @@ const ProductsProvider = ({ children }) => (
     render={data => <Provider data={data}>{children}</Provider>}
   />
 );
-
-ProductsProvider.propTypes = {
-  children: PropTypes.any.isRequired,
-};
-
 /**
   Shares product information and availability through context.
   Products are first loaded from Gatsby's GraphQL store and then updated with

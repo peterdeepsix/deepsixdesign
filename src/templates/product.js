@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
-import AppLayout from '../layouts/appLayout';
-import SEO from '../components/seo';
-import IndefiniteLoading from '../components/loading/indefiniteLoading';
+import AppLayout from 'src/layouts/appLayout';
+import SEO from 'src/components/seo';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -18,9 +18,14 @@ const ProductComponent = Loadable(
 
 const ItemTemplate = ({ pageContext: { id } }) => {
   return (
-    <Layout>
-      <ProductComponent productId={id} />
-    </Layout>
+    <AppLayout>
+      <SEO title="Timeline - Deep Six Design" />
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <ProductComponent />
+        </Box>
+      </Container>
+    </AppLayout>
   );
 };
 
