@@ -116,14 +116,6 @@ export const skuFragment = graphql`
       active
       created
       updated
-      images
-      localFiles {
-        childImageSharp {
-          fluid(maxWidth: $maxWidth, quality: $quality) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
     }
   }
 `;
@@ -149,14 +141,7 @@ const skusQuery = graphql`
               active
               created
               updated
-              images
-              localFiles {
-                childImageSharp {
-                  fluid(maxWidth: $maxWidth, quality: $quality) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
+            }
           }
         }
       }
