@@ -43,22 +43,21 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-  // Create product pages
-  const products = {}
+
+  const products = {};
 
   result.data.allStripeSku.edges.forEach(({ node }) => {
-    products[node.product.id] = node.fields.slug
-  })
+    products[node.product.id] = node.fields.slug;
+  });
 
-  const productTemplate = path.resolve('src/templates/product.js')
+  const productTemplate = path.resolve('src/templates/product.js');
   Object.entries(products).forEach(([id, slug]) => {
     createPage({
       path: 'buy/' + slug,
       component: productTemplate,
-      context: { id }
-    })
-  })
-})
+      context: { id },
+    });
+  });
 };
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {

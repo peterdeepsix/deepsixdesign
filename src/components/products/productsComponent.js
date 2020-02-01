@@ -1,38 +1,49 @@
 import React, { useEffect, useState } from 'react';
 
-import IndefiniteLoading from '../loading/indefiniteLoading';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+
+import Img from 'gatsby-image';
+import { ProductsContext } from './productsProvider';
+import { CartContext } from 'src/cart/cartProvider';
 
 const useStyles = makeStyles(theme => ({
   root: {},
 }));
 
-const ProductsComponent = ({ predictions: predictionsStore }) => {
+const ProductsComponent = ({ productId }) => {
   const classes = useStyles();
+  const { products } = useContext(ProductsContext);
+  const { add, toggle } = useContext(CartContext);
 
-  const { predictions, firestore } = predictionsStore;
+  const product = products[productId];
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-    console.log('trying to get predictions')
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
-
-  if (isLoading) return <IndefiniteLoading message='ProductsComponent' />;
-  return <>
-    {}
-    <Typography variant="h4">Products</Typography>
-  </>;
+  return (
+    <div style={{ margin: '0 auto', maxWidth: 500 }}>
+      <div style={{ margin: '3rem auto', maxWidth: 300 }}>
+        {product.localFiles && (
+          <Img fluid={product.localFiles[0].childImageSharp.fluid} />
+        )}
+      </div>
+      <h2>{product.name}</h2>
+      <div>{product.caption}</div>
+      <br />
+      <div style={{ textAlign: 'justify' }}>
+        {product.description}
+      </div>
+      <button
+        style={{ margin: '2rem auto' }}
+        onClick={() => {
+          add(product.skus[0].id);
+          toggle(true);
+        }}
+      >
+        Add To Cart
+      </button>
+    </div>
+  );
 };
 
 export default ProductsComponent;
