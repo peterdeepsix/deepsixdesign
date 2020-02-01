@@ -113,9 +113,7 @@ export const skuFragment = graphql`
     product {
       id
       name
-      description
       active
-      caption
       created
       updated
       images
@@ -137,7 +135,28 @@ const skusQuery = graphql`
         fieldValue
         edges {
           node {
-            ...Sku
+            id
+            price
+            fields {
+              slug
+            }
+            inventory {
+              type
+            }
+            product {
+              id
+              name
+              active
+              created
+              updated
+              images
+              localFiles {
+                childImageSharp {
+                  fluid(maxWidth: $maxWidth, quality: $quality) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
           }
         }
       }
