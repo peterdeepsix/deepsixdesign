@@ -5,6 +5,7 @@ import CartItem from './cartItem';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
 
 const CartComponent = () => {
   const { cart, count, mode, toggle } = useContext(CartContext);
@@ -15,10 +16,11 @@ const CartComponent = () => {
         {count === 0 && <Typography>No items in cart.</Typography>}
       </Box>
       <Box>
-        {' '}
-        {cart.map(([sku, quantity]) => (
-          <CartItem key={sku.id} sku={sku} quantity={quantity} />
-        ))}
+        <List component="nav" aria-label="main mailbox folders">
+          {cart.map(([sku, quantity]) => (
+            <CartItem key={sku.id} sku={sku} quantity={quantity} />
+          ))}
+        </List>
       </Box>
       <Box>
         <Checkout />
