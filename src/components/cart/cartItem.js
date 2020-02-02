@@ -1,28 +1,30 @@
 import React, { useContext } from 'react';
 import { CartContext } from './cartProvider';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const CartItem = ({ sku, quantity }) => {
   const { remove } = useContext(CartContext);
   return (
-    <div key={sku.id} style={{ display: 'flex', margin: '1rem 0' }}>
-      <div style={{ flexBasis: '100%' }}>
-        <div style={{ fontWeight: 'bold' }}>{sku.product.name}</div>
-        <div>
+    <Container key={sku.id}>
+      <Box>
+        <Typography>{sku.product.name}</Typography>
+        <Typography>
           ${sku.price / 100} &times; {quantity}
-        </div>
-        <div>
-          <strong>${(sku.price / 100) * quantity}</strong>
-        </div>
-      </div>
-      <span
-        style={{}}
-        onClick={() => {
-          remove(sku.id);
-        }}
-      >
-        &times;
-      </span>
-    </div>
+        </Typography>
+        <Typography>${(sku.price / 100) * quantity}</Typography>
+        <Button
+          style={{}}
+          onClick={() => {
+            remove(sku.id);
+          }}
+        >
+          &times; Remove
+        </Button>
+      </Box>
+    </Container>
   );
 };
 

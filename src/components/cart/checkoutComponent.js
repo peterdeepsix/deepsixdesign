@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 import StripeCheckout from 'react-stripe-checkout';
 import { CartContext } from './cartProvider';
 import icon from 'src/images/logo.png';
+import Button from '@material-ui/core/Button';
 
 const CheckoutComponent = () => {
   const { cart, count, total } = useContext(CartContext);
@@ -63,7 +64,9 @@ const CheckoutComponent = () => {
       zipCode
       allowRememberMe
     >
-      <button>Checkout for ${total / 100}</button>
+      <Button variant="outlined" color="primary">
+        Checkout for ${total / 100}
+      </Button>
     </StripeCheckout>
   );
 };
