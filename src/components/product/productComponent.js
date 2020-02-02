@@ -23,9 +23,7 @@ const ProductComponent = ({ productId }) => {
         <>
           <Typography>{product.name}</Typography>
           <br />
-          <Typography>{product.caption}</Typography>
-          <br />
-          <Typography>{product.description}</Typography>
+          <Typography>Product ID - {product.id}</Typography>
           <br />
           <Button
             variant="outlined"
