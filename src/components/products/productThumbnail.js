@@ -13,13 +13,14 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
+    marginBottom: 12,
   },
 });
 
 const ProductThumbnail = ({ product }) => {
   const classes = useStyles();
   return (
-    <Card elevation={0} className={classes.card}>
+    <Card variant="outlined" className={classes.card}>
       <CardActionArea component={Link} to={`/buy/${product.slug}`}>
         <CardMedia
           component="img"
