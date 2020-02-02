@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env._STRIPE_SECRET_KEY);
 
 /** Respond with status code 500 and error message */
 function errorResponse(err, callback) {

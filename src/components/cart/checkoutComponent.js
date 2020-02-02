@@ -50,7 +50,7 @@ const CheckoutComponent = () => {
   return (
     <StripeCheckout
       token={onToken}
-      stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
+      stripeKey={process.env._STRIPE_PUBLISHABLE_KEY}
       name="gatsby-starter-stripe" // the pop-in header title
       description={`${count} Items`} // the pop-in header subtitle
       image={icon} // the pop-in header image (default none)

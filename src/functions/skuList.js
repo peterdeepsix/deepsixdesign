@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env._STRIPE_SECRET_KEY);
 
 /**
  * Returns list of skus with product fields expanded.
