@@ -13,12 +13,12 @@ const ProductsComponent = Loadable(
   },
 );
 
-const ProductsPage = ({ productId }) => {
+const ProductsPage = () => {
   return (
     <AppLayout>
       <SEO title="Products - Deep Six Design" />
       <CartLayout>
-        <ProductsComponent productId={productId} />
+        <ProductsComponent />
       </CartLayout>
     </AppLayout>
   );

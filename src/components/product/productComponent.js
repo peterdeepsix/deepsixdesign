@@ -1,37 +1,45 @@
-import React, { useContext } from 'react';
-import Img from 'gatsby-image';
-import { ProductsContext } from 'src/components/products/ProductsProvider';
-import { CartContext } from 'src/components/cart/CartProvider';
+import React, { useContext, useState, useEffect } from 'react';
+
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import { ProductsContext } from 'src/components/products/productsProvider';
+import { CartContext } from 'src/components/cart/cartProvider';
 
 const ProductComponent = ({ productId }) => {
   const { products } = useContext(ProductsContext);
   const { add, toggle } = useContext(CartContext);
+  const [product, setProduct] = useState(null);
 
-  const product = products[productId];
+  useEffect(() => {
+    if (products) {
+      setProduct(products[productId]);
+    }
+  }, [products]);
 
   return (
-    <div style={{ margin: '0 auto', maxWidth: 500 }}>
-      <div style={{ margin: '3rem auto', maxWidth: 300 }}>
-        {product.localFiles && (
-          <Img fluid={product.localFiles[0].childImageSharp.fluid} />
-        )}
-      </div>
-      <h2>{product.name}</h2>
-      <div>{product.caption}</div>
-      <br />
-      <div style={{ textAlign: 'justify' }}>
-        {product.description}
-      </div>
-      <button
-        style={{ margin: '2rem auto' }}
-        onClick={() => {
-          add(product.skus[0].id);
-          toggle(true);
-        }}
-      >
-        Add To Cart
-      </button>
-    </div>
+    <>
+      {product && (
+        <>
+          <Typography>{product.name}</Typography>
+          <br />
+          <Typography>{product.caption}</Typography>
+          <br />
+          <Typography>{product.description}</Typography>
+          <br />
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              add(product.skus[0].id);
+              toggle(true);
+            }}
+          >
+            Add To Cart
+          </Button>
+        </>
+      )}
+    </>
   );
 };
 
