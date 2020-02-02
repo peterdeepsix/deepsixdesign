@@ -1,7 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 import { ProductsContext } from 'src/components/products/productsProvider';
 import { CartContext } from 'src/components/cart/cartProvider';
@@ -17,25 +20,32 @@ const ProductComponent = ({ productId }) => {
     }
   }, [products]);
 
+  const handleClick = () => {
+    add(product.skus[0].id);
+    toggle(true);
+    navigate('/cart');
+  };
+
   return (
     <>
       {product && (
-        <>
-          <Typography>{product.name}</Typography>
+        <Container>
+          <Box>
+            <Typography variant="h4">{product.name}</Typography>
+            <br />
+            <Typography>Product ID - {product.id}</Typography>
+          </Box>
           <br />
-          <Typography>Product ID - {product.id}</Typography>
-          <br />
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => {
-              add(product.skus[0].id);
-              toggle(true);
-            }}
-          >
-            Add To Cart
-          </Button>
-        </>
+          <Box>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={handleClick}
+            >
+              Add To Cart
+            </Button>
+          </Box>
+        </Container>
       )}
     </>
   );

@@ -41,12 +41,6 @@ const ProductThumbnail = ({ product }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button>More Information</Button>
-        <Button variant="outlined" color="primary">
-          Add to Cart
-        </Button>
-      </CardActions>
     </Card>
   );
 };

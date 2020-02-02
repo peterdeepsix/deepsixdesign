@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import { ProductsContext } from './productsProvider';
 import ProductThumbnail from './productThumbnail';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -18,11 +20,13 @@ const ProductsComponent = () => {
   return (
     <>
       {products && (
-        <div style={{ columnCount: 3 }}>
+        <Container>
           {products.map(product => (
-            <ProductThumbnail key={product.id} product={product} />
+            <Box>
+              <ProductThumbnail key={product.id} product={product} />
+            </Box>
           ))}
-        </div>
+        </Container>
       )}
     </>
   );
