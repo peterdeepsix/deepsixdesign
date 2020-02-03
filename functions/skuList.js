@@ -3,7 +3,7 @@ const stripe = require('stripe')(process.env._STRIPE_SECRET_KEY);
 /**
  * Returns list of skus with product fields expanded.
  */
-module.exports.skuList = (event, context, callback) => {
+module.exports.handler = (event, context, callback) => {
   stripe.skus.list(
     {
       limit: 100, // max allowed

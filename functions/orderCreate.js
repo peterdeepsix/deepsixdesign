@@ -20,7 +20,7 @@ function errorResponse(err, callback) {
 /**
  * Captures payment token and creates order.
  */
-module.exports.orderCreate = async (event, context, callback) => {
+module.exports.handler = async (event, context, callback) => {
   const requestBody = JSON.parse(event.body);
   const { id, email } = requestBody.token;
   const { currency, items, shipping } = requestBody.order;

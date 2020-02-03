@@ -68,7 +68,6 @@
     "eslint-plugin-react": "^7.18.0",
     "gatsby-plugin-root-import": "^2.0.5",
     "http-proxy-middleware": "^0.20.0",
-    "netlify-lambda": "^1.6.3",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -78,11 +77,9 @@
   "scripts": {
     "create-env": "printenv > .env.production",
     "build": "gatsby build",
-    "build:lambda": "netlify-lambda build -c ./webpack.production.js src/functions",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "start:lambda": "netlify-lambda serve -c ./webpack.development.js src/functions",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
