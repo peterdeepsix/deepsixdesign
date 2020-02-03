@@ -14,10 +14,10 @@ const IndexComponent = Loadable(
 
 const IndexPage = ({ location }) => {
   return (
-    <AppLayout location={location}>
+    <>
       <SEO title="Deep Six Design" />
       <IndexComponent />
-    </AppLayout>
+    </>
   );
 };
 
