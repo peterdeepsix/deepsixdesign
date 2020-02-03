@@ -18,7 +18,7 @@ const CartComponent = () => {
       <Box>
         <List aria-label="cart items">
           {cart.map(([sku, quantity]) => (
-            <CartItem key={sku.id} sku={sku} quantity={quantity} />
+            <CartItem key={sku} sku={sku} quantity={quantity} />
           ))}
         </List>
       </Box>

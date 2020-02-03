@@ -13,9 +13,9 @@ const LoginComponent = Loadable(
   },
 );
 
-const Predictions = () => {
+const Predictions = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Predictions - Deep Six Design" />
       <Router>
         <LoginComponent path="/login" />

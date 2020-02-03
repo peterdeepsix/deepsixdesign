@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { useLayoutCtx } from '@mui-treasury/layout';
+
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import Icon from '@material-ui/core/Icon';
 import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
 import LandscapeOutlinedIcon from '@material-ui/icons/LandscapeOutlined';
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
@@ -20,40 +21,13 @@ import AllInboxOutlinedIcon from '@material-ui/icons/AllInboxOutlined';
 
 import Link from 'src/components/Link';
 
-const list = [
-  {
-    primaryText: 'Timeline',
-    icon: <TimelineOutlinedIcon />,
-    to: '/timeline',
-  },
-  {
-    primaryText: 'Predictions',
-    icon: <LandscapeOutlinedIcon />,
-    to: '/predictions',
-  },
-  {
-    primaryText: 'Gallery',
-    icon: <ViewModuleOutlinedIcon />,
-    to: '/gallery',
-  },
-  {
-    primaryText: 'Generator',
-    icon: <AutorenewOutlinedIcon />,
-    to: '/generator',
-  },
-  {
-    primaryText: 'Stream',
-    icon: <AllInclusiveOutlinedIcon />,
-    to: '/stream',
-  },
-];
+const NavContent = ({ location }) => {
+  const { setOpened } = useLayoutCtx();
 
-const NavContent = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(
+    (location && location.pathname) || '/',
+  );
 
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-  };
   return (
     <>
       <List
@@ -64,8 +38,8 @@ const NavContent = () => {
           button
           component={Link}
           to="/about"
-          selected={selectedIndex === 0}
-          onClick={event => handleListItemClick(event, 0)}
+          selected={selectedIndex === '/about'}
+          onClick={() => setOpened(false)}
         >
           <ListItemIcon>
             <NaturePeopleOutlinedIcon />
@@ -80,8 +54,8 @@ const NavContent = () => {
           button
           component={Link}
           to="/contact"
-          selected={selectedIndex === 10}
-          onClick={event => handleListItemClick(event, 10)}
+          selected={selectedIndex === '/contact'}
+          onClick={() => setOpened(false)}
         >
           <ListItemIcon>
             <ContactMailOutlinedIcon />
@@ -96,8 +70,8 @@ const NavContent = () => {
           button
           component={Link}
           to="/dependencies"
-          selected={selectedIndex === 10}
-          onClick={event => handleListItemClick(event, 10)}
+          selected={selectedIndex === '/dependencies'}
+          onClick={() => setOpened(false)}
         >
           <ListItemIcon>
             <AllInboxOutlinedIcon />
@@ -115,8 +89,8 @@ const NavContent = () => {
           button
           to="/products"
           component={Link}
-          selected={selectedIndex === 1}
-          onClick={event => handleListItemClick(event, 1)}
+          selected={selectedIndex === '/products'}
+          onClick={() => setOpened(false)}
         >
           <ListItemIcon>
             <ChangeHistoryIcon />
@@ -131,8 +105,8 @@ const NavContent = () => {
           button
           component={Link}
           to="/cart"
-          selected={selectedIndex === 2}
-          onClick={event => handleListItemClick(event, 2)}
+          selected={selectedIndex === '/cart'}
+          onClick={() => setOpened(false)}
         >
           <ListItemIcon>
             <ShoppingCartOutlinedIcon />
@@ -149,25 +123,86 @@ const NavContent = () => {
           <ListSubheader>Plexus Prediction Engine</ListSubheader>
         }
       >
-        {list.map(({ to, primaryText, icon }, i) => (
-          <ListItem
-            key={primaryText}
-            color="inherit"
-            button
-            component={Link}
-            to={to}
-            selected={selectedIndex === 3 + i}
-            onClick={event => handleListItemClick(event, 3 + i)}
-          >
-            <ListItemIcon>
-              <Icon>{icon}</Icon>
-            </ListItemIcon>
-            <ListItemText
-              primary={primaryText}
-              primaryTypographyProps={{ noWrap: true }}
-            />
-          </ListItem>
-        ))}
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/timeline"
+          selected={selectedIndex === '/timeline'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <TimelineOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Timeline"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/predictions"
+          selected={selectedIndex === '/predictions'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <LandscapeOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Predictions"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/gallery"
+          selected={selectedIndex === '/gallery'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <ViewModuleOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Gallery"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/generator"
+          selected={selectedIndex === '/generator'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <AutorenewOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Generator"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/stream"
+          selected={selectedIndex === '/stream'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <AllInclusiveOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Stream"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
       </List>
     </>
   );

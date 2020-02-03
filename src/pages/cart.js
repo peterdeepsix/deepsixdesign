@@ -13,9 +13,9 @@ const CartComponent = Loadable(
   },
 );
 
-const CartPage = ({ productId }) => {
+const CartPage = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Products - Deep Six Design" />
       <CartLayout>
         <CartComponent />

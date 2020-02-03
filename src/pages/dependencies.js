@@ -21,9 +21,9 @@ const DependenciesComponent = Loadable(
   },
 );
 
-const DependenciesPage = ({ data }) => {
+const DependenciesPage = ({ location, data }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Dependencies - Deep Six Design" />
       <Router>
         <PrivateRouteComponent

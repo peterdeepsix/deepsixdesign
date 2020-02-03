@@ -184,7 +184,7 @@ const AppComponent = ({ children, location }) => {
           <Sidebar>
             <NavHeader collapsed={collapsed} />
             <div className={sidebarStyles.container}>
-              <NavContent />
+              <NavContent location={location} />
             </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
               <CollapseIcon />

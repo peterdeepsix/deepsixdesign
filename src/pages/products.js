@@ -13,9 +13,9 @@ const ProductsComponent = Loadable(
   },
 );
 
-const ProductsPage = () => {
+const ProductsPage = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Products - Deep Six Design" />
       <CartLayout>
         <ProductsComponent />

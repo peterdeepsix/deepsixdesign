@@ -13,9 +13,9 @@ const AccountComponent = Loadable(
   },
 );
 
-const AccountPage = () => {
+const AccountPage = ({ location }) => {
   return (
-    <StoreLayout>
+    <StoreLayout location={location}>
       <AppLayout>
         <SEO title="Deep Six Design - Account" />
         <AccountComponent />
