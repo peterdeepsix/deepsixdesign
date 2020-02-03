@@ -108,11 +108,12 @@ module.exports = {
   ],
   developMiddleware: app => {
     app.use(
-      '/.netlify/functions/',
+      '/https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/',
       proxy({
-        target: 'http://localhost:9000',
+        target: 'http://localhost:5000',
         pathRewrite: {
-          '/.netlify/functions/': '',
+          '/https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/':
+            '',
         },
       }),
     );
