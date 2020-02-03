@@ -1,14 +1,14 @@
 steps:
   - name: gcr.io/cloud-builders/gcloud
     args:
-    - kms
-    - decrypt
-    - --ciphertext-file=$_CIPHERTEXTFILE
-    - --plaintext-file=service-account.json
-    - --location=global
-    - --keyring=$_KEYRING
-    - --key=$_KEY
-  
+      - kms
+      - decrypt
+      - --ciphertext-file=$_CIPHERTEXTFILE
+      - --plaintext-file=service-account.json
+      - --location=global
+      - --keyring=$_KEYRING
+      - --key=$_KEY
+
   - name: node:10.15.1
     entrypoint: yarn
     args: ['install']
@@ -19,7 +19,7 @@ steps:
 
   - name: node:10.15.1
     entrypoint: yarn
-    args: ["run", "create-env"]
+    args: ['run', 'create-env']
     env:
       - '_F_APIKEY=$_F_APIKEY'
       - '_F_AUTHDOMAIN=$_F_AUTHDOMAIN'
@@ -28,7 +28,8 @@ steps:
       - '_F_STORAGEBUCKET=$_F_STORAGEBUCKET'
       - '_F_APPID=_F_APPID'
       - '_F_MEASUREMENTID=$_F_MEASUREMENTID'
-      - '_SERVICEACCOUNT=$_SERVICEACCOUNT'
+      - '_STRIPE_PUBLISHABLE_KEY=$_STRIPE_PUBLISHABLE_KEY'
+      - '_STRIPE_SECRET_KEY=$_STRIPE_SECRET_KEY'
 
   - name: node:10.15.1
     entrypoint: yarn
