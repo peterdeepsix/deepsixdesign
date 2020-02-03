@@ -3,7 +3,7 @@ const stripe = require('stripe')(process.env._STRIPE_SECRET_KEY);
 /**
  * Returns list of skus with product fields expanded.
  */
-module.exports.handler = (event, context, callback) => {
+const skuList = (req, res) => {
   stripe.skus.list(
     {
       limit: 100, // max allowed
@@ -24,14 +24,10 @@ module.exports.handler = (event, context, callback) => {
         });
       }
 
-      const response = {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        statusCode,
-        body,
-      };
-      callback(null, response);
+      res.set('Access-Control-Allow-Origin', '*');
+      res.send(body);
     },
   );
 };
+
+module.exports = skuList;
