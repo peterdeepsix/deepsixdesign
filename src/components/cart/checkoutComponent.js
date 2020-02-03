@@ -17,27 +17,30 @@ const CheckoutComponent = () => {
 
     let response;
     try {
-      response = await fetch('/.netlify/functions/orderCreate', {
-        method: 'POST',
-        body: JSON.stringify({
-          token,
-          order: {
-            currency: 'usd',
-            items,
-            shipping: {
-              name: addresses.shipping_name,
-              address: {
-                line1: addresses.shipping_address_line1,
-                line2: addresses.shipping_address_line2 || '',
-                city: addresses.shipping_address_city,
-                state: addresses.shipping_address_state,
-                postal_code: addresses.shipping_address_zip,
-                country: addresses.shipping_address_country_code,
+      response = await fetch(
+        'https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/orderCreate',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            token,
+            order: {
+              currency: 'usd',
+              items,
+              shipping: {
+                name: addresses.shipping_name,
+                address: {
+                  line1: addresses.shipping_address_line1,
+                  line2: addresses.shipping_address_line2 || '',
+                  city: addresses.shipping_address_city,
+                  state: addresses.shipping_address_state,
+                  postal_code: addresses.shipping_address_zip,
+                  country: addresses.shipping_address_country_code,
+                },
               },
             },
-          },
-        }),
-      }).then(response => response.json());
+          }),
+        },
+      ).then(response => response.json());
     } catch (err) {
       alert(err.message);
     }

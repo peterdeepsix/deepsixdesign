@@ -30,7 +30,9 @@ const Provider = ({ data, children }) => {
 
   /** Query live data from Stripe and update products */
   const updateProducts = async () => {
-    const { data, error } = await fetch('/.netlify/functions/skuList')
+    const { data, error } = await fetch(
+      'https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/skuList',
+    )
       .then(response => response.json())
       .catch(error => console.error(error));
 

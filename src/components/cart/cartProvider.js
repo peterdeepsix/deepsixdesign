@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { ProductsContext } from 'src/components/products/productsProvider';
 
 export const CartContext = React.createContext();
@@ -122,10 +121,6 @@ const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-};
-
-CartProvider.propTypes = {
-  children: PropTypes.any.isRequired,
 };
 
 export default CartProvider;
