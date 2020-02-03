@@ -12,12 +12,11 @@ const StoreLayout = ({ store, children }) => {
 
   const { firebaseStore, sessionStore, predictionsStore } = store;
 
-  sessionStore.getAuthUser();
-  sessionStore.getAuthToken();
-  sessionStore.getLoggedIn();
-
   useMemo(() => {
     if (!firebase) return;
+    sessionStore.getAuthUser();
+    sessionStore.getAuthToken();
+    sessionStore.getLoggedIn();
 
     firebaseStore.setFirebase(firebase);
 
