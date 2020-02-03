@@ -21,9 +21,9 @@ const StreamComponent = Loadable(
   },
 );
 
-const StreamPage = () => {
+const StreamPage = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Stream - Deep Six Design" />
       <Router>
         <PrivateRouteComponent

@@ -29,10 +29,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const GalleryPage = () => {
+const GalleryPage = ({ location }) => {
   const classes = useStyles();
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Gallery - Deep Six Design" />
       <Router>
         <PrivateRouteComponent

@@ -1,38 +1,35 @@
-import React, { useEffect, useState } from 'react';
-
-import IndefiniteLoading from '../loading/indefiniteLoading';
+import React, { useEffect, useState, useContext } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+import { ProductsContext } from './productsProvider';
+import ProductThumbnail from './productThumbnail';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {},
 }));
 
-const ProductsComponent = ({ predictions: predictionsStore }) => {
+const ProductsComponent = () => {
   const classes = useStyles();
+  const { listProducts } = useContext(ProductsContext);
+  const products = listProducts();
 
-  const { predictions, firestore } = predictionsStore;
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!firestore) return;
-    let didCancel = false;
-    console.log('trying to get predictions')
-    const getPredictions = async () => {
-      await predictionsStore.getPredictions();
-      if (!didCancel) setIsLoading(false);
-    };
-    getPredictions();
-    return () => (didCancel = true);
-  }, [firestore]);
-
-  if (isLoading) return <IndefiniteLoading message='ProductsComponent' />;
-  return <>
-    {}
-    <Typography variant="h4">Products</Typography>
-  </>;
+  return (
+    <>
+      {products && (
+        <Container>
+          {products.map(product => (
+            <Box>
+              <ProductThumbnail key={product.id} product={product} />
+            </Box>
+          ))}
+        </Container>
+      )}
+    </>
+  );
 };
 
 export default ProductsComponent;

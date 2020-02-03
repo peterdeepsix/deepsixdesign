@@ -1,3 +1,5 @@
+var proxy = require('http-proxy-middleware');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -88,5 +90,31 @@ module.exports = {
       resolve: `gatsby-plugin-offline`,
       options: {},
     },
+    {
+      resolve: `gatsby-plugin-stripe`,
+      options: {
+        async: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Product', 'Sku'],
+        secretKey: process.env._STRIPE_SECRET_KEY,
+        downloadFiles: true,
+        auth: false,
+      },
+    },
   ],
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      }),
+    );
+  },
 };

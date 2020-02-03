@@ -5,13 +5,11 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
 import SEO from 'src/components/seo';
-import AppLayout from 'src/layouts/appLayout'
+import AppLayout from 'src/layouts/appLayout';
 
-
-
-const ContactPage = () => {
+const ContactPage = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Contact - Deep Six Design" />
       <Container maxWidth="sm">
         <Box my={4}>

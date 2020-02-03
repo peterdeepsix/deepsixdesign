@@ -134,7 +134,7 @@ const AppComponent = ({ children, location }) => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#1976d2',
+            main: '#FF1654',
             contrastText: '#000',
           },
           secondary: {
@@ -184,7 +184,7 @@ const AppComponent = ({ children, location }) => {
           <Sidebar>
             <NavHeader collapsed={collapsed} />
             <div className={sidebarStyles.container}>
-              <NavContent />
+              <NavContent location={location} />
             </div>
             <CollapseBtn className={sidebarStyles.collapseBtn}>
               <CollapseIcon />

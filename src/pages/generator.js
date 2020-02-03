@@ -21,9 +21,9 @@ const GeneratorComponent = Loadable(
   },
 );
 
-const GeneratorPage = () => {
+const GeneratorPage = ({ location }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Generator - Deep Six Design" />
       <Router>
         <PrivateRouteComponent

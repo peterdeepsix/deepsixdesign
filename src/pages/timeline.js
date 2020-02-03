@@ -39,13 +39,13 @@ export const query = graphql`
   }
 `;
 
-const TimelinePage = ({ data }) => {
+const TimelinePage = ({ location, data }) => {
   return (
-    <AppLayout>
+    <AppLayout location={location}>
       <SEO title="Timeline - Deep Six Design" />
       <Router>
         <PrivateRouteComponent
-          path="//timeline"
+          path="/timeline"
           component={TimelineComponent}
           data={data}
         />

@@ -7,11 +7,11 @@ import IndefiniteLoading from '../components/loading/indefiniteLoading';
 const AppComponent = Loadable(
   () => import('../components/app/appComponent'),
   {
-    fallback: <IndefiniteLoading message='AppComponent' />,
+    fallback: <IndefiniteLoading message="AppComponent" />,
   },
 );
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, location }) => {
   return (
     <main>
       <Helmet>
@@ -20,7 +20,7 @@ const AppLayout = ({ children }) => {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Helmet>
-      <AppComponent>{children}</AppComponent>
+      <AppComponent location={location}>{children}</AppComponent>
     </main>
   );
 };
