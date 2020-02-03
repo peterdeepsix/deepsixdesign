@@ -12,6 +12,10 @@ const StoreLayout = ({ store, children }) => {
 
   const { firebaseStore, sessionStore, predictionsStore } = store;
 
+  sessionStore.getAuthUser();
+  sessionStore.getAuthToken();
+  sessionStore.getLoggedIn();
+
   useMemo(() => {
     if (!firebase) return;
 
@@ -24,10 +28,6 @@ const StoreLayout = ({ store, children }) => {
     sessionStore.setGoogleProvider(
       new firebase.auth.GoogleAuthProvider(),
     );
-
-    sessionStore.getAuthUser();
-    sessionStore.getAuthToken();
-    sessionStore.getLoggedIn();
   }, [firebase]);
 
   return <div>{children}</div>;

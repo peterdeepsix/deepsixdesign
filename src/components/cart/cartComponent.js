@@ -16,7 +16,7 @@ const CartComponent = () => {
         {count === 0 && <Typography>No items in cart.</Typography>}
       </Box>
       <Box>
-        <List component="nav" aria-label="main mailbox folders">
+        <List aria-label="cart items">
           {cart.map(([sku, quantity]) => (
             <CartItem key={sku.id} sku={sku} quantity={quantity} />
           ))}
