@@ -11,12 +11,38 @@ const DefaultComponent = () => {
     <>
       <Container maxWidth="sm">
         <Box my={4}>
-          <Typography variant="h4">Default Component</Typography>
-          <Button variant="outlined" component={Link} to="/">
-            Index
-          </Button>
-          <Button variant="outlined" component={Link} to="/about">
+          <Typography variant="h4">
+            Plexus Prediction Engine
+          </Typography>
+        </Box>
+        <Box my={4}>
+          <Button
+            variant="outlined"
+            size="large"
+            component={Link}
+            to="/about"
+          >
             Public Pages
+          </Button>
+        </Box>
+        <Box my={4}>
+          <Button
+            variant="outlined"
+            size="large"
+            component={Link}
+            to="/"
+          >
+            Root
+          </Button>
+        </Box>
+        <Box my={4}>
+          <Button
+            variant="outlined"
+            size="large"
+            component={Link}
+            to="/app/generator"
+          >
+            Generator
           </Button>
         </Box>
       </Container>

@@ -11,11 +11,25 @@ const IndexComponent = () => {
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4">Deep Six Design</Typography>
-        <Button variant="outlined" component={Link} to="/app">
-          Web App
-        </Button>
-        <Button variant="outlined" component={Link} to="/about">
+      </Box>
+      <Box my={4}>
+        <Button
+          variant="outlined"
+          size="large"
+          component={Link}
+          to="/about"
+        >
           Public Pages
+        </Button>
+      </Box>
+      <Box my={4}>
+        <Button
+          variant="outlined"
+          size="large"
+          component={Link}
+          to="/app"
+        >
+          Web App
         </Button>
       </Box>
     </Container>

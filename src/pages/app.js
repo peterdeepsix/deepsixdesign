@@ -33,10 +33,10 @@ const GeneratorComponent = Loadable(
 const AppPage = () => {
   return (
     <>
-      <SEOComponent title="App - Deep Six Design" />
+      <SEOComponent title="Plexus Prediction Engine - Deep Six Design" />
       <Router>
         <DefaultComponent path="/app" />
-        <GeneratorComponent path="/generator" />
+        <GeneratorComponent path="/app/generator" />
       </Router>
     </>
   );
