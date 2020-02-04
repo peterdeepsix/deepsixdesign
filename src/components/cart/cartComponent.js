@@ -21,7 +21,7 @@ import DailyHeader from 'src/components/cart/components/DailyHeader';
 import DailyCart from 'src/components/cart/components/DailyCart';
 import DailyCheckout from 'src/components/cart/components/DailyCheckout';
 import DailySummary from 'src/components/cart/components/DailySummary';
-import Cart from './cart'
+import Cart from './cart';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   header: {
@@ -124,11 +124,6 @@ const HomeComponent = () => {
             >
               {opened ? <Close /> : <CreditCard />}
             </Fab>
-            <Header className={styles.header}>
-              <Container>
-                <DailyHeader />
-              </Container>
-            </Header>
             <Container className={styles.container}>
               <InsetContainer>
                 <Content className={styles.content}>

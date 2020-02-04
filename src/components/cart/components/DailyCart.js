@@ -57,7 +57,7 @@ const rows = [
     'White, Screen',
     'S',
     2,
-    '$39.98'
+    '$39.98',
   ),
   createData(
     'https://www.hybridoutfitters.com/wp-content/uploads/2019/11/147.jpg',
@@ -65,7 +65,7 @@ const rows = [
     'ocean, stripe',
     'M',
     3,
-    '$100'
+    '$100',
   ),
   createData(
     'https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2019/09/18/goods-first-img/1568766431491927776.jpg',
@@ -73,7 +73,7 @@ const rows = [
     'Light Brown, Wool',
     'S',
     1,
-    '$39.99'
+    '$39.99',
   ),
   createData(
     'https://l.lnwfile.com/_resize_images/600/600/w1/nh/5z.jpg',
@@ -81,7 +81,7 @@ const rows = [
     'Brown, Leather',
     10.5,
     1,
-    '$69.99'
+    '$69.99',
   ),
 ];
 
@@ -89,7 +89,11 @@ const DailyCart = () => {
   const styles = useStyles();
   return (
     <Box pt={{ xs: 2, sm: 4, md: 6 }}>
-      <Typography className={styles.heading} variant={'h1'} gutterBottom>
+      <Typography
+        className={styles.heading}
+        variant={'h1'}
+        gutterBottom
+      >
         Shopping Cart.
       </Typography>
       <TableContainer>
@@ -117,7 +121,9 @@ const DailyCart = () => {
                     </Box>
                     <Box ml={2}>
                       <p className={styles.name}>{row.name}</p>
-                      <span className={styles.descr}>{row.descr}</span>
+                      <span className={styles.descr}>
+                        {row.descr}
+                      </span>
                     </Box>
                   </Box>
                 </TableCell>

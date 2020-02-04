@@ -107,7 +107,9 @@ const DailyCheckout = () => {
         Payment Info.
       </Typography>
       <Divider className={styles.divider} />
-      <Typography className={styles.label}>Payment Method:</Typography>
+      <Typography className={styles.label}>
+        Payment Method:
+      </Typography>
       <Grid container spacing={2}>
         <Grid xs={6} item>
           <Button
@@ -121,7 +123,12 @@ const DailyCheckout = () => {
           </Button>
         </Grid>
         <Grid xs={6} item>
-          <Button classes={{ root: styles.button, label: styles.paypalLabel }}>
+          <Button
+            classes={{
+              root: styles.button,
+              label: styles.paypalLabel,
+            }}
+          >
             PayPal
           </Button>
         </Grid>
@@ -134,7 +141,7 @@ const DailyCheckout = () => {
           classes: { root: styles.inputBase, input: styles.input },
         }}
         label={'Name On Card:'}
-        value={'Siriwat Knp'}
+        value={'Peter Arnold'}
       />
       <Box height={24} css={{ flex: 'none' }} />
       <TextField
@@ -149,7 +156,9 @@ const DailyCheckout = () => {
       <Box height={24} css={{ flex: 'none' }} />
       <Grid container spacing={3}>
         <Grid item xs={8}>
-          <Typography className={styles.label}>Expiration Date:</Typography>
+          <Typography className={styles.label}>
+            Expiration Date:
+          </Typography>
           <Box mt={'-23px'}>
             <Grid container spacing={2}>
               <Grid item xs={6}>
@@ -185,7 +194,10 @@ const DailyCheckout = () => {
               shrink: true,
             }}
             InputProps={{
-              classes: { root: styles.inputBase, input: styles.input },
+              classes: {
+                root: styles.inputBase,
+                input: styles.input,
+              },
             }}
             label={'CCV:'}
             placeholder={'XXX'}
