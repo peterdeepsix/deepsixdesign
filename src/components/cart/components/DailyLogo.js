@@ -4,8 +4,6 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
   root: {
-    fontWeight: 900,
-    textTransform: 'uppercase',
     whiteSpace: 'nowrap',
   },
 }));
@@ -13,7 +11,7 @@ const useStyles = makeStyles(() => ({
 const DailyLogo = () => {
   const styles = useStyles();
   return (
-    <Typography variant={'h5'} className={styles.root}>
+    <Typography variant="h6" className={styles.root}>
       Deep Six Design
     </Typography>
   );
