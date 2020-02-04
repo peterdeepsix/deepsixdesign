@@ -2,13 +2,19 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
+import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
+import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
+
+import LinkComponent from 'src/components/link/linkComponent';
 
 const useStyles = makeStyles({
-  root: {
-    width: 500,
+  stickToBottom: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
   },
 });
 
@@ -22,19 +28,25 @@ const NavBar = () => {
         setValue(newValue);
       }}
       showLabels
-      className={classes.root}
+      className={classes.stickToBottom}
     >
       <BottomNavigationAction
-        label="Recents"
-        icon={<RestoreIcon />}
+        label="Home"
+        icon={<NaturePeopleOutlinedIcon />}
+        to="/"
+        component={LinkComponent}
       />
       <BottomNavigationAction
-        label="Favorites"
-        icon={<FavoriteIcon />}
+        label="Products"
+        icon={<PermMediaOutlinedIcon />}
+        to="/products"
+        component={LinkComponent}
       />
       <BottomNavigationAction
-        label="Nearby"
-        icon={<LocationOnIcon />}
+        label="Cart"
+        icon={<ShoppingCartOutlinedIcon />}
+        to="/cart"
+        component={LinkComponent}
       />
     </BottomNavigation>
   );

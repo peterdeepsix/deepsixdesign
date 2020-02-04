@@ -1,18 +1,24 @@
 import React from 'react';
+import Loadable from '@loadable/component';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
+const HomeLayout = Loadable(() => import('src/layouts/homeLayout'), {
+  fallback: <IndefiniteLoading message="HomeLayout" />,
+});
+
+const ContactComponent = Loadable(
+  () => import('src/components/contact/contactComponent'),
+  {
+    fallback: <IndefiniteLoading message="ContactComponent" />,
+  },
+);
 
 const ContactPage = () => {
   return (
-    <>
-      <Container maxWidth="sm">
-        <Box my={4}>
-          <Typography variant="h4">Contact</Typography>
-        </Box>
-      </Container>
-    </>
+    <HomeLayout>
+      <ContactComponent />
+    </HomeLayout>
   );
 };
 

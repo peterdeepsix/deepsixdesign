@@ -19,16 +19,6 @@ const IndexComponent = () => {
           Plexus Prediction Engine
         </Button>
       </Box>
-      <Box my={4}>
-        <Button
-          variant="outlined"
-          size="large"
-          component={Link}
-          to="/about"
-        >
-          About
-        </Button>
-      </Box>
     </Container>
   );
 };

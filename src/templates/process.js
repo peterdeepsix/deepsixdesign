@@ -1,9 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
-
-import AppLayout from '../layouts/appLayout';
-import SEO from '../components/seo';
 import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
 import Container from '@material-ui/core/Container';
@@ -12,7 +9,7 @@ import Box from '@material-ui/core/Box';
 const ProcessComponent = Loadable(
   () => import('../components/process/processComponent'),
   {
-    fallback: <IndefiniteLoading message='IndefiniteLoading' />,
+    fallback: <IndefiniteLoading message="IndefiniteLoading" />,
   },
 );
 
@@ -36,13 +33,12 @@ export const query = graphql`
 export default ({ data }) => {
   const node = data.allProcesses.edges[0].node;
   return (
-    <AppLayout>
-      <SEO title="Timeline - Deep Six Design" />
+    <>
       <Container maxWidth="sm">
         <Box my={4}>
           <ProcessComponent data={data} />
         </Box>
       </Container>
-    </AppLayout>
+    </>
   );
 };

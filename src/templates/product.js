@@ -2,8 +2,7 @@ import React from 'react';
 import Loadable from '@loadable/component';
 
 import CartLayout from 'src/layouts/cartLayout';
-import AppLayout from 'src/layouts/appLayout';
-import SEO from 'src/components/seo';
+import HomeLayout from 'src/layouts/homeLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const ProductComponent = Loadable(
@@ -15,12 +14,13 @@ const ProductComponent = Loadable(
 
 const ItemTemplate = ({ pageContext: { id } }) => {
   return (
-    <AppLayout>
-      <SEO title="Timeline - Deep Six Design" />
-      <CartLayout>
-        <ProductComponent productId={id} />
-      </CartLayout>
-    </AppLayout>
+    <>
+      <HomeLayout>
+        <CartLayout>
+          <ProductComponent productId={id} />
+        </CartLayout>
+      </HomeLayout>
+    </>
   );
 };
 

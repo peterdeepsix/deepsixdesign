@@ -4,8 +4,8 @@ import NavBar from './components/navBar';
 const HomeComponent = ({ children }) => {
   return (
     <>
-      <NavBar />
       {children}
+      <NavBar />
     </>
   );
 };
