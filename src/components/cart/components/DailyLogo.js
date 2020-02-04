@@ -14,7 +14,7 @@ const DailyLogo = () => {
   const styles = useStyles();
   return (
     <Typography variant={'h5'} className={styles.root}>
-      <span>#</span> Daily.
+      Deep Six Design
     </Typography>
   );
 };

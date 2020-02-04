@@ -16,7 +16,7 @@ import {
   InsetContainer,
   ConfigGenerator,
 } from '@mui-treasury/layout';
-import dailyShoppingTheme from 'src/components/cart/components/DailyCart';
+import dailyShoppingTheme from 'src/components/cart/components/dailyShoppingTheme';
 import DailyHeader from 'src/components/cart/components/DailyHeader';
 import DailyCart from 'src/components/cart/components/DailyCart';
 import DailyCheckout from 'src/components/cart/components/DailyCheckout';
