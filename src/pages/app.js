@@ -23,12 +23,20 @@ const DefaultComponent = Loadable(
   },
 );
 
+const GeneratorComponent = Loadable(
+  () => import('src/components/generator/generatorComponent'),
+  {
+    fallback: <IndefiniteLoading message="GeneratorComponent" />,
+  },
+);
+
 const AppPage = () => {
   return (
     <>
       <SEOComponent title="App - Deep Six Design" />
       <Router>
         <DefaultComponent path="/app" />
+        <GeneratorComponent path="/generator" />
       </Router>
     </>
   );
