@@ -10,7 +10,14 @@ const IndexComponent = () => {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
-        <Typography variant="h4">Deep Six Design</Typography>
+        <Button
+          variant="outlined"
+          size="large"
+          component={Link}
+          to="/app"
+        >
+          Plexus Prediction Engine
+        </Button>
       </Box>
       <Box my={4}>
         <Button
@@ -19,17 +26,7 @@ const IndexComponent = () => {
           component={Link}
           to="/about"
         >
-          Public Pages
-        </Button>
-      </Box>
-      <Box my={4}>
-        <Button
-          variant="outlined"
-          size="large"
-          component={Link}
-          to="/app"
-        >
-          Web App
+          About
         </Button>
       </Box>
     </Container>

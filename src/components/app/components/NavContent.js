@@ -18,6 +18,7 @@ import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined';
 import AllInclusiveOutlinedIcon from '@material-ui/icons/AllInclusiveOutlined';
 import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import AllInboxOutlinedIcon from '@material-ui/icons/AllInboxOutlined';
+import ArtTrackOutlinedIcon from '@material-ui/icons/ArtTrackOutlined';
 
 import Link from 'src/components/Link';
 
@@ -33,6 +34,22 @@ const NavContent = ({ location }) => {
       <List
         subheader={<ListSubheader>Company Information</ListSubheader>}
       >
+        <ListItem
+          color="inherit"
+          button
+          component={Link}
+          to="/"
+          selected={selectedIndex === '/'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <ChangeHistoryIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Deep Six Design'}
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
         <ListItem
           color="inherit"
           button
@@ -93,7 +110,7 @@ const NavContent = ({ location }) => {
           onClick={() => setOpened(false)}
         >
           <ListItemIcon>
-            <ChangeHistoryIcon />
+            <ArtTrackOutlinedIcon />
           </ListItemIcon>
           <ListItemText
             primary={'Products'}

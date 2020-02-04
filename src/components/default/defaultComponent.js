@@ -11,39 +11,7 @@ const DefaultComponent = () => {
     <>
       <Container maxWidth="sm">
         <Box my={4}>
-          <Typography variant="h4">
-            Plexus Prediction Engine
-          </Typography>
-        </Box>
-        <Box my={4}>
-          <Button
-            variant="outlined"
-            size="large"
-            component={Link}
-            to="/about"
-          >
-            Public Pages
-          </Button>
-        </Box>
-        <Box my={4}>
-          <Button
-            variant="outlined"
-            size="large"
-            component={Link}
-            to="/"
-          >
-            Root
-          </Button>
-        </Box>
-        <Box my={4}>
-          <Button
-            variant="outlined"
-            size="large"
-            component={Link}
-            to="/app/generator"
-          >
-            Generator
-          </Button>
+          <Typography variant="h4">Web App</Typography>
         </Box>
       </Container>
     </>

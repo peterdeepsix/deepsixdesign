@@ -1,7 +1,6 @@
 import React from 'react';
 import Loadable from '@loadable/component';
 
-import SEO from 'src/components/seo';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const AboutComponent = Loadable(
@@ -11,16 +10,11 @@ const AboutComponent = Loadable(
   },
 );
 
-const AppLayout = Loadable(() => import('src/layouts/appLayout'), {
-  fallback: <IndefiniteLoading message="AppLayout" />,
-});
-
-const AboutPage = ({ location }) => {
+const AboutPage = () => {
   return (
-    <AppLayout location={location}>
-      <SEO title="About - Deep Six Design" />
+    <>
       <AboutComponent />
-    </AppLayout>
+    </>
   );
 };
 

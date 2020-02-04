@@ -72,7 +72,7 @@ const HeaderContent = ({ classes, screen }) => {
         noWrap
         className={classes.header}
       >
-        Deep Six Design
+        Plexus Prediction Engine
       </Typography>
 
       {isWidthUp('md', screen) && (
@@ -88,7 +88,7 @@ const HeaderContent = ({ classes, screen }) => {
             noWrap
             className={classes.header}
           >
-            Deep Six Design - Plexus Prediction Engine v1.0.2
+            Plexus Prediction Engine v1.0.2
           </Typography>
         </>
       )}
