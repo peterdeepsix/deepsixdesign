@@ -111,16 +111,4 @@ module.exports = {
       },
     },
   ],
-  developMiddleware: app => {
-    app.use(
-      '/https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/',
-      proxy({
-        target: 'http://localhost:5000',
-        pathRewrite: {
-          '/https://us-central1-deepsixdesign-web-prod.cloudfunctions.net/':
-            '',
-        },
-      }),
-    );
-  },
 };
