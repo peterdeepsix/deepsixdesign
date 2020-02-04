@@ -16,13 +16,11 @@ import {
   InsetContainer,
   ConfigGenerator,
 } from '@mui-treasury/layout';
-import {
-  dailyShoppingTheme,
-  DailyHeader,
-  DailyCart,
-  DailyCheckout,
-  DailySummary,
-} from '@mui-treasury/mockup/brands/dailyShopping';
+import dailyShoppingTheme from 'src/components/cart/components/DailyCart';
+import DailyHeader from 'src/components/cart/components/DailyHeader';
+import DailyCart from 'src/components/cart/components/DailyCart';
+import DailyCheckout from 'src/components/cart/components/DailyCheckout';
+import DailySummary from 'src/components/cart/components/DailySummary';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   header: {
