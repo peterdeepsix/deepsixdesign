@@ -68,20 +68,9 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
   });
 };
 
-exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions;
-
-  if (page.path.match(/^\/app/)) {
-    page.matchPath = '/app/*';
-
-    createPage(page);
-  }
-};
-
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  // Add slug for page generation.
   if (node.internal.type === 'StripeSku') {
     const value = slug(
       node.product.name,

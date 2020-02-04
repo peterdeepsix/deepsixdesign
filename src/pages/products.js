@@ -1,8 +1,7 @@
 import React from 'react';
 import Loadable from '@loadable/component';
 
-import SEO from 'src/components/seo';
-import AppLayout from 'src/layouts/appLayout';
+import HomeLayout from 'src/layouts/homeLayout';
 import CartLayout from 'src/layouts/cartLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
@@ -15,12 +14,11 @@ const ProductsComponent = Loadable(
 
 const ProductsPage = ({ location }) => {
   return (
-    <AppLayout location={location}>
-      <SEO title="Products - Deep Six Design" />
+    <HomeLayout>
       <CartLayout>
         <ProductsComponent />
       </CartLayout>
-    </AppLayout>
+    </HomeLayout>
   );
 };
 

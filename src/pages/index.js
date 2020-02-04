@@ -1,9 +1,11 @@
 import React from 'react';
 import Loadable from '@loadable/component';
 
-import SEO from 'src/components/seo';
-import AppLayout from 'src/layouts/appLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
+const HomeLayout = Loadable(() => import('src/layouts/homeLayout'), {
+  fallback: <IndefiniteLoading message="HomeLayout" />,
+});
 
 const IndexComponent = Loadable(
   () => import('src/components/index/indexComponent'),
@@ -12,12 +14,11 @@ const IndexComponent = Loadable(
   },
 );
 
-const IndexPage = ({ location }) => {
+const IndexPage = () => {
   return (
-    <AppLayout location={location}>
-      <SEO title="Deep Six Design" />
+    <HomeLayout>
       <IndexComponent />
-    </AppLayout>
+    </HomeLayout>
   );
 };
 
