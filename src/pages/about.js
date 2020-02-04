@@ -3,6 +3,10 @@ import Loadable from '@loadable/component';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
+const HomeLayout = Loadable(() => import('src/layouts/homeLayout'), {
+  fallback: <IndefiniteLoading message="HomeLayout" />,
+});
+
 const AboutComponent = Loadable(
   () => import('src/components/about/aboutComponent'),
   {
@@ -12,9 +16,9 @@ const AboutComponent = Loadable(
 
 const AboutPage = () => {
   return (
-    <>
+    <HomeLayout>
       <AboutComponent />
-    </>
+    </HomeLayout>
   );
 };
 
