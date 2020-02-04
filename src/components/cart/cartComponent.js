@@ -21,6 +21,7 @@ import DailyHeader from 'src/components/cart/components/DailyHeader';
 import DailyCart from 'src/components/cart/components/DailyCart';
 import DailyCheckout from 'src/components/cart/components/DailyCheckout';
 import DailySummary from 'src/components/cart/components/DailySummary';
+import Cart from './cart'
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   header: {
@@ -131,7 +132,7 @@ const HomeComponent = () => {
             <Container className={styles.container}>
               <InsetContainer>
                 <Content className={styles.content}>
-                  <DailyCart />
+                  <Cart />
                 </Content>
                 <InsetSidebar
                   BodyProps={{ className: styles.sidebarBody }}
