@@ -17,6 +17,10 @@ steps:
     entrypoint: yarn
     args: ['add', 'firebase-tools']
 
+    - name: node:10.15.1
+    entrypoint: yarn
+    args: ['add', 'firebase-functions']
+
   - name: node:10.15.1
     entrypoint: yarn
     args: ['run', 'create-env']
