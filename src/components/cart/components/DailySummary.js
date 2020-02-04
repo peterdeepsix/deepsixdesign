@@ -11,7 +11,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) => ({
     width: '100%',
     paddingTop: 16,
     paddingBottom: 16,
-    borderRadius: 40,
     border: '1px solid',
     borderColor: palette.grey[400],
     '& > *': {
@@ -84,8 +83,18 @@ const DailySummary = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={5} md={4} container alignItems={'flex-end'}>
-        <Button className={styles.btn} startIcon={<KeyboardArrowLeft />}>
+      <Grid
+        item
+        xs={12}
+        sm={5}
+        md={4}
+        container
+        alignItems={'flex-end'}
+      >
+        <Button
+          className={styles.btn}
+          startIcon={<KeyboardArrowLeft />}
+        >
           Continue Shopping
         </Button>
       </Grid>
