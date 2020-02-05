@@ -145,7 +145,7 @@ const DailyCheckout = props => {
           color="primary"
           variant="outlined"
         >
-          Check Out
+          Check Out Now
         </Button>
       </Paper>
     </Box>

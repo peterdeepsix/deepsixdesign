@@ -23,6 +23,15 @@ import DailyCheckout from 'src/components/cart/components/DailyCheckout';
 import DailySummary from 'src/components/cart/components/DailySummary';
 import Cart from './cart';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+
 const useStyles = makeStyles(({ breakpoints }) => ({
   header: {
     backgroundColor: '#ffffff',
@@ -70,7 +79,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     textTransform: 'none',
     position: 'fixed',
     bottom: 80,
-    right: 16,
+    right: 32,
     zIndex: 1500,
     transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
     [breakpoints.up('sm')]: {
@@ -104,7 +113,19 @@ config.primarySidebar.setInsetProps({
 config.secondarySidebar.setAnchor('left');
 
 const HomeComponent = () => {
+  const [open, setOpen] = React.useState(false);
   const styles = useStyles();
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box
       height={'100vh'}
@@ -116,28 +137,50 @@ const HomeComponent = () => {
         {({ opened, setOpened }) => (
           <>
             <CssBaseline />
-            <Button
-              variant="outlined"
-              size="large"
-              className={cx(styles.fab, opened && styles.fabClose)}
-              color={'primary'}
-              onClick={() => setOpened(!opened)}
-              startIcon={opened ? <Close /> : <CreditCard />}
-            >
-              {opened ? 'Cancel' : 'Checkout'}
-            </Button>
+            {opened ? null : (
+              <Button
+                variant="outlined"
+                size="large"
+                className={cx(styles.fab, opened && styles.fabClose)}
+                color={'primary'}
+                onClick={() => setOpened(!opened)}
+                startIcon={opened ? <Close /> : <CreditCard />}
+              >
+                Checkout
+              </Button>
+            )}
+
             <Container className={styles.container}>
               <InsetContainer>
                 <Content className={styles.content}>
                   <Cart />
                 </Content>
-                <InsetSidebar
-                  BodyProps={{ className: styles.sidebarBody }}
-                  PaperProps={{
-                    classes: { root: styles.sidebarPaper },
-                  }}
-                >
+                <InsetSidebar>
                   <DailyCheckout />
+                  <Dialog
+                    TransitionDuration={0}
+                    fullScreen={fullScreen}
+                    open={opened}
+                    onClose={handleClose}
+                    aria-labelledby="checkout"
+                  >
+                    <DialogTitle id="checkout">
+                      {'Checkout'}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DailyCheckout />
+                    </DialogContent>
+                    <DialogActions>
+                      <Button
+                        autoFocus
+                        variant="outlined"
+                        onClick={() => setOpened(!opened)}
+                        color="primary"
+                      >
+                        Cancel
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                 </InsetSidebar>
               </InsetContainer>
             </Container>

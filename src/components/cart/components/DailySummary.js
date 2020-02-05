@@ -58,7 +58,7 @@ const DailySummary = () => {
             </Grid>
             <Grid item xs={7}>
               <Box px={2} align={'right'} className={styles.big}>
-                <span>{total / 100}</span>
+                <span>${total / 100}</span>
               </Box>
             </Grid>
             <Grid item xs={5}>
@@ -83,7 +83,7 @@ const DailySummary = () => {
             </Grid>
             <Grid item xs={7}>
               <Box px={2} align={'right'} className={styles.large}>
-                <span>{total / 100}</span>
+                <span>${total / 100}</span>
               </Box>
             </Grid>
           </Grid>
