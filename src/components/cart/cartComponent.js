@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import CreditCard from '@material-ui/icons/CreditCard';
 import Close from '@material-ui/icons/Close';
 import {
@@ -67,14 +67,10 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     },
   },
   fab: {
+    textTransform: 'none',
     position: 'fixed',
-    bottom: 16,
+    bottom: 80,
     right: 16,
-    color: '#2E3B4D',
-    '& svg': {
-      fontSize: 32,
-      color: '#fff',
-    },
     zIndex: 1500,
     transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
     [breakpoints.up('sm')]: {
@@ -89,6 +85,9 @@ const useStyles = makeStyles(({ breakpoints }) => ({
     right: 8,
     width: 48,
     height: 48,
+  },
+  button: {
+    margin: 8,
   },
 }));
 
@@ -117,13 +116,16 @@ const HomeComponent = () => {
         {({ opened, setOpened }) => (
           <>
             <CssBaseline />
-            <Fab
+            <Button
+              variant="outlined"
+              size="large"
               className={cx(styles.fab, opened && styles.fabClose)}
               color={'primary'}
               onClick={() => setOpened(!opened)}
+              startIcon={opened ? <Close /> : <CreditCard />}
             >
-              {opened ? <Close /> : <CreditCard />}
-            </Fab>
+              {opened ? 'Cancel' : 'Checkout'}
+            </Button>
             <Container className={styles.container}>
               <InsetContainer>
                 <Content className={styles.content}>
