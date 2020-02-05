@@ -31,7 +31,7 @@ const NavBar = () => {
       className={classes.stickToBottom}
     >
       <BottomNavigationAction
-        label="Home"
+        label="About"
         icon={<NaturePeopleOutlinedIcon />}
         to="/"
         component={LinkComponent}
