@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import CreditCard from '@material-ui/icons/CreditCard';
 import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
 import {
   Elements,
   CardElement,
@@ -30,6 +31,7 @@ const useStyles = makeStyles(() => ({
     overflow: 'auto',
     '& *': {},
   },
+  paper: { padding: 16 },
 }));
 
 const createOptions = () => {
@@ -82,61 +84,64 @@ const DailyCheckout = props => {
 
   return (
     <Box className={styles.root}>
-      <Typography variant="h3">Payment Info.</Typography>
-      <Divider />
-      <Typography>Payment Method:</Typography>
-      <Grid container>
-        <Grid xs={6} item>
-          <Elements>
-            <form onSubmit={handleSubmit}>
-              <label>
-                Card details
-                {/* <CardElement
+      <Paper className={styles.paper} variant="outlined">
+        <Typography variant="h3">Payment Info.</Typography>
+        <Divider />
+        <Typography>Payment Method:</Typography>
+        <Grid container>
+          <Grid xs={6} item>
+            <Elements>
+              <form onSubmit={handleSubmit}>
+                <label>
+                  Card details
+                  {/* <CardElement
                   onBlur={handleBlur}
                   onChange={handleChange}
                   onFocus={handleFocus}
                   onReady={handleReady}
                   {...createOptions()}
                 /> */}
-              </label>
-              <button>Pay</button>
-            </form>
-          </Elements>
+                </label>
+              </form>
+            </Elements>
+          </Grid>
         </Grid>
-      </Grid>
-      <Divider />
-      <TextField
-        fullWidth
-        label={'Name On Card:'}
-        value={'Peter Arnold'}
-      />
-      <Box />
-      <TextField
-        fullWidth
-        label={'Card Number:'}
-        value={'••••  ••••  ••••  1829'}
-      />
-      <Box />
-      <Grid container>
-        <Grid item xs={8}>
-          <Typography>Expiration Date:</Typography>
-          <Box mt={'-23px'}>
-            <Grid container>
-              <Grid item xs={6}>
-                <TextField select fullWidth label={'MM'} />
+        <Divider />
+        <TextField
+          fullWidth
+          label={'Name On Card:'}
+          value={'Peter Arnold'}
+        />
+        <Box />
+        <TextField
+          fullWidth
+          label={'Card Number:'}
+          value={'••••  ••••  ••••  1829'}
+        />
+        <Box />
+        <Grid container>
+          <Grid item xs={8}>
+            <Typography>Expiration Date:</Typography>
+            <Box mt={'-23px'}>
+              <Grid container>
+                <Grid item xs={6}>
+                  <TextField select fullWidth label={'MM'} />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField select fullWidth label={'YYYY'} />
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <TextField select fullWidth label={'YYYY'} />
-              </Grid>
-            </Grid>
-          </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={4}>
+            <TextField fullWidth label={'CCV:'} placeholder={'XXX'} />
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <TextField fullWidth label={'CCV:'} placeholder={'XXX'} />
-        </Grid>
-      </Grid>
-      <Box />
-      <Button variant={'contained'}>Check Out.</Button>
+        <Box />
+        <Button size="large" color="primary" variant="outlined">
+          Check Out.
+        </Button>
+      </Paper>
     </Box>
   );
 };

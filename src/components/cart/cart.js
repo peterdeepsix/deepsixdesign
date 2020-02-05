@@ -20,7 +20,7 @@ const CartComponent = () => {
   return (
     <Container className={styles.root}>
       <Box>
-        <Typography variant="h4">Shopping Cart</Typography>
+        <Typography variant="h3">Shopping Cart</Typography>
         {count === 0 && <Typography>No items in cart.</Typography>}
       </Box>
       <Box>
