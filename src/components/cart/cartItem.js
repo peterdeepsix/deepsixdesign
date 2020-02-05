@@ -15,27 +15,23 @@ const CartItem = ({ sku, quantity }) => {
   const price = sku.price / 100;
   const total = (sku.price / 100) * quantity;
   return (
-    <Container key={sku.id}>
-      <Box>
-        <ListItem button>
-          <ListItemText
-            primary={sku.product.name}
-            secondary={`$${price} * Quantity ${quantity} = $${total}`}
-          />
-          <ListItemSecondaryAction>
-            <IconButton
-              onClick={() => {
-                remove(sku.id);
-              }}
-              edge="end"
-              aria-label="delete"
-            >
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </Box>
-    </Container>
+    <ListItem disableGutters divider button>
+      <ListItemText
+        primary={sku.product.name}
+        secondary={`$${price} * Quantity ${quantity} = $${total}`}
+      />
+      <ListItemSecondaryAction>
+        <IconButton
+          onClick={() => {
+            remove(sku.id);
+          }}
+          edge="end"
+          aria-label="delete"
+        >
+          <DeleteIcon />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 };
 

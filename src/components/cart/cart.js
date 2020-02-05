@@ -12,6 +12,10 @@ const useStyles = makeStyles(() => ({
   root: {
     paddingTop: 24,
   },
+  box: {
+    paddingTop: 48,
+    paddingBottom: 24,
+  },
 }));
 
 const CartComponent = () => {
@@ -21,7 +25,13 @@ const CartComponent = () => {
     <Container className={styles.root}>
       <Box>
         <Typography variant="h3">Shopping Cart</Typography>
-        {count === 0 && <Typography>No items in cart.</Typography>}
+        {count === 0 && (
+          <Box className={styles.box}>
+            <Typography>
+              There are currently no items in your shopping cart.
+            </Typography>
+          </Box>
+        )}
       </Box>
       <Box>
         <List aria-label="cart items">

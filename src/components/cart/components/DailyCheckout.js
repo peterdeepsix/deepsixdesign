@@ -32,6 +32,7 @@ const useStyles = makeStyles(() => ({
     '& *': {},
   },
   paper: { padding: 16 },
+  button: { textTransform: 'none' },
 }));
 
 const createOptions = () => {
@@ -138,8 +139,13 @@ const DailyCheckout = props => {
           </Grid>
         </Grid>
         <Box />
-        <Button size="large" color="primary" variant="outlined">
-          Check Out.
+        <Button
+          className={styles.button}
+          size="large"
+          color="primary"
+          variant="outlined"
+        >
+          Check Out
         </Button>
       </Paper>
     </Box>
