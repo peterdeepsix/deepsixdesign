@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { isWidthUp } from '@material-ui/core/withWidth';
 import Typography from '@material-ui/core/Typography';
+import ColorPickerComponent from 'src/components/colorPicker/colorPickerComponent';
 
 const styles = ({
   spacing,
@@ -74,8 +75,8 @@ const HeaderContent = ({ classes, screen }) => {
       >
         Plexus Prediction Engine
       </Typography>
-
-      {isWidthUp('md', screen) && (
+      <ColorPickerComponent />
+      {/* {isWidthUp('md', screen) && (
         <>
           <div className={classes.grow} />
           <Typography variant="h5" noWrap className={classes.header}>
@@ -91,7 +92,7 @@ const HeaderContent = ({ classes, screen }) => {
             Plexus Prediction Engine v1.0.2
           </Typography>
         </>
-      )}
+      )} */}
     </>
   );
 };

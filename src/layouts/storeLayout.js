@@ -10,6 +10,7 @@ import { FirebaseContext } from 'gatsby-plugin-firebase';
 const StoreLayout = ({ store, children }) => {
   const firebase = useContext(FirebaseContext);
 
+  themeStore.getColor();
   const { firebaseStore, sessionStore, predictionsStore } = store;
 
   useMemo(() => {
@@ -17,6 +18,7 @@ const StoreLayout = ({ store, children }) => {
     sessionStore.getAuthUser();
     sessionStore.getAuthToken();
     sessionStore.getLoggedIn();
+    themeStore.getColor();
 
     firebaseStore.setFirebase(firebase);
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import Loadable from '@loadable/component';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -123,10 +124,13 @@ const config = {
   },
 };
 
-const AppComponent = ({ children, location }) => {
+const AppComponent = ({ store, children, location }) => {
   const prefersDarkMode = useMediaQuery(
     '(prefers-color-scheme: dark)',
   );
+
+  const { themeStore } = store;
+  const { color } = themeStore;
 
   const themeMemo = React.useMemo(
     theme =>
@@ -134,7 +138,7 @@ const AppComponent = ({ children, location }) => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
-            main: '#FF1654',
+            main: color.hex,
             contrastText: '#000',
           },
           secondary: {
@@ -165,7 +169,7 @@ const AppComponent = ({ children, location }) => {
           ].join(','),
         },
       }),
-    [prefersDarkMode],
+    [prefersDarkMode, color],
   );
 
   return (
@@ -200,4 +204,4 @@ const AppComponent = ({ children, location }) => {
   );
 };
 
-export default AppComponent;
+export default inject('store')(observer(AppComponent));
