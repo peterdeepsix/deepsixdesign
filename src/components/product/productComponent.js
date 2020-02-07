@@ -29,7 +29,7 @@ const ProductComponent = ({ productId }) => {
   return (
     <>
       {product && (
-        <Container>
+        <Container maxWidth="sm">
           <Box>
             <Typography variant="h4">{product.name}</Typography>
             <br />
@@ -44,6 +44,10 @@ const ProductComponent = ({ productId }) => {
             >
               Add To Cart
             </Button>
+          </Box>
+          <br />
+          <Box mx="auto">
+            <img src={product.skus[0].image} />
           </Box>
         </Container>
       )}

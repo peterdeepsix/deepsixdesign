@@ -125,18 +125,14 @@ const config = {
 };
 
 const AppComponent = ({ store, children, location }) => {
-  const prefersDarkMode = useMediaQuery(
-    '(prefers-color-scheme: dark)',
-  );
-
   const { themeStore } = store;
-  const { color } = themeStore;
+  const { color, isDark } = themeStore;
 
   const themeMemo = React.useMemo(
     theme =>
       createMuiTheme({
         palette: {
-          type: prefersDarkMode ? 'dark' : 'light',
+          type: isDark ? 'dark' : 'light',
           primary: {
             main: color.hex,
             contrastText: '#000',
@@ -169,7 +165,7 @@ const AppComponent = ({ store, children, location }) => {
           ].join(','),
         },
       }),
-    [prefersDarkMode, color],
+    [isDark, color],
   );
 
   return (

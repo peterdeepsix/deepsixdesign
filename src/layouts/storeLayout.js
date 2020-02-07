@@ -6,19 +6,26 @@ import React, {
 } from 'react';
 import { inject } from 'mobx-react';
 import { FirebaseContext } from 'gatsby-plugin-firebase';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const StoreLayout = ({ store, children }) => {
   const firebase = useContext(FirebaseContext);
 
-  themeStore.getColor();
   const { firebaseStore, sessionStore, predictionsStore } = store;
+
+  const prefersDarkMode = useMediaQuery(
+    '(prefers-color-scheme: dark)',
+  );
 
   useMemo(() => {
     if (!firebase) return;
     sessionStore.getAuthUser();
     sessionStore.getAuthToken();
     sessionStore.getLoggedIn();
+
     themeStore.getColor();
+    themeStore.getIsDark();
+    themeStore.setIsDark(prefersDarkMode);
 
     firebaseStore.setFirebase(firebase);
 

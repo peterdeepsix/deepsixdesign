@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { isWidthUp } from '@material-ui/core/withWidth';
 import Typography from '@material-ui/core/Typography';
 import ColorPickerComponent from 'src/components/colorPicker/colorPickerComponent';
+import DarkPickerComponent from 'src/components/darkPicker/darkPickerComponent';
 
 const styles = ({
   spacing,
@@ -76,6 +77,7 @@ const HeaderContent = ({ classes, screen }) => {
         Plexus Prediction Engine
       </Typography>
       <ColorPickerComponent />
+      <DarkPickerComponent />
       {/* {isWidthUp('md', screen) && (
         <>
           <div className={classes.grow} />
