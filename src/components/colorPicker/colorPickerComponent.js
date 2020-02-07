@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
 
 import { useTheme } from '@material-ui/core/styles';
-import { SketchPicker } from 'react-color';
+import { CirclePicker, SliderPicker, BlockPicker } from 'react-color';
 import { makeStyles } from '@material-ui/core/styles';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +12,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -62,14 +64,40 @@ const ColorPickerComponent = ({ store }) => {
           {'Change Theme Color'}
         </DialogTitle>
         <DialogContent>
-          <SketchPicker
-            disableAlpha
-            color={color}
-            onChangeComplete={handleChangeComplete}
-          />
+          <DialogContentText>
+            Select a color to be used for the interface theme.
+          </DialogContentText>
+          <Container disableGutters maxWidth="sm">
+            <Box my={4}>
+              <CirclePicker
+                circleSize={64}
+                circleSpacing={16}
+                width="480"
+                color={color}
+                onChangeComplete={handleChangeComplete}
+              />
+            </Box>
+            <Box my={4}>
+              <SliderPicker
+                width="480"
+                color={color}
+                onChangeComplete={handleChangeComplete}
+              />
+            </Box>
+            <Box my={4}>
+              <BlockPicker
+                colors={[]}
+                triangle="hide"
+                width="480"
+                color={color}
+                onChangeComplete={handleChangeComplete}
+              />
+            </Box>
+          </Container>
         </DialogContent>
         <DialogActions>
           <Button
+            size="large"
             variant="outlined"
             onClick={handleClose}
             color="primary"
@@ -77,7 +105,12 @@ const ColorPickerComponent = ({ store }) => {
           >
             Save
           </Button>
-          <Button variant="outlined" autoFocus onClick={handleClose}>
+          <Button
+            size="large"
+            variant="outlined"
+            autoFocus
+            onClick={handleClose}
+          >
             Cancel
           </Button>
         </DialogActions>
