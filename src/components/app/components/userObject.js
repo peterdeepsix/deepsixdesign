@@ -11,7 +11,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import Link from 'src/components/Link';
+import LinkComponent from 'src/components/link/linkComponent';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +31,7 @@ function UserObject({ store }) {
           <ListItem
             button
             color="inherit"
-            component={Link}
+            component={LinkComponent}
             to="/account"
           >
             <ListItemAvatar>

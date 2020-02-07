@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'src/components/Link';
+import LinkComponent from 'src/components/link/linkComponent';
 import Img from 'gatsby-image';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
-  card: {
+  img: {
     maxWidth: 480,
   },
 });
@@ -20,7 +20,10 @@ const ProductThumbnail = ({ product }) => {
   const classes = useStyles();
   return (
     <Card variant="outlined" className={classes.card}>
-      <CardActionArea component={Link} to={`/buy/${product.slug}`}>
+      <CardActionArea
+        component={LinkComponent}
+        to={`/buy/${product.slug}`}
+      >
         {console.log(product)}
         <CardMedia
           component="img"

@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 
-import Link from 'src/components/Link';
+import LinkComponent from 'src/components/link/linkComponent';
 import UserObject from './userObject';
 
 const useStyles = makeStyles((theme, collapsed) => ({
@@ -49,8 +49,8 @@ const NavHeaderEx = ({ collapsed, history, store }) => {
                   />
                 }
                 className={classes.button}
-                component={Link}
-                to="/signin"
+                component={LinkComponent}
+                to="/app/signin"
               >
                 Sign In
               </Button>

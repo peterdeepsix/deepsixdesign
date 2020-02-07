@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-
-import IndefiniteLoading from '../loading/indefiniteLoading';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '../Link';
+import LinkComponent from 'src/components/link/linkComponent';
 import Container from '@material-ui/core/Container';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
@@ -87,7 +85,7 @@ const TimelineComponent = ({ data }) => {
             </div>
             <br />
             <Button
-              component={Link}
+              component={LinkComponent}
               to={`/${edge.node.slug}`}
               variant="outlined"
             >

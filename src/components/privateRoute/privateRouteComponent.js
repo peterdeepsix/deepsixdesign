@@ -11,7 +11,7 @@ const PrivateRouteComponent = ({
   const { authUser } = store.sessionStore;
 
   if (!authUser) {
-    navigate('/signin');
+    navigate('/app/signin');
     return null;
   }
   return <Component {...rest} />;

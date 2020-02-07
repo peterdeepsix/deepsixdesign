@@ -20,7 +20,7 @@ import AutorenewOutlinedIcon from '@material-ui/icons/AutorenewOutlined';
 import AllInboxOutlinedIcon from '@material-ui/icons/AllInboxOutlined';
 import ArtTrackOutlinedIcon from '@material-ui/icons/ArtTrackOutlined';
 
-import Link from 'src/components/Link';
+import LinkComponent from 'src/components/link/linkComponent';
 
 const NavContent = ({ location }) => {
   const { setOpened } = useLayoutCtx();
@@ -32,27 +32,6 @@ const NavContent = ({ location }) => {
   return (
     <>
       <List
-        subheader={<ListSubheader>Company Information</ListSubheader>}
-      >
-        <ListItem
-          color="inherit"
-          button
-          component={Link}
-          to="/"
-          selected={selectedIndex === '/'}
-          onClick={() => setOpened(false)}
-        >
-          <ListItemIcon>
-            <ChangeHistoryIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary={'Deep Six Design'}
-            primaryTypographyProps={{ noWrap: true }}
-          />
-        </ListItem>
-      </List>
-      <Divider style={{ margin: '12px 0' }} />
-      <List
         subheader={
           <ListSubheader>Plexus Prediction Engine</ListSubheader>
         }
@@ -60,8 +39,8 @@ const NavContent = ({ location }) => {
         <ListItem
           color="inherit"
           button
-          component={Link}
-          to="/timeline"
+          component={LinkComponent}
+          to="/app/timeline"
           selected={selectedIndex === '/timeline'}
           onClick={() => setOpened(false)}
         >
@@ -76,8 +55,8 @@ const NavContent = ({ location }) => {
         <ListItem
           color="inherit"
           button
-          component={Link}
-          to="/predictions"
+          component={LinkComponent}
+          to="/app/predictions"
           selected={selectedIndex === '/predictions'}
           onClick={() => setOpened(false)}
         >
@@ -92,8 +71,8 @@ const NavContent = ({ location }) => {
         <ListItem
           color="inherit"
           button
-          component={Link}
-          to="/gallery"
+          component={LinkComponent}
+          to="/app/gallery"
           selected={selectedIndex === '/gallery'}
           onClick={() => setOpened(false)}
         >
@@ -108,8 +87,8 @@ const NavContent = ({ location }) => {
         <ListItem
           color="inherit"
           button
-          component={Link}
-          to="/generator"
+          component={LinkComponent}
+          to="/app/generator"
           selected={selectedIndex === '/generator'}
           onClick={() => setOpened(false)}
         >
@@ -124,8 +103,8 @@ const NavContent = ({ location }) => {
         <ListItem
           color="inherit"
           button
-          component={Link}
-          to="/stream"
+          component={LinkComponent}
+          to="/app/stream"
           selected={selectedIndex === '/stream'}
           onClick={() => setOpened(false)}
         >
@@ -134,6 +113,27 @@ const NavContent = ({ location }) => {
           </ListItemIcon>
           <ListItemText
             primary="Stream"
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItem>
+      </List>
+      <Divider style={{ margin: '12px 0' }} />
+      <List
+        subheader={<ListSubheader>Company Information</ListSubheader>}
+      >
+        <ListItem
+          color="inherit"
+          button
+          component={LinkComponent}
+          to="/"
+          selected={selectedIndex === '/'}
+          onClick={() => setOpened(false)}
+        >
+          <ListItemIcon>
+            <ChangeHistoryIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={'Deep Six Design'}
             primaryTypographyProps={{ noWrap: true }}
           />
         </ListItem>

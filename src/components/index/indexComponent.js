@@ -4,16 +4,19 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Link from 'src/components/Link';
+import LinkComponent from 'src/components/link/linkComponent';
 
 const IndexComponent = () => {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
+        <Typography variant="h3">Deep Six Design</Typography>
+      </Box>
+      <Box my={4}>
         <Button
           variant="outlined"
           size="large"
-          component={Link}
+          component={LinkComponent}
           to="/app"
         >
           Plexus Prediction Engine

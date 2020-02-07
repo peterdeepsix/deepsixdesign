@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -9,9 +10,16 @@ import Box from '@material-ui/core/Box';
 import { ProductsContext } from 'src/components/products/productsProvider';
 import { CartContext } from 'src/components/cart/cartProvider';
 
+const useStyles = makeStyles({
+  img: {
+    maxWidth: `100%`,
+  },
+});
+
 const ProductComponent = ({ productId }) => {
   const { products } = useContext(ProductsContext);
   const { add, toggle } = useContext(CartContext);
+  const classes = useStyles();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -30,10 +38,23 @@ const ProductComponent = ({ productId }) => {
     <>
       {product && (
         <Container maxWidth="sm">
+          <Box mx="auto">
+            <img
+              className={classes.img}
+              src={product.skus[0].image}
+            />
+          </Box>
+          <br />
           <Box>
-            <Typography variant="h4">{product.name}</Typography>
+            <Typography variant="h3">{product.name}</Typography>
             <br />
-            <Typography>Product ID - {product.id}</Typography>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="p"
+            >
+              ${product.skus[0].price / 100}
+            </Typography>
           </Box>
           <br />
           <Box>
@@ -44,10 +65,6 @@ const ProductComponent = ({ productId }) => {
             >
               Add To Cart
             </Button>
-          </Box>
-          <br />
-          <Box mx="auto">
-            <img src={product.skus[0].image} />
           </Box>
         </Container>
       )}

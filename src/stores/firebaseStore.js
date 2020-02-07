@@ -14,7 +14,7 @@ class FirebaseStore {
 }
 
 decorate(FirebaseStore, {
-  firestore: observable,
+  firebase: observable,
   setFirebase: action,
 });
 

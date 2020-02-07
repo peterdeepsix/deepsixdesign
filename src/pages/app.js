@@ -50,10 +50,10 @@ const PredictionsComponent = Loadable(
   },
 );
 
-const LoginComponent = Loadable(
-  () => import('src/components/login/logInComponent'),
+const SignInComponent = Loadable(
+  () => import('src/components/signIn/signInComponent'),
   {
-    fallback: <IndefiniteLoading message="LoginComponent" />,
+    fallback: <IndefiniteLoading message="SignInComponent" />,
   },
 );
 
@@ -71,10 +71,10 @@ const AppPage = ({ siteData, location }) => {
           <GeneratorComponent path="/app/generator" />
           <AccountComponent path="/app/account" />
           <PrivateRouteComponent
-            path="/predictions"
+            path="/app/predictions"
             component={PredictionsComponent}
           />
-          <LoginComponent path="/signin" />
+          <SignInComponent path="/app/signin" />
         </Router>
       </AppLayout>
     </>

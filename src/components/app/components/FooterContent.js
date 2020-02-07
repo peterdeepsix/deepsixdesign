@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
-import Link from '../../Link';
+import LinkComponent from 'src/components/link/linkComponent';
 
 const FooterContent = () => (
   <div style={{ maxWidth: 700, margin: 'auto', textAlign: 'center' }}>
@@ -17,7 +17,7 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
-          component={Link}
+          component={LinkComponent}
           to="/about"
         >
           About
@@ -28,7 +28,7 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
-          component={Link}
+          component={LinkComponent}
           to="/blog"
         >
           Blog
@@ -39,7 +39,7 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
-          component={Link}
+          component={LinkComponent}
           to="/terms"
         >
           Terms & Conditions
@@ -50,7 +50,7 @@ const FooterContent = () => (
           align={'center'}
           gutterBottom
           color={'textSecondary'}
-          component={Link}
+          component={LinkComponent}
           to="/contact"
         >
           Contact Us
