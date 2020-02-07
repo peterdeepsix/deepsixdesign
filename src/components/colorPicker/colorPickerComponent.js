@@ -49,11 +49,7 @@ const ColorPickerComponent = ({ store }) => {
 
   return (
     <>
-      <IconButton
-        aria-label="change color"
-        color="primary"
-        onClick={handleClickOpen}
-      >
+      <IconButton aria-label="change color" onClick={handleClickOpen}>
         <ColorLensOutlinedIcon />
       </IconButton>
       <Dialog
@@ -66,18 +62,22 @@ const ColorPickerComponent = ({ store }) => {
           {'Change Theme Color'}
         </DialogTitle>
         <DialogContent>
-          {/* <SketchPicker
+          <SketchPicker
             disableAlpha
             color={color}
             onChangeComplete={handleChangeComplete}
-          /> */}
-          asd
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button
+            variant="outlined"
+            onClick={handleClose}
+            color="primary"
+            autoFocus
+          >
             Save
           </Button>
-          <Button autoFocus onClick={handleClose}>
+          <Button variant="outlined" autoFocus onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>
