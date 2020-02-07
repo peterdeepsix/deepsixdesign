@@ -36,7 +36,7 @@ const StoreLayout = ({ store, children }) => {
     sessionStore.setGoogleProvider(
       new firebase.auth.GoogleAuthProvider(),
     );
-  }, [firebase]);
+  }, [firebase, prefersDarkMode]);
 
   return <div>{children}</div>;
 };
