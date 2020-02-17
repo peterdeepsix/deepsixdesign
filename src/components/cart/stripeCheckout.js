@@ -110,27 +110,26 @@ const StripeCheckOut = props => {
   return (
     <Box className={styles.root}>
       <Paper className={styles.paper} variant="outlined">
-        <Box pb={2} pt={1}>
-          <Typography variant="h3">Payment Info</Typography>
-        </Box>
-        <Box pb={2}>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <Box pb={2} pt={1}>
+            <Typography variant="h3">Payment Info</Typography>
+          </Box>
+          <Box pb={2}>
             <CardElement />
-            <button type="submit" disabled={!stripe}>
-              Pay
-            </button>
-          </form>
-        </Box>
-        <Box pb={1}>
-          <Button
-            className={styles.button}
-            size="large"
-            color="primary"
-            variant="outlined"
-          >
-            Check Out Now
-          </Button>
-        </Box>
+          </Box>
+          <Box pb={1}>
+            <Button
+              type="submit"
+              disabled={!stripe}
+              className={styles.button}
+              size="large"
+              color="primary"
+              variant="outlined"
+            >
+              Check Out Now
+            </Button>
+          </Box>
+        </form>
       </Paper>
     </Box>
   );
