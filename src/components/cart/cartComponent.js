@@ -16,20 +16,16 @@ import {
   InsetContainer,
   ConfigGenerator,
 } from '@mui-treasury/layout';
-import dailyShoppingTheme from 'src/components/cart/components/dailyShoppingTheme';
-import StripeCheckout from 'src/components/cart/StripeCheckout';
-import DailySummary from 'src/components/cart/components/DailySummary';
-import Cart from './cart';
-
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
+import dailyShoppingTheme from 'src/components/cart/components/dailyShoppingTheme';
+import StripeCheckout from 'src/components/cart/stripeCheckout';
+import DailySummary from 'src/components/cart/components/DailySummary';
+import Cart from './cart';
+
+import StripeCheckOutSplit from 'src/components/cart/stripeCheckOutSplit';
 import StripeProvider from './stripeProvider';
 
 const useStyles = makeStyles(({ breakpoints }) => ({
@@ -161,32 +157,8 @@ const HomeComponent = () => {
                   </Content>
                   <InsetSidebar>
                     <Box p={3}>
-                      <StripeCheckout />
+                      <StripeCheckOutSplit />
                     </Box>
-                    <Dialog
-                      TransitionDuration={0}
-                      fullScreen={fullScreen}
-                      open={opened}
-                      onClose={handleClose}
-                      aria-labelledby="checkout"
-                    >
-                      <DialogTitle id="checkout">
-                        {'Checkout'}
-                      </DialogTitle>
-                      <DialogContent>
-                        <StripeCheckout />
-                      </DialogContent>
-                      <DialogActions>
-                        <Button
-                          autoFocus
-                          variant="outlined"
-                          onClick={() => setOpened(!opened)}
-                          color="primary"
-                        >
-                          Cancel
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
                   </InsetSidebar>
                 </InsetContainer>
               </Container>
