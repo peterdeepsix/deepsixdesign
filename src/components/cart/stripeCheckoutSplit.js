@@ -12,6 +12,8 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import InputLabel from '@material-ui/core/InputLabel';
 
+import theme from 'src/configs/theme';
+
 import {
   CardNumberElement,
   CardCvcElement,
@@ -34,18 +36,27 @@ const useStyles = makeStyles(() => ({
   button: { textTransform: 'none' },
 }));
 
+console.log(theme);
+
 const ELEMENT_OPTIONS = {
   style: {
     base: {
-      fontSize: '18px',
-      color: '#424770',
-      letterSpacing: '0.025em',
+      iconColor: theme.palette.text.secondary,
+      color: theme.palette.text.primary,
+      fontWeight: theme.typography.fontWeightRegular,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: theme.typography.htmlFontSize,
+      fontSmoothing: 'antialiased',
+      ':-webkit-autofill': {
+        color: theme.palette.text.primary,
+      },
       '::placeholder': {
-        color: '#aab7c4',
+        color: theme.palette.text.secondary,
       },
     },
     invalid: {
-      color: '#9e2146',
+      iconColor: theme.palette.primary.main,
+      color: theme.palette.primary.main,
     },
   },
 };
@@ -63,8 +74,6 @@ const StripeCheckOutSplit = props => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
