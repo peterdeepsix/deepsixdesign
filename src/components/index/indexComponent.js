@@ -15,16 +15,6 @@ const IndexComponent = ({ data }) => {
         <Typography variant="h3">Deep Six Design</Typography>
       </Box>
       <TickerComponent data={data} />
-      <Box my={4}>
-        <Button
-          variant="outlined"
-          size="large"
-          component={LinkComponent}
-          to="/app"
-        >
-          Plexus Prediction Engine
-        </Button>
-      </Box>
     </Container>
   );
 };

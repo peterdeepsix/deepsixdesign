@@ -10,9 +10,6 @@ const DefaultLayout = ({ children, location }) => {
           title
         }
       }
-      sitePage {
-        id
-      }
     }
   `);
 
