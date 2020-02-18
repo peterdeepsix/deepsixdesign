@@ -17,6 +17,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-source-trello',
+      options: {
+        teamId: `deepsixdesign`,
+        apiKey: process.env._TRELLO_KEY,
+        secret: process.env._TRELLO_SECRET,
+      },
+    },
+    {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/app/*`] },
     },

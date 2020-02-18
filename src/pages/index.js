@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
@@ -14,12 +15,32 @@ const IndexComponent = Loadable(
   },
 );
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  console.log(data);
   return (
     <HomeLayout>
-      <IndexComponent />
+      <IndexComponent data={data} />
     </HomeLayout>
   );
 };
+
+export const query = graphql`
+  query TrelloQuery {
+    allTrelloList(
+      filter: { id: { eq: "5e4b53931673f76d1b4fa085" } }
+    ) {
+      edges {
+        node {
+          id
+          name
+          cards {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

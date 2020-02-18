@@ -11,18 +11,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TickerComponent = () => {
+const TickerComponent = ({ data }) => {
   const classes = useStyles();
+  const lists = data.allTrelloList.edges;
   return (
     <>
       <Ticker>
-        {({ index }) => (
+        {() => (
           <>
-            <Chip
-              className={classes.chip}
-              variant="outlined"
-              label="Take Me There"
-            />
+            {lists.map(list =>
+              list.node.cards.map(card => (
+                <Chip
+                  key={card.id}
+                  className={classes.chip}
+                  variant="outlined"
+                  label={card.name}
+                />
+              )),
+            )}
           </>
         )}
       </Ticker>

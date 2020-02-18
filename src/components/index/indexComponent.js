@@ -8,13 +8,13 @@ import Button from '@material-ui/core/Button';
 import LinkComponent from 'src/components/link/linkComponent';
 import TickerComponent from 'src/components/ticker/tickerComponent';
 
-const IndexComponent = () => {
+const IndexComponent = ({ data }) => {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h3">Deep Six Design</Typography>
       </Box>
-      <TickerComponent />
+      <TickerComponent data={data} />
       <Box my={4}>
         <Button
           variant="outlined"
