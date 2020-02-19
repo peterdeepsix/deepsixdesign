@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { emphasize, makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Chip from '@material-ui/core/Chip';
-import HomeIcon from '@material-ui/icons/Home';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import StoreOutlinedIcon from '@material-ui/icons/StoreOutlined';
 
 import LinkComponent from 'src/components/link/linkComponent';
 
@@ -35,13 +34,15 @@ const NavBreadCrumbs = props => {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       <Chip
+        variant="outlined"
         component={LinkComponent}
         to="/"
         label="Products"
-        icon={<HomeIcon fontSize="small" />}
+        icon={<StoreOutlinedIcon fontSize="small" />}
         onClick={handleClick}
       />
       <Chip
+        variant="outlined"
         component={LinkComponent}
         to="/"
         label="Google Time"

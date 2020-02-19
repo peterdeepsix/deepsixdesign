@@ -10,12 +10,25 @@ import TickerComponent from 'src/components/ticker/tickerComponent';
 
 const IndexComponent = ({ data }) => {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography variant="h3">Deep Six Design</Typography>
-      </Box>
+    <>
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h3">Deep Six Design</Typography>
+        </Box>
+
+        <Box my={2}>
+          {[...new Array(12)]
+            .map(
+              () => `Cras mattis consectetur purus sit amet fermentum.
+Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
+            )
+            .join('\n')}
+        </Box>
+      </Container>
       <TickerComponent data={data} />
-    </Container>
+    </>
   );
 };
 
