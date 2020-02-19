@@ -14,6 +14,8 @@ import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined'
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
+import SearchComponent from 'src/components/search/searchComponent';
+
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: theme.palette.common.white,
@@ -113,19 +115,8 @@ const NavBar = props => {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
+              <SearchComponent />
             </div>
-
             <IconButton color="inherit">
               <ShoppingCartOutlinedIcon />
             </IconButton>
