@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: theme.palette.action.hover,
     },
     marginLeft: 0,
     width: '100%',
@@ -105,7 +105,7 @@ const NavBar = props => {
             >
               <MenuIcon />
             </IconButton>
-            <IconButton color="inherit" aria-label="open drawer">
+            <IconButton color="inherit" aria-label="go to index">
               <ChangeHistoryOutlinedIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>

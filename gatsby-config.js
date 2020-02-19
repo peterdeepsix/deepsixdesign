@@ -1,5 +1,7 @@
 var proxy = require('http-proxy-middleware');
 
+const queries = require('./src/utils/algolia');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -16,6 +18,16 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env._GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env._GATSBY_ALGOLIA_ADMIN_API_KEY,
+        indexName: process.env._GATSBY_ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000,
+      },
+    },
     {
       resolve: 'gatsby-source-trello',
       options: {
