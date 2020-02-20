@@ -18,13 +18,7 @@ import SearchHits from './searchHits';
 
 const useStyles = makeStyles(theme => ({
   auto: {
-    width: 300,
-  },
-  style: {
-    padding: '2px 4px',
-  },
-  input: {
-    marginLeft: theme.spacing(1),
+    width: 'auto',
   },
   iconButton: {
     padding: 10,
@@ -79,7 +73,6 @@ const SearchField = () => {
     <>
       <Autocomplete
         className={classes.auto}
-        color="inherit"
         id="search"
         size="small"
         open={open}
@@ -95,28 +88,24 @@ const SearchField = () => {
         getOptionLabel={option => option.name}
         options={options}
         loading={loading}
+        popupIcon={null}
         renderInput={params => (
-          <>
-            <TextField
-              {...params}
-              variant="outlined"
-              fullWidth
-              className={classes.input}
-              placeholder="Search..."
-              inputProps={{ 'aria-label': 'search' }}
-              InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                  <>
-                    {loading ? (
-                      <CircularProgress color="inherit" size={20} />
-                    ) : null}
-                    {params.InputProps.endAdornment}
-                  </>
-                ),
-              }}
-            />
-          </>
+          <TextField
+            {...params}
+            placeholder="Search..."
+            fullWidth
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : null}
+                </>
+              ),
+            }}
+          />
         )}
       />
     </>

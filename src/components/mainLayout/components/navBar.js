@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: theme.palette.action.hover,
     },
-    marginLeft: 0,
+    marginLeft: theme.spacing(1.5),
+    marginRight: theme.spacing(1.5),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -93,9 +94,6 @@ const NavBar = props => {
               color="inherit"
               aria-label="open drawer"
             >
-              <MenuIcon />
-            </IconButton>
-            <IconButton color="inherit" aria-label="go to index">
               <ChangeHistoryOutlinedIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
