@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import algoliasearch from 'algoliasearch';
 import { InstantSearch } from 'react-instantsearch-dom';
 
-import SearchHits from './components/searchHits';
 import SearchField from './components/searchField';
 
 const searchClient = algoliasearch(
@@ -26,7 +25,6 @@ const SearchComponent = () => {
         indexName={process.env._GATSBY_ALGOLIA_INDEX_NAME}
       >
         <SearchField />
-        {/* <SearchHits /> */}
       </InstantSearch>
     </>
   );
