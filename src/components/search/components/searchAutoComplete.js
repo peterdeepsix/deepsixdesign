@@ -43,37 +43,6 @@ const UnconnectedSearchAutoComplete = ({
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
-  React.useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      const response = await fetch(
-        'https://country.register.gov.uk/records.json?page-size=5000',
-      );
-      const countries = await response.json();
-
-      if (active) {
-        setOptions(
-          Object.keys(countries).map(key => countries[key].item[0]),
-        );
-      }
-    })();
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  React.useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
-  }, [open]);
-
   return (
     <Autocomplete
       className={classes.auto}
