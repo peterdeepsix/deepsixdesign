@@ -20,14 +20,9 @@ import {
 } from 'react-instantsearch-dom';
 
 import SearchTextField from './searchTextField';
+import SearchPopover from './searchPopover';
 
 const useStyles = makeStyles(theme => ({
-  auto: {
-    width: 'auto',
-  },
-  input: {
-    width: 'auto',
-  },
   iconButton: {
     padding: 10,
   },
@@ -44,28 +39,30 @@ const UnconnectedSearchAutoComplete = ({
   const loading = open && options.length === 0;
 
   return (
-    <Autocomplete
-      className={classes.auto}
-      id="search"
-      size="small"
-      open={open}
-      onOpen={() => {
-        setOpen(true);
-      }}
-      onClose={() => {
-        setOpen(false);
-      }}
-      getOptionSelected={(option, value) =>
-        option.name === value.name
-      }
-      getOptionLabel={option => option.name}
-      options={options}
-      loading={loading}
-      popupIcon={null}
-      renderInput={params => (
-        <SearchTextField open loaded {...params} />
-      )}
-    />
+    <>
+      <Autocomplete
+        id="search"
+        size="small"
+        open={open}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        getOptionSelected={(option, value) =>
+          option.name === value.name
+        }
+        getOptionLabel={option => option.name}
+        options={options}
+        loading={loading}
+        popupIcon={null}
+        renderInput={params => (
+          <SearchTextField open loaded {...params} />
+        )}
+      />
+      <SearchPopover open={open} />
+    </>
   );
 };
 
