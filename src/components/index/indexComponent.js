@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import TickerComponent from 'src/components/ticker/tickerComponent';
-import SearchField from 'src/components/search/components/searchField';
+import SearchComponent from 'src/components/search/searchComponent';
 
 const IndexComponent = ({ data }) => {
   return (
@@ -13,9 +13,6 @@ const IndexComponent = ({ data }) => {
       <Container maxWidth="sm">
         <Box my={4}>
           <Typography variant="h3">Deep Six Design</Typography>
-        </Box>
-        <Box my={4}>
-          <SearchField />
         </Box>
       </Container>
       <TickerComponent data={data} />

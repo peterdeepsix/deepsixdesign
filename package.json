@@ -67,6 +67,7 @@
     "react-measure": "^2.3.0",
     "react-ticker": "^1.2.2",
     "react-vertical-timeline-component": "^2.5.0",
+    "recompose": "^0.30.0",
     "slug": "^2.1.1",
     "stripe": "^8.14.0",
     "use-tensorflow": "^0.3.1"

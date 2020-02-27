@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { compose } from 'recompose';
 import { SearchBox } from 'react-instantsearch-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,10 +14,18 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 
-import SearchHits from './searchHits';
+import {
+  connectStateResults,
+  connectSearchBox,
+} from 'react-instantsearch-dom';
+
+import SearchTextField from './searchTextField';
 
 const useStyles = makeStyles(theme => ({
   auto: {
+    width: 'auto',
+  },
+  input: {
     width: 'auto',
   },
   iconButton: {
@@ -25,20 +33,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function sleep(delay = 0) {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
-}
-
-const SearchField = () => {
+const UnconnectedSearchAutoComplete = ({
+  searchResults,
+  refine,
+  ...rest
+}) => {
   const classes = useStyles();
-
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
 
-  useEffect(() => {
+  React.useEffect(() => {
     let active = true;
 
     if (!loading) {
@@ -49,7 +54,6 @@ const SearchField = () => {
       const response = await fetch(
         'https://country.register.gov.uk/records.json?page-size=5000',
       );
-      await sleep(1e3); // For demo purposes.
       const countries = await response.json();
 
       if (active) {
@@ -64,52 +68,41 @@ const SearchField = () => {
     };
   }, [loading]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!open) {
       setOptions([]);
     }
   }, [open]);
+
   return (
-    <>
-      <Autocomplete
-        className={classes.auto}
-        id="search"
-        size="small"
-        open={open}
-        onOpen={() => {
-          setOpen(true);
-        }}
-        onClose={() => {
-          setOpen(false);
-        }}
-        getOptionSelected={(option, value) =>
-          option.name === value.name
-        }
-        getOptionLabel={option => option.name}
-        options={options}
-        loading={loading}
-        popupIcon={null}
-        renderInput={params => (
-          <TextField
-            {...params}
-            placeholder="Search..."
-            fullWidth
-            variant="outlined"
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? (
-                    <CircularProgress color="inherit" size={20} />
-                  ) : null}
-                </>
-              ),
-            }}
-          />
-        )}
-      />
-    </>
+    <Autocomplete
+      className={classes.auto}
+      id="search"
+      size="small"
+      open={open}
+      onOpen={() => {
+        setOpen(true);
+      }}
+      onClose={() => {
+        setOpen(false);
+      }}
+      getOptionSelected={(option, value) =>
+        option.name === value.name
+      }
+      getOptionLabel={option => option.name}
+      options={options}
+      loading={loading}
+      popupIcon={null}
+      renderInput={params => (
+        <SearchTextField open loaded {...params} />
+      )}
+    />
   );
 };
 
-export default SearchField;
+const SearchAutoComplete = compose(
+  connectSearchBox,
+  connectStateResults,
+)(UnconnectedSearchAutoComplete);
+
+export default SearchAutoComplete;

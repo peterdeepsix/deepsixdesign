@@ -7,9 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -42,10 +39,11 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
-      width: 240,
+      width: 340,
     },
   },
   autoComplete: {
+    // borderColor: theme.palette.text.primary,
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create('width'),
     width: '100%',
