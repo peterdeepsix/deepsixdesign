@@ -13,37 +13,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchPopover = () => {
+const SearchPopover = ({ textFieldRef, open }) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
+  console.log(open);
   return (
     <>
-      {' '}
-      <Button
-        aria-describedby={id}
-        variant="oultined"
-        color="primary"
-        onClick={handleClick}
-      >
-        Search Popover
-      </Button>
       <Popover
         id="search-popover"
         open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'center',
@@ -53,7 +30,7 @@ const SearchPopover = () => {
           horizontal: 'center',
         }}
       >
-        <SearchResults />
+        {/* <SearchResults /> */}
       </Popover>
     </>
   );

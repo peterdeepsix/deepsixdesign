@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import List from '@material-ui/core/List';
 
 import { Hits } from 'react-instantsearch-dom';
-
-import List from '@material-ui/core/List';
 
 import Hit from './hit';
 
@@ -19,6 +19,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SearchHits = () => {
+  const isDesktop = useMediaQuery('(min-width:600px)');
+  console.log(isDesktop);
   const classes = useStyles();
   return (
     <List className={classes.root}>

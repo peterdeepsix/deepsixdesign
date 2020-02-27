@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   iconButton: {
     padding: 10,
   },
+  textField: {
+    width: 300
+  },
 }));
 
 const UnconnectedSearchAutoComplete = ({
@@ -37,6 +40,7 @@ const UnconnectedSearchAutoComplete = ({
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
+  const textFieldRef = React.useRef();
 
   return (
     <>
@@ -58,10 +62,16 @@ const UnconnectedSearchAutoComplete = ({
         loading={loading}
         popupIcon={null}
         renderInput={params => (
-          <SearchTextField open loaded {...params} />
+          <SearchTextField
+            className={classes.textField}
+            ref={textFieldRef}
+            open
+            loaded
+            {...params}
+          />
         )}
       />
-      <SearchPopover open={open} />
+      <SearchPopover ref={textFieldRef} open={open} />
     </>
   );
 };

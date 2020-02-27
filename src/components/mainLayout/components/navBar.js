@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
+import Popover from '@material-ui/core/Popover';
 import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -26,6 +30,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  searchbutton: {
+    width: 300,
   },
   search: {
     position: 'relative',
@@ -77,14 +84,26 @@ function Scroll(props) {
 
 const NavBar = props => {
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
       <Scroll {...props}>
         <AppBar
+          className={classes.appBar}
           positon="sticky"
           color="inherit"
-          className={classes.appBar}
         >
           <Toolbar className={classes.toolbar}>
             <IconButton
@@ -98,9 +117,20 @@ const NavBar = props => {
               Deep Six Design
             </Typography>
             <div className={classes.grow} />
-            <div className={classes.search}>
-              <SearchComponent />
-            </div>
+            <>
+              <TextField
+                className={classes.searchButton}
+                component={Button}
+                onClick={handleClick}
+                id="search"
+                defaultValue="Search..."
+                variant="outlined"
+                size="small"
+              />
+              <Drawer anchor="top" open={open} onClose={handleClose}>
+                <SearchComponent />
+              </Drawer>
+            </>
             <IconButton color="inherit">
               <ShoppingCartOutlinedIcon />
             </IconButton>
