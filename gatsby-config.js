@@ -19,6 +19,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `cstvziqi6rqq`,
+        accessToken: `dPNwveDQf28SsAnTjNCLhOiXaTP5-zZDfRsrtSA26kg`,
+        downloadLocal: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env._GATSBY_ALGOLIA_APP_ID,

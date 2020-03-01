@@ -119,6 +119,7 @@ const NavBar = props => {
             <div className={classes.grow} />
             <>
               <TextField
+                disabled
                 className={classes.searchButton}
                 component={Button}
                 onClick={handleClick}

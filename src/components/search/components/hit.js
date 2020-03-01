@@ -9,6 +9,8 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
+import LinkComponent from 'src/components/link/linkComponent';
+
 import {
   SearchBox,
   Hits,
@@ -46,18 +48,30 @@ const CustomHighlight = connectHighlight(
 
 const Hit = ({ hit }) => {
   const classes = useStyles();
+
+  const {
+    slug,
+    title,
+    shortOverview,
+    stripeId,
+    _highlightResult,
+  } = hit;
+
   return (
-    <>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Product" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Product Name"
-          secondary={<CustomHighlight attribute="name" hit={hit} />}
-        />
-      </ListItem>
-    </>
+    <ListItem
+      component={LinkComponent}
+      color="inherit"
+      to={`/buy/${slug}`}
+      alignItems="flex-start"
+    >
+      <ListItemAvatar>
+        <Avatar alt={title.title} />
+      </ListItemAvatar>
+      <ListItemText
+        primary={title.title}
+        secondary={shortOverview.content[0].content[0].value}
+      />
+    </ListItem>
   );
 };
 

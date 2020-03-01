@@ -1,9 +1,47 @@
-const trelloQuery = ` {
-  allTrelloCard(filter: {idList: {eq: "5e4b53931673f76d1b4fa085"}}) {
+const contentfulQuery = ` {
+  allContentfulProduct {
     edges {
       node {
-        objectID: id
-        name
+        stripeId
+        title {
+          title
+        }
+        slug
+        rating
+        shortOverview {
+          content {
+            content {
+              value
+            }
+          }
+        }
+        overview {
+          content {
+            content {
+              value
+            }
+          }
+        }
+        media {
+          title
+        }
+        details {
+          content {
+            content {
+              value
+            }
+          }
+        }
+        description {
+          content {
+            content {
+              value
+            }
+          }
+        }
+        breadcrumb {
+          breadcrumb
+        }
       }
     }
   }
@@ -17,8 +55,9 @@ const settings = { attributesToSnippet: [`excerpt:20`] };
 
 const queries = [
   {
-    query: trelloQuery,
-    transformer: ({ data }) => flatten(data.allTrelloCard.edges),
+    query: contentfulQuery,
+    transformer: ({ data }) =>
+      flatten(data.allContentfulProduct.edges),
     indexName: process.env._GATSBY_ALGOLIA_INDEX_NAME,
     settings,
   },

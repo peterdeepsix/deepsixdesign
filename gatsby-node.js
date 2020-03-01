@@ -6,24 +6,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allProcesses {
-        edges {
-          node {
-            id
-            title
-            step
-            slug
-            definition
-            synonyms
-          }
-        }
-      }
       allStripeSku {
         edges {
           node {
-            fields {
-              slug
-            }
             product {
               id
               name
@@ -31,23 +16,59 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulProduct {
+        edges {
+          node {
+            stripeId
+            title {
+              title
+            }
+            slug
+            rating
+            shortOverview {
+              content {
+                content {
+                  value
+                }
+              }
+            }
+            overview {
+              content {
+                content {
+                  value
+                }
+              }
+            }
+            media {
+              title
+            }
+            details {
+              content {
+                content {
+                  value
+                }
+              }
+            }
+            description {
+              content {
+                content {
+                  value
+                }
+              }
+            }
+            breadcrumb {
+              breadcrumb
+            }
+          }
+        }
+      }
     }
   `);
-  result.data.allProcesses.edges.forEach(({ node }) => {
-    console.log(node);
-    createPage({
-      path: node.slug,
-      component: path.resolve(`./src/templates/process.js`),
-      context: {
-        slug: node.slug,
-      },
-    });
-  });
 
   const products = {};
 
-  result.data.allStripeSku.edges.forEach(({ node }) => {
-    products[node.product.id] = node.fields.slug;
+  result.data.allContentfulProduct.edges.forEach(({ node }) => {
+    products[node.stripeId] = node.slug;
   });
 
   const productTemplate = path.resolve('src/templates/product.js');
@@ -71,11 +92,8 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'StripeSku') {
-    const value = slug(
-      node.product.name,
-      slug.defaults.modes['rfc3986'],
-    );
+  if (node.internal.type === 'ContentfulProduct') {
+    const value = slug(node.slug, slug.defaults.modes['rfc3986']);
     createNodeField({
       node,
       name: 'slug',

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     padding: 10,
   },
   textField: {
-    width: 300
+    width: 300,
   },
 }));
 
@@ -63,6 +63,7 @@ const UnconnectedSearchAutoComplete = ({
         popupIcon={null}
         renderInput={params => (
           <SearchTextField
+            fullWidth
             className={classes.textField}
             ref={textFieldRef}
             open

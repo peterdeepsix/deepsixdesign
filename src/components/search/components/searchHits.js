@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import List from '@material-ui/core/List';
 
-import { Hits } from 'react-instantsearch-dom';
+import { connectHits } from 'react-instantsearch-dom';
 
 import Hit from './hit';
 
@@ -18,15 +18,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchHits = () => {
+const SearchHits = ({ hits }) => {
   const isDesktop = useMediaQuery('(min-width:600px)');
   console.log(isDesktop);
   const classes = useStyles();
+  console.log('hits in searchHits');
+  console.log(hits);
   return (
     <List className={classes.root}>
-      <Hits hitComponent={Hit} />
+      {hits.map(hit => (
+        <Hit key={hit.stripeId} hit={hit} />
+      ))}
     </List>
   );
 };
 
-export default SearchHits;
+export default connectHits(SearchHits);

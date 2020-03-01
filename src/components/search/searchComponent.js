@@ -9,17 +9,9 @@ import SearchResults from './components/searchResults';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Drawer from '@material-ui/core/Drawer';
-import Typography from '@material-ui/core/Typography';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
-import Popover from '@material-ui/core/Popover';
-import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -91,12 +83,8 @@ const SearchComponent = () => {
           color="inherit"
         >
           <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-            >
-              <ChangeHistoryOutlinedIcon />
+            <IconButton edge="start" color="inherit">
+              <ArrowBackOutlinedIcon />
             </IconButton>
             <SearchAutoComplete />
             <div className={classes.grow} />

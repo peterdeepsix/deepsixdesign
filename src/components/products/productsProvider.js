@@ -74,7 +74,7 @@ const processGatsbyData = data => {
   const initialSkus = {};
   data.allStripeSku.group.forEach(group => {
     const sku = group.edges[0].node;
-    const product = { slug: sku.fields.slug, ...sku.product };
+    const product = { ...sku.product };
     product.skus = group.edges.map(({ node }) => {
       initialSkus[node.id] = node;
       return node;
@@ -93,7 +93,6 @@ const processStripeData = (data, products) => {
     const target = products[id].skus.find(x => x.id === source.id);
     const updatedSku = Object.assign(source, target);
     if (!liveProducts[id]) {
-      source.product.slug = products[id].slug;
       liveProducts[id] = { ...source.product, skus: [] };
     }
     liveProducts[id].skus.push(updatedSku);
@@ -106,9 +105,6 @@ export const skuFragment = graphql`
   fragment Sku on StripeSku {
     id
     price
-    fields {
-      slug
-    }
     inventory {
       type
     }
@@ -131,9 +127,6 @@ const skusQuery = graphql`
           node {
             id
             price
-            fields {
-              slug
-            }
             inventory {
               type
             }
