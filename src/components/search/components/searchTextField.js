@@ -14,10 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 
-import {
-  connectStateResults,
-  connectSearchBox,
-} from 'react-instantsearch-dom';
+import { connectSearchBox } from 'react-instantsearch-dom';
 
 import SearchHits from './searchHits';
 
@@ -45,7 +42,6 @@ const UnconnectedSearchTextField = ({
   InputProps,
   open,
   loading,
-  searchResults,
   refine,
   ...rest
 }) => {
@@ -55,7 +51,6 @@ const UnconnectedSearchTextField = ({
     <TextField
       classes={{
         root: classes.inputRoot,
-        input: classes.inputInput,
       }}
       placeholder="Search..."
       fullWidth
@@ -76,9 +71,8 @@ const UnconnectedSearchTextField = ({
   );
 };
 
-const SearchTextField = compose(
-  connectSearchBox,
-  connectStateResults,
-)(UnconnectedSearchTextField);
+const SearchTextField = compose(connectSearchBox)(
+  UnconnectedSearchTextField,
+);
 
-export default UnconnectedSearchTextField;
+export default SearchTextField;

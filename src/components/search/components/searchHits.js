@@ -3,6 +3,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
 
 import { connectHits } from 'react-instantsearch-dom';
 
@@ -19,15 +20,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SearchHits = ({ hits }) => {
-  const isDesktop = useMediaQuery('(min-width:600px)');
-  console.log(isDesktop);
   const classes = useStyles();
-  console.log('hits in searchHits');
-  console.log(hits);
   return (
     <List className={classes.root}>
       {hits.map(hit => (
-        <Hit key={hit.stripeId} hit={hit} />
+        <>
+          <Hit key={hit.stripeId} hit={hit} />
+          <Divider />
+        </>
       ))}
     </List>
   );

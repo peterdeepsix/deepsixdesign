@@ -14,11 +14,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 
-import {
-  connectStateResults,
-  connectSearchBox,
-} from 'react-instantsearch-dom';
-
 import SearchTextField from './searchTextField';
 import SearchPopover from './searchPopover';
 
@@ -31,16 +26,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UnconnectedSearchAutoComplete = ({
-  searchResults,
-  refine,
-  ...rest
-}) => {
+const UnconnectedSearchAutoComplete = ({ ...rest }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState([]);
   const loading = open && options.length === 0;
-  const textFieldRef = React.useRef();
 
   return (
     <>
@@ -63,23 +53,16 @@ const UnconnectedSearchAutoComplete = ({
         popupIcon={null}
         renderInput={params => (
           <SearchTextField
-            fullWidth
+            {...params}
             className={classes.textField}
-            ref={textFieldRef}
             open
             loaded
-            {...params}
           />
         )}
       />
-      <SearchPopover ref={textFieldRef} open={open} />
+      <SearchPopover open={open} />
     </>
   );
 };
 
-const SearchAutoComplete = compose(
-  connectSearchBox,
-  connectStateResults,
-)(UnconnectedSearchAutoComplete);
-
-export default SearchAutoComplete;
+export default UnconnectedSearchAutoComplete;

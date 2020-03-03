@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchPopover = ({ textFieldRef, open }) => {
+const SearchPopover = ({ open }) => {
   const classes = useStyles();
   console.log(open);
   return (

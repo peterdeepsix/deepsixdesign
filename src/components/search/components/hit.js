@@ -49,13 +49,9 @@ const CustomHighlight = connectHighlight(
 const Hit = ({ hit }) => {
   const classes = useStyles();
 
-  const {
-    slug,
-    title,
-    shortOverview,
-    stripeId,
-    _highlightResult,
-  } = hit;
+  const { slug, title, shortOverview, media, _highlightResult } = hit;
+
+  console.log(hit);
 
   return (
     <ListItem
@@ -65,9 +61,10 @@ const Hit = ({ hit }) => {
       alignItems="flex-start"
     >
       <ListItemAvatar>
-        <Avatar alt={title.title} />
+        <Avatar src={media[0].resolutions.src} alt={title.title} />
       </ListItemAvatar>
       <ListItemText
+        className={classes.inline}
         primary={title.title}
         secondary={shortOverview.content[0].content[0].value}
       />

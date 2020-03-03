@@ -24,14 +24,11 @@ const contentfulQuery = ` {
         }
         media {
           title
-        }
-        details {
-          content {
-            content {
-              value
-            }
+          resolutions {
+            src
           }
         }
+        details
         description {
           content {
             content {
