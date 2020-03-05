@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 
 import { connectHits } from 'react-instantsearch-dom';
 
-import Hit from './hit';
+import SearchHit from './searchHit';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +25,7 @@ const SearchHits = ({ hits }) => {
     <List className={classes.root}>
       {hits.map(hit => (
         <>
-          <Hit key={hit.stripeId} hit={hit} />
+          <SearchHit key={hit.stripeId} hit={hit} />
           <Divider />
         </>
       ))}

@@ -1,10 +1,6 @@
 import React, { useState, useEffect, createRef } from 'react';
 
-import algoliasearch from 'algoliasearch';
-import { InstantSearch } from 'react-instantsearch-dom';
-
-import SearchResults from './components/searchResults';
-import SearchAppBar from './components/searchAppBar';
+import { connectSearchBox } from 'react-instantsearch-dom';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,10 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
+import SearchTextField from './searchTextField';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.common.white,
   },
   toolbar: {},
   grow: {
@@ -59,28 +56,34 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchComponent = () => {
+const SearchAppBar = connectSearchBox(({ refine }) => {
   const classes = useStyles();
-  const ref = createRef();
-  const [query, setQuery] = useState(``);
-
-  const searchClient = algoliasearch(
-    process.env._GATSBY_ALGOLIA_APP_ID,
-    process.env._GATSBY_ALGOLIA_ADMIN_API_KEY,
-  );
 
   return (
     <>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={process.env._GATSBY_ALGOLIA_INDEX_NAME}
-        root={{ props: { ref } }}
+      <AppBar
+        className={classes.appBar}
+        positon="sticky"
+        color="inherit"
       >
-        <SearchAppBar />
-        <SearchResults />
-      </InstantSearch>
+        <Toolbar className={classes.toolbar}>
+          <IconButton edge="start" color="inherit">
+            <ArrowBackOutlinedIcon />
+          </IconButton>
+          <SearchTextField className={classes.textField} />
+          <div className={classes.grow} />
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={() => refine('')}
+          >
+            <CancelOutlinedIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Toolbar className={classes.toolbar}></Toolbar>
     </>
   );
-};
+});
 
-export default SearchComponent;
+export default SearchAppBar;

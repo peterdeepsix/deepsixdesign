@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { emphasize, makeStyles } from '@material-ui/core/styles';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Chip from '@material-ui/core/Chip';
-import StoreOutlinedIcon from '@material-ui/icons/StoreOutlined';
+import NaturePeopleOutlinedIcon from '@material-ui/icons/NaturePeopleOutlined';
+import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined';
 
 import LinkComponent from 'src/components/link/linkComponent';
 
@@ -23,11 +24,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
-
 const NavBreadCrumbs = props => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
@@ -37,16 +33,15 @@ const NavBreadCrumbs = props => {
         variant="outlined"
         component={LinkComponent}
         to="/"
-        label="Products"
-        icon={<StoreOutlinedIcon fontSize="small" />}
-        onClick={handleClick}
+        label="D6d"
+        icon={<ChangeHistoryOutlinedIcon fontSize="small" />}
       />
       <Chip
         variant="outlined"
         component={LinkComponent}
         to="/"
-        label="Google Time"
-        onClick={handleClick}
+        label="About"
+        icon={<NaturePeopleOutlinedIcon fontSize="small" />}
       />
     </Breadcrumbs>
   );

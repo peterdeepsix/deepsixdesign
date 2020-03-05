@@ -11,7 +11,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
 import Popover from '@material-ui/core/Popover';
-import ChangeHistoryOutlinedIcon from '@material-ui/icons/ChangeHistoryOutlined';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
@@ -19,18 +19,18 @@ import SearchComponent from 'src/components/search/searchComponent';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.background.default,
   },
   toolbar: {},
   grow: {
     flexGrow: 1,
   },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
+  // title: {
+  //   display: 'none',
+  //   [theme.breakpoints.up('sm')]: {
+  //     display: 'block',
+  //   },
+  // },
   searchbutton: {
     width: 300,
   },
@@ -109,36 +109,22 @@ const NavBar = props => {
             <IconButton
               edge="start"
               color="inherit"
-              aria-label="open drawer"
+              onClick={handleClick}
             >
-              <ChangeHistoryOutlinedIcon />
+              <SearchOutlinedIcon />
             </IconButton>
+            <div className={classes.grow} />
             <Typography className={classes.title} variant="h6" noWrap>
               Deep Six Design
             </Typography>
             <div className={classes.grow} />
-            <>
-              <TextField
-                disabled
-                className={classes.searchButton}
-                component={Button}
-                onClick={handleClick}
-                id="search"
-                defaultValue="Search..."
-                variant="outlined"
-                size="small"
-              />
-              <Drawer anchor="top" open={open} onClose={handleClose}>
-                <SearchComponent />
-              </Drawer>
-            </>
-            <IconButton color="inherit">
-              <ShoppingCartOutlinedIcon />
-            </IconButton>
             <IconButton edge="end" color="inherit">
               <AccountCircleOutlinedIcon />
             </IconButton>
           </Toolbar>
+          <Drawer anchor="top" open={open} onClose={handleClose}>
+            <SearchComponent />
+          </Drawer>
         </AppBar>
       </Scroll>
       <Toolbar className={classes.toolbar}></Toolbar>
