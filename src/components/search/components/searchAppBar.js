@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchAppBar = connectSearchBox(({ refine }) => {
+const SearchAppBar = connectSearchBox(({ refine, handleClose }) => {
   const classes = useStyles();
 
   return (
@@ -67,7 +67,11 @@ const SearchAppBar = connectSearchBox(({ refine }) => {
         color="inherit"
       >
         <Toolbar className={classes.toolbar}>
-          <IconButton edge="start" color="inherit">
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleClose}
+          >
             <ArrowBackOutlinedIcon />
           </IconButton>
           <SearchTextField className={classes.textField} />

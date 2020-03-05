@@ -23,10 +23,10 @@ const SearchHits = ({ hits }) => {
   const classes = useStyles();
   return (
     <List className={classes.root}>
-      {hits.map(hit => (
+      {hits.map((hit, i, arr) => (
         <>
           <SearchHit key={hit.stripeId} hit={hit} />
-          <Divider />
+          {arr.length - 1 !== i && <Divider />}
         </>
       ))}
     </List>

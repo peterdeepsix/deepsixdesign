@@ -123,7 +123,7 @@ const NavBar = props => {
             </IconButton>
           </Toolbar>
           <Drawer anchor="top" open={open} onClose={handleClose}>
-            <SearchComponent />
+            <SearchComponent handleClose={handleClose} />
           </Drawer>
         </AppBar>
       </Scroll>

@@ -12,18 +12,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UnconnectedSearchTextField = ({ refine }) => {
+const UnconnectedSearchTextField = ({
+  currentRefinement,
+  isSearchStalled,
+  refine,
+}) => {
   const classes = useStyles();
 
   return (
-    <TextField
-      placeholder="Search..."
-      fullWidth
-      size="small"
-      autoFocus
-      onChange={e => refine(e.target.value)}
-      variant="outlined"
-    />
+    <form noValidate action="" role="search">
+      <TextField
+        placeholder="Search..."
+        fullWidth
+        size="small"
+        autoFocus
+        value={currentRefinement}
+        onChange={e => refine(e.target.value)}
+        variant="outlined"
+      />
+      {isSearchStalled ? (console.log('search is stalled'))}
+    </form>
   );
 };
 

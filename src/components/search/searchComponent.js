@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchComponent = () => {
+const SearchComponent = ({ handleClose }) => {
   const classes = useStyles();
   const ref = createRef();
   const [query, setQuery] = useState(``);
@@ -76,7 +76,7 @@ const SearchComponent = () => {
         indexName={process.env._GATSBY_ALGOLIA_INDEX_NAME}
         root={{ props: { ref } }}
       >
-        <SearchAppBar />
+        <SearchAppBar handleClose={handleClose} />
         <SearchResults />
       </InstantSearch>
     </>
