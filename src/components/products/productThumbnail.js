@@ -16,32 +16,34 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductThumbnail = ({ product }) => {
+const ProductThumbnail = ({ contentfulProduct }) => {
   const classes = useStyles();
   return (
     <Card variant="outlined" className={classes.card}>
       <CardActionArea
         component={LinkComponent}
-        to={`/buy/${product.slug}`}
+        to={`/buy/${contentfulProduct.slug}`}
       >
-        {console.log(product)}
         <CardMedia
           component="img"
           alt="Product"
           height="140"
-          image={product.skus[0].image}
-          title="Contemplative Reptile"
+          image={contentfulProduct.media[0].resolutions.src}
+          title={contentfulProduct.title.title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {product.name}
+            {contentfulProduct.title.title}
           </Typography>
           <Typography
             variant="body2"
             color="textSecondary"
             component="p"
           >
-            ${product.skus[0].price / 100}
+            {
+              contentfulProduct.shortOverview.content[0].content[0]
+                .value
+            }
           </Typography>
         </CardContent>
       </CardActionArea>

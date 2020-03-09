@@ -102,11 +102,11 @@ function splitOnY(square, splitAt) {
 
 const Generator = () => {
   const canvasRef = useRef(null);
-  let ctx = null
+  let ctx = null;
   useEffect(() => {
     if (canvasRef) {
       ctx = canvasRef.current.getContext('2d');
-      draw(ctx)
+      draw(ctx);
     }
   });
 

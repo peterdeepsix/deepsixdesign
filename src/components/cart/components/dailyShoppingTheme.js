@@ -1,12 +1,37 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { red } from '@material-ui/core/colors';
 
 export default createMuiTheme({
   palette: {
     primary: {
-      main: '#3E89EB',
+      main: '#FF1654',
+      contrastText: '#000',
     },
-    background: {
-      default: '#ffffff',
+    secondary: {
+      main: '#FF1654',
     },
+    error: {
+      main: red.A400,
+    },
+  },
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+    overline: {
+      textTransform: 'none',
+    },
+    fontFamily: [
+      'Muli',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });

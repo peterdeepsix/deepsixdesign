@@ -19,6 +19,7 @@ const UnconnectedSearchTextField = ({
 }) => {
   const classes = useStyles();
 
+  if (isSearchStalled) console.log('search is stalled');
   return (
     <form noValidate action="" role="search">
       <TextField
@@ -30,7 +31,6 @@ const UnconnectedSearchTextField = ({
         onChange={e => refine(e.target.value)}
         variant="outlined"
       />
-      {isSearchStalled ? (console.log('search is stalled'))}
     </form>
   );
 };

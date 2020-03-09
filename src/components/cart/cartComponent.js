@@ -134,22 +134,6 @@ const HomeComponent = () => {
           {({ opened, setOpened }) => (
             <>
               <CssBaseline />
-              {opened ? null : (
-                <Button
-                  variant="outlined"
-                  size="large"
-                  className={cx(
-                    styles.fab,
-                    opened && styles.fabClose,
-                  )}
-                  color={'primary'}
-                  onClick={() => setOpened(!opened)}
-                  startIcon={opened ? <Close /> : <CreditCard />}
-                >
-                  Checkout
-                </Button>
-              )}
-
               <Container className={styles.container}>
                 <InsetContainer>
                   <Content className={styles.content}>

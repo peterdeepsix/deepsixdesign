@@ -73,7 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: 'buy/' + slug,
       component: productTemplate,
-      context: { id },
+      context: { id, slug },
     });
   });
 };

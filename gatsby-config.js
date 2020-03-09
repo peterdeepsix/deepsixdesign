@@ -19,6 +19,48 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+        theme: {
+          palette: {
+            primary: {
+              main: '#FF1654',
+              contrastText: '#000',
+            },
+            secondary: {
+              main: '#FF1654',
+            },
+            error: {
+              main: '#FF1654',
+            },
+          },
+          typography: {
+            button: {
+              textTransform: 'none',
+            },
+            overline: {
+              textTransform: 'none',
+            },
+            fontFamily: [
+              'Muli',
+              '-apple-system',
+              'BlinkMacSystemFont',
+              '"Segoe UI"',
+              '"Helvetica Neue"',
+              'Arial',
+              'sans-serif',
+              '"Apple Color Emoji"',
+              '"Segoe UI Emoji"',
+              '"Segoe UI Symbol"',
+            ].join(','),
+          },
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `cstvziqi6rqq`,

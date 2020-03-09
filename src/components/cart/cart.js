@@ -23,16 +23,13 @@ const CartComponent = () => {
   const { cart, count, mode, toggle } = useContext(CartContext);
   return (
     <Container className={styles.root}>
-      <Box>
-        <Typography variant="h3">Shopping Cart</Typography>
-        {count === 0 && (
-          <Box className={styles.box}>
-            <Typography>
-              There are currently no items in your shopping cart.
-            </Typography>
-          </Box>
-        )}
-      </Box>
+      {count === 0 && (
+        <Box className={styles.box}>
+          <Typography>
+            There are currently no items in your shopping cart.
+          </Typography>
+        </Box>
+      )}
       <Box>
         <List aria-label="cart items">
           {cart.map(([sku, quantity]) => (

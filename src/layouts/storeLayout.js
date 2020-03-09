@@ -13,13 +13,11 @@ const StoreLayout = ({ store, children }) => {
   );
 
   useMemo(() => {
-    console.log('useMemo - firebaseStore');
     if (!firebase) return;
     firebaseStore.setFirebase(firebase);
   }, [firebase, firebaseStore]);
 
   useMemo(() => {
-    console.log('useMemo - sessionStore');
     if (!firebase) return;
     sessionStore.setAuth(firebase.auth());
     sessionStore.getAuthUser();
@@ -31,14 +29,12 @@ const StoreLayout = ({ store, children }) => {
   }, [firebase, sessionStore]);
 
   useMemo(() => {
-    console.log('useMemo - predictionsStore');
     if (!firebase) return;
     predictionsStore.setStorage(firebase.storage());
     predictionsStore.setFirestore(firebase.firestore());
   }, [firebase, predictionsStore]);
 
   useMemo(() => {
-    console.log('useMemo - themeStore');
     themeStore.getColor();
     themeStore.setIsDark(prefersDarkMode);
     themeStore.getIsDark();
