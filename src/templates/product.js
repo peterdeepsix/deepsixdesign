@@ -47,6 +47,9 @@ export const query = graphql`
         fixed {
           src
         }
+        fluid {
+          src
+        }
       }
       overview {
         content {

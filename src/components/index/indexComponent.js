@@ -11,10 +11,10 @@ const IndexComponent = ({ data }) => {
   return (
     <>
       <Container maxWidth="sm">
-        <Box my={4}>
+        <Box my={5}>
           <Image />
         </Box>
-        <Box my={4}>
+        <Box my={5}>
           <Typography variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna

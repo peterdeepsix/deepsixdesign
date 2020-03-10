@@ -51,7 +51,7 @@ const ProductsComponent = ({ data }) => {
     <>
       {contentfulProducts && (
         <Container maxWidth="sm">
-          <Box mx="auto" my={7}>
+          <Box mx="auto" my={5}>
             {contentfulProducts.map(contentfulProduct => (
               <Card className={classes.card} variant="outlined">
                 <CardActionArea

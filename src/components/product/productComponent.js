@@ -1,23 +1,21 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Avatar from '@material-ui/core/Avatar';
 
 import {
   CarouselProvider,
   Slider,
   Slide,
-  ButtonBack,
-  ButtonFirst,
-  ButtonLast,
-  ButtonNext,
   ImageWithZoom,
-  DotGroup,
+  Dot,
   Image,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
@@ -28,6 +26,17 @@ import { CartContext } from 'src/components/cart/cartProvider';
 const useStyles = makeStyles({
   img: {
     maxWidth: `100%`,
+  },
+  dot: {
+    padding: 0,
+    border: 0,
+  },
+  slide: {
+    borderRadius: 2,
+    border: 0,
+  },
+  button: {
+    color: '#fff',
   },
 });
 
@@ -55,79 +64,81 @@ const ProductComponent = ({ productId, data }) => {
     <>
       {contentfulProduct && (
         <Container maxWidth="sm">
-          <Box>
+          <Box mx="auto" mt={5} mb={2}>
             <CarouselProvider
+              visibleSlides={1}
               totalSlides={contentfulProduct.media.length}
-              naturalSlideWidth={400}
-              naturalSlideHeight={500}
+              step={1}
+              naturalSlideHeight={300}
+              naturalSlideWidth={300}
               hasMasterSpinner
-              infinite
               lockOnWindowScroll
             >
-              <Slider>
-                {contentfulProduct.media.map((mediaItem, index) => (
-                  <Slide index={index}>
-                    <ImageWithZoom src={mediaItem.fixed.src} />
-                  </Slide>
-                ))}
-              </Slider>
-              <ButtonGroup
-                color="primary"
-                aria-label="outlined primary button group"
-              >
-                <ButtonFirst>
-                  <Button>First</Button>
-                </ButtonFirst>
-                <ButtonBack>
-                  <Button>Back</Button>
-                </ButtonBack>
-                <ButtonNext>
-                  <Button>Next</Button>
-                </ButtonNext>
-                <ButtonLast>
-                  <Button>Last</Button>
-                </ButtonLast>
-              </ButtonGroup>
-              <DotGroup dotNumbers />
+              <Box>
+                <Slider>
+                  {contentfulProduct.media.map((mediaItem, index) => (
+                    <Slide className={classes.slide} index={index}>
+                      <ImageWithZoom src={mediaItem.fixed.src} />
+                    </Slide>
+                  ))}
+                </Slider>
+              </Box>
+
+              <Box mt={1}>
+                <GridList
+                  className={classes.gridList}
+                  cols={contentfulProduct.media.length}
+                  cellHeight={40}
+                  spacing={0}
+                >
+                  {contentfulProduct.media.map((mediaItem, index) => (
+                    <GridListTile key={index}>
+                      <Dot className={classes.dot} slide={index}>
+                        <Avatar
+                          variant="rounded"
+                          alt="Media Fluid"
+                          src={mediaItem.fluid.src}
+                        />
+                      </Dot>
+                    </GridListTile>
+                  ))}
+                </GridList>
+              </Box>
             </CarouselProvider>
           </Box>
-
-          <br />
-          <Box>
+          <Box mt={3}>
             <Typography variant="h4">
               {contentfulProduct.title.title}
             </Typography>
-            <br />
-            <Typography variant="subtitle1">
+          </Box>
+          <Box mt={3}>
+            <Typography variant="h6">
               ${contentfulProduct.stripePrice}
             </Typography>
           </Box>
-          <br />
-          <Box>
+          <Box mt={3}>
             <Button
+              className={classes.button}
               variant="contained"
+              color="primary"
               onClick={handleClick}
-              color="inherit"
             >
               Add To Cart
             </Button>
           </Box>
-          <br />
-          <Box>
-            <Typography variant="h6">
+          <Box mt={3}>
+            <Typography variant="body1">
               {
                 contentfulProduct.description.content[0].content[0]
                   .value
               }
             </Typography>
           </Box>
-          <br />
-          <Box>
-            <Typography variant="h6">
+          <Box mt={3}>
+            <Typography variant="body1">
               {contentfulProduct.overview.content[0].content[0].value}
             </Typography>
           </Box>
-          <br />
         </Container>
       )}
     </>
