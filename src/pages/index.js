@@ -15,9 +15,9 @@ const IndexComponent = Loadable(
   },
 );
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   return (
-    <MainLayout>
+    <MainLayout location={location}>
       <IndexComponent data={data} />
     </MainLayout>
   );

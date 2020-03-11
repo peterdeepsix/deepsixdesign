@@ -62,10 +62,10 @@ export const query = graphql`
   }
 `;
 
-const ProductTemplate = ({ pageContext: { id }, data }) => {
+const ProductTemplate = ({ pageContext: { id }, data, location }) => {
   return (
     <>
-      <MainLayout>
+      <MainLayout location={location}>
         <CartLayout>
           <ProductComponent productId={id} data={data} />
         </CartLayout>

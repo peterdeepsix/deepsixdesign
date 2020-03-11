@@ -11,10 +11,12 @@ const MainLayoutComponent = Loadable(
   },
 );
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, location }) => {
   return (
     <main>
-      <MainLayoutComponent>{children}</MainLayoutComponent>
+      <MainLayoutComponent location={location}>
+        {children}
+      </MainLayoutComponent>
     </main>
   );
 };

@@ -5,7 +5,7 @@ import BottomNav from './components/bottomNav';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from 'src/configs/theme';
-const MainLayoutComponent = ({ children }) => {
+const MainLayoutComponent = ({ children, location }) => {
   return (
     <>
       <Helmet>
@@ -22,7 +22,7 @@ const MainLayoutComponent = ({ children }) => {
         <CssBaseline />
         <NavBar />
         {children}
-        <BottomNav />
+        <BottomNav location={location} />
       </ThemeProvider>
     </>
   );

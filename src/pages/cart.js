@@ -14,7 +14,7 @@ const CartComponent = Loadable(
 
 const CartPage = ({ location }) => {
   return (
-    <MainLayout>
+    <MainLayout location={location}>
       <CartLayout>
         <CartComponent />
       </CartLayout>

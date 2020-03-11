@@ -17,6 +17,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 
 import LinkComponent from 'src/components/link/linkComponent';
+import ProductsBreadCrumbs from './productsBreadCrumbs';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -51,7 +52,10 @@ const ProductsComponent = ({ data }) => {
     <>
       {contentfulProducts && (
         <Container maxWidth="sm">
-          <Box mx="auto" my={5}>
+          <Box mx="auto" mt={2} mb={2}>
+            <ProductsBreadCrumbs />
+          </Box>
+          <Box mt={1} mb={10}>
             {contentfulProducts.map(contentfulProduct => (
               <Card className={classes.card} variant="outlined">
                 <CardActionArea
@@ -61,7 +65,7 @@ const ProductsComponent = ({ data }) => {
                   <CardMedia
                     component="img"
                     alt="Product"
-                    height="140"
+                    height="240"
                     image={
                       contentfulProduct.node.media[0].resolutions.src
                     }

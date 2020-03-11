@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -18,15 +18,20 @@ const useStyles = makeStyles({
   },
 });
 
-const BottomNav = () => {
+const BottomNav = ({ location }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState('/');
+  console.log('value');
+  console.log(value);
+
+  useEffect(() => {
+    if (!location) return;
+    setValue(location.pathname);
+  }, [location]);
+
   return (
     <BottomNavigation
       value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
       showLabels
       className={classes.stickToBottom}
     >

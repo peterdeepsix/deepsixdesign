@@ -22,14 +22,16 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import { ProductsContext } from 'src/components/products/productsProvider';
 import { CartContext } from 'src/components/cart/cartProvider';
+import ProductBreadCrumbs from './productBreadCrumbs';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ theme }) => ({
   img: {
     maxWidth: `100%`,
   },
   dot: {
     padding: 0,
     border: 0,
+    width: 40,
   },
   slide: {
     borderRadius: 2,
@@ -38,7 +40,20 @@ const useStyles = makeStyles({
   button: {
     color: '#fff',
   },
-});
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    overflow: 'hidden',
+    // backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  gridListTile: {},
+}));
 
 const ProductComponent = ({ productId, data }) => {
   const { products } = useContext(ProductsContext);
@@ -64,7 +79,13 @@ const ProductComponent = ({ productId, data }) => {
     <>
       {contentfulProduct && (
         <Container maxWidth="sm">
-          <Box mx="auto" mt={5} mb={2}>
+          <Box mx="auto" mt={2} mb={2}>
+            <ProductBreadCrumbs
+              productName={contentfulProduct.title.title}
+              productSlug={contentfulProduct.slug}
+            />
+          </Box>
+          <Box mt={1}>
             <CarouselProvider
               visibleSlides={1}
               totalSlides={contentfulProduct.media.length}
@@ -84,25 +105,32 @@ const ProductComponent = ({ productId, data }) => {
                 </Slider>
               </Box>
 
-              <Box mt={1}>
-                <GridList
-                  className={classes.gridList}
-                  cols={contentfulProduct.media.length}
-                  cellHeight={40}
-                  spacing={0}
-                >
-                  {contentfulProduct.media.map((mediaItem, index) => (
-                    <GridListTile key={index}>
-                      <Dot className={classes.dot} slide={index}>
-                        <Avatar
-                          variant="rounded"
-                          alt="Media Fluid"
-                          src={mediaItem.fluid.src}
-                        />
-                      </Dot>
-                    </GridListTile>
-                  ))}
-                </GridList>
+              <Box mt={2}>
+                <div className={classes.root}>
+                  <GridList
+                    className={classes.gridList}
+                    cols={contentfulProduct.media.length}
+                    cellHeight={40}
+                    spacing={16}
+                  >
+                    {contentfulProduct.media.map(
+                      (mediaItem, index) => (
+                        <GridListTile
+                          className={classes.gridListTile}
+                          key={index}
+                        >
+                          <Dot className={classes.dot} slide={index}>
+                            <Avatar
+                              variant="rounded"
+                              alt="Media Fluid"
+                              src={mediaItem.fluid.src}
+                            />
+                          </Dot>
+                        </GridListTile>
+                      ),
+                    )}
+                  </GridList>
+                </div>
               </Box>
             </CarouselProvider>
           </Box>
@@ -111,7 +139,7 @@ const ProductComponent = ({ productId, data }) => {
               {contentfulProduct.title.title}
             </Typography>
           </Box>
-          <Box mt={3}>
+          <Box mt={1}>
             <Typography variant="h6">
               ${contentfulProduct.stripePrice}
             </Typography>

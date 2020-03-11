@@ -64,9 +64,9 @@ export const query = graphql`
   }
 `;
 
-const ProductsPage = ({ data }) => {
+const ProductsPage = ({ data, location }) => {
   return (
-    <MainLayout>
+    <MainLayout location={location}>
       <CartLayout>
         <ProductsComponent data={data} />
       </CartLayout>

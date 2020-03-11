@@ -23,7 +23,7 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -33,7 +33,10 @@ const useStyles = makeStyles(() => ({
     '& *': {},
   },
   paper: { padding: 16 },
-  button: { textTransform: 'none' },
+  button: {
+    textTransform: 'none',
+    color: '#fff',
+  },
 }));
 
 console.log(theme);
@@ -101,92 +104,85 @@ const StripeCheckOutSplit = props => {
     }
   };
   return (
-    <Box className={styles.root}>
-      <Paper className={styles.paper} variant="outlined">
-        <form onSubmit={handleSubmit}>
-          <Box pb={2} pt={1}>
-            <Typography variant="h3">Payment Info</Typography>
-          </Box>
-          <Box pb={2}>
-            <TextField
-              id="name"
-              label="Full Name"
-              required
-              placeholder="Jenny Rosen"
-              value={name}
-              onChange={e => {
-                setName(e.target.value);
-              }}
-            />
-          </Box>
-          <Box pb={2}>
-            <InputLabel htmlFor="cardNumber">Card Number</InputLabel>
-            <CardNumberElement
-              id="cardNumber"
-              onBlur={console.log('blur')}
-              onChange={console.log('change')}
-              onFocus={console.log('focus')}
-              onReady={console.log('ready')}
-              options={ELEMENT_OPTIONS}
-            />
-          </Box>
-          <Box pb={2}>
-            <InputLabel htmlFor="expiry">Card Expiration</InputLabel>
-            <CardExpiryElement
-              id="expiry"
-              onBlur={console.log('blur')}
-              onChange={console.log('change')}
-              onFocus={console.log('focus')}
-              onReady={console.log('ready')}
-              options={ELEMENT_OPTIONS}
-            />
-          </Box>
-          <Box pb={2}>
-            <InputLabel htmlFor="cvc">CVC</InputLabel>
-            <CardCvcElement
-              id="cvc"
-              onBlur={console.log('blur')}
-              onChange={console.log('change')}
-              onFocus={console.log('focus')}
-              onReady={console.log('ready')}
-              options={ELEMENT_OPTIONS}
-            />
-          </Box>
-          <Box pb={2}>
-            <TextField
-              id="postal"
-              label="Postal Code"
-              required
-              placeholder="12345"
-              value={postal}
-              onChange={e => {
-                setPostal(e.target.value);
-              }}
-            />
-          </Box>
-          <Box pb={2}>
-            {errorMessage && <Typography>{errorMessage}</Typography>}
-            {paymentMethod && (
-              <Typography>
-                Got PaymentMethod: {paymentMethod.id}
-              </Typography>
-            )}
-          </Box>
-          <Box pb={1}>
-            <Button
-              type="submit"
-              disabled={!stripe}
-              className={styles.button}
-              size="large"
-              color="primary"
-              variant="outlined"
-            >
-              Check Out Now
-            </Button>
-          </Box>
-        </form>
-      </Paper>
-    </Box>
+    <form onSubmit={handleSubmit}>
+      <Box mb={5}>
+        <TextField
+          id="name"
+          label="Full Name"
+          required
+          placeholder="Jenny Rosen"
+          value={name}
+          onChange={e => {
+            setName(e.target.value);
+          }}
+        />
+      </Box>
+      <Box mb={5}>
+        <InputLabel htmlFor="cardNumber">Card Number</InputLabel>
+        <CardNumberElement
+          id="cardNumber"
+          onBlur={console.log('blur')}
+          onChange={console.log('change')}
+          onFocus={console.log('focus')}
+          onReady={console.log('ready')}
+          options={ELEMENT_OPTIONS}
+        />
+      </Box>
+      <Box mb={5}>
+        <InputLabel htmlFor="expiry">Card Expiration</InputLabel>
+        <CardExpiryElement
+          id="expiry"
+          onBlur={console.log('blur')}
+          onChange={console.log('change')}
+          onFocus={console.log('focus')}
+          onReady={console.log('ready')}
+          options={ELEMENT_OPTIONS}
+        />
+      </Box>
+      <Box mb={5}>
+        <InputLabel htmlFor="cvc">CVC</InputLabel>
+        <CardCvcElement
+          id="cvc"
+          onBlur={console.log('blur')}
+          onChange={console.log('change')}
+          onFocus={console.log('focus')}
+          onReady={console.log('ready')}
+          options={ELEMENT_OPTIONS}
+        />
+      </Box>
+      <Box mb={5}>
+        <TextField
+          id="postal"
+          label="Postal Code"
+          required
+          placeholder="12345"
+          value={postal}
+          onChange={e => {
+            setPostal(e.target.value);
+          }}
+        />
+      </Box>
+      <Box>
+        {errorMessage && <Typography>{errorMessage}</Typography>}
+        {paymentMethod && (
+          <Typography>
+            Got PaymentMethod: {paymentMethod.id}
+          </Typography>
+        )}
+      </Box>
+      <Box mb={5}>
+        <Button
+          type="submit"
+          disabled={!stripe}
+          className={styles.button}
+          size="large"
+          color="primary"
+          variant="contained"
+        >
+          Check Out Now
+        </Button>
+      </Box>
+    </form>
   );
 };
 

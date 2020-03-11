@@ -64,6 +64,7 @@
     "react-color": "^2.18.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-icons": "^3.9.0",
     "react-instantsearch-dom": "^6.3.0",
     "react-instantsearch-theme-algolia": "^4.5.2",
     "react-measure": "^2.3.0",
