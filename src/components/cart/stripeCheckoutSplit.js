@@ -175,7 +175,6 @@ const StripeCheckOutSplit = props => {
           type="submit"
           disabled={!stripe}
           className={styles.button}
-          size="large"
           color="primary"
           variant="contained"
         >

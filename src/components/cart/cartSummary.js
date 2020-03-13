@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
+import { navigate } from 'gatsby';
+
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import { navigate } from 'gatsby';
 
 import { CartContext } from './cartProvider';
 
@@ -31,6 +28,16 @@ const DailySummary = () => {
   return (
     <>
       <Box mt={3}>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate(`/products`);
+          }}
+        >
+          Continue Shopping
+        </Button>
+      </Box>
+      <Box mt={3}>
         <b>Subtotal:</b>
       </Box>
       <Box>
@@ -47,17 +54,6 @@ const DailySummary = () => {
       </Box>
       <Box>
         <span>${total / 100}</span>
-      </Box>
-      <Box mt={3}>
-        <Button
-          size="large"
-          variant="outlined"
-          onClick={() => {
-            navigate(`/products`);
-          }}
-        >
-          Continue Shopping
-        </Button>
       </Box>
     </>
   );
