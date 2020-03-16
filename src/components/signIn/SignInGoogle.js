@@ -42,6 +42,7 @@ const SignInGoogle = ({ history, store }) => {
   };
 
   const onSubmit = event => {
+    console.log(`try auth`);
     if (!auth) return;
     let didCancel = false;
     const SignIn = async () => {

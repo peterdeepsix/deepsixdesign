@@ -91,7 +91,7 @@ const AccountComponent = ({ history, store }) => {
   };
 
   if (!loggedIn) {
-    navigate(`/signin`);
+    navigate(`/app/signin`);
   }
   return (
     <Container maxWidth="sm">

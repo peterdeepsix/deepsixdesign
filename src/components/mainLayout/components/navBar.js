@@ -16,6 +16,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 
 import SearchComponent from 'src/components/search/searchComponent';
+import LinkComponent from 'src/components/link/LinkComponent';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -118,7 +119,12 @@ const NavBar = props => {
               Deep Six Design
             </Typography>
             <div className={classes.grow} />
-            <IconButton edge="end" color="inherit">
+            <IconButton
+              component={LinkComponent}
+              to="/app"
+              edge="end"
+              color="inherit"
+            >
               <AccountCircleOutlinedIcon />
             </IconButton>
           </Toolbar>

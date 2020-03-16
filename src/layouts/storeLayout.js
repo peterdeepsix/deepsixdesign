@@ -4,35 +4,40 @@ import { FirebaseContext } from 'gatsby-plugin-firebase';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const StoreLayout = ({ store, children }) => {
-  const firebase = useContext(FirebaseContext);
+  const firebaseContext = useContext(FirebaseContext);
 
-  const { firebaseStore, sessionStore, predictionsStore } = store;
+  const {
+    firebaseStore,
+    sessionStore,
+    predictionsStore,
+    themeStore,
+  } = store;
 
   const prefersDarkMode = useMediaQuery(
     '(prefers-color-scheme: dark)',
   );
 
   useMemo(() => {
-    if (!firebase) return;
-    firebaseStore.setFirebase(firebase);
-  }, [firebase, firebaseStore]);
+    if (!firebaseStore.firebase) return;
+    firebaseStore.setFirebase(firebaseContext);
+  }, [firebaseStore]);
 
   useMemo(() => {
-    if (!firebase) return;
-    sessionStore.setAuth(firebase.auth());
+    if (!firebaseStore.firebase) return;
+    sessionStore.setAuth(firebaseStore.firebase.auth());
     sessionStore.getAuthUser();
     sessionStore.getAuthToken();
     sessionStore.setGoogleProvider(
-      new firebase.auth.GoogleAuthProvider(),
+      new firebaseStore.firebase.auth.GoogleAuthProvider(),
     );
     sessionStore.getLoggedIn();
-  }, [firebase, sessionStore]);
+  }, [firebaseStore, sessionStore]);
 
   useMemo(() => {
-    if (!firebase) return;
-    predictionsStore.setStorage(firebase.storage());
-    predictionsStore.setFirestore(firebase.firestore());
-  }, [firebase, predictionsStore]);
+    if (!firebaseStore.firebase) return;
+    predictionsStore.setStorage(firebaseStore.firebase.storage());
+    predictionsStore.setFirestore(firebaseStore.firebase.firestore());
+  }, [firebaseStore, predictionsStore]);
 
   useMemo(() => {
     themeStore.getColor();

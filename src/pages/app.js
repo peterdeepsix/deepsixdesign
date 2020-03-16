@@ -15,6 +15,13 @@ const AppLayout = Loadable(() => import('src/layouts/appLayout'), {
   fallback: <IndefiniteLoading message="AppLayout" />,
 });
 
+const StoreLayout = Loadable(
+  () => import('src/layouts/storeLayout'),
+  {
+    fallback: <IndefiniteLoading message="StoreLayout" />,
+  },
+);
+
 const SEOComponent = Loadable(
   () => import('src/components/seo/seoComponent'),
   {
@@ -65,18 +72,20 @@ const AppPage = ({ siteData, location }) => {
           siteData.site.siteMetadata.title
         }`}
       />
-      <AppLayout>
-        <Router>
-          <DefaultComponent path="/app" />
-          <GeneratorComponent path="/app/generator" />
-          <AccountComponent path="/app/account" />
-          <PrivateRouteComponent
-            path="/app/predictions"
-            component={PredictionsComponent}
-          />
-          <SignInComponent path="/app/signin" />
-        </Router>
-      </AppLayout>
+      <StoreLayout>
+        <AppLayout>
+          <Router>
+            <DefaultComponent path="/app" />
+            <GeneratorComponent path="/app/generator" />
+            <AccountComponent path="/app/account" />
+            <PrivateRouteComponent
+              path="/app/predictions"
+              component={PredictionsComponent}
+            />
+            <SignInComponent path="/app/signin" />
+          </Router>
+        </AppLayout>
+      </StoreLayout>
     </>
   );
 };

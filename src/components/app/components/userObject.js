@@ -32,7 +32,7 @@ function UserObject({ store }) {
             button
             color="inherit"
             component={LinkComponent}
-            to="/account"
+            to="/app/account"
           >
             <ListItemAvatar>
               <Avatar alt="User Photo" src={authUser.photoURL} />

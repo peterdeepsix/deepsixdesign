@@ -3,7 +3,7 @@ import { navigate } from 'gatsby';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import { CartContext } from './cartProvider';
 
@@ -27,33 +27,16 @@ const DailySummary = () => {
 
   return (
     <>
-      <Box mt={3}>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            navigate(`/products`);
-          }}
-        >
-          Continue Shopping
-        </Button>
-      </Box>
-      <Box mt={3}>
-        <b>Subtotal:</b>
-      </Box>
-      <Box>
-        <span>${total / 100}</span>
-      </Box>
-      <Box mt={3}>
-        <b>Shipping:</b>
-      </Box>
-      <Box>
-        <span>$0</span>
-      </Box>
-      <Box mt={3}>
-        <b>Total:</b>
-      </Box>
-      <Box>
-        <span>${total / 100}</span>
+      <Box mt={2} mb={1}>
+        <Box mt={2} mb={1} textAlign="right">
+          <Typography>{`Items: $${total / 100}`}</Typography>
+        </Box>
+        <Box mt={2} mb={1} textAlign="right">
+          <Typography>{`Shipping: $0`}</Typography>
+        </Box>
+        <Box mt={2} mb={1} textAlign="right">
+          <Typography>{`Order Total: $${total / 100}`}</Typography>
+        </Box>
       </Box>
     </>
   );

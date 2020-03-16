@@ -105,12 +105,11 @@ const StripeCheckOutSplit = props => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <Box mb={5}>
+      <Box mt={2} mb={3}>
         <TextField
           id="name"
           label="Full Name"
           required
-          placeholder="Jenny Rosen"
           value={name}
           onChange={e => {
             setName(e.target.value);
