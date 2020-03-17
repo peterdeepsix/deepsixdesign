@@ -20,7 +20,7 @@ const MainLayoutComponent = ({ children, location }) => {
       </Helmet>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <NavBar /> */}
+        <NavBar />
         <BottomNav location={location} />
         {children}
       </ThemeProvider>
