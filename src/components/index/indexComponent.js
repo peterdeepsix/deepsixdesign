@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
-import TickerComponent from 'src/components/ticker/tickerComponent';
 import Image from 'src/components/image/image';
 
 const IndexComponent = ({ data }) => {
@@ -67,7 +66,6 @@ const IndexComponent = ({ data }) => {
           </Card>
         </Box>
       </Container>
-      {/* <TickerComponent data={data} /> */}
     </>
   );
 };

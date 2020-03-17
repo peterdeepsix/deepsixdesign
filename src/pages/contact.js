@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Loadable from '@loadable/component';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const HomeLayout = Loadable(() => import('src/layouts/homeLayout'), {
-  fallback: <IndefiniteLoading message="HomeLayout" />,
+const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
+  fallback: <IndefiniteLoading message="MainLayout" />,
 });
 
 const ContactComponent = Loadable(
@@ -14,11 +16,16 @@ const ContactComponent = Loadable(
   },
 );
 
-const ContactPage = () => {
+const useStyles = makeStyles(theme => ({
+  card: {},
+}));
+
+const ContactPage = ({ location }) => {
+  const classes = useStyles();
   return (
-    <HomeLayout>
+    <>
       <ContactComponent />
-    </HomeLayout>
+    </>
   );
 };
 

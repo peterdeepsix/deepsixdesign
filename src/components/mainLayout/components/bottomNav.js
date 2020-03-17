@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Tabs from '@material-ui/core/Tabs';
+import AppBar from '@material-ui/core/AppBar';
 import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Phone';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -14,80 +14,78 @@ import PermMediaOutlinedIcon from '@material-ui/icons/PermMediaOutlined';
 import { GiSolarTime } from 'react-icons/gi';
 import { GiDuck } from 'react-icons/gi';
 import { FaLuggageCart } from 'react-icons/fa';
+import { IoIosContacts } from 'react-icons/Io';
 
 import LinkComponent from 'src/components/link/linkComponent';
 import ChipComponent from 'src/components/chip/chipComponent';
 
 const useStyles = makeStyles({
   stickToBottom: {
-    flexGrow: 1,
-    maxWidth: 500,
     width: '100%',
-    position: 'fixed',
+    top: 'auto',
     bottom: 0,
   },
 });
 
 const BottomNav = ({ location }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(location.pathname);
+  const [value, setValue] = React.useState('/');
 
   useEffect(() => {
     setValue(location.pathname);
-    console.log(`LOCATION - PATHNAME - ${location.pathname}`);
   }, [location]);
 
   return (
-    <>
-      <Paper
-        elevation={4}
-        // variant="outlined"
-        className={classes.stickToBottom}
+    <AppBar
+      position="fixed"
+      color="primary"
+      className={classes.stickToBottom}
+      elevation={4}
+    >
+      <BottomNavigation
+        value={value}
+        fullWidth
+        aria-label="BottomNavigation label"
+        showLabels
       >
-        <Tabs
-          value={value}
-          variant="fullWidth"
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="tabs label"
-        >
-          <Tab
-            icon={<GiSolarTime />}
-            label="Index"
-            to="/"
-            component={LinkComponent}
-            value="/"
-          />
-          <Tab
-            icon={
-              <ChipComponent
-                to="/products"
-                letter="P"
-                label="Raw"
-                icon={<GiDuck />}
-                isSelected={value === '/products' && true}
-              />
-            }
-            component={LinkComponent}
-            value="/products"
-          />
-          <Tab
-            icon={
-              <ChipComponent
-                to="/cart"
-                letter="C"
-                label="Art"
-                icon={<FaLuggageCart />}
-                variant="outline"
-                isSelected={value === '/cart' && true}
-              />
-            }
-            component={LinkComponent}
-            value="/cart"
-          />
-        </Tabs>
-      </Paper>
-    </>
+        <BottomNavigationAction
+          to="/"
+          component={LinkComponent}
+          swipe
+          direction="right"
+          value="/"
+          label="Index"
+          icon={<GiSolarTime />}
+        />
+        <BottomNavigationAction
+          to="/contact"
+          component={LinkComponent}
+          swipe
+          direction="up"
+          value="/contact"
+          label="Contact"
+          icon={<IoIosContacts />}
+        />
+        <BottomNavigationAction
+          to="/products"
+          component={LinkComponent}
+          swipe
+          direction="down"
+          value="/Products"
+          label="Products"
+          icon={<GiDuck />}
+        />
+        <BottomNavigationAction
+          to="/cart"
+          component={LinkComponent}
+          swipe
+          direction="left"
+          value="/cart"
+          label="Cart"
+          icon={<FaLuggageCart />}
+        />
+      </BottomNavigation>
+    </AppBar>
   );
 };
 

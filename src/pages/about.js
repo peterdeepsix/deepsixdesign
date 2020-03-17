@@ -16,9 +16,9 @@ const AboutComponent = Loadable(
 
 const AboutPage = () => {
   return (
-    <HomeLayout>
+    <>
       <AboutComponent />
-    </HomeLayout>
+    </>
   );
 };
 

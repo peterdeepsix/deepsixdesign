@@ -13,11 +13,16 @@ module.exports = {
     author: `peter@deepsixdesign.com`,
   },
   plugins: [
-    'gatsby-plugin-layout',
     'gatsby-plugin-root-import',
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        layout: require.resolve(`./src/layouts/mainLayout`),
+      },
+    },
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {

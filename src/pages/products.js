@@ -66,11 +66,11 @@ export const query = graphql`
 
 const ProductsPage = ({ data, location }) => {
   return (
-    <MainLayout location={location}>
+    <>
       <CartLayout>
         <ProductsComponent data={data} />
       </CartLayout>
-    </MainLayout>
+    </>
   );
 };
 

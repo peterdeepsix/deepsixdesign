@@ -20,10 +20,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ChipComponent = ({
+  to,
+  value,
   variant,
   size,
-  to,
-  isSelected,
   letter,
   label,
   icon,
@@ -34,16 +34,16 @@ const ChipComponent = ({
     console.info('clicked the chip');
   };
 
-  console.log(`CHIP - isSelected - ${isSelected}`);
+  console.log(`CHIP - to - ${to}`);
+  console.log(`CHIP - value - ${value}`);
 
   return (
     <>
-      {(isSelected && (
+      {(value == to && (
         <Chip
-          component={LinkComponent}
           size={size}
+          color="primary"
           variant={variant}
-          to={to}
           avatar={<Avatar>{letter}</Avatar>}
           label={label}
           clickable
@@ -52,10 +52,8 @@ const ChipComponent = ({
         />
       )) || (
         <Chip
-          component={LinkComponent}
           size={size}
           variant={variant}
-          to={to}
           avatar={<Avatar>{letter}</Avatar>}
           label={label}
           clickable
