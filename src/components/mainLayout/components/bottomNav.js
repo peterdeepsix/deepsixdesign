@@ -18,6 +18,7 @@ import { IoIosContacts } from 'react-icons/Io';
 
 import LinkComponent from 'src/components/link/linkComponent';
 import ChipComponent from 'src/components/chip/chipComponent';
+import theme from 'src/configs/theme';
 
 const useStyles = makeStyles({
   stickToBottom: {
@@ -51,8 +52,8 @@ const BottomNav = ({ location }) => {
         <BottomNavigationAction
           to="/"
           component={LinkComponent}
-          swipe
-          direction="right"
+          fade
+          bg={theme.palette.primary.main}
           value="/"
           label="Index"
           icon={<GiSolarTime />}
@@ -60,8 +61,8 @@ const BottomNav = ({ location }) => {
         <BottomNavigationAction
           to="/contact"
           component={LinkComponent}
-          swipe
-          direction="up"
+          cover
+          bg={theme.palette.primary.main}
           value="/contact"
           label="Contact"
           icon={<IoIosContacts />}
@@ -69,8 +70,8 @@ const BottomNav = ({ location }) => {
         <BottomNavigationAction
           to="/products"
           component={LinkComponent}
-          swipe
-          direction="down"
+          paintDrip
+          hex={theme.palette.primary.main}
           value="/Products"
           label="Products"
           icon={<GiDuck />}
@@ -80,6 +81,8 @@ const BottomNav = ({ location }) => {
           component={LinkComponent}
           swipe
           direction="left"
+          top="entry"
+          bg={theme.palette.primary.main}
           value="/cart"
           label="Cart"
           icon={<FaLuggageCart />}
