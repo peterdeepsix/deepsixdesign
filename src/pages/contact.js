@@ -5,9 +5,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
-  fallback: <IndefiniteLoading message="MainLayout" />,
-});
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
+  {
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
+  },
+);
 
 const ContactComponent = Loadable(
   () => import('src/components/contact/contactComponent'),
@@ -24,7 +27,9 @@ const ContactPage = ({ location }) => {
   const classes = useStyles();
   return (
     <>
-      <ContactComponent />
+      {/* <InterfaceLayout location={location}>
+        <ContactComponent />
+      </InterfaceLayout> */}
     </>
   );
 };

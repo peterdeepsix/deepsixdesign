@@ -2,9 +2,8 @@ import React, { useContext, useMemo } from 'react';
 import { inject } from 'mobx-react';
 import { FirebaseContext } from 'gatsby-plugin-firebase';
 
-const StoreLayout = ({ store, children }) => {
+const FirebaseLayout = ({ store, children }) => {
   const firebaseContext = useContext(FirebaseContext);
-
   const { firebaseStore, sessionStore, predictionsStore } = store;
 
   useMemo(() => {
@@ -29,7 +28,7 @@ const StoreLayout = ({ store, children }) => {
     predictionsStore.setFirestore(firebaseStore.firebase.firestore());
   }, [firebaseStore, predictionsStore]);
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
-export default inject('store')(StoreLayout);
+export default inject('store')(FirebaseLayout);

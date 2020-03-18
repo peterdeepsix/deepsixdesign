@@ -11,21 +11,17 @@ const PrivateRouteComponent = Loadable(
   },
 );
 
-const AppLayout = Loadable(() => import('src/layouts/appLayout'), {
-  fallback: <IndefiniteLoading message="AppLayout" />,
-});
-
-const StoreLayout = Loadable(
-  () => import('src/layouts/storeLayout'),
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
   {
-    fallback: <IndefiniteLoading message="StoreLayout" />,
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
   },
 );
 
-const SEOComponent = Loadable(
-  () => import('src/components/seo/seoComponent'),
+const FirebaseLayout = Loadable(
+  () => import('src/layouts/firebaseLayout'),
   {
-    fallback: <IndefiniteLoading message="SEOComponent" />,
+    fallback: <IndefiniteLoading message="FirebaseLayout" />,
   },
 );
 
@@ -64,28 +60,23 @@ const SignInComponent = Loadable(
   },
 );
 
-const AppPage = ({ siteData, location }) => {
+const AppPage = () => {
   return (
     <>
-      <SEOComponent
-        title={`${location.pathname.replace(/\//, '')} - ${
-          siteData.site.siteMetadata.title
-        }`}
-      />
-      <StoreLayout>
-        <AppLayout>
-          <Router>
-            <DefaultComponent path="/app" />
-            <GeneratorComponent path="/app/generator" />
-            <AccountComponent path="/app/account" />
-            <PrivateRouteComponent
-              path="/app/predictions"
-              component={PredictionsComponent}
-            />
-            <SignInComponent path="/app/signin" />
-          </Router>
-        </AppLayout>
-      </StoreLayout>
+      {/* <FirebaseLayout>
+      <InterfaceLayout>
+        <Router>
+          <DefaultComponent path="/app" />
+          <GeneratorComponent path="/app/generator" />
+          <AccountComponent path="/app/account" />
+          <PrivateRouteComponent
+            path="/app/predictions"
+            component={PredictionsComponent}
+          />
+          <SignInComponent path="/app/signin" />
+        </Router>
+      </InterfaceLayout>
+    </FirebaseLayout> */}
     </>
   );
 };

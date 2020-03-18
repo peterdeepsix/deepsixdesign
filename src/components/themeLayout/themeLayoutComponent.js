@@ -2,13 +2,11 @@ import React, { useMemo } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Helmet } from 'react-helmet';
 
-import { red } from '@material-ui/core/colors';
-import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-const MainLayoutComponent = ({ store, children }) => {
+const ThemeLayoutComponent = ({ store, children }) => {
   const { themeStore } = store;
   const { themeObject } = themeStore;
 
@@ -45,4 +43,4 @@ const MainLayoutComponent = ({ store, children }) => {
   );
 };
 
-export default inject('store')(observer(MainLayoutComponent));
+export default inject('store')(observer(ThemeLayoutComponent));

@@ -5,30 +5,35 @@ import Loadable from '@loadable/component';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 import Store from 'src/stores/rootStore';
 
-const StoreLayout = Loadable(
-  () => import('src/layouts/storeLayout'),
+const FirebaseLayout = Loadable(
+  () => import('src/layouts/FirebaseLayout'),
   {
-    fallback: <IndefiniteLoading message="StoreLayout" />,
+    fallback: <IndefiniteLoading message="FirebaseLayout" />,
   },
 );
 
 const ThemeLayout = Loadable(
-  () => import('src/layouts/themeLayout'),
+  () => import('src/layouts/ThemeLayout'),
   {
     fallback: <IndefiniteLoading message="ThemeLayout" />,
   },
 );
 
-const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
-  fallback: <IndefiniteLoading message="MainLayout" />,
-});
+const HelmetLayout = Loadable(
+  () => import('src/layouts/HelmetLayout'),
+  {
+    fallback: <IndefiniteLoading message="HelmetLayout" />,
+  },
+);
 
 const RootProvider = ({ element }) => {
   return (
     <Provider store={Store}>
-      <StoreLayout>
-        <ThemeLayout>{element}</ThemeLayout>
-      </StoreLayout>
+      <FirebaseLayout>
+        <ThemeLayout>
+          <HelmetLayout>{element}</HelmetLayout>
+        </ThemeLayout>
+      </FirebaseLayout>
     </Provider>
   );
 };

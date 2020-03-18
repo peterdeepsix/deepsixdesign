@@ -1,7 +1,6 @@
 import { observable, action, decorate } from 'mobx';
 import localStorage from 'mobx-localstorage';
 
-import { red } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 class ThemeStore {
@@ -15,7 +14,7 @@ class ThemeStore {
         main: '#FF1654',
       },
       error: {
-        main: red.A400,
+        main: '#ff5200',
       },
     },
     typography: {
@@ -44,6 +43,11 @@ class ThemeStore {
     this.isDark = localStorage.getItem('isDark');
   }
 
+  setIsDark(prefersDarkMode) {
+    this.isDark = prefersDarkMode;
+    localStorage.setItem('isDark', prefersDarkMode);
+  }
+
   getThemeObject() {
     this.themeObject = localStorage.getItem('themeObject');
   }
@@ -51,11 +55,6 @@ class ThemeStore {
   setThemeObject(themeObject) {
     this.themeObject = themeObject;
     localStorage.setItem('themeObject', themeObject);
-  }
-
-  setIsDark(prefersDarkMode) {
-    this.isDark = prefersDarkMode;
-    localStorage.setItem('isDark', prefersDarkMode);
   }
 
   dehydrate() {

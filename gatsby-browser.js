@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 
-import RootProvider from 'src/providers/rootProvider';
+import RootProvider from 'src/providers/RootProvider';
 
 export const wrapRootElement = RootProvider;
 

@@ -2,14 +2,30 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
-import CartLayout from 'src/layouts/cartLayout';
-import MainLayout from 'src/layouts/mainLayout';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const ProductComponent = Loadable(
-  () => import('../components/product/productComponent'),
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
   {
-    fallback: <IndefiniteLoading message="IndefiniteLoading" />,
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
+  },
+);
+
+const CartLayout = Loadable(() => import('src/layouts/CartLayout'), {
+  fallback: <IndefiniteLoading message="CartLayout" />,
+});
+
+const ProductsLayout = Loadable(
+  () => import('src/layouts/ProductsLayout'),
+  {
+    fallback: <IndefiniteLoading message="ProductsLayout" />,
+  },
+);
+
+const ProductComponent = Loadable(
+  () => import('src/components/product/productComponent'),
+  {
+    fallback: <IndefiniteLoading message="ProductComponent" />,
   },
 );
 
@@ -65,11 +81,13 @@ export const query = graphql`
 const ProductTemplate = ({ pageContext: { id }, data, location }) => {
   return (
     <>
-      <MainLayout location={location}>
+      {/* <ProductsLayout>
         <CartLayout>
-          <ProductComponent productId={id} data={data} />
+          <InterfaceLayout location={location}>
+            <ProductComponent productId={id} data={data} />
+          </InterfaceLayout>
         </CartLayout>
-      </MainLayout>
+      </ProductsLayout> */}
     </>
   );
 };

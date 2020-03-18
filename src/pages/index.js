@@ -1,45 +1,39 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import Loadable from '@loadable/component';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
+const HelmetComponent = Loadable(
+  () => import('src/components/helmet/HelmetComponent'),
+  {
+    fallback: <IndefiniteLoading message="HelmetComponent" />,
+  },
+);
+
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
+  {
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
+  },
+);
+
 const IndexComponent = Loadable(
-  () => import('src/components/index/indexComponent'),
+  () => import('src/components/index/IndexComponent'),
   {
     fallback: <IndefiniteLoading message="IndexComponent" />,
   },
 );
 
-const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
-  fallback: <IndefiniteLoading message="MainLayout" />,
-});
-
-const IndexPage = ({ data, location }) => {
+const IndexPage = ({ location, siteData }) => {
   return (
-    <MainLayout location={location}>
-      <IndexComponent data={data} />
-    </MainLayout>
+    <InterfaceLayout>
+      {/* <HelmetComponent
+        title={`${location.pathname.replace(/\//, '')} - ${
+          siteData.site.siteMetadata.title
+        }`}
+      /> */}
+      <IndexComponent />
+    </InterfaceLayout>
   );
 };
-
-export const query = graphql`
-  query TrelloQuery {
-    allTrelloList(
-      filter: { id: { eq: "5e4b53931673f76d1b4fa085" } }
-    ) {
-      edges {
-        node {
-          id
-          name
-          cards {
-            id
-            name
-          }
-        }
-      }
-    }
-  }
-`;
-
 export default IndexPage;
