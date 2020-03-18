@@ -61,7 +61,7 @@ const ThemeLayoutComponent = ({ store, children }) => {
         },
       }),
     );
-  }, [isDark, prefersDarkMode]);
+  }, [color, isDark, prefersDarkMode]);
 
   return (
     <>

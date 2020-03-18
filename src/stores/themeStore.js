@@ -9,13 +9,13 @@ class ThemeStore {
   themeObject = createMuiTheme({
     palette: {
       primary: {
-        main: '#ff5200',
+        main: '#FF1654',
       },
       secondary: {
         main: '#FF1654',
       },
       error: {
-        main: '#ff5200',
+        main: '#FF1654',
       },
     },
     typography: {
@@ -45,8 +45,9 @@ class ThemeStore {
   }
 
   setColor(color) {
-    this.color = color;
-    localStorage.setItem('color', color);
+    this.color = color.hex;
+    console.log(color.hex);
+    localStorage.setItem('color', this.color);
   }
 
   getIsDark() {

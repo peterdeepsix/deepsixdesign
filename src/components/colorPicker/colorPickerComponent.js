@@ -104,7 +104,7 @@ const ColorPickerComponent = ({ store }) => {
         <DialogActions>
           <Button
             size="large"
-            variant="outlined"
+            variant="contained"
             onClick={handleClose}
             color="primary"
             autoFocus
