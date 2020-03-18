@@ -39,7 +39,7 @@ const BottomNav = ({ location }) => {
         aria-label="BottomNavigation label"
         showLabels
       >
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           to="/"
           component={LinkComponent}
           fade
@@ -81,7 +81,7 @@ const BottomNav = ({ location }) => {
           value="/cart"
           label="Cart"
           icon={<FaLuggageCart />}
-        />
+        /> */}
       </BottomNavigation>
     </AppBar>
   );

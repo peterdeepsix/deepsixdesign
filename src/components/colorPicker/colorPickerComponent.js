@@ -7,6 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { CirclePicker, SliderPicker, BlockPicker } from 'react-color';
 
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -14,6 +15,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Image from './image';
 
 import { GoPaintcan } from 'react-icons/go';
 
@@ -51,15 +53,7 @@ const ColorPickerComponent = ({ store }) => {
 
   return (
     <>
-      <Button
-        color="primary"
-        onClick={handleClickOpen}
-        aria-label="change color"
-        variant="contained"
-        startIcon={<GoPaintcan />}
-      >
-        Theme Color
-      </Button>
+      <Image onClick={handleClickOpen} />
       <Dialog
         fullScreen={fullScreen}
         open={open}

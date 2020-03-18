@@ -70,6 +70,7 @@
     "react-instantsearch-dom": "^6.3.0",
     "react-instantsearch-theme-algolia": "^4.5.2",
     "react-measure": "^2.3.0",
+    "react-svg": "^11.0.14",
     "react-swipeable-views": "^0.13.9",
     "react-ticker": "^1.2.2",
     "react-vertical-timeline-component": "^2.5.0",

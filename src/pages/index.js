@@ -26,7 +26,7 @@ const IndexComponent = Loadable(
 
 const IndexPage = ({ location, siteData }) => {
   return (
-    <InterfaceLayout>
+    <InterfaceLayout location={location}>
       {/* <HelmetComponent
         title={`${location.pathname.replace(/\//, '')} - ${
           siteData.site.siteMetadata.title

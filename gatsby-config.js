@@ -17,12 +17,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: 'gatsby-plugin-transition-link',
-    //   options: {
-    //     layout: require.resolve(`./src/layouts/InterfaceLayout`),
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-transition-link',
+      options: {
+        layout: require.resolve(`./src/layouts/InterfaceLayout`),
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-material-ui`,
     //   options: {

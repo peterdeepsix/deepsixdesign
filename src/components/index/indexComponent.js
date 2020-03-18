@@ -1,4 +1,5 @@
 import React from 'react';
+import Loadable from '@loadable/component';
 
 import {
   Container,
@@ -9,20 +10,29 @@ import {
   CardHeader,
 } from '@material-ui/core';
 
-import Image from 'src/components/image/image';
-import ColorPickerComponent from 'src/components/colorPicker/colorPickerComponent';
-import DarkPickerComponent from 'src/components/darkPicker/darkPickerComponent';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
+
+const ColorPickerComponent = Loadable(
+  () => import('src/components/colorPicker/colorPickerComponent'),
+  {
+    fallback: <IndefiniteLoading message="ColorPickerComponent" />,
+  },
+);
+
+const DarkPickerComponent = Loadable(
+  () => import('src/components/darkPicker/darkPickerComponent'),
+  {
+    fallback: <IndefiniteLoading message="DarkPickerComponent" />,
+  },
+);
 
 const IndexComponent = () => {
   return (
     <Container maxWidth="sm">
-      <Box px={8} pt={3} mt={2} mb={1}>
-        <Image />
-      </Box>
-      <Box mt={2} mb={1}>
+      <Box alignContent="center" mt={2} mb={1}>
         <ColorPickerComponent />
       </Box>
-      <Box mt={2} mb={1}>
+      <Box alignContent="center" mt={2} mb={1}>
         <DarkPickerComponent />
       </Box>
       <Box mt={2} mb={1}>

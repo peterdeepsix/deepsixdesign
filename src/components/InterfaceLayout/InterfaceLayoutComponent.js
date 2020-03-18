@@ -8,7 +8,7 @@ const InterfaceLayoutComponent = ({ store, children, location }) => {
   return (
     <>
       {/* <NavBar /> */}
-      {/* <BottomNav location={location} /> */}
+      <BottomNav location={location} />
       {children}
     </>
   );
