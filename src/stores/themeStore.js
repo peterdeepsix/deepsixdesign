@@ -4,6 +4,7 @@ import localStorage from 'mobx-localstorage';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 class ThemeStore {
+  color = '#FF1654';
   isDark = false;
   themeObject = createMuiTheme({
     palette: {
@@ -39,6 +40,15 @@ class ThemeStore {
     },
   });
 
+  getColor() {
+    this.color = localStorage.getItem('color');
+  }
+
+  setColor(color) {
+    this.color = color;
+    localStorage.setItem('color', color);
+  }
+
   getIsDark() {
     this.isDark = localStorage.getItem('isDark');
   }
@@ -59,6 +69,7 @@ class ThemeStore {
 
   dehydrate() {
     return {
+      color: this.color,
       isDark: this.isDark,
       themeObject: this.themeObject,
     };
@@ -66,10 +77,12 @@ class ThemeStore {
 }
 
 decorate(ThemeStore, {
+  color: observable,
   isDark: observable,
   themeObject: observable,
   getThemeObject: action,
   setThemeObject: action,
+  setColor: action,
 });
 
 export default ThemeStore;

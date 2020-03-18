@@ -52,9 +52,10 @@ const ColorPickerComponent = ({ store }) => {
   return (
     <>
       <Button
+        color="primary"
         onClick={handleClickOpen}
         aria-label="change color"
-        variant="outlined"
+        variant="contained"
         startIcon={<GoPaintcan />}
       >
         Theme Color

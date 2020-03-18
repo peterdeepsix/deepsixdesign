@@ -5,10 +5,11 @@ import { Helmet } from 'react-helmet';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const ThemeLayoutComponent = ({ store, children }) => {
   const { themeStore } = store;
-  const { themeObject } = themeStore;
+  const { color, isDark, themeObject } = themeStore;
 
   const prefersDarkMode = useMediaQuery(
     '(prefers-color-scheme: dark)',
@@ -22,6 +23,45 @@ const ThemeLayoutComponent = ({ store, children }) => {
   useMemo(() => {
     themeStore.setIsDark(prefersDarkMode);
   }, [prefersDarkMode]);
+
+  useMemo(() => {
+    themeStore.setThemeObject(
+      createMuiTheme({
+        palette: {
+          type: isDark ? 'dark' : 'light',
+          primary: {
+            main: color,
+          },
+          secondary: {
+            main: color,
+          },
+          error: {
+            main: color,
+          },
+        },
+        typography: {
+          button: {
+            textTransform: 'none',
+          },
+          overline: {
+            textTransform: 'none',
+          },
+          fontFamily: [
+            'Muli',
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+          ].join(','),
+        },
+      }),
+    );
+  }, [isDark, prefersDarkMode]);
 
   return (
     <>
