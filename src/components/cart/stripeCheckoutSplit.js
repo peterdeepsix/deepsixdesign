@@ -12,8 +12,6 @@ import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import theme from 'src/configs/theme';
-
 import {
   CardNumberElement,
   CardCvcElement,
@@ -39,29 +37,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-console.log(theme);
-
 const ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      iconColor: theme.palette.text.secondary,
-      color: theme.palette.text.primary,
-      fontWeight: theme.typography.fontWeightRegular,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.htmlFontSize,
-      fontSmoothing: 'antialiased',
-      ':-webkit-autofill': {
-        color: theme.palette.text.primary,
-      },
-      '::placeholder': {
-        color: theme.palette.text.secondary,
-      },
-    },
-    invalid: {
-      iconColor: theme.palette.primary.main,
-      color: theme.palette.primary.main,
-    },
-  },
+  // style: {
+  //   base: {
+  //     iconColor: theme.palette.text.secondary,
+  //     color: theme.palette.text.primary,
+  //     fontWeight: theme.typography.fontWeightRegular,
+  //     fontFamily: theme.typography.fontFamily,
+  //     fontSize: theme.typography.htmlFontSize,
+  //     fontSmoothing: 'antialiased',
+  //     ':-webkit-autofill': {
+  //       color: theme.palette.text.primary,
+  //     },
+  //     '::placeholder': {
+  //       color: theme.palette.text.secondary,
+  //     },
+  //   },
+  //   invalid: {
+  //     iconColor: theme.palette.primary.main,
+  //     color: theme.palette.primary.main,
+  //   },
+  // },
 };
 
 const StripeCheckOutSplit = props => {

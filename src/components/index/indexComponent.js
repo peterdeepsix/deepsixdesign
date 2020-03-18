@@ -5,10 +5,16 @@ import CardContent from '@material-ui/core/CardContent';
 import { CardHeader } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { GoPaintcan } from 'react-icons/go';
+
+import Icon from '@material-ui/core/Icon';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 import Image from 'src/components/image/image';
+
+import ColorPickerComponent from 'src/components/colorPicker/colorPickerComponent';
+import DarkPickerComponent from 'src/components/darkPicker/darkPickerComponent';
 
 const IndexComponent = ({ data }) => {
   return (
@@ -16,6 +22,12 @@ const IndexComponent = ({ data }) => {
       <Container maxWidth="sm">
         <Box px={8} pt={3} mt={2} mb={1}>
           <Image />
+        </Box>
+        <Box mt={2} mb={1}>
+          <ColorPickerComponent />
+        </Box>
+        <Box mt={2} mb={1}>
+          <DarkPickerComponent />
         </Box>
         <Box mt={2} mb={1}>
           <Card variant="outlined">

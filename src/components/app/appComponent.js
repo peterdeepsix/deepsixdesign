@@ -9,7 +9,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import theme from 'src/configs/theme';
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 import {

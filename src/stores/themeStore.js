@@ -1,21 +1,56 @@
 import { observable, action, decorate } from 'mobx';
 import localStorage from 'mobx-localstorage';
 
-class ThemeStore {
-  color = { hex: '#FF1654' };
-  isDark = false;
+import { red } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-  getColor() {
-    this.color = localStorage.getItem('color');
-  }
+class ThemeStore {
+  isDark = false;
+  themeObject = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#ff5200',
+      },
+      secondary: {
+        main: '#FF1654',
+      },
+      error: {
+        main: red.A400,
+      },
+    },
+    typography: {
+      button: {
+        textTransform: 'none',
+      },
+      overline: {
+        textTransform: 'none',
+      },
+      fontFamily: [
+        'Muli',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    },
+  });
 
   getIsDark() {
     this.isDark = localStorage.getItem('isDark');
   }
 
-  setColor(color) {
-    this.color = color;
-    localStorage.setItem('color', color);
+  getThemeObject() {
+    this.themeObject = localStorage.getItem('themeObject');
+  }
+
+  setThemeObject(themeObject) {
+    this.themeObject = themeObject;
+    localStorage.setItem('themeObject', themeObject);
   }
 
   setIsDark(prefersDarkMode) {
@@ -25,17 +60,17 @@ class ThemeStore {
 
   dehydrate() {
     return {
-      color: this.color,
       isDark: this.isDark,
+      themeObject: this.themeObject,
     };
   }
 }
 
 decorate(ThemeStore, {
-  color: observable,
   isDark: observable,
-  setColor: action,
-  getColor: action,
+  themeObject: observable,
+  getThemeObject: action,
+  setThemeObject: action,
 });
 
 export default ThemeStore;

@@ -9,6 +9,7 @@ import { FaLuggageCart } from 'react-icons/fa';
 import { IoIosContacts } from 'react-icons/Io';
 
 import LinkComponent from 'src/components/link/linkComponent';
+import theme from 'src/configs/theme';
 
 const useStyles = makeStyles({
   stickToBottom: {
@@ -44,7 +45,7 @@ const BottomNav = ({ location }) => {
           component={LinkComponent}
           fade
           duration={0.5}
-          bg="#fff"
+          bg={theme.palette.primary.main}
           value="/"
           label="Index"
           icon={<GiSolarTime />}
@@ -54,7 +55,7 @@ const BottomNav = ({ location }) => {
           component={LinkComponent}
           cover
           duration={0.5}
-          bg="#fff"
+          bg={theme.palette.primary.main}
           value="/contact"
           label="Contact"
           icon={<IoIosContacts />}
@@ -64,7 +65,7 @@ const BottomNav = ({ location }) => {
           component={LinkComponent}
           paintDrip
           duration={0.5}
-          hex="#fff"
+          hex={theme.palette.primary.main}
           value="/Products"
           label="Products"
           icon={<GiDuck />}
@@ -77,7 +78,7 @@ const BottomNav = ({ location }) => {
           direction="left"
           top="entry"
           entryOffset={80}
-          bg="#fff"
+          bg={theme.palette.primary.main}
           value="/cart"
           label="Cart"
           icon={<FaLuggageCart />}

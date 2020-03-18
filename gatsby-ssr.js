@@ -1,5 +1,5 @@
 import 'babel-polyfill';
 
-import provideStores from 'src/providers/provideStores';
+import RootProvider from './src/providers/rootProvider';
 
-export const wrapPageElement = provideStores;
+export const wrapPageElement = RootProvider;

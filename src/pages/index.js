@@ -4,10 +4,6 @@ import Loadable from '@loadable/component';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
-  fallback: <IndefiniteLoading message="MainLayout" />,
-});
-
 const IndexComponent = Loadable(
   () => import('src/components/index/indexComponent'),
   {
@@ -15,11 +11,15 @@ const IndexComponent = Loadable(
   },
 );
 
+const MainLayout = Loadable(() => import('src/layouts/mainLayout'), {
+  fallback: <IndefiniteLoading message="MainLayout" />,
+});
+
 const IndexPage = ({ data, location }) => {
   return (
-    <>
+    <MainLayout location={location}>
       <IndexComponent data={data} />
-    </>
+    </MainLayout>
   );
 };
 

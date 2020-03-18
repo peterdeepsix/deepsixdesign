@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
 
-import { useTheme } from '@material-ui/core/styles';
-import { CirclePicker, SliderPicker, BlockPicker } from 'react-color';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { CirclePicker, SliderPicker, BlockPicker } from 'react-color';
 
-import IconButton from '@material-ui/core/IconButton';
-import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,7 +14,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+import { GoPaintcan } from 'react-icons/go';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -51,9 +51,14 @@ const ColorPickerComponent = ({ store }) => {
 
   return (
     <>
-      <IconButton aria-label="change color" onClick={handleClickOpen}>
-        <ColorLensOutlinedIcon />
-      </IconButton>
+      <Button
+        onClick={handleClickOpen}
+        aria-label="change color"
+        variant="outlined"
+        startIcon={<GoPaintcan />}
+      >
+        Theme Color
+      </Button>
       <Dialog
         fullScreen={fullScreen}
         open={open}
