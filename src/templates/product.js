@@ -81,13 +81,13 @@ export const query = graphql`
 const ProductTemplate = ({ pageContext: { id }, data, location }) => {
   return (
     <>
-      {/* <ProductsLayout>
+      <ProductsLayout>
         <CartLayout>
-          <InterfaceLayout location={location}>
-            <ProductComponent productId={id} data={data} />
-          </InterfaceLayout>
+          {/* <InterfaceLayout location={location}> */}
+          <ProductComponent productId={id} data={data} />
+          {/* </InterfaceLayout> */}
         </CartLayout>
-      </ProductsLayout> */}
+      </ProductsLayout>
     </>
   );
 };

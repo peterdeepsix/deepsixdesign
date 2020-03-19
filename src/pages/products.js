@@ -15,6 +15,13 @@ const CartLayout = Loadable(() => import('src/layouts/CartLayout'), {
   fallback: <IndefiniteLoading message="CartLayout" />,
 });
 
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
+  {
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
+  },
+);
+
 const ProductsComponent = Loadable(
   () => import('src/components/products/productsComponent'),
   {
@@ -76,11 +83,13 @@ export const query = graphql`
 const ProductsPage = ({ data, location }) => {
   return (
     <>
-      {/* <ProductsLayout>
-      <CartLayout>
-        <ProductsComponent data={data} />
-      </CartLayout>
-    </ProductsLayout> */}
+      <ProductsLayout>
+        <CartLayout>
+          {/* <InterfaceLayout location={location}> */}
+          <ProductsComponent data={data} />
+          {/* </InterfaceLayout> */}
+        </CartLayout>
+      </ProductsLayout>
     </>
   );
 };

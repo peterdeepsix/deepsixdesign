@@ -20,7 +20,7 @@ const Image = ({ onClick, store }) => {
   return (
     <LogoButton
       onClick={onClick}
-      imageHeight="100%"
+      imageWidth="100%"
       fillColor={themeStore.color}
     />
   );

@@ -21,15 +21,22 @@ const CartComponent = Loadable(
   },
 );
 
+const InterfaceLayout = Loadable(
+  () => import('src/layouts/InterfaceLayout'),
+  {
+    fallback: <IndefiniteLoading message="InterfaceLayout" />,
+  },
+);
+
 const CartPage = ({ location }) => {
   return (
-    <>
-      {/* <ProductsLayout>
-        <CartLayout>
-          <CartComponent />
-        </CartLayout>
-      </ProductsLayout> */}
-    </>
+    <ProductsLayout>
+      <CartLayout>
+        {/* <InterfaceLayout location={location}> */}
+        <CartComponent />
+        {/* </InterfaceLayout> */}
+      </CartLayout>
+    </ProductsLayout>
   );
 };
 

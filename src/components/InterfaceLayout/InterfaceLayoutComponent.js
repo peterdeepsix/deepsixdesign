@@ -7,7 +7,7 @@ import BottomNav from './components/bottomNav';
 const InterfaceLayoutComponent = ({ store, children, location }) => {
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <BottomNav location={location} />
       {children}
     </>

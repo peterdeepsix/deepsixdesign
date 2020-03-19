@@ -27,9 +27,9 @@ const ContactPage = ({ location }) => {
   const classes = useStyles();
   return (
     <>
-      {/* <InterfaceLayout location={location}>
+      <InterfaceLayout location={location}>
         <ContactComponent />
-      </InterfaceLayout> */}
+      </InterfaceLayout>
     </>
   );
 };

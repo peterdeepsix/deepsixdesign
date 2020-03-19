@@ -115,13 +115,20 @@ const NavBar = props => {
               <SearchOutlinedIcon />
             </IconButton>
             <div className={classes.grow} />
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography
+              component={LinkComponent}
+              to="/"
+              className={classes.title}
+              variant="h6"
+              color="textPrimary"
+              noWrap
+            >
               Deep Six Design
             </Typography>
             <div className={classes.grow} />
             <IconButton
               component={LinkComponent}
-              to="/"
+              to="/account"
               edge="end"
               color="inherit"
             >
