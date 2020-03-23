@@ -4,23 +4,12 @@ import { FirebaseContext } from 'gatsby-plugin-firebase';
 
 const FirebaseLayout = ({ store, children }) => {
   const firebaseContext = useContext(FirebaseContext);
-  const { firebaseStore, sessionStore, predictionsStore } = store;
+  const { firebaseStore, predictionsStore } = store;
 
   useMemo(() => {
     if (!firebaseStore.firebase) return;
     firebaseStore.setFirebase(firebaseContext);
   }, [firebaseStore]);
-
-  useMemo(() => {
-    if (!firebaseStore.firebase) return;
-    sessionStore.setAuth(firebaseStore.firebase.auth());
-    sessionStore.getAuthUser();
-    sessionStore.getAuthToken();
-    sessionStore.setGoogleProvider(
-      new firebaseStore.firebase.auth.GoogleAuthProvider(),
-    );
-    sessionStore.getLoggedIn();
-  }, [firebaseStore, sessionStore]);
 
   useMemo(() => {
     if (!firebaseStore.firebase) return;

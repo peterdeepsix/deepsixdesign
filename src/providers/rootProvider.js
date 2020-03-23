@@ -12,6 +12,13 @@ const FirebaseLayout = Loadable(
   },
 );
 
+const SessionLayout = Loadable(
+  () => import('src/layouts/SessionLayout'),
+  {
+    fallback: <IndefiniteLoading message="SessionLayout" />,
+  },
+);
+
 const ThemeLayout = Loadable(
   () => import('src/layouts/ThemeLayout'),
   {
@@ -30,9 +37,11 @@ const RootProvider = ({ element }) => {
   return (
     <Provider store={Store}>
       <FirebaseLayout>
-        <ThemeLayout>
-          <HelmetLayout>{element}</HelmetLayout>
-        </ThemeLayout>
+        <SessionLayout>
+          <ThemeLayout>
+            <HelmetLayout>{element}</HelmetLayout>
+          </ThemeLayout>
+        </SessionLayout>
       </FirebaseLayout>
     </Provider>
   );

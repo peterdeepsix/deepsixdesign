@@ -23,7 +23,7 @@ const BottomNav = ({ location }) => {
   const [value, setValue] = React.useState('/');
 
   useEffect(() => {
-    setValue(location.pathname);
+    if (location) setValue(location.pathname);
   }, [location]);
 
   return (

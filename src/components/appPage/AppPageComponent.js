@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 import { inject, observer } from 'mobx-react';
+import Loadable from '@loadable/component';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+} from '@material-ui/core';
 
-const ERROR_CODE_ACCOUNT_EXISTS =
-  'auth/account-exists-with-different-credential';
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with an E-Mail address to
-  this social account already exists. Try to login from
-  this account instead and associate your social accounts on
-  your personal account page.
-`;
+const ColorPickerComponent = Loadable(
+  () => import('src/components/colorPicker/colorPickerComponent'),
+  {
+    fallback: <IndefiniteLoading message="ColorPickerComponent" />,
+  },
+);
 
-const SignInGoogle = ({ history, store }) => {
+const AppPageComponent = ({ history, store }) => {
   const { sessionStore } = store;
   const { auth, authUser, loggedIn, googleProvider } = sessionStore;
 
@@ -42,9 +48,9 @@ const SignInGoogle = ({ history, store }) => {
   };
 
   const onSubmit = event => {
-    console.log(`try auth`);
-    if (!auth) return;
+    if (!auth) return console.log('NO auth');
     let didCancel = false;
+
     const SignIn = async () => {
       await auth
         .signInWithPopup(googleProvider)
@@ -100,18 +106,33 @@ const SignInGoogle = ({ history, store }) => {
     event.preventDefault();
   };
 
-  if (loggedIn) {
-    navigate(`/app/account`);
+  if (!loggedIn) {
+    navigate(`/app/signin`);
+    return (
+      <Container maxWidth="sm">
+        <Box mt={2} mb={1}>
+          <Card variant="outlined">
+            <CardHeader title="Account Details" />
+            <CardContent>
+              <Typography>
+                These are the things that define you.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+        <Box mt={2} mb={1}>
+          <Card variant="outlined">
+            <CardHeader title="Account Actions" />
+            <CardContent>
+              <Typography>Change your patterns.</Typography>
+              <Button variant="outlined" onClick={onSubmit}>
+                Sign In
+              </Button>
+            </CardContent>
+          </Card>
+        </Box>
+      </Container>
+    );
   }
-  return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Button variant="outlined" color="primary" onClick={onSubmit}>
-          Sign In With Google
-        </Button>
-      </Box>
-    </Container>
-  );
 };
-
-export default inject('store')(observer(SignInGoogle));
+export default inject('store')(observer(AppPageComponent));

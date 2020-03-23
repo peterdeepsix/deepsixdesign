@@ -4,10 +4,10 @@ import Loadable from '@loadable/component';
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const PrivateRouteComponent = Loadable(
-  () => import('src/components/privateRoute/privateRouteComponent'),
+const HelmetComponent = Loadable(
+  () => import('src/components/helmet/HelmetComponent'),
   {
-    fallback: <IndefiniteLoading message="PrivateRouteComponent" />,
+    fallback: <IndefiniteLoading message="HelmetComponent" />,
   },
 );
 
@@ -18,67 +18,54 @@ const InterfaceLayout = Loadable(
   },
 );
 
-const FirebaseLayout = Loadable(
-  () => import('src/layouts/firebaseLayout'),
+const PrivateRouteComponent = Loadable(
+  () => import('src/components/privateRoute/privateRouteComponent'),
   {
-    fallback: <IndefiniteLoading message="FirebaseLayout" />,
+    fallback: <IndefiniteLoading message="PrivateRouteComponent" />,
   },
 );
 
-const DefaultComponent = Loadable(
-  () => import('src/components/default/defaultComponent'),
+const AppPageComponent = Loadable(
+  () => import('src/components/appPage/AppPageComponent'),
   {
-    fallback: <IndefiniteLoading message="DefaultComponent" />,
+    fallback: <IndefiniteLoading message="AppPageComponent" />,
   },
 );
 
-const GeneratorComponent = Loadable(
-  () => import('src/components/generator/generatorComponent'),
+const AccountPageComponent = Loadable(
+  () => import('src/components/accountPage/AccountPageComponent'),
   {
-    fallback: <IndefiniteLoading message="GeneratorComponent" />,
+    fallback: <IndefiniteLoading message="AccountPageComponent" />,
   },
 );
 
-const AccountComponent = Loadable(
-  () => import('src/components/account/accountComponent'),
+const SigninPageComponent = Loadable(
+  () => import('src/components/signinPage/SigninPageComponent'),
   {
-    fallback: <IndefiniteLoading message="AccountComponent" />,
+    fallback: <IndefiniteLoading message="SigninPageComponent" />,
   },
 );
 
-const PredictionsComponent = Loadable(
-  () => import('src/components/predictions/predictionsComponent'),
-  {
-    fallback: <IndefiniteLoading message="PredictionsComponent" />,
-  },
-);
-
-const SignInComponent = Loadable(
-  () => import('src/components/signIn/signInComponent'),
-  {
-    fallback: <IndefiniteLoading message="SignInComponent" />,
-  },
-);
-
-const AppPage = () => {
+const AppPage = ({ location, siteData }) => {
   return (
-    <>
-      {/* <FirebaseLayout>
-      <InterfaceLayout>
-        <Router>
-          <DefaultComponent path="/app" />
-          <GeneratorComponent path="/app/generator" />
-          <AccountComponent path="/app/account" />
-          <PrivateRouteComponent
-            path="/app/predictions"
-            component={PredictionsComponent}
-          />
-          <SignInComponent path="/app/signin" />
-        </Router>
-      </InterfaceLayout>
-    </FirebaseLayout> */}
-    </>
+    <InterfaceLayout location={location}>
+      {/* <HelmetComponent
+        title={`${location.pathname.replace(/\//, '')} - ${
+          siteData.site.siteMetadata.title
+        }`}
+      /> */}
+      <Router>
+        <PrivateRouteComponent
+          path="/app"
+          component={AppPageComponent}
+        />
+        <PrivateRouteComponent
+          path="/account"
+          component={AccountPageComponent}
+        />
+        <SigninPageComponent path="/app/signin" />
+      </Router>
+    </InterfaceLayout>
   );
 };
-
 export default AppPage;

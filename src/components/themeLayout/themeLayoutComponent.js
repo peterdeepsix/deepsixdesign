@@ -9,59 +9,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const ThemeLayoutComponent = ({ store, children }) => {
   const { themeStore } = store;
-  const { color, isDark, themeObject } = themeStore;
-
-  const prefersDarkMode = useMediaQuery(
-    '(prefers-color-scheme: dark)',
-  );
-
-  useMemo(() => {
-    themeStore.getIsDark();
-    themeStore.getThemeObject();
-  }, [themeStore]);
-
-  useMemo(() => {
-    themeStore.setIsDark(prefersDarkMode);
-  }, [prefersDarkMode]);
-
-  useMemo(() => {
-    themeStore.setThemeObject(
-      createMuiTheme({
-        palette: {
-          type: isDark ? 'dark' : 'light',
-          primary: {
-            main: color,
-          },
-          secondary: {
-            main: color,
-          },
-          error: {
-            main: color,
-          },
-        },
-        typography: {
-          button: {
-            textTransform: 'none',
-          },
-          overline: {
-            textTransform: 'none',
-          },
-          fontFamily: [
-            'Muli',
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-          ].join(','),
-        },
-      }),
-    );
-  }, [color, isDark, prefersDarkMode]);
+  const { themeObject, muiThemeObject } = themeStore;
 
   return (
     <>
@@ -75,7 +23,7 @@ const ThemeLayoutComponent = ({ store, children }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <ThemeProvider theme={themeObject}>
+      <ThemeProvider theme={muiThemeObject}>
         <CssBaseline />
         {children}
       </ThemeProvider>

@@ -5,8 +5,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 class ThemeStore {
   color = '#FF1654';
-  isDark = false;
-  themeObject = createMuiTheme({
+  prefersDarkMode = false;
+  muiThemeObject = null;
+  themeObject = {
     palette: {
       primary: {
         main: '#FF1654',
@@ -38,7 +39,7 @@ class ThemeStore {
         '"Segoe UI Symbol"',
       ].join(','),
     },
-  });
+  };
 
   getColor() {
     this.color = localStorage.getItem('color');
@@ -50,29 +51,40 @@ class ThemeStore {
     localStorage.setItem('color', this.color);
   }
 
-  getIsDark() {
-    this.isDark = localStorage.getItem('isDark');
+  getPrefersDarkMode() {
+    this.prefersDarkMode = localStorage.getItem('prefersDarkMode');
   }
 
-  setIsDark(prefersDarkMode) {
-    this.isDark = prefersDarkMode;
-    localStorage.setItem('isDark', prefersDarkMode);
+  setPrefersDarkMode(prefersDarkMode) {
+    this.prefersDarkMode = prefersDarkMode;
+    localStorage.setItem('prefersDarkMode', prefersDarkMode);
   }
 
   getThemeObject() {
     this.themeObject = localStorage.getItem('themeObject');
+    console.log('GET theme object');
   }
 
   setThemeObject(themeObject) {
-    this.themeObject = themeObject;
+    this.themeObject = createMuiTheme(themeObject);
     localStorage.setItem('themeObject', themeObject);
+  }
+
+  getMuiThemeObject() {
+    this.muiThemeObject = localStorage.getItem('muiThemeObject');
+  }
+
+  setMuiThemeObject(muiThemeObject) {
+    this.muiThemeObject = muiThemeObject;
+    localStorage.setItem('muiThemeObject', muiThemeObject);
   }
 
   dehydrate() {
     return {
       color: this.color,
-      isDark: this.isDark,
+      prefersDarkMode: this.prefersDarkMode,
       themeObject: this.themeObject,
+      muiThemeObject: this.muiThemeObject,
     };
   }
 }
@@ -81,8 +93,11 @@ decorate(ThemeStore, {
   color: observable,
   isDark: observable,
   themeObject: observable,
+  muiThemeObject: observable,
   getThemeObject: action,
   setThemeObject: action,
+  getMuiThemeObject: action,
+  setMuiThemeObject: action,
   setColor: action,
 });
 

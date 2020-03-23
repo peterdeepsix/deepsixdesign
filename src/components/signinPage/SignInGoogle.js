@@ -6,7 +6,17 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
-const AccountComponent = ({ history, store }) => {
+const ERROR_CODE_ACCOUNT_EXISTS =
+  'auth/account-exists-with-different-credential';
+
+const ERROR_MSG_ACCOUNT_EXISTS = `
+  An account with an E-Mail address to
+  this social account already exists. Try to login from
+  this account instead and associate your social accounts on
+  your personal account page.
+`;
+
+const SignInGoogle = ({ history, store }) => {
   const { sessionStore } = store;
   const { auth, authUser, loggedIn, googleProvider } = sessionStore;
 
@@ -32,9 +42,9 @@ const AccountComponent = ({ history, store }) => {
   };
 
   const onSubmit = event => {
+    console.log(`try auth`);
     if (!auth) return;
     let didCancel = false;
-
     const SignIn = async () => {
       await auth
         .signInWithPopup(googleProvider)
@@ -90,18 +100,13 @@ const AccountComponent = ({ history, store }) => {
     event.preventDefault();
   };
 
-  if (!loggedIn) {
-    navigate(`/app/signin`);
-  }
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Button variant="outlined" onClick={signOut}>
-          Sign Out
-        </Button>
-      </Box>
-    </Container>
+    <>
+      <Button variant="outlined" color="primary" onClick={onSubmit}>
+        Sign In With Google
+      </Button>
+    </>
   );
 };
 
-export default inject('store')(observer(AccountComponent));
+export default inject('store')(observer(SignInGoogle));

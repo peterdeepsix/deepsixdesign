@@ -3,6 +3,9 @@ import { navigate } from 'gatsby';
 import { inject, observer } from 'mobx-react';
 import Loadable from '@loadable/component';
 
+import { isLoggedIn } from 'src/services/auth';
+import SignInGoogle from './SignInGoogle';
+
 import {
   Container,
   Box,
@@ -22,7 +25,7 @@ const ColorPickerComponent = Loadable(
   },
 );
 
-const AcountPageComponent = ({ history, store }) => {
+const SigninPageComponent = ({ history, store }) => {
   const { sessionStore } = store;
   const { auth, authUser, loggedIn, googleProvider } = sessionStore;
 
@@ -106,23 +109,27 @@ const AcountPageComponent = ({ history, store }) => {
     event.preventDefault();
   };
 
-  if (!loggedIn) {
-    console.log('false loggedIn');
-    navigate(`/app/signin`);
+  if (isLoggedIn()) {
+    console.log('isLoggedIn()');
+    navigate(`/app/account`);
   }
+
+  if (loggedIn) {
+    console.log('true loggedIn');
+    navigate(`/app/account`);
+  }
+
   return (
     <Container maxWidth="sm">
       <Box mt={2} mb={1}>
         <Card variant="outlined">
-          <CardHeader title="Account Details" />
+          <CardHeader title="Account Actions" />
           <CardContent>
-            <Typography>
-              These are the things that define you.
-            </Typography>
+            <SignInGoogle />
           </CardContent>
         </Card>
       </Box>
     </Container>
   );
 };
-export default inject('store')(observer(AcountPageComponent));
+export default inject('store')(observer(SigninPageComponent));

@@ -6,11 +6,10 @@ import { GiNightSky } from 'react-icons/gi';
 
 const DarkPickerComponent = ({ store }) => {
   const { themeStore } = store;
-  const { isDark } = themeStore;
+  const { prefersDarkMode } = themeStore;
 
   const handleClick = () => {
-    console.log('SET THEME TO - DARK');
-    themeStore.setIsDark(!isDark);
+    themeStore.setPrefersDarkMode(!prefersDarkMode);
   };
 
   return (

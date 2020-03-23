@@ -128,7 +128,7 @@ const NavBar = props => {
             <div className={classes.grow} />
             <IconButton
               component={LinkComponent}
-              to="/account"
+              to="/app/account"
               edge="end"
               color="inherit"
             >

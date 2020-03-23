@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
+import { inject } from 'mobx-react';
 
 import Loadable from '@loadable/component';
+
+import { createMuiTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import IndefiniteLoading from '../components/loading/indefiniteLoading';
 
@@ -11,8 +15,45 @@ const ThemeLayoutComponent = Loadable(
   },
 );
 
-const ThemeLayout = ({ children }) => {
+const ThemeLayout = ({ children, store }) => {
+  const { themeStore } = store;
+  const { themeObject } = themeStore;
+
+  const prefersDarkMode = useMediaQuery(
+    '(prefers-color-scheme: dark)',
+  );
+
+  useMemo(() => {
+    themeStore.getThemeObject();
+    themeStore.getMuiThemeObject();
+    themeStore.getPrefersDarkMode();
+  }, [themeStore]);
+
+  useMemo(() => {
+    themeStore.setPrefersDarkMode(prefersDarkMode);
+  }, [prefersDarkMode]);
+
+  useMemo(() => {
+    const themeObject = {
+      ...themeStore.themeObject,
+      palette: {
+        ...themeStore.themeObject,
+        palette: {
+          ...themeStore.themeObject.palette,
+          primary: {
+            ...themeStore.themeObject.palette.primary,
+            main: '#872116',
+          },
+        },
+      },
+    };
+    const muiThemeObject = createMuiTheme(themeObject);
+
+    themeStore.setThemeObject(themeObject);
+    themeStore.setMuiThemeObject(muiThemeObject);
+  }, [themeStore.themeObject]);
+
   return <ThemeLayoutComponent>{children}</ThemeLayoutComponent>;
 };
 
-export default ThemeLayout;
+export default inject('store')(ThemeLayout);
