@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { navigate } from 'gatsby';
+import firebase from 'gatsby-plugin-firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { inject, observer } from 'mobx-react';
 import Loadable from '@loadable/component';
 
@@ -23,106 +24,44 @@ const ColorPickerComponent = Loadable(
 );
 
 const AcountPageComponent = ({ history, store }) => {
-  const { sessionStore } = store;
-  const { auth, authUser, loggedIn, googleProvider } = sessionStore;
+  const [user, initialising, error] = useAuthState(firebase.auth());
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [isBusy, setIsBusy] = useState(false);
-
-  const updateAuthUser = async user => {
-    setIsBusy(true);
-    await sessionStore.setAuthUser(user);
-    setIsBusy(false);
+  const signOut = () => {
+    firebase.auth().signOut();
   };
-
-  const updateAuthToken = async token => {
-    setIsBusy(true);
-    await sessionStore.setAuthToken(token);
-    setIsBusy(false);
-  };
-
-  const updateLoggedIn = async loggedIn => {
-    setIsBusy(true);
-    await sessionStore.setLoggedIn(loggedIn);
-    setIsBusy(false);
-  };
-
-  const onSubmit = event => {
-    if (!auth) return console.log('NO auth');
-    let didCancel = false;
-
-    const SignIn = async () => {
-      await auth
-        .signInWithPopup(googleProvider)
-        .then(function(result) {
-          const token = result.credential.accessToken;
-          const user = result.user;
-          if (user) {
-            updateAuthUser(user);
-            updateAuthToken(token);
-            updateLoggedIn(true);
-          }
-          if (!didCancel) setIsLoading(false);
-        })
-        .catch(function(error) {
-          const errorCode = error.code;
-          console.log(`errorCode - ${errorCode}`);
-          const errorMessage = error.message;
-          console.log(`errorMessage - ${errorMessage}`);
-          const email = error.email;
-          console.log(`email - ${email}`);
-          const credential = error.credential;
-          console.log(`credential - ${credential}`);
-        });
-    };
-    SignIn();
-    return () => (didCancel = true);
-    event.preventDefault();
-  };
-
-  const signOut = event => {
-    if (!auth) return;
-    let didCancel = false;
-
-    const SignOut = async () => {
-      await auth
-        .signOut()
-        .then(function() {
-          sessionStore.setAuthUser(null);
-          sessionStore.setAuthToken(null);
-          sessionStore.setLoggedIn(null);
-          if (!didCancel) setIsLoading(false);
-        })
-        .catch(function(error) {
-          const { code, message, email, credential } = error;
-          console.log(`errorCode - ${code}`);
-          console.log(`errorMessage - ${message}`);
-          console.log(`email - ${email}`);
-          console.log(`credential - ${credential}`);
-        });
-    };
-    SignOut();
-    return () => (didCancel = true);
-    event.preventDefault();
-  };
-
-  if (!loggedIn) {
-    console.log('false loggedIn');
-    navigate(`/app/signin`);
+  if (initialising) {
+    return (
+      <>
+        <Typography>Initialising User...</Typography>
+      </>
+    );
   }
-  return (
-    <Container maxWidth="sm">
-      <Box mt={2} mb={1}>
-        <Card variant="outlined">
-          <CardHeader title="Account Details" />
-          <CardContent>
-            <Typography>
-              These are the things that define you.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Box>
-    </Container>
-  );
+  if (error) {
+    return (
+      <>
+        <Typography>Error: {error}</Typography>
+      </>
+    );
+  }
+  if (user) {
+    return (
+      <Container maxWidth="sm">
+        <Box mt={2} mb={1}>
+          <Card variant="outlined">
+            <CardHeader title="Account Details" />
+            <CardContent>
+              <Typography>
+                These are the things that define you.
+              </Typography>
+              <Typography>Current User: {user.email}</Typography>
+              <Button variant="contained" onClick={signOut}>
+                Sign Out
+              </Button>
+            </CardContent>
+          </Card>
+        </Box>
+      </Container>
+    );
+  }
 };
 export default inject('store')(observer(AcountPageComponent));

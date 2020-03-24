@@ -1,111 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { navigate } from 'gatsby';
+import React, { useState, useEffect } from 'react';
+import firebase from 'gatsby-plugin-firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { inject, observer } from 'mobx-react';
+import { navigate } from 'gatsby';
 
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-
-const ERROR_CODE_ACCOUNT_EXISTS =
-  'auth/account-exists-with-different-credential';
-
-const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with an E-Mail address to
-  this social account already exists. Try to login from
-  this account instead and associate your social accounts on
-  your personal account page.
-`;
+import { Button, Typography } from '@material-ui/core';
 
 const SignInGoogle = ({ history, store }) => {
-  const { sessionStore } = store;
-  const { auth, authUser, loggedIn, googleProvider } = sessionStore;
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [isBusy, setIsBusy] = useState(false);
-
-  const updateAuthUser = async user => {
-    setIsBusy(true);
-    await sessionStore.setAuthUser(user);
-    setIsBusy(false);
+  const signIn = () => {
+    firebase.auth().signInWithPopup(googleProvider);
   };
 
-  const updateAuthToken = async token => {
-    setIsBusy(true);
-    await sessionStore.setAuthToken(token);
-    setIsBusy(false);
-  };
-
-  const updateLoggedIn = async loggedIn => {
-    setIsBusy(true);
-    await sessionStore.setLoggedIn(loggedIn);
-    setIsBusy(false);
-  };
-
-  const onSubmit = event => {
-    console.log(`try auth`);
-    if (!auth) return;
-    let didCancel = false;
-    const SignIn = async () => {
-      await auth
-        .signInWithPopup(googleProvider)
-        .then(function(result) {
-          const token = result.credential.accessToken;
-          const user = result.user;
-          if (user) {
-            updateAuthUser(user);
-            updateAuthToken(token);
-            updateLoggedIn(true);
-          }
-          if (!didCancel) setIsLoading(false);
-        })
-        .catch(function(error) {
-          const errorCode = error.code;
-          console.log(`errorCode - ${errorCode}`);
-          const errorMessage = error.message;
-          console.log(`errorMessage - ${errorMessage}`);
-          const email = error.email;
-          console.log(`email - ${email}`);
-          const credential = error.credential;
-          console.log(`credential - ${credential}`);
-        });
-    };
-    SignIn();
-    return () => (didCancel = true);
-    event.preventDefault();
-  };
-
-  const signOut = event => {
-    if (!auth) return;
-    let didCancel = false;
-
-    const SignOut = async () => {
-      await auth
-        .signOut()
-        .then(function() {
-          sessionStore.setAuthUser(null);
-          sessionStore.setAuthToken(null);
-          sessionStore.setLoggedIn(null);
-          if (!didCancel) setIsLoading(false);
-        })
-        .catch(function(error) {
-          const { code, message, email, credential } = error;
-          console.log(`errorCode - ${code}`);
-          console.log(`errorMessage - ${message}`);
-          console.log(`email - ${email}`);
-          console.log(`credential - ${credential}`);
-        });
-    };
-    SignOut();
-    return () => (didCancel = true);
-    event.preventDefault();
-  };
-
+  if (loading) {
+    return (
+      <>
+        <Typography>Initialising User...</Typography>
+      </>
+    );
+  }
+  if (error) {
+    return (
+      <>
+        <Typography>Error: {error}</Typography>
+      </>
+    );
+  }
+  if (user) {
+    navigate(`/app/account`);
+  }
   return (
-    <>
-      <Button variant="outlined" color="primary" onClick={onSubmit}>
-        Sign In With Google
-      </Button>
-    </>
+    <Button color="primary" variant="contained" onClick={signIn}>
+      Sign In With Google
+    </Button>
   );
 };
 

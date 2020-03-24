@@ -49,18 +49,13 @@ const SigninPageComponent = Loadable(
 const AppPage = ({ location, siteData }) => {
   return (
     <InterfaceLayout location={location}>
-      {/* <HelmetComponent
-        title={`${location.pathname.replace(/\//, '')} - ${
-          siteData.site.siteMetadata.title
-        }`}
-      /> */}
       <Router>
         <PrivateRouteComponent
           path="/app"
           component={AppPageComponent}
         />
         <PrivateRouteComponent
-          path="/account"
+          path="/app/account"
           component={AccountPageComponent}
         />
         <SigninPageComponent path="/app/signin" />

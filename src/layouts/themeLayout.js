@@ -35,17 +35,7 @@ const ThemeLayout = ({ children, store }) => {
 
   useMemo(() => {
     const themeObject = {
-      ...themeStore.themeObject,
-      palette: {
-        ...themeStore.themeObject,
-        palette: {
-          ...themeStore.themeObject.palette,
-          primary: {
-            ...themeStore.themeObject.palette.primary,
-            main: '#872116',
-          },
-        },
-      },
+      ...themeObject,
     };
     const muiThemeObject = createMuiTheme(themeObject);
 

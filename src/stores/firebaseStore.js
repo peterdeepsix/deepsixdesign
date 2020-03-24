@@ -1,21 +1,29 @@
 import { observable, action, decorate } from 'mobx';
 
 class FirebaseStore {
-  firebase = null;
+  auth = null;
+  firestore = null;
 
-  setFirebase(firebase) {
-    this.firebase = firebase;
+  setAuth(auth) {
+    this.auth = auth;
+  }
+
+  setFirestore(firestore) {
+    this.firestore = firestore;
   }
   dehydrate() {
     return {
-      firebase: this.firebase,
+      auth: this.auth,
+      firestore: this.firestore,
     };
   }
 }
 
 decorate(FirebaseStore, {
-  firebase: observable,
-  setFirebase: action,
+  auth: observable,
+  firestore: observable,
+  setAuth: action,
+  setFirestore: action,
 });
 
 export default FirebaseStore;
