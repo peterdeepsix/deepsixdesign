@@ -85,9 +85,7 @@ const ProductsPage = ({ data, location }) => {
     <>
       <ProductsLayout>
         <CartLayout>
-          {/* <InterfaceLayout location={location}> */}
           <ProductsComponent data={data} />
-          {/* </InterfaceLayout> */}
         </CartLayout>
       </ProductsLayout>
     </>

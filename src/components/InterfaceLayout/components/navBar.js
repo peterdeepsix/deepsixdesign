@@ -18,7 +18,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SearchComponent from 'src/components/search/searchComponent';
 import LinkComponent from 'src/components/link/LinkComponent';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: theme.palette.background.default,
   },
@@ -83,11 +83,11 @@ function Scroll(props) {
   );
 }
 
-const NavBar = props => {
+const NavBar = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -128,7 +128,7 @@ const NavBar = props => {
             <div className={classes.grow} />
             <IconButton
               component={LinkComponent}
-              to="/app/account"
+              to="/app/signin"
               edge="end"
               color="inherit"
             >

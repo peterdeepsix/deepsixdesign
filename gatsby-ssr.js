@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 
 import 'firebase/auth';
+import 'firebase/database';
 import 'firebase/firestore';
 import 'firebase/storage';
 // import 'firebase/messaging';

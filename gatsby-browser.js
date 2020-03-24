@@ -3,6 +3,7 @@ import LogRocket from 'logrocket';
 import setupLogRocketReact from 'logrocket-react';
 
 import 'firebase/auth';
+import 'firebase/database';
 import 'firebase/firestore';
 import 'firebase/storage';
 // import 'firebase/messaging';

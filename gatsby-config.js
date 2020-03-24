@@ -75,7 +75,7 @@ module.exports = {
           {
             type: 'processes',
             collection: 'processes',
-            map: doc => ({
+            map: (doc) => ({
               title: doc.title,
               step: doc.step,
               definition: doc.definition,
@@ -104,7 +104,7 @@ module.exports = {
       options: {
         features: {
           auth: true,
-          database: false,
+          database: true,
           firestore: true,
           storage: true,
           messaging: true,

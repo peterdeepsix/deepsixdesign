@@ -6,3 +6,7 @@ const InterfaceLayout = Loadable(
     fallback: <IndefiniteLoading message="InterfaceLayout" />,
   },
 );
+
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, [count]);

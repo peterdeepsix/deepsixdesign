@@ -10,10 +10,9 @@ const PrivateRouteComponent = ({
   location,
   ...rest
 }) => {
-  const [user, initialising, error] = useAuthState(firebase.auth());
+  const [user] = useAuthState(firebase.auth());
 
   if (!user) {
-    console.log('Not Logged In - Redirect to /app/signin');
     navigate('/app/signin');
     return null;
   }

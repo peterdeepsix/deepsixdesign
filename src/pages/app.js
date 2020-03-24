@@ -50,15 +50,15 @@ const AppPage = ({ location, siteData }) => {
   return (
     <InterfaceLayout location={location}>
       <Router>
-        <PrivateRouteComponent
-          path="/app"
-          component={AppPageComponent}
-        />
+        <SigninPageComponent path="/app/signin" />
         <PrivateRouteComponent
           path="/app/account"
           component={AccountPageComponent}
         />
-        <SigninPageComponent path="/app/signin" />
+        {/* <PrivateRouteComponent
+          path="/app"
+          component={AppPageComponent}
+        /> */}
       </Router>
     </InterfaceLayout>
   );

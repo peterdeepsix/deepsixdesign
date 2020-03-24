@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'gatsby-plugin-firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import {
+  useDocument,
+  useCollection,
+} from 'react-firebase-hooks/firestore';
 import { inject, observer } from 'mobx-react';
 import { navigate } from 'gatsby';
 
 import { Button, Typography } from '@material-ui/core';
+
+import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
 const SignInGoogle = ({ history, store }) => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -15,11 +21,7 @@ const SignInGoogle = ({ history, store }) => {
   };
 
   if (loading) {
-    return (
-      <>
-        <Typography>Initialising User...</Typography>
-      </>
-    );
+    return <IndefiniteLoading message="Initialising User" />;
   }
   if (error) {
     return (

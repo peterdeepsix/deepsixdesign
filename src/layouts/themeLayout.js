@@ -34,9 +34,6 @@ const ThemeLayout = ({ children, store }) => {
   }, [prefersDarkMode]);
 
   useMemo(() => {
-    const themeObject = {
-      ...themeObject,
-    };
     const muiThemeObject = createMuiTheme(themeObject);
 
     themeStore.setThemeObject(themeObject);
