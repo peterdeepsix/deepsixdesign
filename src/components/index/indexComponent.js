@@ -37,8 +37,8 @@ const IndexComponent = () => {
           <CardHeader title="Process" />
           <CardContent>
             <Typography>
-              Capture wordly patterns, in order to create visions,
-              from which projected beauty emerges.
+              Capture wordly patterns and design visions, from which
+              projected beauty emerges.
             </Typography>
           </CardContent>
         </Card>

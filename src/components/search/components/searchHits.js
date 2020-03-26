@@ -9,7 +9,7 @@ import { connectHits } from 'react-instantsearch-dom';
 
 import SearchHit from './searchHit';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 512,
@@ -19,13 +19,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SearchHits = ({ hits }) => {
+const SearchHits = ({ hits, handleClose }) => {
   const classes = useStyles();
   return (
     <List className={classes.root}>
       {hits.map((hit, i, arr) => (
         <>
-          <SearchHit key={hit.stripeId} hit={hit} />
+          <SearchHit
+            key={hit.stripeId}
+            hit={hit}
+            handleClose={handleClose}
+          />
           {arr.length - 1 !== i && <Divider />}
         </>
       ))}

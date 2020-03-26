@@ -8,6 +8,8 @@ import {
 import { inject, observer } from 'mobx-react';
 import Loadable from '@loadable/component';
 
+import Peer from 'peerjs';
+
 import { makeStyles } from '@material-ui/core/styles';
 import DuoOutlinedIcon from '@material-ui/icons/DuoOutlined';
 
@@ -30,12 +32,13 @@ import {
 
 import IndefiniteLoading from 'src/components/loading/indefiniteLoading';
 
-const ColorPickerComponent = Loadable(
-  () => import('src/components/colorPicker/colorPickerComponent'),
-  {
-    fallback: <IndefiniteLoading message="ColorPickerComponent" />,
-  },
-);
+const WebRTC = Loadable(() => import('./WebRTC'), {
+  fallback: <IndefiniteLoading message="WebRTC" />,
+});
+
+const UserList = Loadable(() => import('./UserList'), {
+  fallback: <IndefiniteLoading message="UserList" />,
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -117,6 +120,12 @@ const AcountPageComponent = ({ history, store }) => {
       <Container maxWidth="sm">
         <Box mt={2} mb={1}>
           <Card variant="outlined">
+            <CardHeader title="Web RTC" />
+            <WebRTC />
+          </Card>
+        </Box>
+        <Box mt={2} mb={1}>
+          <Card variant="outlined">
             <CardHeader title="Account Details" />
             <CardContent>
               <Box mt={1} mb={1}>
@@ -153,72 +162,38 @@ const AcountPageComponent = ({ history, store }) => {
             </CardContent>
           </Card>
         </Box>
-        <Box mt={2} mb={1}>
+        <Box mt={2} mb={10}>
           <Card variant="outlined">
             <CardHeader title="Account Actions" />
             <CardContent>
               <Box mt={2} mb={1}>
-                <Button variant="outlined" onClick={enableTracking}>
-                  Enable Tracking
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={enableTracking}
+                >
+                  Enable WebRTC
                 </Button>
               </Box>
               <Box mt={2} mb={1}>
                 <Button variant="outlined" onClick={disableTracking}>
-                  Disable Tracking
+                  Disable WebRTC
                 </Button>
               </Box>
               <Box mt={2} mb={1}>
-                <Button variant="outlined" onClick={simulateOnline}>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={simulateOnline}
+                >
                   Simulate Online
                 </Button>
               </Box>
               <Box mt={2} mb={1}>
                 <Button variant="outlined" onClick={simulateOffline}>
-                  Simulate Offline
+                  Simulate Disconnect
                 </Button>
               </Box>
-            </CardContent>
-          </Card>
-        </Box>
-        <Box mt={2} mb={10}>
-          <Card variant="outlined">
-            <CardHeader title="All Users" />
-            <CardContent>
-              {usersLoading && (
-                <IndefiniteLoading message="UsersCollection" />
-              )}
-              {users && (
-                <List disablePadding className={classes.root}>
-                  {users.docs.map((doc) => {
-                    return (
-                      <ListItem key={doc.id} disableGutters button>
-                        <ListItemAvatar>
-                          <Avatar />
-                        </ListItemAvatar>
-                        <ListItemText
-                          id={doc.id}
-                          primary={doc.data().displayName}
-                          secondary={
-                            (doc.data().online && 'online') ||
-                            'offline'
-                          }
-                        />
-                        <ListItemSecondaryAction>
-                          <IconButton
-                            color={
-                              (doc.data().online && 'primary') || ''
-                            }
-                            edge="end"
-                            aria-label="comments"
-                          >
-                            <DuoOutlinedIcon />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </ListItem>
-                    );
-                  })}
-                </List>
-              )}
             </CardContent>
           </Card>
         </Box>

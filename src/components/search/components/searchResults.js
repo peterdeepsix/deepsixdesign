@@ -4,15 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import SearchHits from './searchHits';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-const SearchResults = () => {
+const SearchResults = ({ handleClose }) => {
   const classes = useStyles();
   return (
     <>
-      <SearchHits />
+      <SearchHits handleClose={handleClose} />
     </>
   );
 };

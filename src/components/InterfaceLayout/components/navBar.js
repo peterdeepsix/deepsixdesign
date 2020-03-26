@@ -83,7 +83,7 @@ function Scroll(props) {
   );
 }
 
-const NavBar = (props) => {
+const NavBar = ({ props }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -96,7 +96,6 @@ const NavBar = (props) => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>

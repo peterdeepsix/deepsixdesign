@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: theme.palette.background.default,
   },
@@ -77,7 +77,7 @@ const SearchComponent = ({ handleClose }) => {
         root={{ props: { ref } }}
       >
         <SearchAppBar handleClose={handleClose} />
-        <SearchResults />
+        <SearchResults handleClose={handleClose} />
       </InstantSearch>
     </>
   );

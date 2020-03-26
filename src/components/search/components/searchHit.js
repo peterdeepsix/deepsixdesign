@@ -13,7 +13,7 @@ import LinkComponent from 'src/components/link/linkComponent';
 
 import SearchHighlight from './searchHighlight';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Hit = ({ hit }) => {
+const Hit = ({ hit, handleClose }) => {
   const classes = useStyles();
 
   const { slug, title, shortOverview, media } = hit;
@@ -37,6 +37,7 @@ const Hit = ({ hit }) => {
         color="inherit"
         to={`/buy/${slug}`}
         alignItems="flex-start"
+        onClick={handleClose}
       >
         <ListItemAvatar>
           <Avatar src={media[0].resolutions.src} alt={title.title} />

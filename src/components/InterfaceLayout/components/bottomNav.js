@@ -35,7 +35,6 @@ const BottomNav = ({ location }) => {
     >
       <BottomNavigation
         value={value}
-        fullWidth
         aria-label="BottomNavigation label"
         showLabels
       >

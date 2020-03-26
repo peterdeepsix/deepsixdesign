@@ -13,6 +13,7 @@ module.exports = {
     author: `peter@deepsixdesign.com`,
   },
   plugins: [
+    `gatsby-plugin-smoothscroll`,
     'gatsby-plugin-root-import',
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
